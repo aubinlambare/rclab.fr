@@ -1,0 +1,10 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <p>Bg: </p>
+    {% for personne in personnes %}
+        <p>{{ personne.fonction.fonction|upper }} : {{ personne.prenom }} {{ personne.nom }} : email : {{ personne.email }}</p>
+    {% endfor %}
+
+{% endblock %}

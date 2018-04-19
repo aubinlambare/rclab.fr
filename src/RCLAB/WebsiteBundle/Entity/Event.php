@@ -1,0 +1,486 @@
+<?php
+
+namespace RCLAB\WebsiteBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * Event
+ *
+ * @ORM\Table(name="Event")
+ * @ORM\Entity(repositoryClass="RCLAB\WebsiteBundle\Repository\EventRepository")
+ */
+class Event
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="idEvent", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Event", type="string", length=255)
+     *
+     * @Assert\NotBlank(message = "Le titre est obligatoire")
+     */
+    private $event;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Description", type="text", nullable=true)
+     *
+     * @Assert\NotBlank(message = "La description est obligatoire")
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Lien", type="string", length=1000, nullable=true)
+     *
+     * @Assert\Url(message="L'adresse '{{ value }}' n'est pas valide")
+     */
+    private $lien;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Affiche", type="string", nullable=true)
+     *
+     */
+    private $image;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="MaxParticipants", type="smallint", nullable=true)
+     *
+     * @Assert\GreaterThan(
+     *     value = 0,
+     *     message = "Il faut au moins un participant"
+     * )
+     *
+     * @Assert\LessThanOrEqual(
+     *     value = 32767,
+     *     message = "Il y a trop de monde de prévu"
+     * )
+     */
+    private $maxParticipants;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="NbInscrits", type="smallint", nullable=true)
+     *
+     * @Assert\GreaterThanOrEqual(
+     *     value = 0,
+     *     message = "Nombre d'isncrit négatif impossible"
+     * )
+     *
+     * @Assert\LessThanOrEqual(
+     *     value = 32767,
+     *     message = "Il y a trop de monde d'inscrit"
+     * )
+     *
+     */
+    private $nbInscrits;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="DebutEvent", type="datetime")
+     *
+     */
+    private $debutEvent;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FinEvent", type="datetime")
+     */
+    private $finEvent;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="DebutPublication", type="datetime")
+     */
+    private $debutPublication;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FinPublication", type="datetime", nullable=true)
+     */
+    private $finPublication;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="Focus", type="boolean")
+     */
+    private $focus;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="PrioriteFocus", type="smallint", nullable=true)
+     *
+     * @Assert\GreaterThan(
+     *     value = 0,
+     *     message = "La valeur doit être comprise entre 1 et 10"
+     * )
+     *
+     * @Assert\LessThanOrEqual(
+     *     value = 10,
+     *     message = "La valeur doit être comprise entre 1 et 10"
+     * )
+     */
+    private $prioriteFocus;
+
+
+    /**
+     * @var Personne
+     *
+     * @ORM\ManyToOne(targetEntity="RCLAB\WebsiteBundle\Entity\Personne")
+     * @ORM\JoinColumn(name="declarer", referencedColumnName="idPersonne")
+     */
+    private $declarer;
+
+
+    public function __construct()
+    {
+        $this->debutPublication = new \DateTime('NOW');
+        $this->debutEvent = new \DateTime('NOW');
+    }
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set event
+     *
+     * @param string $event
+     *
+     * @return Event
+     */
+    public function setEvent($event)
+    {
+        $this->event = $event;
+
+        return $this;
+    }
+
+    /**
+     * Get event
+     *
+     * @return string
+     */
+    public function getEvent()
+    {
+        return $this->event;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Event
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set lien
+     *
+     * @param string $lien
+     *
+     * @return Event
+     */
+    public function setLien($lien)
+    {
+        $this->lien = $lien;
+
+        return $this;
+    }
+
+    /**
+     * Get lien
+     *
+     * @return string
+     */
+    public function getLien()
+    {
+        return $this->lien;
+    }
+
+    /**
+     * Set maxParticipants
+     *
+     * @param integer $maxParticipants
+     *
+     * @return Event
+     */
+    public function setMaxParticipants($maxParticipants)
+    {
+        $this->maxParticipants = $maxParticipants;
+
+        return $this;
+    }
+
+    /**
+     * Get maxParticipants
+     *
+     * @return int
+     */
+    public function getMaxParticipants()
+    {
+        return $this->maxParticipants;
+    }
+
+    /**
+     * Set nbInscrits
+     *
+     * @param integer $nbInscrits
+     *
+     * @return Event
+     */
+    public function setNbInscrits($nbInscrits)
+    {
+        $this->nbInscrits = $nbInscrits;
+
+        return $this;
+    }
+
+    /**
+     * Get nbInscrits
+     *
+     * @return int
+     */
+    public function getNbInscrits()
+    {
+        return $this->nbInscrits;
+    }
+
+    /**
+     * Set debutEvent
+     *
+     * @param \DateTime $debutEvent
+     *
+     * @return Event
+     */
+    public function setDebutEvent($debutEvent)
+    {
+        $this->debutEvent = $debutEvent;
+
+        return $this;
+    }
+
+    /**
+     * Get debutEvent
+     *
+     * @return \DateTime
+     */
+    public function getDebutEvent()
+    {
+        return $this->debutEvent;
+    }
+
+    /**
+     * Set finEvent
+     *
+     * @param \DateTime $finEvent
+     *
+     * @return Event
+     */
+    public function setFinEvent($finEvent)
+    {
+        $this->finEvent = $finEvent;
+
+        return $this;
+    }
+
+    /**
+     * Get finEvent
+     *
+     * @return \DateTime
+     */
+    public function getFinEvent()
+    {
+        return $this->finEvent;
+    }
+
+    /**
+     * Set debutPublication
+     *
+     * @param \DateTime $debutPublication
+     *
+     * @return Event
+     */
+    public function setDebutPublication($debutPublication)
+    {
+        $this->debutPublication = $debutPublication;
+
+        return $this;
+    }
+
+    /**
+     * Get debutPublication
+     *
+     * @return \DateTime
+     */
+    public function getDebutPublication()
+    {
+        return $this->debutPublication;
+    }
+
+    /**
+     * Set finPublication
+     *
+     * @param \DateTime $finPublication
+     *
+     * @return Event
+     */
+    public function setFinPublication($finPublication)
+    {
+        $this->finPublication = $finPublication;
+
+        return $this;
+    }
+
+    /**
+     * Get finPublication
+     *
+     * @return \DateTime
+     */
+    public function getFinPublication()
+    {
+        return $this->finPublication;
+    }
+
+    /**
+     * Set focus
+     *
+     * @param boolean $focus
+     *
+     * @return Event
+     */
+    public function setFocus($focus)
+    {
+        $this->focus = $focus;
+
+        return $this;
+    }
+
+    /**
+     * Get focus
+     *
+     * @return bool
+     */
+    public function getFocus()
+    {
+        return $this->focus;
+    }
+
+    /**
+     * Set prioriteFocus
+     *
+     * @param integer $prioriteFocus
+     *
+     * @return Event
+     */
+    public function setPrioriteFocus($prioriteFocus)
+    {
+        $this->prioriteFocus = $prioriteFocus;
+
+        return $this;
+    }
+
+    /**
+     * Get prioriteFocus
+     *
+     * @return int
+     */
+    public function getPrioriteFocus()
+    {
+        return $this->prioriteFocus;
+    }
+
+    /**
+     * Set declarer
+     *
+     * @param \RCLAB\WebsiteBundle\Entity\Personne $declarer
+     *
+     * @return Event
+     */
+    public function setDeclarer(\RCLAB\WebsiteBundle\Entity\Personne $declarer = null)
+    {
+        $this->declarer = $declarer;
+
+        return $this;
+    }
+
+    /**
+     * Get declarer
+     *
+     * @return \RCLAB\WebsiteBundle\Entity\Personne
+     */
+    public function getDeclarer()
+    {
+        return $this->declarer;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Event
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>RC Lab</title>
+        {% stylesheets '@RCLABWebsiteBundle/Resources/public/css/base.css'
+                        '@RCLABWebsiteBundle/Resources/public/css/actualite.css'
+        %}
+            <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %}
+
+    </head>
+
+    <body>
+	<header>
+            <img src="{{ asset('rclab_logo.jpeg') }}" alt="logo RC Lab" />
+            <nav>
+                <ul>
+                    <li><a href="{{ path('rclab_website_actualite') }}">Actualités</a></li>
+                    <li><a href="{{ path('rclab_website_association') }}">L'association</a></li>
+                    <li><a href="{{ path('rclab_website_reparation') }}">Réparations</a></li>
+                    <li><a href="{{ path('rclab_website_cours') }}">Cours</a></li>
+                    <li><a href="{{ path('rclab_website_contact') }}">Nous contacter</a></li>
+                    {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                        <li><a href="{{ path('rclab_website_compte') }}">Compte</a></li>
+                        <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+                    {% else %}
+                        <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
+                        <li><a href="{{ path('fos_user_registration_register') }}">Inscription</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </header>
+
+        {% block body %}
+        {% endblock %}
+
+	<footer>
+		<p>footer de notre site web</p>
+	</footer
+    </body>
+</html>

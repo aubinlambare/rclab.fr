@@ -1,0 +1,28 @@
+rclab_website_home:
+    path:     /
+    defaults: { _controller: RCLABWebsiteBundle:Default:index }
+
+rclab_website_contact:
+    path:     /contact
+    defaults:  { _controller: RCLABWebsiteBundle:Default:contact }
+
+rclab_website_actualite:
+    path:     /actualite
+    defaults:  { _controller: RCLABWebsiteBundle:Default:actualite }
+
+rclab_website_association:
+    path:     /association
+    defaults:  { _controller: RCLABWebsiteBundle:Default:association }
+
+rclab_website_reparation:
+    path:     /reparation
+    defaults:  { _controller: RCLABWebsiteBundle:Default:reparation }
+
+rclab_website_cours:
+    path:     /cours
+    defaults:  { _controller: RCLABWebsiteBundle:Default:cours }
+
+rclab_website_compte:
+    path:    /compte
+    defaults:  { _controller: RCLABWebsiteBundle:Default:compte }
+

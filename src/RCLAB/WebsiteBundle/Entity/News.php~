@@ -1,0 +1,340 @@
+<?php
+
+namespace RCLAB\WebsiteBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * News
+ *
+ * @ORM\Table(name="News")
+ * @ORM\Entity(repositoryClass="RCLAB\WebsiteBundle\Repository\NewsRepository")
+ */
+class News
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="idNews", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="News", type="string", length=255)
+     *
+     * @Assert\NotBlank(message="Le titre est obligatoire")
+     */
+    private $news;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Description", type="text")
+     *
+     * @Assert\NotBlank(message="La description est obligatoire")
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Lien", type="string", length=1000, nullable=true)
+     *
+     * @Assert\Url(message="L'adresse '{{ value }}' n'est pas valide")
+     */
+    private $lien;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="DebutPublication", type="datetime")
+     *
+     */
+    private $debutPublication;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FinPublication", type="datetime", nullable=true)
+     */
+    private $finPublication;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="Focus", type="boolean")
+     */
+    private $focus;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="PrioriteFocus", type="smallint", nullable=true)
+     *
+     * @Assert\GreaterThan(
+     *     value = 0,
+     *     message = "La valeur doit être comprise entre 1 et 10"
+     * )
+     *
+     * @Assert\LessThanOrEqual(
+     *     value = 10,
+     *     message = "La valeur doit être comprise entre 1 et 10"
+     * )
+     */
+    private $prioriteFocus;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Image", type="string", nullable=true)
+     *
+     */
+    private $image;
+
+
+    /**
+     * @var Personne
+     *
+     * @ORM\ManyToOne(targetEntity="RCLAB\WebsiteBundle\Entity\Personne")
+     * @ORM\JoinColumn(name="publier", referencedColumnName="idPersonne")
+     */
+    private $publier;
+
+
+    public function __construct()
+    {
+        $this->debutPublication = new \DateTime('NOW');
+    }
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set news
+     *
+     * @param string $news
+     *
+     * @return News
+     */
+    public function setNews($news)
+    {
+        $this->news = $news;
+
+        return $this;
+    }
+
+    /**
+     * Get news
+     *
+     * @return string
+     */
+    public function getNews()
+    {
+        return $this->news;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return News
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set lien
+     *
+     * @param string $lien
+     *
+     * @return News
+     */
+    public function setLien($lien)
+    {
+        $this->lien = $lien;
+
+        return $this;
+    }
+
+    /**
+     * Get lien
+     *
+     * @return string
+     */
+    public function getLien()
+    {
+        return $this->lien;
+    }
+
+    /**
+     * Set debutPublication
+     *
+     * @param \DateTime $debutPublication
+     *
+     * @return News
+     */
+    public function setDebutPublication($debutPublication)
+    {
+        $this->debutPublication = $debutPublication;
+
+        return $this;
+    }
+
+    /**
+     * Get debutPublication
+     *
+     * @return \DateTime
+     */
+    public function getDebutPublication()
+    {
+        return $this->debutPublication;
+    }
+
+    /**
+     * Set finPublication
+     *
+     * @param \DateTime $finPublication
+     *
+     * @return News
+     */
+    public function setFinPublication($finPublication)
+    {
+        $this->finPublication = $finPublication;
+
+        return $this;
+    }
+
+    /**
+     * Get finPublication
+     *
+     * @return \DateTime
+     */
+    public function getFinPublication()
+    {
+        return $this->finPublication;
+    }
+
+    /**
+     * Set focus
+     *
+     * @param boolean $focus
+     *
+     * @return News
+     */
+    public function setFocus($focus)
+    {
+        $this->focus = $focus;
+
+        return $this;
+    }
+
+    /**
+     * Get focus
+     *
+     * @return bool
+     */
+    public function getFocus()
+    {
+        return $this->focus;
+    }
+
+    /**
+     * Set prioriteFocus
+     *
+     * @param integer $prioriteFocus
+     *
+     * @return News
+     */
+    public function setPrioriteFocus($prioriteFocus)
+    {
+        $this->prioriteFocus = $prioriteFocus;
+
+        return $this;
+    }
+
+    /**
+     * Get prioriteFocus
+     *
+     * @return int
+     */
+    public function getPrioriteFocus()
+    {
+        return $this->prioriteFocus;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return News
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set publier
+     *
+     * @param \RCLAB\WebsiteBundle\Entity\Personne $publier
+     *
+     * @return News
+     */
+    public function setPublier(\RCLAB\WebsiteBundle\Entity\Personne $publier = null)
+    {
+        $this->publier = $publier;
+
+        return $this;
+    }
+
+    /**
+     * Get publier
+     *
+     * @return \RCLAB\WebsiteBundle\Entity\Personne
+     */
+    public function getPublier()
+    {
+        return $this->publier;
+    }
+}
