@@ -1,6 +1,56 @@
-rclab_website:
-    resource: "@RCLABWebsiteBundle/Resources/config/routing.yml"
-    prefix:   /
 
-fos_user:
-    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+# WebsiteBundle
+rclab_website_home:
+    path:     /
+    defaults: { _controller: RCLABWebsiteBundle:Default:index }
+
+rclab_website_contact:
+    path:     /contact
+    defaults:  { _controller: RCLABWebsiteBundle:Default:contact }
+
+rclab_website_actualite:
+    path:     /actualite
+    defaults:  { _controller: RCLABWebsiteBundle:Default:actualite }
+
+rclab_website_association:
+    path:     /association
+    defaults:  { _controller: RCLABWebsiteBundle:Default:association }
+
+rclab_website_reparation:
+    path:     /reparation
+    defaults:  { _controller: RCLABWebsiteBundle:Default:reparation }
+
+rclab_website_cours:
+    path:     /cours
+    defaults:  { _controller: RCLABWebsiteBundle:Default:cours }
+
+rclab_website_compte:
+    path:    /compte
+    defaults:  { _controller: RCLABWebsiteBundle:Default:compte }
+
+
+# UserBundle
+rclab_user_registration_register:
+    path:    /inscription
+    defaults: { _controller: RCLABUserBundle:Registration:register }
+
+
+# FosUserBundle
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile

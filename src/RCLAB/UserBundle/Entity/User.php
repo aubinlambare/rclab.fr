@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="fos_user")
+ * @ORM\Table(name="user")
  */
 class User extends BaseUser
 {
@@ -22,35 +22,64 @@ class User extends BaseUser
     /**
      * @ORM\Column(type="string")
      */
-    protected $nom;
+    protected $lastName;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $firstName;
 
     public function __construct()
     {
         parent::__construct();
-        // your own logic
+        $this->setEnabled(true);
     }
 
     /**
-     * Set nom
+     * Set lastName
      *
-     * @param string $nom
+     * @param string $lastName
      *
      * @return User
      */
-    public function setNom($nom)
+    public function setLastName($lastName)
     {
-        $this->nom = $nom;
+        $this->lastName = $lastName;
 
         return $this;
     }
 
     /**
-     * Get nom
+     * Get lastName
      *
      * @return string
      */
-    public function getNom()
+    public function getLastName()
     {
-        return $this->nom;
+        return $this->lastName;
+    }
+
+    /**
+     * Set firstName
+     *
+     * @param string $firstName
+     *
+     * @return User
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * Get firstName
+     *
+     * @return string
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
     }
 }
