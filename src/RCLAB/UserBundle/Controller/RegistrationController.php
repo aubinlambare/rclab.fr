@@ -8,15 +8,19 @@
 
 namespace RCLAB\UserBundle\Controller;
 
-
 use RCLAB\UserBundle\Entity\User;
 use RCLAB\UserBundle\Form\RegistrationType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+
 
 class RegistrationController extends Controller
 {
+
+
     /**
      * @param Request $request
      * @return Response
@@ -32,21 +36,64 @@ class RegistrationController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            return $this->render('@RCLABUser/User/check_email.html.twig', array( 'user' => $user ));
-            /*$em = $this->getDoctrine()->getManager();
+            $confirmationToken = md5(microtime(TRUE) * 10000);
+            $user->setConfirmationToken($confirmationToken);
+
+            $em = $this->getDoctrine()->getManager();
             $em->persist($user);
-            $em->flush();*/
+            $em->flush();
 
-            //$request->getSession()->getFlashBag()->add('success', 'L\'utilisateur vient d\'être enregistrée');
 
-            //return $this->redirectToRoute('rclab_website_home');
+            //creation du mail de confirmation
+            $mailer = $this->get('mailer');
+            $message = (new \Swift_Message('Root Computer Lab'))
+                ->setFrom('aubin.lambare@laposte.net')
+                ->setTo($user->getEmail())
+                ->setBody(
+                    $this->renderView('@RCLABUser/Emails/email_registration.html.twig', array('confirmationToken' => $confirmationToken)),
+                    'text/html'
+                );
+            $mailer->send($message);
+
+            return $this->render('@RCLABUser/User/check_email.html.twig');
+
         }
 
-        return $this->render('@RCLABWebsite/Default/actualite.html.twig', array( 'form' => $form->createView() ));
+        return $this->render('@RCLABUser/User/registration.html.twig', array('form' => $form->createView()));
     }
 
-    public function checkEmailAction()
+    public function checkEmailAction($id)
     {
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository(User::class)->findOneBy([
+            'confirmationToken' => $id
+        ]);
 
+        if (empty($user)) {
+
+            throw new NotFoundHttpException('Sorry not existing!');
+        } else {
+
+            $user->setEnabled(true);
+            $user->setConfirmationToken(null);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            $this->addFlash(
+                'success', 'Votre inscription à bien été confirmée'
+            );
+
+            //login
+            $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
+
+            $this->get('security.token_storage')->setToken($token);
+            $this->get('session')->set('_security_users', serialize($token));
+
+            return $this->render('@RCLABWebsite/Default/index.html.twig');
+
+        }
     }
 }
+

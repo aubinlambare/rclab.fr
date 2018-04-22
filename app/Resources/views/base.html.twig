@@ -13,15 +13,15 @@
 
     <body>
 	<header>
-            <img src="{{ asset('rclab_logo.jpeg') }}" alt="logo RC Lab" />
+        <a href="{{ path('rclab_website_home') }}"><img src="{{ asset('images/logo_rclab.png') }}" alt="logo RC Lab" /></a>
             <nav>
                 <ul>
-                    <li><a href="{{ path('rclab_website_actualite') }}">Actualités</a></li>
                     <li><a href="{{ path('rclab_website_association') }}">L'association</a></li>
-                    <li><a href="{{ path('rclab_website_reparation') }}">Réparations</a></li>
-                    <li><a href="{{ path('rclab_website_cours') }}">Cours</a></li>
                     <li><a href="{{ path('rclab_website_contact') }}">Nous contacter</a></li>
+                    <li><a href="{{ path('rclab_website_actualite') }}">Actualités</a></li>
                     {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                        <li><a href="{{ path('rclab_website_reparation') }}">Réparations</a></li>
+                        <li><a href="{{ path('rclab_website_cours') }}">Cours</a></li>
                         <li><a href="{{ path('rclab_website_compte') }}">Compte</a></li>
                         <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
                     {% else %}
@@ -32,11 +32,17 @@
             </nav>
         </header>
 
-        {% block body %}
-        {% endblock %}
+        <div>
+            {% for message in app.flashes('success') %}
+                <div class="flash-notice">
+                    {{ message }}
+                </div>
+            {% endfor %}
 
+            {% block body %}{% endblock %}
+        </div>
 	<footer>
 		<p>footer de notre site web</p>
-	</footer
+	</footer>
     </body>
 </html>

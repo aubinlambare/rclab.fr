@@ -34,6 +34,10 @@ rclab_user_registration_register:
     path:    /inscription
     defaults: { _controller: RCLABUserBundle:Registration:register }
 
+rclab_user_registration_checkEmail:
+    path:    /inscription/verification/{id}
+    defaults: { _controller: RCLABUserBundle:Registration:checkEmail }
+
 
 # FosUserBundle
 fos_user_security:
