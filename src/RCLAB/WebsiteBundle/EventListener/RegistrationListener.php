@@ -16,6 +16,8 @@ class RegistrationListener implements  EventSubscriberInterface
 {
     public static function getSubscribedEvents()
     {
+        // TODO: Implement getSubscribedEvents() method.
+
         return array(
           FOSUserEvents::REGISTRATION_SUCCESS => 'onRegistrationSuccess'
         );
