@@ -2,13 +2,10 @@
 
 {% block body %}
 
-    <h1>Registration</h1>
+    <h3>Body de la page actualite</h3>
 
     {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
-        {{ form_widget(form) }}
-        <div>
-            <input type="submit" value="S'isncrire" />
-        </div>
+    {{ form_widget(form) }}
     {{ form_end(form) }}
 
 {% endblock %}
