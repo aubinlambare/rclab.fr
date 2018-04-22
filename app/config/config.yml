@@ -77,17 +77,9 @@ fos_user:
     firewall_name: main
     user_class: RCLAB\UserBundle\Entity\User
     registration:
-        confirmation:
-            enabled: true
-            from_email:
-                address: aubin.lambare@laposte.net
-                sender_name: Root Computer Lab
-           #template: RCLABUserBundle:User:check_email.html.twig
         form:
-           name: rclab_user_registration
+            name: rclab_user_registration
+
     from_email:
         address: "rclab.fr@rclab.fr"
         sender_name: "rclab"
-    service:
-        mailer: fos_user.mailer.twig_swift
-
