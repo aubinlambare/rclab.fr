@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <h3>Body de la page actualite</h3>
+
+    <p><a href="{{ path('rclab_website_actualite_events') }}">Liste des évènements</a></p>
+    <p><a href="{{ path('rclab_website_actualite_news') }}">Liste des news</a></p>
+
+    <br />
+    <p>Formulaires d'ajout : </p>
+    <p><a href="{{ path('rclab_website_actualite_addEvent') }}">Ajouter un évènement</a></p>
+    <p><a href="{{ path('rclab_website_actualite_addNews') }}">Ajouter une news</a></p>
+
+{% endblock %}

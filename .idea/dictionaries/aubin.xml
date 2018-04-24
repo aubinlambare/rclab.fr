@@ -3,12 +3,17 @@
     <words>
       <w>actualite</w>
       <w>affiche</w>
+      <w>ajouter</w>
       <w>ajouté</w>
+      <w>ajoutée</w>
       <w>asso</w>
+      <w>bien</w>
       <w>compte</w>
+      <w>confirmée</w>
       <w>déconnexion</w>
       <w>fonction</w>
       <w>inscrits</w>
+      <w>liste</w>
       <w>monde</w>
       <w>nullable</w>
       <w>numero</w>
@@ -18,12 +23,17 @@
       <w>personnes</w>
       <w>prenom</w>
       <w>priorite</w>
+      <w>précédent</w>
       <w>publier</w>
       <w>rclab</w>
       <w>statut</w>
+      <w>suivant</w>
       <w>trop</w>
       <w>valide</w>
+      <w>votre</w>
       <w>wwww</w>
+      <w>évènement</w>
+      <w>évènements</w>
     </words>
   </dictionary>
 </component>

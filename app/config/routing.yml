@@ -1,5 +1,7 @@
 
 # WebsiteBundle
+
+# DefaultController
 rclab_website_home:
     path:     /
     defaults: { _controller: RCLABWebsiteBundle:Default:index }
@@ -7,10 +9,6 @@ rclab_website_home:
 rclab_website_contact:
     path:     /contact
     defaults:  { _controller: RCLABWebsiteBundle:Default:contact }
-
-rclab_website_actualite:
-    path:     /actualite
-    defaults:  { _controller: RCLABWebsiteBundle:Default:actualite }
 
 rclab_website_association:
     path:     /association
@@ -29,10 +27,47 @@ rclab_website_compte:
     defaults:  { _controller: RCLABWebsiteBundle:Default:compte }
 
 
+# ActualiteController
+rclab_website_actualite:
+    path:     /actualite
+    defaults:
+        _controller: RCLABWebsiteBundle:Actualite:actualite
+
+rclab_website_actualite_events:
+    path:    /actualite/events/{page}
+    defaults:
+        _controller: RCLABWebsiteBundle:Actualite:events
+        page:        1
+    requirements:
+        page:    \d+
+
+rclab_website_actualite_news:
+    path:    /actualite/news/{page}
+    defaults:
+        _controller: RCLABWebsiteBundle:Actualite:news
+        page:        1
+    requirements:
+        page:    \d+
+
+rclab_website_actualite_addEvent:
+    path:    /actualite/events/addEvent
+    defaults: { _controller: RCLABWebsiteBundle:Actualite:addEvent }
+
+rclab_website_actualite_addNews:
+    path:    /actualite/news/addNews
+    defaults: { _controller: RCLABWebsiteBundle:Actualite:addNews }
+
+
 # UserBundle
+
+# RegistrationController
 rclab_user_registration_register:
     path:    /inscription
     defaults: { _controller: RCLABUserBundle:Registration:register }
+
+rclab_user_registration_checkEmail:
+    path:    /inscription/verification/{id}
+    defaults: { _controller: RCLABUserBundle:Registration:checkEmail }
 
 
 # FosUserBundle
