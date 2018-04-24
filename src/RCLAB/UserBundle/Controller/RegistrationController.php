@@ -46,8 +46,8 @@ class RegistrationController extends Controller
 
             //creation du mail de confirmation
             $mailer = $this->get('mailer');
-            $message = (new \Swift_Message('Root Computer Lab'))
-                ->setFrom('aubin.lambare@laposte.net')
+            $message = (new \Swift_Message('Confirmer votre inscription'))
+                ->setFrom('aubin.lambare@laposte.net', 'Root Computer Lab')
                 ->setTo($user->getEmail())
                 ->setBody(
                     $this->renderView('@RCLABUser/Emails/email_registration.html.twig', array('confirmationToken' => $confirmationToken)),

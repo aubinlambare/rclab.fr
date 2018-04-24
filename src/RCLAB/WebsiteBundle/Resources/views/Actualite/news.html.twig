@@ -7,14 +7,22 @@
     <div>
         {% for news in listNews %}
             <div>
-                <h4>{{ news.news }} du {{ news.debutPublication|date('Y-m-d H:i') }}
-                    au {{ news.finPublication|date('Y-m-d H:i') }}</h4>
+                <h4>{{ news.news }} publiée le {{ news.debutPublication|date('d/m/Y H:i') }}</h4>
+                {% if is_granted('ROLE_MODERATOR') %}
+                        <p>
+                            <a href="{{ path('rclab_website_actualite_news_edit', {'id': news.id}) }}">Editer</a>
+                            <a href="{{ path('rclab_website_actualite_news_remove', { 'id': news.id}) }}">supprimer</a>
+                        </p>
+                {% endif %}
                 <p>{{ news.description }}</p>
                 {% if news.lien is not null %}
                     <p><a href="{{ news.lien }}">
                             {{ news.lien }}
                         </a></p>
                 {% endif %}
+                <p>
+                    <a href="{{ path('rclab_website_actualite_news_detail', {'id': news.id}) }}">Cliquer pour plus de détail</a>
+                </p>
             </div>
         {% endfor %}
     </div>

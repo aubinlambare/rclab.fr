@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <h3>Modifier l'évènement {{ event.event }}</h3>
+
+    <div>
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        {{ form_widget(form) }}
+        <button type="submit">Ajouter !</button>
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}

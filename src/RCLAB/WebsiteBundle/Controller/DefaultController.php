@@ -63,6 +63,7 @@ class DefaultController extends Controller
 
     public function compteAction()
     {
+
         return $this->render('@RCLABWebsite/Default/compte.html.twig');
     }
 }

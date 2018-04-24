@@ -30,6 +30,13 @@ security:
 
 
     access_control:
+    - {path: ^/actualite/events/add, role: ROLE_MODERATOR }
+    - {path: ^/actualite/news/add, role: ROLE_MODERATOR }
+    - {path: ^/actualite/news/remove, role: ROLE_MODERATOR }
+    - {path: ^/actualite/events/remove, role: ROLE_MODERATOR }
+    - {path: ^/actualite/events/edit, role: ROLE_MODERATOR }
+    - {path: ^/actualite/news/edit, role: ROLE_MODERATOR }
+
     #- {path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
     #- {path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
     #- {path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }

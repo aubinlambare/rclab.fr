@@ -29,16 +29,31 @@ class ActualiteController extends Controller
     /**
      * @param $request
      * @param $type
+     * @param $entity
      * @return bool|\Symfony\Component\Form\FormInterface
      */
-    public function AddForm($request, $type)
+    public function Form($request, $type, $entity)
     {
         if ($type == 'News') {
-            $obj = new News();
+
+            if (is_null($entity)) {
+
+                $obj = new News();
+            } else {
+
+                $obj = $entity;
+            }
             $form = $this->createForm(NewsType::class, $obj);
 
-        } else{
-            $obj = new Event();
+        } else {
+
+            if (is_null($entity)) {
+
+                $obj = new Event();
+            } else {
+
+                $obj = $entity;
+            }
             $form = $this->createForm(EventType::class, $obj);
         }
 
@@ -47,8 +62,8 @@ class ActualiteController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
 
             $file = $obj->getImage();
-            if(!empty($file)){
-                $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
+            if (!empty($file)) {
+                $fileName = $this->generateUniqueFileName() . '.' . $file->guessExtension();
                 $file->move(
                     $this->getParameter('image_directory'),
                     $fileName
@@ -149,9 +164,11 @@ class ActualiteController extends Controller
      */
     public function addNewsAction(Request $request)
     {
-        $form = $this->AddForm($request, 'News');
+        $this->denyAccessUnlessGranted('ROLE_MODERATOR', null, 'Seul un modérateur peut accéder à cette page');
 
-        if($form == false) {
+        $form = $this->Form($request, 'News', null);
+
+        if ($form == false) {
             $this->addFlash(
                 'success', 'La news a bien été ajoutée'
             );
@@ -170,9 +187,11 @@ class ActualiteController extends Controller
      */
     public function addEventAction(Request $request)
     {
-       $form = $this->AddForm($request, 'Event');
+        $this->denyAccessUnlessGranted('ROLE_MODERATOR', null, 'Seul un modérateur peut accéder à cette page');
 
-       if($form == false) {
+        $form = $this->Form($request, 'Event', null);
+
+        if ($form == false) {
             $this->addFlash(
                 'success', 'L\'évènement a bien été ajouté'
             );
@@ -183,5 +202,116 @@ class ActualiteController extends Controller
             ->render('@RCLABWebsite/Actualite/add_event.html.twig', array(
                 'form' => $form->createView()
             ));
+    }
+
+    public function removeNewsAction($id)
+    {
+        $this->denyAccessUnlessGranted('ROLE_MODERATOR', null, 'Seul un modérateur peut accéder à cette page');
+
+
+        $em = $this->getDoctrine()->getManager();
+
+        $news = $em->getRepository('RCLABWebsiteBundle:News')->find($id);
+
+        $em->remove($news);
+        $em->flush();
+
+        if ($news == null) {
+            $this->addFlash(
+                'error', 'La news n\'a pas pu être supprimé'
+            );
+        } else {
+            $this->addFlash(
+                'success', 'L\'évènement a bien été supprimé'
+            );
+        }
+
+        return $this->redirectToRoute('rclab_website_actualite_news');
+    }
+
+    public function removeEventAction($id)
+    {
+        $this->denyAccessUnlessGranted('ROLE_MODERATOR', null, 'Seul un modérateur peut accéder à cette page');
+
+        $em = $this->getDoctrine()->getManager();
+
+        $event = $em->getRepository('RCLABWebsiteBundle:Event')->find($id);
+
+        $em->remove($event);
+        $em->flush();
+
+        if ($event == null) {
+            $this->addFlash(
+                'error', 'L\'évènement n\'a pas pu être supprimé'
+            );
+        } else {
+            $this->addFlash(
+                'success', 'L\'évènement a bien été supprimé'
+            );
+        }
+
+        return $this->redirectToRoute('rclab_website_actualite_events');
+    }
+
+    public function newsDetailAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $news = $em->getRepository('RCLABWebsiteBundle:News')->find($id);
+
+        return $this->render('@RCLABWebsite/Actualite/detail_news.html.twig', array('news' => $news));
+    }
+
+    public function eventDetailAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $event = $em->getRepository('RCLABWebsiteBundle:Event')->find($id);
+
+        return $this->render('@RCLABWebsite/Actualite/detail_event.html.twig', array('event' => $event));
+    }
+
+    public function editNewsAction($id, Request $request)
+    {
+        $this->denyAccessUnlessGranted('ROLE_MODERATOR', null, 'Seul un modérateur peut accéder à cette page');
+
+        $em = $this->getDoctrine()->getManager();
+
+        $news = $em->getRepository('RCLABWebsiteBundle:News')->find($id);
+
+        $form = $this->Form($request, 'News', $news);
+
+        if($form == false) {
+
+            $this->addFlash('success', 'La news a bien été modifiée');
+            return $this->redirectToRoute('rclab_website_actualite_news');
+        }
+
+        return $this->render('@RCLABWebsite/Actualite/edit_news.html.twig', array(
+            'form' => $form->createView(),
+            'news' => $news
+        ));
+    }
+
+    public function editEventAction($id, Request $request)
+    {
+        $this->denyAccessUnlessGranted('ROLE_MODERATOR', null, 'Seul un modérateur peut accéder à cette page');
+
+        $em = $this->getDoctrine()->getManager();
+
+        $event = $em->getRepository('RCLABWebsiteBundle:Event')->find($id);
+
+        $form = $this->Form($request, 'Event', $event);
+
+        if($form == false) {
+
+            $this->addFlash('success', 'L\'évènement a bien été modifié');
+            return $this->redirectToRoute('rclab_website_actualite_events');
+        }
+
+        return $this->render('@RCLABWebsite/Actualite/edit_event.html.twig', array(
+            'form' => $form->createView(),
+            'event'=> $event
+        ));
     }
 }

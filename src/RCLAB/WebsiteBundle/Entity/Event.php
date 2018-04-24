@@ -160,6 +160,7 @@ class Event
     {
         $this->debutPublication = new \DateTime('NOW');
         $this->debutEvent = new \DateTime('NOW');
+        $this->finEvent = new \DateTime('NOW');
     }
 
     /**

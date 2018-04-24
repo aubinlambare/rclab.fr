@@ -1,6 +1,7 @@
 <component name="ProjectDictionaryState">
   <dictionary name="aubin">
     <words>
+      <w>accéder</w>
       <w>actualite</w>
       <w>affiche</w>
       <w>ajouter</w>
@@ -8,12 +9,23 @@
       <w>ajoutée</w>
       <w>asso</w>
       <w>bien</w>
+      <w>boite</w>
+      <w>cette</w>
+      <w>cliquant</w>
+      <w>cliquer</w>
       <w>compte</w>
+      <w>confirmer</w>
       <w>confirmée</w>
       <w>déconnexion</w>
+      <w>editer</w>
+      <w>envoyé</w>
       <w>fonction</w>
+      <w>formulaires</w>
       <w>inscrits</w>
       <w>liste</w>
+      <w>modifié</w>
+      <w>modifiée</w>
+      <w>modérateur</w>
       <w>monde</w>
       <w>nullable</w>
       <w>numero</w>
@@ -21,19 +33,27 @@
       <w>obligatoire</w>
       <w>personne</w>
       <w>personnes</w>
+      <w>peut</w>
       <w>prenom</w>
       <w>priorite</w>
       <w>précédent</w>
       <w>publier</w>
+      <w>publiée</w>
       <w>rclab</w>
+      <w>seul</w>
       <w>statut</w>
       <w>suivant</w>
+      <w>supprimer</w>
+      <w>supprimé</w>
+      <w>supprimée</w>
       <w>trop</w>
       <w>valide</w>
+      <w>veuillez</w>
       <w>votre</w>
       <w>wwww</w>
       <w>évènement</w>
       <w>évènements</w>
+      <w>être</w>
     </words>
   </dictionary>
 </component>

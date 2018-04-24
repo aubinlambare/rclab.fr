@@ -7,13 +7,20 @@
     <div>
         {% for event in listEvents %}
             <div>
-                <h4>{{ event.event }} du {{ event.debutEvent|date('Y-m-d H:i') }} au {{ event.finEvent|date('Y-m-d H:i') }}</h4>
+                <h4>{{ event.event }} du {{ event.debutEvent|date('d/m/Y H:i') }} au {{ event.finEvent|date('d/m/Y H:i') }}</h4>
+                {% if is_granted('ROLE_MODERATOR') %}
+                    <p>
+                        <a href="{{ path('rclab_website_actualite_events_edit', {'id': event.id}) }}">Editer</a>
+                        <a href="{{ path('rclab_website_actualite_events_remove', { 'id': event.id}) }}">supprimer</a>
+                    </p>
+                {% endif %}
                 <p>{{ event.description }}</p>
                 {% if event.lien is not null %}
                     <p><a href="{{ event.lien }}">
                             {{ event.lien }}
                         </a></p>
                 {% endif %}
+                <p><a href="{{ path('rclab_website_actualite_events_detail', {'id': event.id}) }}">Cliquer pour plus de détail</a></p>
             </div>
         {% endfor %}
     </div>

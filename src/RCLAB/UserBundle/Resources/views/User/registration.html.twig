@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <h1>Registration</h1>
+
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        {{ form_widget(form) }}
+        <div>
+            <input type="submit" value="S'inscrire" />
+        </div>
+    {{ form_end(form) }}
+
+{% endblock %}

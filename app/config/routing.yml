@@ -1,7 +1,8 @@
-
+#
 # WebsiteBundle
-
+#
 # DefaultController
+
 rclab_website_home:
     path:     /
     defaults: { _controller: RCLABWebsiteBundle:Default:index }
@@ -28,19 +29,13 @@ rclab_website_compte:
 
 
 # ActualiteController
+
 rclab_website_actualite:
     path:     /actualite
     defaults:
         _controller: RCLABWebsiteBundle:Actualite:actualite
 
-rclab_website_actualite_events:
-    path:    /actualite/events/{page}
-    defaults:
-        _controller: RCLABWebsiteBundle:Actualite:events
-        page:        1
-    requirements:
-        page:    \d+
-
+# news
 rclab_website_actualite_news:
     path:    /actualite/news/{page}
     defaults:
@@ -49,18 +44,71 @@ rclab_website_actualite_news:
     requirements:
         page:    \d+
 
-rclab_website_actualite_addEvent:
-    path:    /actualite/events/addEvent
-    defaults: { _controller: RCLABWebsiteBundle:Actualite:addEvent }
+rclab_website_actualite_news_detail:
+    path:    /actualite/news/news/{id}
+    defaults:
+        _controller: RCLABWebsiteBundle:Actualite:newsDetail
+    requirements:
+        id:    \d+
 
-rclab_website_actualite_addNews:
-    path:    /actualite/news/addNews
+rclab_website_actualite_news_add:
+    path:    /actualite/news/add
     defaults: { _controller: RCLABWebsiteBundle:Actualite:addNews }
 
+rclab_website_actualite_news_edit:
+    path:    /actualite/news/edit/{id}
+    defaults:
+        _controller: RCLABWebsiteBundle:Actualite:editNews
+    requirements:
+        id:     \d+
 
+rclab_website_actualite_news_remove:
+    path:    /actualite/news/remove/{id}
+    defaults:
+        _controller: RCLABWebsiteBundle:Actualite:removeNews
+    requirements:
+        id:    \d+
+
+# events
+rclab_website_actualite_events:
+    path:    /actualite/events/{page}
+    defaults:
+        _controller: RCLABWebsiteBundle:Actualite:events
+        page:        1
+    requirements:
+        page:    \d+
+
+rclab_website_actualite_events_detail:
+    path:    /actualite/events/event/{id}
+    defaults:
+        _controller: RCLABWebsiteBundle:Actualite:eventDetail
+    requirements:
+        id:    \d+
+
+rclab_website_actualite_events_add:
+        path:    /actualite/events/add
+        defaults: { _controller: RCLABWebsiteBundle:Actualite:addEvent }
+
+
+rclab_website_actualite_events_edit:
+    path:    /actualite/events/edit/{id}
+    defaults:
+        _controller: RCLABWebsiteBundle:Actualite:editEvent
+
+
+rclab_website_actualite_events_remove:
+    path:    /actualite/events/remove/{id}
+    defaults:
+         _controller: RCLABWebsiteBundle:Actualite:removeEvent
+    requirements:
+        id:    \d+
+
+#
 # UserBundle
+#
 
 # RegistrationController
+
 rclab_user_registration_register:
     path:    /inscription
     defaults: { _controller: RCLABUserBundle:Registration:register }
@@ -69,8 +117,10 @@ rclab_user_registration_checkEmail:
     path:    /inscription/verification/{id}
     defaults: { _controller: RCLABUserBundle:Registration:checkEmail }
 
-
+#
 # FosUserBundle
+#
+
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
