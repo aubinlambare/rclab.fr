@@ -1,0 +1,23 @@
+{% extends "compte.html.twig" %}
+
+{% block content %}
+    <h3>Gestion des fonctions de l'association</h3>
+    <a href="{{ path('rclab_website_fonction_add') }}">Ajouter une fonction</a>
+    <div>
+        <p><strong>
+                Seules les fonctions ayant une priorité inférieure ou égal à 3 seront affichées sur la page contact<br/>
+                De même, seules les fonctions ayant une priorité inférieure ou égal à 6 seront affichées sur la page
+                association
+            </strong></p>
+        {% for function in functions %}
+            <div>
+                <p>{{ function.fonction }}</p>
+                {% if function.tri is not null %}
+                    <p>Priorité de la fonction : {{ function.tri }}</p>
+                {% endif %}
+                <a href="{{ path('rclab_website_fonction_edit', {'id': function.id}) }}">Modifier</a>
+                <a href="{{ path('rclab_website_fonction_remove', {'id': function.id}) }}">Supprimer</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -38,7 +38,7 @@ class Matiere
     /**
      * @var string
      *
-     * @ORM\Column(name="Icone", type="blob", nullable=true)
+     * @ORM\Column(name="Icone", type="string", nullable=true)
      */
     private $icone;
 

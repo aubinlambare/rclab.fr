@@ -10,4 +10,12 @@ namespace RCLAB\WebsiteBundle\Repository;
  */
 class FonctionRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findAllFunction()
+    {
+        return $this
+            ->createQueryBuilder('f')
+            ->select('f.fonction')
+            ->getQuery()
+            ->getArrayResult();
+    }
 }

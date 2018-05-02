@@ -2,9 +2,14 @@
 
 {% block body %}
 
-    <p>Bg: </p>
+    <p>Ceux à contacter : </p>
     {% for personne in personnes %}
-        <p>{{ personne.fonction.fonction|upper }} : {{ personne.prenom }} {{ personne.nom }} : email : {{ personne.email }}</p>
+        <div>
+            {% if personne.photo is not null %}
+                <img src="{{ asset('uploads/images/'~personne.photo) }}">
+            {% endif %}
+            <p>{{ personne['fonction']['fonction']|upper }} : {{ personne['firstName'] }} {{ personne.lastName }}</p>
+        </div>
     {% endfor %}
 
 {% endblock %}

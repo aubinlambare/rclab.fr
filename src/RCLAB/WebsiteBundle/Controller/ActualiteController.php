@@ -32,7 +32,7 @@ class ActualiteController extends Controller
      * @param $entity
      * @return bool|\Symfony\Component\Form\FormInterface
      */
-    public function Form($request, $type, $entity)
+    private function Form($request, $type, $entity)
     {
         if ($type == 'News') {
 
@@ -43,6 +43,9 @@ class ActualiteController extends Controller
 
                 $obj = $entity;
             }
+            $oldImage = $obj->getImage();
+            $obj->setImage(null);
+
             $form = $this->createForm(NewsType::class, $obj);
 
         } else {
@@ -54,6 +57,9 @@ class ActualiteController extends Controller
 
                 $obj = $entity;
             }
+            $oldImage = $obj->getImage();
+            $obj->setImage(null);
+
             $form = $this->createForm(EventType::class, $obj);
         }
 
@@ -69,6 +75,10 @@ class ActualiteController extends Controller
                     $fileName
                 );
                 $obj->setImage($fileName);
+                $this->get('rclab_website.remove.file')->removeFile($oldImage);
+            } else {
+
+                $obj->setImage($oldImage);
             }
 
             $em = $this->getDoctrine()->getManager();
@@ -118,10 +128,10 @@ class ActualiteController extends Controller
 
         $isSuivant = $suivant ? true : null;
 
-        return $this->render('@RCLABWebsite/Actualite/events.html.twig', array(
+        return $this->render('@RCLABWebsite/Actualite/Events/events.html.twig', array(
             'page' => $page,
             'listEvents' => $listEvents,
-            'isSuivant' => $isSuivant
+            'isSuivant' => $isSuivant,
         ));
     }
 
@@ -151,21 +161,22 @@ class ActualiteController extends Controller
 
         $isSuivant = $suivant ? true : null;
 
-        return $this->render('@RCLABWebsite/Actualite/news.html.twig', array(
+        return $this->render('@RCLABWebsite/Actualite/News/news.html.twig', array(
             'page' => $page,
             'listNews' => $listNews,
-            'isSuivant' => $isSuivant
+            'isSuivant' => $isSuivant,
         ));
     }
 
     /**
      * @param Request $request
+     * @param
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function addNewsAction(Request $request)
     {
-        $this->denyAccessUnlessGranted('ROLE_MODERATOR', null, 'Seul un modérateur peut accéder à cette page');
 
+        $this->denyAccessUnlessGranted('ROLE_MODERATOR', null, 'Impossible d\'accéder à cette page !');
         $form = $this->Form($request, 'News', null);
 
         if ($form == false) {
@@ -176,43 +187,50 @@ class ActualiteController extends Controller
         }
 
         return $this
-            ->render('@RCLABWebsite/Actualite/add_news.html.twig', array(
-                'form' => $form->createView()
+            ->render('@RCLABWebsite/Actualite/News/add_news.html.twig', array(
+                'form' => $form->createView(),
             ));
     }
 
     /**
      * @param Request $request
+     * @param
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function addEventAction(Request $request)
     {
-        $this->denyAccessUnlessGranted('ROLE_MODERATOR', null, 'Seul un modérateur peut accéder à cette page');
+        $this->denyAccessUnlessGranted('ROLE_MODERATOR', null, 'Impossible d\'accéder à cette page !');
+
 
         $form = $this->Form($request, 'Event', null);
 
         if ($form == false) {
-            $this->addFlash(
-                'success', 'L\'évènement a bien été ajouté'
-            );
+
+            $this->addFlash('success', 'L\'évènement a bien été ajouté');
             return $this->redirectToRoute('rclab_website_actualite_events');
         }
 
         return $this
-            ->render('@RCLABWebsite/Actualite/add_event.html.twig', array(
-                'form' => $form->createView()
+            ->render('@RCLABWebsite/Actualite/Events/add_event.html.twig', array(
+                'form' => $form->createView(),
             ));
     }
 
+    /**
+     * @param $id
+     * @param
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function removeNewsAction($id)
     {
-        $this->denyAccessUnlessGranted('ROLE_MODERATOR', null, 'Seul un modérateur peut accéder à cette page');
+        $this->denyAccessUnlessGranted('ROLE_MODERATOR', null, 'Impossible d\'accéder à cette page !');
 
 
         $em = $this->getDoctrine()->getManager();
 
         $news = $em->getRepository('RCLABWebsiteBundle:News')->find($id);
 
+        $this->get('rclab_website.remove.file')->removeFile($news->getImage());
         $em->remove($news);
         $em->flush();
 
@@ -222,21 +240,26 @@ class ActualiteController extends Controller
             );
         } else {
             $this->addFlash(
-                'success', 'L\'évènement a bien été supprimé'
+                'success', 'La news a bien été supprimé'
             );
         }
 
         return $this->redirectToRoute('rclab_website_actualite_news');
     }
 
+    /**
+     * @param $id
+     * @param
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function removeEventAction($id)
     {
-        $this->denyAccessUnlessGranted('ROLE_MODERATOR', null, 'Seul un modérateur peut accéder à cette page');
-
+        $this->denyAccessUnlessGranted('ROLE_MODERATOR', null, 'Impossible d\'accéder à cette page !');
         $em = $this->getDoctrine()->getManager();
 
         $event = $em->getRepository('RCLABWebsiteBundle:Event')->find($id);
 
+        $this->get('rclab_website.remove.file')->removeFile($event->getImage());
         $em->remove($event);
         $em->flush();
 
@@ -259,7 +282,7 @@ class ActualiteController extends Controller
 
         $news = $em->getRepository('RCLABWebsiteBundle:News')->find($id);
 
-        return $this->render('@RCLABWebsite/Actualite/detail_news.html.twig', array('news' => $news));
+        return $this->render('@RCLABWebsite/Actualite/News/detail_news.html.twig', array('news' => $news));
     }
 
     public function eventDetailAction($id)
@@ -268,12 +291,21 @@ class ActualiteController extends Controller
 
         $event = $em->getRepository('RCLABWebsiteBundle:Event')->find($id);
 
-        return $this->render('@RCLABWebsite/Actualite/detail_event.html.twig', array('event' => $event));
+        return $this->render('@RCLABWebsite/Actualite/Events/detail_event.html.twig', array(
+            'event' => $event,
+            'logo_asso' => $this->getDoctrine()->getManager()->getRepository('RCLABWebsiteBundle:Association')->findOneBy(array())->getLogoAsso()
+        ));
     }
 
+    /**
+     * @param $id
+     * @param Request $request
+     * @param
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function editNewsAction($id, Request $request)
     {
-        $this->denyAccessUnlessGranted('ROLE_MODERATOR', null, 'Seul un modérateur peut accéder à cette page');
+        $this->denyAccessUnlessGranted('ROLE_MODERATOR', null, 'Impossible d\'accéder à cette page !');
 
         $em = $this->getDoctrine()->getManager();
 
@@ -281,37 +313,49 @@ class ActualiteController extends Controller
 
         $form = $this->Form($request, 'News', $news);
 
-        if($form == false) {
+        if ($form == false) {
 
             $this->addFlash('success', 'La news a bien été modifiée');
             return $this->redirectToRoute('rclab_website_actualite_news');
         }
 
-        return $this->render('@RCLABWebsite/Actualite/edit_news.html.twig', array(
+        return $this->render('@RCLABWebsite/Actualite/News/edit_news.html.twig', array(
             'form' => $form->createView(),
-            'news' => $news
+            'news' => $news,
         ));
     }
 
+    /**
+     * @param $id
+     * @param Request $request
+     * @param
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function editEventAction($id, Request $request)
     {
-        $this->denyAccessUnlessGranted('ROLE_MODERATOR', null, 'Seul un modérateur peut accéder à cette page');
+        $this->denyAccessUnlessGranted('ROLE_MODERATOR', null, 'Impossible d\'accéder à cette page !');
 
         $em = $this->getDoctrine()->getManager();
 
         $event = $em->getRepository('RCLABWebsiteBundle:Event')->find($id);
 
-        $form = $this->Form($request, 'Event', $event);
-
-        if($form == false) {
-
-            $this->addFlash('success', 'L\'évènement a bien été modifié');
+        if (!$event) {
+            $this->addFlash('error', 'L\'évènement n\'a pas pu être modifié');
             return $this->redirectToRoute('rclab_website_actualite_events');
+        } else {
+
+            $form = $this->Form($request, 'Event', $event);
+
+            if ($form == false) {
+
+                $this->addFlash('success', 'L\'évènement a bien été modifié');
+                return $this->redirectToRoute('rclab_website_actualite_events');
+            }
         }
 
-        return $this->render('@RCLABWebsite/Actualite/edit_event.html.twig', array(
+        return $this->render('@RCLABWebsite/Actualite/Events/edit_event.html.twig', array(
             'form' => $form->createView(),
-            'event'=> $event
+            'event' => $event,
         ));
     }
 }

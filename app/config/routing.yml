@@ -11,22 +11,106 @@ rclab_website_contact:
     path:     /contact
     defaults:  { _controller: RCLABWebsiteBundle:Default:contact }
 
-rclab_website_association:
-    path:     /association
-    defaults:  { _controller: RCLABWebsiteBundle:Default:association }
-
 rclab_website_reparation:
     path:     /reparation
     defaults:  { _controller: RCLABWebsiteBundle:Default:reparation }
 
-rclab_website_cours:
-    path:     /cours
-    defaults:  { _controller: RCLABWebsiteBundle:Default:cours }
-
 rclab_website_compte:
-    path:    /compte
+    path:    /profile/compte
     defaults:  { _controller: RCLABWebsiteBundle:Default:compte }
 
+# AssociationController
+
+rclab_website_association:
+    path:     /association
+    defaults:  { _controller: RCLABWebsiteBundle:Association:association }
+
+rclab_website_association_edit:
+    path:    /association/edit
+    defaults: { _controller: RCLABWebsiteBundle:Association:edit }
+
+# CoursController
+
+rclab_website_cours:
+    path:     /cours
+    defaults:  { _controller: RCLABWebsiteBundle:Cours:cours }
+
+
+# MatiereController
+
+rclab_website_matiere_matieres:
+    path:    /cours/matieres
+    defaults: { _controller: RCLABWebsiteBundle:Matiere:matieres }
+
+rclab_website_matiere_add:
+    path:    /cours/matieres/add
+    defaults: { _controller: RCLABWebsiteBundle:Matiere:addMatiere }
+
+rclab_website_matiere_edit:
+    path:    /cours/matieres/edit/{id}
+    defaults:
+        _controller: RCLABWebsiteBundle:Matiere:editMatiere
+    requirements:
+        id:    \d+
+
+rclab_website_matiere_historise:
+    path:    /cours/matieres/historise/{id}
+    defaults:
+        _controller: RCLABWebsiteBundle:Matiere:historiseMatiere
+    requirements:
+        id:    \d+
+
+rclab_website_matiere_unhistorise:
+    path:    /cours/matieres/unhistorise/{id}
+    defaults:
+        _controller: RCLABWebsiteBundle:Matiere:unhistoriseMatiere
+    requirements:
+        id:    \d+
+
+rclab_website_matiere_remove:
+    path:    /cours/matieres/remove/{id}
+    defaults:
+        _controller: RCLABWebsiteBundle:Matiere:removeMatiere
+    requirements:
+        id:    \d+
+
+# NiveauController
+
+rclab_website_niveau_niveaux:
+    path:    /cours/niveaux
+    defaults: { _controller: RCLABWebsiteBundle:Niveau:niveaux }
+
+rclab_website_niveau_add:
+    path:    /cours/niveaux/add
+    defaults: { _controller: RCLABWebsiteBundle:Niveau:addNiveau }
+
+rclab_website_niveau_edit:
+    path:    /cours/niveaux/edit/{id}
+    defaults:
+        _controller: RCLABWebsiteBundle:Niveau:editNiveau
+    requirements:
+        id:    \d+
+
+rclab_website_niveau_historise:
+    path:    /cours/niveaux/historise/{id}
+    defaults:
+        _controller: RCLABWebsiteBundle:Niveau:historiseNiveau
+    requirements:
+        id:    \d+
+
+rclab_website_niveau_unhistorise:
+    path:    /cours/niveaux/unhistorise/{id}
+    defaults:
+        _controller: RCLABWebsiteBundle:Niveau:unhistoriseNiveau
+    requirements:
+        id:    \d+
+
+rclab_website_niveau_remove:
+    path:    /cours/niveaux/remove/{id}
+    defaults:
+        _controller: RCLABWebsiteBundle:Niveau:removeNiveau
+    requirements:
+        id:    \d+
 
 # ActualiteController
 
@@ -94,7 +178,8 @@ rclab_website_actualite_events_edit:
     path:    /actualite/events/edit/{id}
     defaults:
         _controller: RCLABWebsiteBundle:Actualite:editEvent
-
+    requirements:
+        id:    \d+
 
 rclab_website_actualite_events_remove:
     path:    /actualite/events/remove/{id}
@@ -103,9 +188,78 @@ rclab_website_actualite_events_remove:
     requirements:
         id:    \d+
 
+
+# TDemandeController
+
+rclab_website_tdemandes:
+    path:    /typesDemandes
+    defaults: { _controller: RCLABWebsiteBundle:TDemande:tDemande }
+
+rclab_website_tdemandes_add:
+    path:    /typesDemandes/add
+    defaults: { _controller: RCLABWebsiteBundle:TDemande:addTDemande }
+
+rclab_website_tdemandes_edit:
+    path:    /typesDemandes/edit/{id}
+    defaults:
+        _controller: RCLABWebsiteBundle:TDemande:editTDemande
+    requirements:
+        id:    \d+
+
+rclab_website_tdemandes_remove:
+    path:    /typesDemandes/remove/{id}
+    defaults:
+        _controller: RCLABWebsiteBundle:TDemande:removeTDemande
+    requirements:
+        id:    \d+
+
+rclab_website_tdemandes_historise:
+    path:    /typesDemandes/historise/{id}
+    defaults:
+        _controller: RCLABWebsiteBundle:TDemande:historiseTDemande
+    requirements:
+        id:    \d+
+
+rclab_website_tdemandes_unhistorise:
+    path:    /typesDemandes/unhistorise/{id}
+    defaults:
+        _controller: RCLABWebsiteBundle:TDemande:unhistoriseTDemande
+    requirements:
+        id:    \d+
+
+# FonctionController
+
+rclab_website_fonction_list:
+    path:    /fonction/list
+    defaults: { _controller: RCLABWebsiteBundle:Fonction:fonctions }
+
+rclab_website_fonction_add:
+    path:    /fonction/add
+    defaults: { _controller: RCLABWebsiteBundle:Fonction:add }
+
+rclab_website_fonction_edit:
+    path:    /fonction/edit/{id}
+    defaults:
+        _controller: RCLABWebsiteBundle:Fonction:edit
+    requirements:
+         id: \d+
+
+rclab_website_fonction_remove:
+    path:    /fonction/remove/{id}
+    defaults:
+        _controller: RCLABWebsiteBundle:Fonction:remove
+    requirements:
+         id:     \d+
+
 #
 # UserBundle
 #
+
+# SecurityController
+
+rclab_user_security_login:
+    path:    /connexion
+    defaults: { _controller: RCLABUserBundle:Security:login }
 
 # RegistrationController
 
@@ -117,6 +271,36 @@ rclab_user_registration_checkEmail:
     path:    /inscription/verification/{id}
     defaults: { _controller: RCLABUserBundle:Registration:checkEmail }
 
+# UserController
+
+rclab_user_profile:
+    path:    /profile/userinfo
+    defaults: { _controller: RCLABUserBundle:User:profile }
+
+rclab_user_users_list:
+    path:    /liste_des_utilisateurs
+    defaults: { _controller: RCLABUserBundle:User:users }
+
+rclab_user_photo_reset:
+    path:    /gestion_des_utilisateurs/reinitialisation_de_la_photo/{id}
+    defaults:
+        _controller: RCLABUserBundle:User:resetPhoto
+    requirements:
+        id:    \d+
+
+rclab_user_edit:
+    path:   /gestion_des_utilisateurs/modifier/{id}
+    defaults:
+        _controller: RCLABUserBundle:User:edit
+    requirements:
+        id:    \d+
+
+rclab_user_remove:
+    path:    /gestion_des_utilisateurs/supprimer/{id}
+    defaults:
+        _controller: RCLABUserBundle:User:remove
+    requirements:
+        id:    \d+
 #
 # FosUserBundle
 #
@@ -128,9 +312,9 @@ fos_user_profile:
     resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
     prefix: /profile
 
-fos_user_register:
-    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
-    prefix: /register
+#fos_user_register:
+#    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+#    prefix: /register
 
 fos_user_resetting:
     resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"

@@ -10,4 +10,11 @@ namespace RCLAB\WebsiteBundle\Repository;
  */
 class NiveauRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findNiveau()
+    {
+        return $this->createQueryBuilder('n')
+            ->select('n.matiere')
+            ->getQuery()
+            ->getArrayResult();
+    }
 }

@@ -1,0 +1,34 @@
+{% extends "compte.html.twig" %}
+
+{% block content %}
+    <h3>Modification des informations de l'association</h3>
+    <div>
+        {{ form_start(form) }}
+        {{ form_row(form.facebookAsso) }}
+        <div>
+            {% if logo is not null %}
+                <img src="{{ asset('uploads/images/'~logo) }}"/>
+            {% else %}
+                <p>Il n'y a pas encore de logo</p>
+            {% endif %}
+            {{ form_row(form.logoAsso) }}
+        </div>
+
+        {{ form_row(form.numeroPermanence) }}
+        {{ form_row(form.horairesPermanence) }}
+        {{ form_row(form.messageAccueil) }}
+        {{ form_row(form.description) }}
+        <div>
+            {% if image_focus is not null %}
+                <img src="{{ asset('uploads/images/'~image_focus) }}"/>
+            {% else %}
+                <p>Il n'y as pas encore d'image en focus par défaut</p>
+            {% endif %}
+            {{ form_row(form.imageFocus) }}
+        </div>
+        {{ form_row(form.texteFocus) }}
+        <br />
+        {{  form_row(form.Enregistrer) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

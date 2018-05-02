@@ -28,12 +28,12 @@ class Niveau
      */
     private $niveau;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="Tri", type="smallint", nullable=true)
-     */
-    private $tri;
+    // /**
+    //  * @var int
+    //  *
+    //  * @ORM\Column(name="Tri", type="smallint", nullable=true)
+    //  */
+    // private $tri;
 
     /**
      * @var string
@@ -42,10 +42,11 @@ class Niveau
      */
     private $couleur;
 
+
     /**
      * @var string
      *
-     * @ORM\Column(name="Icone", type="blob", nullable=true)
+     * @ORM\Column(name="Icone", type="string", nullable=true)
      */
     private $icone;
 

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <title>RC Lab</title>
+    <link rel="shortcut icon" href="{{ asset('images/rclab.png') }}">
     {% stylesheets '@RCLABWebsiteBundle/Resources/public/css/base.css'
         '@RCLABWebsiteBundle/Resources/public/css/actualite.css' %}
         <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
@@ -12,7 +13,7 @@
 
 <body>
 <header>
-    <a href="{{ path('rclab_website_home') }}"><img src="{{ asset('images/logo_rclab.png') }}" alt="logo RC Lab"/></a>
+    <a href="{{ path('rclab_website_home') }}"><img src="{{ asset('uploads/images/logo_asso.png') }}" alt="logo RC Lab"/></a>
     <nav>
         <ul>
             <li><a href="{{ path('rclab_website_association') }}">L'association</a></li>
@@ -23,10 +24,10 @@
                     <li><a href="{{ path('rclab_website_actualite_news') }}">News</a></li>
                 </ul>
             </li>
+            <li><a href="{{ path('rclab_website_reparation') }}">Réparations</a></li>
+            <li><a href="{{ path('rclab_website_cours') }}">Cours</a></li>
             {% if is_granted("IS_AUTHENTICATED_FULLY") %}
-                <li><a href="{{ path('rclab_website_reparation') }}">Réparations</a></li>
-                <li><a href="{{ path('rclab_website_cours') }}">Cours</a></li>
-                <li><a href="{{ path('rclab_website_compte') }}">Compte</a></li>
+                <li><a href="{{ path('rclab_user_profile') }}">Compte</a></li>
                 <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
             {% else %}
                 <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
@@ -37,10 +38,12 @@
 </header>
 
 <div>
-    {% for message in app.flashes('success') %}
-        <div class="flash-notice">
-            {{ message }}
-        </div>
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
     {% endfor %}
 
     {% block body %}{% endblock %}

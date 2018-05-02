@@ -10,4 +10,11 @@ namespace RCLAB\WebsiteBundle\Repository;
  */
 class MatiereRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findMatiere()
+    {
+        return $this->createQueryBuilder('m')
+            ->select('m.matiere')
+            ->getQuery()
+            ->getArrayResult();
+    }
 }

@@ -3,6 +3,7 @@
 namespace RCLAB\WebsiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use RCLAB\UserBundle\Entity\User;
 
 /**
  * Demande
@@ -63,6 +64,13 @@ class Demande
      */
     private $groupeEvent;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="autorise", type="boolean")
+     */
+    private $autorise;
+
 
     /**
      * @var T_Demande
@@ -89,34 +97,26 @@ class Demande
     private $niveau;
 
     /**
-     * @var Personne
+     * @var User
      *
-     * @ORM\ManyToOne(targetEntity="RCLAB\WebsiteBundle\Entity\Personne")
-     * @ORM\JoinColumn(name="faire", referencedColumnName="idPersonne")
+     * @ORM\ManyToOne(targetEntity="RCLAB\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="demandeur", referencedColumnName="id")
      *
      */
-    private $faireDemande;
+    private $demandeur;
 
     /**
-     * @var Personne
+     * @var User
      *
-     * @ORM\ManyToOne(targetEntity="RCLAB\WebsiteBundle\Entity\Personne")
-     * @ORM\JoinColumn(name="demander", referencedColumnName="idPersonne")
+     * @ORM\ManyToOne(targetEntity="RCLAB\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="responsable", referencedColumnName="id")
      */
-    private $demander;
-
-    /**
-     * @var Personne
-     *
-     * @ORM\ManyToOne(targetEntity="RCLAB\WebsiteBundle\Entity\Personne")
-     * @ORM\JoinColumn(name="autoriser", referencedColumnName="idPersonne")
-     */
-    private $autoriser;
+    private $responsable;
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -260,11 +260,35 @@ class Demande
     /**
      * Get groupeEvent
      *
-     * @return bool
+     * @return boolean
      */
     public function getGroupeEvent()
     {
         return $this->groupeEvent;
+    }
+
+    /**
+     * Set autorise
+     *
+     * @param boolean $autorise
+     *
+     * @return Demande
+     */
+    public function setAutorise($autorise)
+    {
+        $this->autorise = $autorise;
+
+        return $this;
+    }
+
+    /**
+     * Get autorise
+     *
+     * @return boolean
+     */
+    public function getAutorise()
+    {
+        return $this->autorise;
     }
 
     /**
@@ -274,7 +298,7 @@ class Demande
      *
      * @return Demande
      */
-    public function setTdemande(T_Demande $tdemande = null)
+    public function setTdemande(\RCLAB\WebsiteBundle\Entity\T_Demande $tdemande = null)
     {
         $this->tdemande = $tdemande;
 
@@ -298,7 +322,7 @@ class Demande
      *
      * @return Demande
      */
-    public function setMatiere(Matiere $matiere = null)
+    public function setMatiere(\RCLAB\WebsiteBundle\Entity\Matiere $matiere = null)
     {
         $this->matiere = $matiere;
 
@@ -322,7 +346,7 @@ class Demande
      *
      * @return Demande
      */
-    public function setNiveau(Niveau $niveau = null)
+    public function setNiveau(\RCLAB\WebsiteBundle\Entity\Niveau $niveau = null)
     {
         $this->niveau = $niveau;
 
@@ -339,75 +363,52 @@ class Demande
         return $this->niveau;
     }
 
+
     /**
-     * Set faireDemande
+     * Set demandeur
      *
-     * @param \RCLAB\WebsiteBundle\Entity\Personne $faireDemande
+     * @param \RCLAB\UserBundle\Entity\User $demandeur
      *
      * @return Demande
      */
-    public function setFaireDemande(Personne $faireDemande = null)
+    public function setDemandeur(\RCLAB\UserBundle\Entity\User $demandeur = null)
     {
-        $this->faireDemande = $faireDemande;
+        $this->demandeur = $demandeur;
 
         return $this;
     }
 
     /**
-     * Get faireDemande
+     * Get demandeur
      *
-     * @return \RCLAB\WebsiteBundle\Entity\Personne
+     * @return \RCLAB\UserBundle\Entity\User
      */
-    public function getFaireDemande()
+    public function getDemandeur()
     {
-        return $this->faireDemande;
+        return $this->demandeur;
     }
 
     /**
-     * Set demander
+     * Set responsable
      *
-     * @param \RCLAB\WebsiteBundle\Entity\Personne $demander
+     * @param \RCLAB\UserBundle\Entity\User $responsable
      *
      * @return Demande
      */
-    public function setDemander(Personne $demander = null)
+    public function setResponsable(\RCLAB\UserBundle\Entity\User $responsable = null)
     {
-        $this->demander = $demander;
+        $this->responsable = $responsable;
 
         return $this;
     }
 
     /**
-     * Get demander
+     * Get responsable
      *
-     * @return \RCLAB\WebsiteBundle\Entity\Personne
+     * @return \RCLAB\UserBundle\Entity\User
      */
-    public function getDemander()
+    public function getResponsable()
     {
-        return $this->demander;
-    }
-
-    /**
-     * Set autoriser
-     *
-     * @param \RCLAB\WebsiteBundle\Entity\Personne $autoriser
-     *
-     * @return Demande
-     */
-    public function setAutoriser(Personne $autoriser = null)
-    {
-        $this->autoriser = $autoriser;
-
-        return $this;
-    }
-
-    /**
-     * Get autoriser
-     *
-     * @return \RCLAB\WebsiteBundle\Entity\Personne
-     */
-    public function getAutoriser()
-    {
-        return $this->autoriser;
+        return $this->responsable;
     }
 }

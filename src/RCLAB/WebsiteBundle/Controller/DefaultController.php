@@ -6,63 +6,37 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
-    public function InfoAsso()
-    {
-        return $this
-            ->getDoctrine()
-            ->getManager()
-            ->getRepository('RCLABWebsiteBundle:Association')
-            ->findOneBy(array());
-    }
-
-    public function FindPersonFonctionByTri($tri)
-    {
-        return $this
-            ->getDoctrine()
-            ->getManager()
-            ->getRepository('RCLABWebsiteBundle:Personne')
-            ->findPersonneFonctionByTri($tri);
-    }
 
     public function indexAction()
     {
         return $this->render('@RCLABWebsite/Default/index.html.twig');
     }
 
-    public function associationAction()
-    {
 
-        $descriptionAssociation = $this->InfoAsso()->getDescription();
-
-        $personnes = $this->FindPersonFonctionByTri(4);
-
-        return $this->render('@RCLABWebsite/Default/association.html.twig', array('descriptionAssociation' => $descriptionAssociation,
-            'personnes' => $personnes));
-    }
 
     public function contactAction()
     {
-        $infoAssociation = $this->InfoAsso();
+        $infoAssociation = $this->getDoctrine();
 
 
-        $personnes = $this->FindPersonFonctionByTri(2);
+        $personnes = $this->getDoctrine()->getManager()->getRepository('RCLABUserBundle:User')->findUserFonctionByTri(3);
 
-        return $this->render('@RCLABWebsite/Default/contact.html.twig', array('infoAssociation' => $infoAssociation,
-            'personnes' => $personnes));
+        return $this->render('@RCLABWebsite/Default/contact.html.twig', array(
+            'infoAssociation' => $infoAssociation,
+            'personnes' => $personnes,
+        ));
     }
 
     public function reparationAction()
     {
-        return $this->render('@RCLABWebsite/Default/reparation.html.twig');
-    }
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY', null, 'Impossible d\'accéder à cette page !');
 
-    public function coursAction()
-    {
-        return $this->render('@RCLABWebsite/Default/cours.html.twig');
+        return $this->render('@RCLABWebsite/Default/reparation.html.twig');
     }
 
     public function compteAction()
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY', null, 'Impossible d\'accéder à cette page !');
 
         return $this->render('@RCLABWebsite/Default/compte.html.twig');
     }

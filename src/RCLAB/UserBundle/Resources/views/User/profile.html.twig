@@ -1,0 +1,32 @@
+{% extends "compte.html.twig" %}
+
+{% block content %}
+    <h3>Mon profil</h3>
+    <div>
+        {{ form_start(form) }}
+        <div>
+            <h4>Mes informations personnelles</h4>
+            <p>{{ user.firstName }} {{ user.lastName }}</p>
+            <div>
+                {{ user.username }}
+                {{ form_row(form.facebook) }}
+                {{ form_row(form.telephone) }}
+                {{ form_row(form.email) }}
+            </div>
+            {% if user.fonction is not null %}
+                <div>
+                    <img src="{{ asset('uploads/images/'~user_photo) }}">
+                    {{ form_row(form.photo) }}
+                </div>
+            {% endif %}
+        </div>
+        <div>
+            <h4>Modifier le mot de passe</h4>
+            {{ form_rest(form) }}
+        </div>
+        <div>
+            <input type="submit" value="Enregistrer"/>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

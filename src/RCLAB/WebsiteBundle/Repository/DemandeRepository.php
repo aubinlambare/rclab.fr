@@ -10,4 +10,11 @@ namespace RCLAB\WebsiteBundle\Repository;
  */
 class DemandeRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findCours($userId)
+    {
+       /* return $this->createQueryBuilder('d')
+            ->where("de")
+            ->getQuery()
+            ->getArrayResult();*/
+    }
 }
