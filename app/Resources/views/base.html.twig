@@ -37,11 +37,7 @@
                     <ul class="nav navbar-right header-user">
                         {% if is_granted("IS_AUTHENTICATED_FULLY") %}
                             <li class="navbar-text hidden-xs hidden-sm"><a href="{{ path('rclab_user_profile') }}">Compte</a></li>
-                            <li class="navbar-text hidden-xs hidden-sm">
-                                <a class="logout" href="{{ path('fos_user_security_logout') }}">
-                                    <span class="glyphicon glyphicon-off"></span>
-                                </a>
-                            </li>
+                            <li class="navbar-text hidden-xs hidden-sm"><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
                         {% else %}
                             <li class="navbar-text hidden-xs hidden-sm"><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
                             <li class="navbar-text hidden-xs hidden-sm"><a href="{{ path('rclab_user_registration_register') }}">S'inscrire</a></li>
