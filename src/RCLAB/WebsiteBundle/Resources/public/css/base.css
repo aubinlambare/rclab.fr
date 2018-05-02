@@ -1,3 +1,187 @@
 body{
-    background-color: gray;
+    font-family: '2-Questa_Regular', sans-serif;
+    padding-top: 80px;
+    position: relative;
+    min-height: 100%;
+}
+#header-page, #footer-page{
+    font-size: 1.5em;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .header-fixe > li > a {
+        margin-left: 20px !important;
+        padding-right: 0px !important;
+        margin-right: -40px !important;
+    }
+    .header-user > li > a {
+        margin-top: 10px;
+    }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+    .header-fixe > li > a, .header-user > li > a {
+        margin-right: -50px !important;
+        margin-left: 20px !important;
+    }
+    .header-user > li > a {
+        margin-left: -20px !important;
+        padding-right: 40px;
+        margin-top: 0px !important;
+    }
+}
+@media (min-width: 768px) {
+    .header .dropdown a > span {
+        margin: 11px 0px !important;
+    }
+}
+@media (min-width: 1200px) {
+    .header-fixe > li > a, .header-user > li > a {
+        margin-right:  -10px !important;
+        margin-left: -15px !important;
+    }
+    .header-user > li > a {
+        margin-top: 0px !important;
+    }
+}
+@media (max-width: 767px) {
+    .menu-footer > li > a {
+        padding-right: 30px;
+        margin-left: -28px;
+    }
+    .header-user > li > a {
+        margin-right:-40px;
+    }
+}
+.navbar-header > a > img{
+    padding-left: 0px;
+    margin-left: -20px;
+}
+
+.header-fixe > ul > li > a,
+.item-header > a {
+    color:#b1aca1 !important;
+}
+
+.item-header > a:hover {
+    color: #fff !important;
+}
+
+.header-user > li > a,
+.item-user > a{
+    color: #c53835 !important;
+}
+.header-user > li > a:focus {
+    color: white;
+}
+
+.dropdown > a:focus {
+    background-color: transparent !important;
+}
+
+.navbar-inverse {
+    border-color: #222 !important;
+}
+
+.menu-user,
+.menu-head {
+    background-color: #222;
+    border-color: #222;
+}
+
+.dropdown-menu > li > a:hover,
+.header-user > li > a:hover,
+.dropdown-menu > li > a:focus,
+.header-user > li > a:focus {
+    background-color: transparent;
+}
+
+.dropdown-menu .divider {
+    background-color: white;
+}
+
+.header-user > li > a:hover,
+.item-user > a:hover {
+    color: #ff5956 !important;
+}
+.navbar-header{
+    /*background-color: yellow;*/
+}
+
+footer{
+    background-color:#222222;
+    padding: 30px 0px;
+}
+
+footer ul{
+    list-style:none;
+    margin: auto;
+    display:inline-block;
+    padding-top:20px;
+}
+
+footer ul li{
+    float:left;
+}
+
+footer ul li a,
+footer ul li a:focus {
+    color:#b1aca1;
+    padding:20px;
+    text-decoration:none;
+}
+
+footer ul li a:hover {
+    color:#fff;
+    text-decoration:none;
+}
+
+.footer-top{
+    padding-bottom:20px;
+}
+
+.footer-top .fa{
+    font-size: 24px;
+    color: #FFF;
+    padding-right:10px;
+}
+
+.footer-top a{
+    color:#FFF;
+    padding: 10px;
+}
+
+.footer-top a:focus {
+    text-decoration:none;
+}
+
+.footer-top .facebook .fa , .footer-top .facebook:hover a {
+    color:#446cb3;
+    text-decoration:none;
+}
+.footer-top .snapchat .fa , .footer-top .snapchat:hover a{
+    color:yellow;
+    text-decoration:none;
+}
+.footer-top .email .fa , .footer-top .email:hover a{
+    color:#d91e18;
+    text-decoration:none;
+}
+
+.copyright{
+    background-color:#f0f0f0;
+}
+
+.copyright p{
+    font-size:12px;
+    padding:15px 0 10px 0;
+}
+
+#page {
+    min-height:100vh;
+    display:flex;
+    flex-direction: column;
+}
+
+#content-page {
+    flex-grow:1;
 }
