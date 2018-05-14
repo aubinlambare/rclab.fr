@@ -31,6 +31,13 @@ body {
     color: white;
 }
 
+.forgetPassword {
+    text-align: right;
+}
+.forgetPassword {
+    text-decoration: none;
+}
+
 ::-moz-selection { background: #19b9e7; color: #fff; text-shadow: none; }
 ::selection { background: #19b9e7; color: #fff; text-shadow: none; }
 
@@ -103,6 +110,7 @@ body {
 }
 
 .form-top-left h3 { margin-top: 0; color: #fff; }
+.form-top-left p { opacity: 0.8; color: #fff; }
 
 .form-top-right {
 	float: left;
@@ -150,6 +158,8 @@ body {
     width: 50%;
     text-align: right;
 }
+
+
 
 /***** Media queries *****/
 
