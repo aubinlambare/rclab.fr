@@ -5,7 +5,6 @@ body {
     font-weight: 300;
     line-height: 30px;
     text-align: center;
-
 }
 
 .registration-body strong { font-weight: 500; }
@@ -23,6 +22,13 @@ body {
 	font-size: 22px;
     font-weight: 300;
     line-height: 30px;
+}
+
+#remember_me{
+    margin: 6px auto 0px;
+}
+.checkbox label {
+    color: white;
 }
 
 ::-moz-selection { background: #19b9e7; color: #fff; text-shadow: none; }
@@ -97,7 +103,6 @@ body {
 }
 
 .form-top-left h3 { margin-top: 0; color: #fff; }
-.form-top-left p { opacity: 0.8; color: #fff; }
 
 .form-top-right {
 	float: left;
@@ -126,6 +131,25 @@ body {
 	border-color: #19b9e7;
 }
 
+.form-under {
+    overflow: hidden;
+    text-align: left;
+}
+.form-under a {
+    color: white;
+}
+
+.form-under-left {
+    float: left;
+    width: 50%;
+    text-align: left;
+}
+
+.form-under-right {
+    float: left;
+    width: 50%;
+    text-align: right;
+}
 
 /***** Media queries *****/
 
