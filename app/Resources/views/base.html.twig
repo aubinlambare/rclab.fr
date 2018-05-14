@@ -1,20 +1,26 @@
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>RC LAB</title>
-    <link rel="shortcut icon" href="{{ asset('images/rclab.png') }}">
-    <!--<link href="bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">-->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ asset('bundles/rclabwebsite/Webfonts/questa_regular_macroman/stylesheet.css') }}" rel="stylesheet"/>
+    <link rel="shortcut icon" href="{{ asset('images/rclab.png') }}">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    {% stylesheets '@RCLABWebsiteBundle/Resources/public/css/base.css'
-        '@RCLABWebsiteBundle/Resources/public/css/actualite.css' %}
+
+
+    {% stylesheets
+        '@RCLABWebsiteBundle/Resources/public/css/base.css'
+        '@RCLABWebsiteBundle/Resources/public/css/actualite.css'
+    %}
         <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
     {% endstylesheets %}
+
+    {% block stylesheets_registration %}{% endblock %}
+
 </head>
 <body>
 <div id="page">
@@ -26,7 +32,7 @@
                         <img alt="RC LAB" src="{{ asset('images/rclabheader.png') }}"/>
                     </a>
                 </div>
-                <div class="header col-lg-10 col-md-11 col-sm-11 col-xs-6">
+                <div class="header col-lg-10 col-md-11 col-sm-11 col-xs-6" id="header-bar">
                     <ul class="nav navbar-nav header-fixe">
                         <li class="navbar-text hidden-xs"><a href="{{ path('rclab_website_association') }}">L'association</a></li>
                         <li class="navbar-text hidden-xs"><a href="{{ path('rclab_website_actualite') }}">Actualités</a></li>
@@ -142,5 +148,9 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
+
+{% block javascripts %}{% endblock %}
 </body>
+
+
 </html>

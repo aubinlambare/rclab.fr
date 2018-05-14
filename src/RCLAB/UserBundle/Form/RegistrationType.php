@@ -13,22 +13,90 @@ class RegistrationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('lastName', TextType::class)
-            ->add('firstName', TextType::class)
-            ->add('email', EmailType::class, array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
-            ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
-            ->add('plainPassword', RepeatedType::class, array(
+            ->add('lastName', TextType::class, [
+                'label' => 'form.lastName',
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
+                'attr' => [
+                    'class' => 'form-last-name form-control',
+                    'placeholder' => 'Nom...',
+                    'id' => 'form-last-name',
+                    'required' =>  'required',
+                ],
+            ])
+            ->add('firstName', TextType::class, [
+                'label' => 'form.firstName',
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
+                'attr' => [
+                    'class' => 'form-first-name form-control',
+                    'placeholder' => 'Prénom...',
+                    'id' => 'form-first-name',
+                    'required' =>  'required',
+                ],
+            ])
+            ->add('email', EmailType::class, [
+                'label' => 'form.email',
+                'translation_domain' => 'FOSUserBundle',
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
+                'attr' => [
+                    'class' => 'form-email form-control',
+                    'placeholder' => 'Email...',
+                    'id' => 'form-email',
+                    'required' =>  'required',
+                ],
+            ])
+            ->add('username', null, [
+                'label' => 'form.username',
+                'translation_domain' => 'FOSUserBundle',
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
+                'attr' => [
+                    'class' => 'form-user-name form-control',
+                    'placeholder' => 'Nom d\'utilisateur...',
+                    'id' => 'form-email',
+                    'required' =>  'required',
+                ],
+            ])
+            ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'options' => array(
+                'options' => [
                     'translation_domain' => 'FOSUserBundle',
-                    'attr' => array(
+                    'attr' => [
                         'autocomplete' => 'new-password',
-                    ),
-                ),
-                'first_options' => array('label' => 'form.password'),
-                'second_options' => array('label' => 'form.password_confirmation'),
+                    ],
+                ],
+                'first_options' => [
+                    'label' => 'form.password',
+                    'label_attr' => [
+                        'class' => 'sr-only',
+                    ],
+                    'attr' => [
+                        'class' => 'form-password form-control',
+                        'placeholder' => 'Mot de passe...',
+                        'id' => 'form-password',
+                        'required' =>  'required',
+                    ],
+                ],
+                'second_options' => [
+                    'label' => 'form.password_confirmation',
+                    'label_attr' => [
+                        'class' => 'sr-only',
+                    ],
+                    'attr' => [
+                        'class' => 'form-password-confirmed form-control',
+                        'placeholder' => 'Confirmer le mot de passe...',
+                        'id' => 'form-password-confirmed',
+                        'required' =>  'required',
+                    ],
+                ],
                 'invalid_message' => 'fos_user.password.mismatch',
-            ))
+            ])
         ;
     }
     public function configureOptions(OptionsResolver $resolver)

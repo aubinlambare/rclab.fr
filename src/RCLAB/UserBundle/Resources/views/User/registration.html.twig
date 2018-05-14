@@ -1,15 +1,114 @@
 
 {% extends "base.html.twig" %}
 
+{% block stylesheets_registration %}
+    <!-- CSS -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+    <link rel="stylesheet" href="{{ asset('bundles/rclabuser/css/form-registration.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/rclabuser/css/registration.css') }}" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+{% endblock %}
+
 {% block body %}
-
-    <h1>Registration</h1>
-
     {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
-    {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="S'inscrire" />
+
+    <div class="registration-body" href="{{ asset('bundles/rclabuser/images/registration.jpg') }}">
+        <!-- Top content -->
+        <div class="top-content">
+
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2">
+                            <h1><strong>Rejoins notre communauté et fais appel à nos services !</strong></h1>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 form-box">
+                            <div class="form-top">
+                                <div class="form-top-left">
+                                    <h3>Inscris-toi dès maintenant !</h3>
+                                    <p>Remplis le formulaire ci-dessous :</p>
+                                </div>
+                                <div class="form-top-right">
+                                    <i class="fa fa-pencil"></i>
+                                </div>
+                            </div>
+                            <div class="form-bottom">
+                                <form role="form" action="" method="post" class="registration-form">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                            {{ form_label(form.firstName) }}
+                                            {{ form_errors(form.firstName) }}
+                                            {{ form_widget(form.firstName) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                            {{ form_label(form.lastName) }}
+                                            {{ form_errors(form.lastName) }}
+                                            {{ form_widget(form.lastName) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                                            {{ form_label(form.email) }}
+                                            {{ form_errors(form.email) }}
+                                            {{ form_widget(form.email) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-users" aria-hidden="true"></i></span>
+                                            {{ form_label(form.username) }}
+                                            {{ form_errors(form.username) }}
+                                            {{ form_widget(form.username) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                                            {{ form_label(form.plainPassword.first) }}
+                                            {{ form_errors(form.plainPassword.first) }}
+                                            {{ form_widget(form.plainPassword.first) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                                            {{ form_label(form.plainPassword.second) }}
+                                            {{ form_errors(form.plainPassword.second) }}
+                                            {{ form_widget(form.plainPassword.second) }}
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn">Je m'inscris</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
+
     {{ form_end(form) }}
 
+{% endblock %}
+{% block javascripts %}
+    {% javascripts
+        '@RCLABUserBundle/Resources/public/js/jquery.backstretch.min.js'
+        '@RCLABUserBundle/Resources/public/js/registration.js' %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
 {% endblock %}

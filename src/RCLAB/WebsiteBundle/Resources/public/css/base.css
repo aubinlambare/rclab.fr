@@ -1,11 +1,13 @@
 body{
-    font-family: '2-Questa_Regular', sans-serif;
+    font-family: 'Roboto', sans-serif;
     padding-top: 80px;
     position: relative;
     min-height: 100%;
 }
 #header-page, #footer-page{
-    font-size: 1.5em;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 30px;
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -51,9 +53,6 @@ body{
     .header-user > li > a {
         margin-right:-40px;
     }
-    #header-page .navbar-inverse {
-        ;
-    }
 }
 .navbar-header > a > img{
     padding-left: 0px;
@@ -77,16 +76,14 @@ body{
     color: white;
 }
 
-
-
 .navbar-inverse {
-    border-color: #222 !important;
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
 .menu-user,
 .menu-head {
-    background-color: #222;
-    border-color: #222;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-color: rgba(0, 0, 0, 0.9);
 }
 
 
@@ -107,12 +104,9 @@ body{
 .item-user > a:hover {
     color: #ff5956 !important;
 }
-.navbar-header{
-    /*background-color: yellow;*/
-}
 
 footer{
-    background-color:#222222;
+    background-color: rgba(0, 0, 0, 0.9);
     padding: 30px 0px;
 }
 
