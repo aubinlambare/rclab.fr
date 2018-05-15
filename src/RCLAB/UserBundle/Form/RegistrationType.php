@@ -98,11 +98,6 @@ class RegistrationType extends AbstractType
                 ],
                 'invalid_message' => 'fos_user.password.mismatch',
             ])
-            ->add('Je m\'inscris !', SubmitType::class, [
-                'attr' => [
-                    'class' => 'btn',
-                ],
-            ])
         ;
     }
     public function configureOptions(OptionsResolver $resolver)
