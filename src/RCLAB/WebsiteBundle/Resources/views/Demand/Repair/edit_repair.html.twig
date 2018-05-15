@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div>
+        <h3>Gérer la réparation</h3>
+        <div>
+            {{ form_start(form) }}
+
+            {{ form_row(form.objet) }}
+            {{ form_row(form.description) }}
+
+            {% if form.debut is defined %}
+                <p>Disponibilités du demandeur : {{ repair.disponibiliteDemandeur }}</p>
+                {{ form_row(form.debut) }}
+            {% endif %}
+
+            {{ form_row(form.responsable) }}
+            <br/>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+{% endblock %}

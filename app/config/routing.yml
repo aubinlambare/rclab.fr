@@ -11,10 +11,6 @@ rclab_website_contact:
     path:     /contact
     defaults:  { _controller: RCLABWebsiteBundle:Default:contact }
 
-rclab_website_reparation:
-    path:     /reparation
-    defaults:  { _controller: RCLABWebsiteBundle:Default:reparation }
-
 rclab_website_compte:
     path:    /profile/compte
     defaults:  { _controller: RCLABWebsiteBundle:Default:compte }
@@ -29,12 +25,99 @@ rclab_website_association_edit:
     path:    /association/edit
     defaults: { _controller: RCLABWebsiteBundle:Association:edit }
 
-# CoursController
 
-rclab_website_cours:
+# repairController
+
+rclab_website_repair:
+    path:     /reparations
+    defaults:  { _controller: RCLABWebsiteBundle:Repair:repairs }
+
+rclab_website_repair_request:
+    path:    /reparations/demande
+    defaults: { _controller: RCLABWebsiteBundle:Repair:request }
+
+rclab_website_repair_edit:
+    path:    /reparations/edit/{id}
+    defaults:
+        _controller: RCLABWebsiteBundle:Repair:edit
+    requirements:
+        id:    \d+
+
+rclab_website_repair_history:
+    path:    /compte/historique/reparations
+    defaults: { _controller: RCLABWebsiteBundle:Repair:history }
+
+rclab_website_repair_handle:
+    path:    /compte/reparations
+    defaults:  { _controller: RCLABWebsiteBundle:Repair:handle }
+
+rclab_website_repair_detail:
+    path:    /reparations/{id}
+    defaults:
+        _controller: RCLABWebsiteBundle:Repair:detail
+    requirements:
+        id:    \d+
+
+
+# CourseController
+
+rclab_website_course:
     path:     /cours
-    defaults:  { _controller: RCLABWebsiteBundle:Cours:cours }
+    defaults:  { _controller: RCLABWebsiteBundle:Course:course }
 
+rclab_website_course_request:
+    path:     /cours/demande
+    defaults: { _controller: RCLABWebsiteBundle:Course:request }
+
+rclab_website_course_edit:
+    path:    /compte/cours/editer/{id}
+    defaults:
+        _controller: RCLABWebsiteBundle:Course:edit
+    requirements:
+        id:    \d+
+
+rclab_website_course_valid:
+    path:    /compte/cours/valider/{id}
+    defaults:
+        _controller: RCLABWebsiteBundle:Course:valid
+    requirements:
+        id:    \d+
+
+rclab_website_course_handle:
+    path:    /compte/cours
+    defaults: { _controller: RCLABWebsiteBundle:Course:handle }
+
+rclab_website_course_history:
+    path:    /compte/history/cours
+    defaults: { _controller: RCLABWebsiteBundle:Course:history }
+
+rclab_website_course_detail:
+    path:    /cours/{id}
+    defaults:
+        _controller: RCLABWebsiteBundle:Course:detail
+    requirements:
+        id:    \d+
+
+rclab_website_course_subscribe:
+    path:    /cours/inscription/{id}
+    defaults:
+         _controller: RCLABWebsiteBundle:Course:subscribe
+    requirements:
+         id:    \d+
+
+rclab_website_course_unsubscribe:
+    path:    /cours/desinscription/{id}
+    defaults:
+         _controller: RCLABWebsiteBundle:Course:unsubscribe
+    requirements:
+        id:    \d+
+
+rclab_website_course_refuse:
+    path:    /compte/cours/refuser/{id}
+    defaults:
+        _controller: RCLABWebsiteBundle:Course:refuse
+    requirements:
+        id:    \d+
 
 # MatiereController
 

@@ -1,7 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f3454f57-51c3-48e4-99e1-7ccebf3a5ef6" name="Default" comment="Notes de mise à jour :&#10;&#10;_ajout de la fonctionnalité permettant à l'administrateur de modifier les roles des utilisateurs (user/moderateur) et leur fonction dans l'association&#10;&#10;_ajout de la fonctionnalité permettant à l'administrateur d'éditer/ajouter/supprimer des fonctions&#10;&#10;_ajout de la fonctionnalité permettant à l'admin d'historiser/dehistoriser/modifier la couleur/ajouter un icone pour les types de demande&#10;&#10;_ajout de la fonctionnalité permettant à un modérateur de modifier les informations de l'association&#10;&#10;_ajout de la fonctionnalité permettant à un modérateur d'ajouter une matière et de changer la couleur de/historiser/déhistoriser/ajouter un icone à une matière&#10;&#10;_ajout de la fonctionnalité permettant a l'admin de supprimer la matière&#10;&#10;_ajout de la fonctionnalité permettant à un modérateur d'ajouter un niveau et de changer la couleur/historiser/déhistoriser/ajouter un icone à un niveau&#10;&#10;_ajout de la fonctionnalité permettant à un utilisateur d'accéder à ses informations personnelles et de modifier son adresse mail/numéro de téléphone/facebook/mot de passe&#10;&#10;_ajout de la fonctionnalité permettant à tout utilisateur possédant une fonction dans l'association d'ajouter une photo à son profil.&#10;&#10;_lorsqu'un utilisateur se voit ajouter une fonction par l'admin, il lui est automatiquement attribué une photo par défaut&#10;&#10;_ajout de la fonctionnalité permettant à l'admin de reset les photos des utilisateurs&#10;&#10;Correction de bugs:&#10;&#10;_les photos des membres s'affichent correctement dans les pages contact et association&#10;&#10;_les liens permettant d'ajouter une news et un évènement ont été déplacés dans les pages news et event&#10;&#10;_les fonctionnalités permettant d'éditer news et events fonctionnent maintenant correctement&#10;&#10;_la sécurité permettant d'autoriser ou de refuser l'accès à certaines pages a été revu et améliorée&#10;&#10;&#10;Bug connus :&#10;&#10;_modifier l'icone de l'association ne modifie pas l'icone sur le site&#10;&#10;_s'inscrire en utilisant une adresse mail ou un username déjà présent en bdd renvoi une exception&#10;&#10;_modifier les informations de l'association redemande d'ajouter l'image en focus&#10;&#10;_les mails ne sont pas envoyés avec la bonne adresse mail" />
+    <list default="true" id="f3454f57-51c3-48e4-99e1-7ccebf3a5ef6" name="Default" comment="Notes de mise à jour :&#10;&#10;_ajout de la fonctionnalité permettant à l'administrateur de modifier les roles des utilisateurs (user/moderateur) et leur fonction dans l'association&#10;&#10;_ajout de la fonctionnalité permettant à l'administrateur d'éditer/ajouter/supprimer des fonctions&#10;&#10;_ajout de la fonctionnalité permettant à l'admin d'historiser/dehistoriser/modifier la couleur/ajouter un icone pour les types de demande&#10;&#10;_ajout de la fonctionnalité permettant à un modérateur de modifier les informations de l'association&#10;&#10;_ajout de la fonctionnalité permettant à un modérateur d'ajouter une matière et de changer la couleur de/historiser/déhistoriser/ajouter un icone à une matière&#10;&#10;_ajout de la fonctionnalité permettant a l'admin de supprimer la matière&#10;&#10;_ajout de la fonctionnalité permettant à un modérateur d'ajouter un niveau et de changer la couleur/historiser/déhistoriser/ajouter un icone à un niveau&#10;&#10;_ajout de la fonctionnalité permettant à un utilisateur d'accéder à ses informations personnelles et de modifier son adresse mail/numéro de téléphone/facebook/mot de passe&#10;&#10;_ajout de la fonctionnalité permettant à tout utilisateur possédant une fonction dans l'association d'ajouter une photo à son profil.&#10;&#10;_lorsqu'un utilisateur se voit ajouter une fonction par l'admin, il lui est automatiquement attribué une photo par défaut&#10;&#10;_ajout de la fonctionnalité permettant à l'admin de reset les photos des utilisateurs&#10;&#10;Correction de bugs:&#10;&#10;_les photos des membres s'affichent correctement dans les pages contact et association&#10;&#10;_les liens permettant d'ajouter une news et un évènement ont été déplacés dans les pages news et event&#10;&#10;_les fonctionnalités permettant d'éditer news et events fonctionnent maintenant correctement&#10;&#10;_la sécurité permettant d'autoriser ou de refuser l'accès à certaines pages a été revu et améliorée&#10;&#10;&#10;Bug connus :&#10;&#10;_modifier l'icone de l'association ne modifie pas l'icone sur le site&#10;&#10;_s'inscrire en utilisant une adresse mail ou un username déjà présent en bdd renvoi une exception&#10;&#10;_modifier les informations de l'association redemande d'ajouter l'image en focus&#10;&#10;_les mails ne sont pas envoyés avec la bonne adresse mail">
+      <change afterPath="$PROJECT_DIR$/app/Resources/views/history.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Controller/RepairController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Form/EditCourseType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Form/EditRepairType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Form/RequestCourseType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Form/RequestRepairType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Form/ValiderType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand/Course/detail_course.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand/Course/edit_course.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand/Course/handle_course.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand/Course/history_course.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand/Repair/detail_repair.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand/Repair/edit_repair.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand/Repair/handle_repair.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand/Repair/history_repair.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand/Repair/repair.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand/Repair/request_repair.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/aubin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/aubin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/compte.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/compte.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/routing.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/routing.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/services.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/services.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RCLAB/UserBundle/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/RCLAB/UserBundle/Controller/RegistrationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RCLAB/UserBundle/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/RCLAB/UserBundle/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RCLAB/UserBundle/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/RCLAB/UserBundle/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RCLAB/UserBundle/Form/ProfileUpdateType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/RCLAB/UserBundle/Form/ProfileUpdateType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RCLAB/UserBundle/Form/RegistrationType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/RCLAB/UserBundle/Form/RegistrationType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RCLAB/UserBundle/Form/gestionUserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/RCLAB/UserBundle/Form/gestionUserType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Controller/ActualiteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Controller/ActualiteController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Controller/CoursController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Controller/CourseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Entity/Demande.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Entity/Demande.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Repository/DemandeRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Repository/DemandeRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/public/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/public/css/base.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Cours/cours.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand/Course/course.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Cours/demande_cours.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand/Course/request_course.html.twig" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/vendor/composer/" />
     <ignored path="$PROJECT_DIR$/vendor/doctrine/annotations/" />
     <ignored path="$PROJECT_DIR$/vendor/doctrine/cache/" />
@@ -71,62 +109,97 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="routing.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
+      <file leaf-file-name="RepairController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Controller/RepairController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="124" column="13" selection-start-line="124" selection-start-column="13" selection-end-line="124" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="reparation.html.twig" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Default/reparation.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="1200">
+              <caret line="85" column="41" selection-start-line="85" selection-start-column="41" selection-end-line="85" selection-end-column="41" />
               <folding>
-                <element signature="e#12#26#0#Twig" expanded="true" />
+                <element signature="e#131#170#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="compte.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/compte.html.twig">
+      <file leaf-file-name="RegistrationType.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/RCLAB/UserBundle/Form/RegistrationType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="49" selection-start-line="6" selection-start-column="49" selection-end-line="6" selection-end-column="49" />
+            <state relative-caret-position="660">
+              <caret line="50" column="1" selection-start-line="50" selection-start-column="1" selection-end-line="50" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CoursController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Controller/CoursController.php">
+      <file leaf-file-name="RegistrationController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/RCLAB/UserBundle/Controller/RegistrationController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="975">
-              <caret line="65" column="1" selection-start-line="65" selection-start-column="1" selection-end-line="65" selection-end-column="1" />
+            <state relative-caret-position="270">
+              <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
               <folding>
-                <element signature="e#50#89#0#PHP" expanded="true" />
+                <element signature="e#1700#1748#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+      <file leaf-file-name="services.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/config/services.yml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="services.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/config/services.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1830">
-              <caret line="122" selection-start-line="122" selection-end-line="122" />
+            <state relative-caret-position="331">
+              <caret line="31" column="27" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DemandeRepository.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Repository/DemandeRepository.php">
+      <file leaf-file-name="config.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/config/config.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" selection-start-line="20" selection-end-line="20" />
+            <state relative-caret-position="690">
+              <caret line="70" column="34" selection-start-line="70" selection-start-column="34" selection-end-line="70" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="parameters.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/RCLAB/UserBundle/Entity/User.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="539">
+              <caret line="93" column="6" selection-start-line="93" selection-start-column="6" selection-end-line="93" selection-end-column="6" />
+              <folding>
+                <element signature="e#83#125#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Model/User.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="625">
+              <caret line="73" column="29" selection-start-line="61" selection-start-column="4" selection-end-line="73" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="composer.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/composer.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="26" column="18" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -142,10 +215,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>rclab_website_tdemandes_tdemandes</find>
-      <find>User</find>
-      <find>fos_user_registration_register</find>
-      <find>if (false === $authChecker-&gt;isGranted('ROLE_MODERATOR')) {             throw new AccessDeniedException('Impossible d\'accéder à cette page !');         }</find>
       <find>AuthorizationCheckerInterface $authChecker</find>
       <find>$this-&gt;denyAccessUnlessGranted</find>
       <find>//$this-&gt;denyAccessUnlessGranted</find>
@@ -165,6 +234,17 @@
       <find>valideur</find>
       <find>date(</find>
       <find>h:i</find>
+      <find>'rclab_website_cours'</find>
+      <find>con</find>
+      <find>His</find>
+      <find>Demand</find>
+      <find>Hand</find>
+      <find>array\([\w' =]+</find>
+      <find>\[[\w]</find>
+      <find>array</find>
+      <find>guess</find>
+      <find>guessExtension</find>
+      <find>mail</find>
     </findStrings>
     <replaceStrings>
       <replace>rclab_website_tdemandes</replace>
@@ -172,13 +252,16 @@
       <replace>//$this-&gt;denyAccessUnlessGranted</replace>
       <replace>$this-&gt;denyAccessUnlessGranted</replace>
       <replace>H:i</replace>
+      <replace>'rclab_website_course'</replace>
+      <replace>\[[\w' =&gt;]*\]</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/vendor</dir>
       <dir>$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Controller</dir>
-      <dir>$PROJECT_DIR$</dir>
       <dir>$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources</dir>
       <dir>$PROJECT_DIR$/src/RCLAB/UserBundle/Resources</dir>
+      <dir>$PROJECT_DIR$</dir>
+      <dir>$PROJECT_DIR$/src</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -197,57 +280,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Repository/NiveauRepository.php" />
-        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Cours/demande_cours.html.twig" />
-        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Cours/valider_cours.html.twig" />
-        <option value="$PROJECT_DIR$/app/config/parameters.yml" />
-        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Controller/AssociationController.php" />
-        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Form/DemandeType.php" />
-        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Repository/MatiereRepository.php" />
-        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Cours/gestion_cours.html.twig" />
-        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Cours/detail_cours.html.twig" />
-        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Cours/detail_gestion_cours.html.twig" />
-        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Cours/cours.html.twig" />
-        <option value="$PROJECT_DIR$/src/RCLAB/UserBundle/Entity/User.php" />
-        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Cours/history_cours.html.twig" />
-        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/history.html.twig" />
-        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Controller/DefaultController.php" />
-        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Controller/DemandeController.php" />
-        <option value="$PROJECT_DIR$/src/RCLAB/UserBundle/RCLABUserBundle.php" />
-        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/Cours/demande_cours.html.twig" />
-        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/Reparation/demande_reparation.html.twig" />
-        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Twig/Extension/test.php" />
-        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/Reparation/test.vue" />
-        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Form/DemandeReparationType.php" />
-        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/Cours/handle_reparation.html.twig" />
-        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/Reparation/handle_reparation.html.twig" />
-        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Form/ValiderType.php" />
-        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Form/HandleReparation.php" />
-        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/Reparation/gestion_reparation.html.twig" />
-        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/Reparation/detail_reparation.html.twig" />
-        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/Reparation/historique_reparation.html.twig" />
         <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Form/DemandeCoursType.php" />
         <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Form/HandleCours.php" />
         <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/Cours/cours.html.twig" />
         <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/Cours/detail_cours.html.twig" />
         <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/Cours/detail_gestion_cours.html.twig" />
         <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/Cours/gestion_cours.html.twig" />
-        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Entity/Demande.php" />
         <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/Reparation/reparation.html.twig" />
-        <option value="$PROJECT_DIR$/app/config/routing.yml" />
         <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/Reparation/demande_recuperer_son_materiel.html.twig" />
         <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Form/EndReparationType.php" />
         <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Controller/ReparationController.php" />
         <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Form/HandleReparationType.php" />
         <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/history_demande.html.twig" />
+        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/Reparation/history_reparation.html.twig" />
+        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Controller/CoursController.php" />
+        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/Cours/history_cours.html.twig" />
+        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Default/reparation.html.twig" />
+        <option value="$PROJECT_DIR$/web/bundles/rclabwebsite/css/base.css" />
         <option value="$PROJECT_DIR$/app/Resources/views/history.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/compte.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/Reparation/history_reparation.html.twig" />
-        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Controller/CoursController.php" />
+        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Entity/Demande.php" />
+        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Form/RequestCourseType.php" />
+        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand/Course/course.html.twig" />
+        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand/Course/detail_course.html.twig" />
+        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand/Course/history_course.html.twig" />
+        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand/Repair/request_repair.html.twig" />
+        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand/Repair/handle_repair.html.twig" />
+        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Form/RequestRepairType.php" />
+        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand/Repair/edit_repair.html.twig" />
+        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Form/EditRepairType.php" />
+        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand/Repair/repair.html.twig" />
         <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Repository/DemandeRepository.php" />
-        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/Cours/history_cours.html.twig" />
-        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Default/reparation.html.twig" />
+        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand/Repair/history_repair.html.twig" />
+        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Controller/RepairController.php" />
+        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand/Repair/detail_repair.html.twig" />
+        <option value="$PROJECT_DIR$/src/RCLAB/UserBundle/Form/gestionUserType.php" />
+        <option value="$PROJECT_DIR$/src/RCLAB/UserBundle/Form/ProfileUpdateType.php" />
+        <option value="$PROJECT_DIR$/src/RCLAB/UserBundle/Form/RegistrationType.php" />
+        <option value="$PROJECT_DIR$/src/RCLAB/UserBundle/Controller/UserController.php" />
+        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Controller/ActualiteController.php" />
+        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Controller/CourseController.php" />
+        <option value="$PROJECT_DIR$/app/config/routing.yml" />
+        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand/Course/edit_course.html.twig" />
+        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand/Course/handle_course.html.twig" />
+        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand/Course/valid_course.html.twig" />
+        <option value="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Form/EditCourseType.php" />
+        <option value="$PROJECT_DIR$/src/RCLAB/UserBundle/Controller/RegistrationController.php" />
+        <option value="$PROJECT_DIR$/app/config/services.yml" />
+        <option value="$PROJECT_DIR$/app/config/config.yml" />
+        <option value="$PROJECT_DIR$/app/config/parameters.yml" />
+        <option value="$PROJECT_DIR$/src/RCLAB/UserBundle/Entity/User.php" />
       </list>
     </option>
   </component>
@@ -259,6 +342,9 @@
   </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
+  </component>
+  <component name="PhpServers">
+    <servers />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -312,8 +398,8 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="27" />
-    <option name="width" value="950" />
-    <option name="height" value="789" />
+    <option name="width" value="960" />
+    <option name="height" value="1053" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -375,7 +461,31 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="RCLAB" type="462c0819:PsiDirectoryNode" />
               <item name="UserBundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rclab.fr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rclab.fr" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="RCLAB" type="462c0819:PsiDirectoryNode" />
+              <item name="UserBundle" type="462c0819:PsiDirectoryNode" />
               <item name="Entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rclab.fr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rclab.fr" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="RCLAB" type="462c0819:PsiDirectoryNode" />
+              <item name="UserBundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Form" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rclab.fr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rclab.fr" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="RCLAB" type="462c0819:PsiDirectoryNode" />
+              <item name="UserBundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="rclab.fr" type="b2602c69:ProjectViewProjectNode" />
@@ -431,7 +541,7 @@
               <item name="RCLAB" type="462c0819:PsiDirectoryNode" />
               <item name="WebsiteBundle" type="462c0819:PsiDirectoryNode" />
               <item name="Resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="rclab.fr" type="b2602c69:ProjectViewProjectNode" />
@@ -441,7 +551,6 @@
               <item name="WebsiteBundle" type="462c0819:PsiDirectoryNode" />
               <item name="Resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="Cours" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="rclab.fr" type="b2602c69:ProjectViewProjectNode" />
@@ -452,6 +561,46 @@
               <item name="Resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="Default" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rclab.fr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rclab.fr" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="RCLAB" type="462c0819:PsiDirectoryNode" />
+              <item name="WebsiteBundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="Demand" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rclab.fr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rclab.fr" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="RCLAB" type="462c0819:PsiDirectoryNode" />
+              <item name="WebsiteBundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="Demand" type="462c0819:PsiDirectoryNode" />
+              <item name="Course" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rclab.fr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rclab.fr" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="RCLAB" type="462c0819:PsiDirectoryNode" />
+              <item name="WebsiteBundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="Demand" type="462c0819:PsiDirectoryNode" />
+              <item name="Repair" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rclab.fr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rclab.fr" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="RCLAB" type="462c0819:PsiDirectoryNode" />
+              <item name="WebsiteBundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="rclab.fr" type="b2602c69:ProjectViewProjectNode" />
@@ -476,6 +625,14 @@
               <item name="bundles" type="462c0819:PsiDirectoryNode" />
               <item name="rclabwebsite" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="rclab.fr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rclab.fr" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="bundles" type="462c0819:PsiDirectoryNode" />
+              <item name="rclabwebsite" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -490,11 +647,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand" />
       <recent name="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/Reparation" />
       <recent name="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande" />
       <recent name="$PROJECT_DIR$/app/Resources/views" />
       <recent name="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Service" />
-      <recent name="$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Actualite/Events" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -540,6 +697,8 @@
       <workItem from="1525371281156" duration="12241000" />
       <workItem from="1525420404046" duration="20135000" />
       <workItem from="1525444567181" duration="26407000" />
+      <workItem from="1525633327566" duration="10889000" />
+      <workItem from="1525800292143" duration="16524000" />
     </task>
     <task id="LOCAL-00001" summary="Notes de mise à jour :&#10;&#10;_ajout de la fonctionnalité permettant à l'administrateur de modifier les roles des utilisateurs (user/moderateur) et leur fonction dans l'association&#10;&#10;_ajout de la fonctionnalité permettant à l'administrateur d'éditer/ajouter/supprimer des fonctions&#10;&#10;_ajout de la fonctionnalité permettant à l'admin d'historiser/dehistoriser/modifier la couleur/ajouter un icone pour les types de demande&#10;&#10;_ajout de la fonctionnalité permettant à un modérateur de modifier les informations de l'association&#10;&#10;_ajout de la fonctionnalité permettant à un modérateur d'ajouter une matière et de changer la couleur de/historiser/déhistoriser/ajouter un icone à une matière&#10;&#10;_ajout de la fonctionnalité permettant a l'admin de supprimer la matière&#10;&#10;_ajout de la fonctionnalité permettant à un modérateur d'ajouter un niveau et de changer la couleur/historiser/déhistoriser/ajouter un icone à un niveau&#10;&#10;_ajout de la fonctionnalité permettant à un utilisateur d'accéder à ses informations personnelles et de modifier son adresse mail/numéro de téléphone/facebook/mot de passe&#10;&#10;_ajout de la fonctionnalité permettant à tout utilisateur possédant une fonction dans l'association d'ajouter une photo à son profil.&#10;&#10;_lorsqu'un utilisateur se voit ajouter une fonction par l'admin, il lui est automatiquement attribué une photo par défaut&#10;&#10;_ajout de la fonctionnalité permettant à l'admin de reset les photos des utilisateurs&#10;&#10;Correction de bugs:&#10;&#10;_les photos des membres s'affichent correctement dans les pages contact et association&#10;&#10;_les liens permettant d'ajouter une news et un évènement ont été déplacés dans les pages news et event&#10;&#10;_les fonctionnalités permettant d'éditer news et events fonctionnent maintenant correctement&#10;&#10;_la sécurité permettant d'autoriser ou de refuser l'accès à certaines pages a été revu et améliorée&#10;&#10;&#10;Bug connus :&#10;&#10;_modifier l'icone de l'association ne modifie pas l'icone sur le site&#10;&#10;_s'inscrire en utilisant une adresse mail ou un username déjà présent en bdd renvoi une exception&#10;&#10;_modifier les informations de l'association redemande d'ajouter l'image en focus&#10;&#10;_les mails ne sont pas envoyés avec la bonne adresse mail">
       <created>1525264822698</created>
@@ -552,7 +711,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="228909000" />
+    <option name="totallyTimeSpent" value="283376000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -565,6 +724,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3291714" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -572,7 +732,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23985043" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14957266" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" weight="0.32959402" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.081725314" />
@@ -592,24 +752,24 @@
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22596154" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3291714" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Inspection Results" order="13" visible="true" weight="0.0124858115" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.081725314" />
       <window_info anchor="right" x="0" y="0" width="430" height="853" id="Documentation" order="4" side_tool="true" weight="0.32959402" />
       <window_info anchor="right" id="Database" order="3" weight="0.32959402" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.081725314" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.3291714" />
       <window_info id="Favorites" order="2" side_tool="true" />
     </layout-to-restore>
@@ -629,66 +789,340 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="4" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Actualite/News/news.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand/Repair/request_repair.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="10" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
+          <folding>
+            <element signature="e#12#26#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand/Repair/handle_repair.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+          <folding>
+            <element signature="e#12#28#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="59" column="75" selection-start-line="59" selection-start-column="75" selection-end-line="59" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand/Course/history_course.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="39" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand/Repair/history_repair.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="68" column="36" selection-start-line="68" selection-start-column="36" selection-end-line="68" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand/Repair/repair.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="930">
+          <caret line="62" column="28" selection-start-line="62" selection-start-column="28" selection-end-line="62" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand/Course/detail_course.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="62" selection-start-line="18" selection-start-column="62" selection-end-line="18" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand/Repair/edit_repair.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
-          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Niveau/niveaux.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand/Repair/detail_repair.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/bundles/rclabwebsite/css/base.css">
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Form/DemandeType.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Form/EventType.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Form/MatiereType.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Form/NewsType.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Form/RequestCourseType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        <state relative-caret-position="480">
+          <caret line="32" column="44" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
+          <folding>
+            <element signature="e#44#78#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Form/RequestRepairType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Form/T_DemandeType.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Form/ValiderType.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Form/FonctionType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="31" column="36" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Repository/FonctionRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Repository/DemandeRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="52" selection-start-line="27" selection-start-column="52" selection-end-line="27" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Entity/Demande.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="477">
+          <caret line="489" column="5" selection-start-line="489" selection-start-column="5" selection-end-line="489" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/UserBundle/Form/gestionUserType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="26" column="31" lean-forward="true" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/UserBundle/Form/ProfileUpdateType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="39" column="60" lean-forward="true" selection-start-line="39" selection-start-column="60" selection-end-line="39" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/UserBundle/Repository/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RCLAB/UserBundle/Controller/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2037">
-          <caret line="171" selection-start-line="171" selection-end-line="171" />
+        <state relative-caret-position="735">
+          <caret line="261" column="1" lean-forward="true" selection-start-line="261" selection-start-column="1" selection-end-line="261" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Repository/PersonneRepository.php">
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/UserBundle/Service/RoleService.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/UserBundle/RCLABUserBundle.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Controller/FonctionController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="36" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
+        <state relative-caret-position="-30" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Controller/MatiereController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-30" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Service/RemoveFile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="31" column="1" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Repository/NiveauRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Controller/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Controller/ActualiteController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="114" column="39" selection-start-line="114" selection-start-column="39" selection-end-line="114" selection-end-column="39" />
+        <state relative-caret-position="325">
+          <caret line="69" selection-start-line="69" selection-end-line="69" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Form/MatiereType.php">
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Controller/CoursController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+        <state relative-caret-position="705">
+          <caret line="65" column="1" selection-start-line="65" selection-start-column="1" selection-end-line="65" selection-end-column="1" />
           <folding>
-            <element signature="e#44#84#0#PHP" expanded="true" />
+            <element signature="e#50#89#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Controller/AssociationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="66" column="32" selection-start-line="66" selection-start-column="32" selection-end-line="66" selection-end-column="32" />
+          <folding>
+            <element signature="e#6#85#0#PHP" expanded="true" />
+            <element signature="e#131#174#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="83" column="18" selection-start-line="83" selection-start-column="18" selection-end-line="83" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand/Course/valid_course.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="84" lean-forward="true" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="84" />
+          <folding>
+            <element signature="e#12#28#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand/Course/handle_course.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="735">
+          <caret line="59" column="14" selection-start-line="59" selection-start-column="14" selection-end-line="59" selection-end-column="14" />
+          <folding>
+            <element signature="e#12#28#0#Twig" expanded="true" />
+            <element signature="e#2154#2180#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Form/EditRepairType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="33" column="48" selection-start-line="33" selection-start-column="48" selection-end-line="33" selection-end-column="48" />
+          <folding>
+            <element signature="e#44#78#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Form/EditCourseType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="852">
+          <caret line="78" column="14" selection-start-line="78" selection-start-column="14" selection-end-line="78" selection-end-column="14" />
+          <folding>
+            <element signature="e#44#78#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demand/Course/edit_course.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
+          <folding>
+            <element signature="e#12#28#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Controller/CourseController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="163" column="11" selection-start-line="163" selection-start-column="11" selection-end-line="163" selection-end-column="11" />
+          <folding>
+            <element signature="e#50#89#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Controller/RepairController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1200">
+          <caret line="85" column="41" selection-start-line="85" selection-start-column="41" selection-end-line="85" selection-end-column="41" />
+          <folding>
+            <element signature="e#131#170#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/UserBundle/Form/RegistrationType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="50" column="1" selection-start-line="50" selection-start-column="1" selection-end-line="50" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="18" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/UserBundle/Controller/RegistrationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
+          <folding>
+            <element signature="e#1700#1748#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/config/services.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/services.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="31" column="27" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="70" column="34" selection-start-line="70" selection-start-column="34" selection-end-line="70" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -699,327 +1133,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Controller/AssociationController.php">
+    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Model/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-45">
-          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-          <folding>
-            <element signature="e#6#85#0#PHP" expanded="true" />
-            <element signature="e#131#174#0#PHP" expanded="true" />
-            <element signature="e#619#651#1#PHP" expanded="true" />
-            <element signature="e#730#752#1#PHP" expanded="true" />
-            <element signature="e#811#860#0#PHP" expanded="true" />
-            <element signature="e#1046#1078#1#PHP" expanded="true" />
-            <element signature="e#1387#1419#1#PHP" expanded="true" />
-            <element signature="e#3166#3220#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Repository/MatiereRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Cours/user_cours.html.twig" />
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Entity/Fonction.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-19" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Entity/Niveau.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="607">
-          <caret line="116" column="5" selection-start-line="116" selection-start-column="5" selection-end-line="116" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Controller/DefaultController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/UserBundle/RCLABUserBundle.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="625">
+          <caret line="73" column="29" selection-start-line="61" selection-start-column="4" selection-end-line="73" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RCLAB/UserBundle/Entity/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-537">
-          <caret line="71" column="22" selection-start-line="71" selection-start-column="22" selection-end-line="71" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Controller/DemandeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="43" column="47" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="47" />
+        <state relative-caret-position="539">
+          <caret line="93" column="6" selection-start-line="93" selection-start-column="6" selection-end-line="93" selection-end-column="6" />
           <folding>
-            <element signature="e#6#85#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/Cours/valider_cours.html.twig">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Twig/Extension/test.php" />
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/Reparation/test.vue" />
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/TDemande/tdemande.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Form/DemandeReparationType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="35" column="22" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/Reparation/detail_handle_reparation.html.twig">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/Reparation/demande_reparation.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="68" selection-start-line="7" selection-start-column="68" selection-end-line="7" selection-end-column="68" />
-          <folding>
-            <element signature="e#12#26#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/Reparation/detail_reparation.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="30" selection-start-column="30" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/Reparation/handle_reparation.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
-          <folding>
-            <element signature="e#12#26#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/Reparation/gestion_reparation.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
-          <folding>
-            <element signature="e#12#28#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Form/DemandeCoursType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-225">
-          <caret line="5" column="39" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Form/HandleCours.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-324">
-          <caret line="15" column="48" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/Cours/cours.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="795">
-          <caret line="104" selection-start-line="104" selection-end-line="104" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/Cours/detail_gestion_cours.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="38" column="80" selection-start-line="38" selection-start-column="80" selection-end-line="38" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/Cours/detail_cours.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="14" selection-start-line="34" selection-start-column="14" selection-end-line="34" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Entity/Demande.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="564">
-          <caret line="137" selection-start-line="137" selection-end-line="137" />
-          <folding>
-            <element signature="e#46#94#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/Cours/gestion_cours.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="41" column="76" selection-start-line="41" selection-start-column="76" selection-end-line="41" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/Cours/demande_cours.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="57" selection-start-line="9" selection-start-column="57" selection-end-line="9" selection-end-column="57" />
-          <folding>
-            <element signature="e#12#26#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Controller/ReparationController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="122" column="71" selection-start-line="122" selection-start-column="71" selection-end-line="122" selection-end-column="71" />
-          <folding>
-            <element signature="e#6531#6559#1#PHP" expanded="true" />
-            <element signature="e#7290#7365#1#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Form/EndReparationType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/Reparation/demande_recuperer_son_materiel.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="10" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
-          <folding>
-            <element signature="e#12#26#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Form/HandleReparationType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="71" column="9" selection-start-line="71" selection-start-column="9" selection-end-line="71" selection-end-column="9" />
-          <folding>
-            <element signature="e#44#78#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/Reparation/reparation.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="31" column="51" selection-start-line="31" selection-start-column="51" selection-end-line="31" selection-end-column="51" />
-          <folding>
-            <element signature="e#12#26#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/history_demande.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="46" column="87" selection-start-line="46" selection-start-column="87" selection-end-line="46" selection-end-column="87" />
-          <folding>
-            <element signature="e#12#29#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/Reparation/history_reparation.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-210">
-          <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
-          <folding>
-            <element signature="e#12#29#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/history.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="9" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
-          <folding>
-            <element signature="e#12#28#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Demande/Cours/history_cours.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="35" column="26" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
-          <folding>
-            <element signature="e#12#29#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="124" column="13" selection-start-line="124" selection-start-column="13" selection-end-line="124" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/compte.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="49" selection-start-line="6" selection-start-column="49" selection-end-line="6" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Controller/CoursController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="975">
-          <caret line="65" column="1" selection-start-line="65" selection-start-column="1" selection-end-line="65" selection-end-column="1" />
-          <folding>
-            <element signature="e#50#89#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1830">
-          <caret line="122" selection-start-line="122" selection-end-line="122" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Repository/DemandeRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RCLAB/WebsiteBundle/Resources/views/Default/reparation.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="e#12#26#0#Twig" expanded="true" />
+            <element signature="e#83#125#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

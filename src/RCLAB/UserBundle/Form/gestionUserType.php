@@ -17,18 +17,18 @@ class gestionUserType extends AbstractType
         array_unshift($this->functions, '');
 
         $builder
-            ->add('fonction', ChoiceType::class, array(
+            ->add('fonction', ChoiceType::class, [
                'choices' => $this->functions
-            ));
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => 'RCLAB\UserBundle\Entity\User',
             'function' => '',
             'statut' => null
-        ));
+        ]);
     }
 
     public function getBlockPrefix()

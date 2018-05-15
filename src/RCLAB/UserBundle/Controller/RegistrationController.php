@@ -45,19 +45,20 @@ class RegistrationController extends Controller
             //creation du mail de confirmation
             $mailer = $this->get('mailer');
             $message = (new \Swift_Message('Confirmer votre inscription'))
-                ->setFrom('aubin.lambare@laposte.net', 'Root Computer Lab')
-                ->setTo($user->getEmail())
+                ->setFrom('noreply@rclab.fr', 'Root Computer Lab')
+//                ->setTo($user->getEmail())
+                ->setTo('theophile.demaegdt@protonmail.com')
                 ->setBody(
-                    $this->renderView('@RCLABUser/Emails/email_registration.html.twig', array('confirmationToken' => $confirmationToken)),
+                    $this->renderView('@RCLABUser/Emails/email_registration.html.twig', ['confirmationToken' => $confirmationToken]),
                     'text/html'
                 );
             $mailer->send($message);
 
             return $this->render('@RCLABUser/User/check_email.html.twig');
         }
-        return $this->render('@RCLABUser/User/registration.html.twig', array(
+        return $this->render('@RCLABUser/User/registration.html.twig', [
             'form' => $form->createView()
-        ));
+        ]);
     }
 
     public function checkEmailAction($id)

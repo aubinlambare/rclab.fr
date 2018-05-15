@@ -11,7 +11,10 @@
       <w>ajouté</w>
       <w>ajoutée</w>
       <w>asso</w>
+      <w>attente</w>
+      <w>autocomplete</w>
       <w>autorise</w>
+      <w>avec</w>
       <w>avez</w>
       <w>ayant</w>
       <w>bien</w>
@@ -20,6 +23,7 @@
       <w>cette</w>
       <w>ceux</w>
       <w>choisir</w>
+      <w>choisissez</w>
       <w>cliquant</w>
       <w>cliquer</w>
       <w>compte</w>
@@ -29,28 +33,45 @@
       <w>couleur</w>
       <w>cours</w>
       <w>demande</w>
+      <w>demander</w>
       <w>demandes</w>
       <w>demandeur</w>
+      <w>demandé</w>
+      <w>disponibilite</w>
+      <w>disponibilités</w>
       <w>disponibles</w>
+      <w>disponiblités</w>
       <w>droits</w>
+      <w>duree</w>
+      <w>durée</w>
       <w>déconnexion</w>
       <w>déhistorisé</w>
       <w>déhistorisée</w>
+      <w>désinscrire</w>
+      <w>désinscrit</w>
+      <w>détail</w>
       <w>editer</w>
+      <w>effecutée</w>
       <w>enregistrer</w>
+      <w>envoyer</w>
       <w>envoyé</w>
       <w>etat</w>
       <w>fonction</w>
       <w>fonctions</w>
       <w>formulaires</w>
       <w>gestion</w>
+      <w>gère</w>
+      <w>gérer</w>
+      <w>heure</w>
       <w>historique</w>
       <w>historise</w>
       <w>historisé</w>
       <w>horaires</w>
       <w>icone</w>
+      <w>indiquez</w>
       <w>informations</w>
       <w>inférieure</w>
+      <w>inscrire</w>
       <w>inscrits</w>
       <w>jour</w>
       <w>liste</w>
@@ -73,6 +94,7 @@
       <w>numero</w>
       <w>numéro</w>
       <w>négatif</w>
+      <w>objet</w>
       <w>obligatoire</w>
       <w>personne</w>
       <w>personnelles</w>
@@ -82,20 +104,30 @@
       <w>prenom</w>
       <w>priorite</w>
       <w>priorité</w>
+      <w>problème</w>
+      <w>professeur</w>
       <w>profil</w>
+      <w>précisez</w>
       <w>précédent</w>
       <w>prénom</w>
       <w>publier</w>
       <w>publiée</w>
       <w>rclab</w>
+      <w>refuser</w>
+      <w>refusé</w>
+      <w>rendez</w>
+      <w>rentrer</w>
       <w>responsable</w>
       <w>réinitialiser</w>
       <w>réinitialisée</w>
+      <w>réparation</w>
+      <w>réparations</w>
       <w>seront</w>
       <w>seul</w>
       <w>seules</w>
       <w>statut</w>
       <w>stockage</w>
+      <w>succès</w>
       <w>suivant</w>
       <w>supprimer</w>
       <w>supprimé</w>
@@ -103,18 +135,23 @@
       <w>supérieur</w>
       <w>tdemande</w>
       <w>tdemandes</w>
+      <w>teached</w>
+      <w>terminée</w>
       <w>trop</w>
       <w>téléphone</w>
       <w>unhistorise</w>
+      <w>userbundle</w>
       <w>utilisateur</w>
       <w>utilisateurs</w>
       <w>valide</w>
       <w>valider</w>
+      <w>validé</w>
       <w>vers</w>
       <w>veuillez</w>
       <w>voir</w>
       <w>votre</w>
       <w>vous</w>
+      <w>websitebundle</w>
       <w>wwww</w>
       <w>égal</w>
       <w>évènement</w>

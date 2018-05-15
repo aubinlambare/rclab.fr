@@ -33,9 +33,9 @@ class UserController extends Controller
 
         $users = $this->getDoctrine()->getManager()->getRepository('RCLABUserBundle:User')->findUsers($superAdmin);
 
-        return $this->render('@RCLABUser/User/users.html.twig', array(
+        return $this->render('@RCLABUser/User/users.html.twig', [
             'users' => $users,
-        ));
+        ]);
     }
 
     public function profileAction(Request $request)
@@ -53,9 +53,9 @@ class UserController extends Controller
         //$oldImageId = $user->getIdPhoto();
         //$user->setIdPhoto(null);
 
-        $form = $this->createForm(ProfileUpdateType::class, $user, array(
+        $form = $this->createForm(ProfileUpdateType::class, $user, [
             'function' => $function
-        ));
+        ]);
 
         $form->handleRequest($request);
 
@@ -108,11 +108,11 @@ class UserController extends Controller
         }
 
 
-        return $this->render('@RCLABUser/User/profile.html.twig', array(
+        return $this->render('@RCLABUser/User/profile.html.twig', [
             'form' => $form->createView(),
             'user' => $user,
             'user_photo' => $oldImage,
-        ));
+        ]);
     }
 
     public function resetPhotoAction($id)
@@ -153,17 +153,17 @@ class UserController extends Controller
 
         $userFunction = null == $user->getFonction() ? '' : $em->getRepository('RCLABWebsiteBundle:Fonction')->findOneBy(['id' => $user->getFonction()])->getFonction();
         $Listfunctions = $em->getRepository('RCLABWebsiteBundle:Fonction')->findAll();
-        $functions = array();
+        $functions = [];
         foreach ($Listfunctions as $function) {
             $code = $function->getFonction();
             $functions[$code] = $code;
         }
 
 
-        $roles = array(
+        $roles = [
             'utilisateur' => 'ROLE_USER',
             'modérateur' => 'ROLE_MODERATOR'
-        );
+        ];
         if ($this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
             $roles['administrateur'] = 'ROLE_ADMIN';
         }
@@ -173,18 +173,18 @@ class UserController extends Controller
         if ($user != $this->get('security.token_storage')->getToken()->getUser()) {
 
             $formBuilder
-                ->add('role', ChoiceType::class, array(
+                ->add('role', ChoiceType::class, [
                     'data' => $user->getRoles()[0],
                     'choices' => $roles,
-                ));
+                ]);
         }
         $form = $formBuilder
-            ->add('fonction', ChoiceType::class, array(
+            ->add('fonction', ChoiceType::class, [
                 'data' => $userFunction,
                 'placeholder' => 'Choisir une fonction',
                 'choices' => $functions,
                 'required' => false
-            ))
+            ])
             ->add('Valider', SubmitType::class)
             ->getForm();
 
@@ -218,12 +218,12 @@ class UserController extends Controller
         }
 
 
-        return $this->render('@RCLABUser/User/gestionUser.html.twig', array(
+        return $this->render('@RCLABUser/User/gestionUser.html.twig', [
             'user' => $user,
             'fonctions' => $functions,
             'roles' => $roles,
             'form' => $form->createView()
-        ));
+        ]);
 
 
     }

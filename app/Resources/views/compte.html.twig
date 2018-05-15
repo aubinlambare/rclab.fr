@@ -4,7 +4,10 @@
     <nav>
         <ul>
             <li><a href="{{ path('rclab_user_profile') }}">Mon Profil</a></li>
+            <li><a href="{{ path('rclab_website_course_history') }}">Historique</a></li>
             {% if is_granted('ROLE_MODERATOR') %}
+                <li><a href="{{ path('rclab_website_course_handle') }}">Gérer les cours</a></li>
+                <li><a href="{{ path('rclab_website_repair_handle') }}">Gérer les réparations</a></li>
                 <li><a href="{{ path('rclab_website_association_edit') }}">Informations de l'association</a></li>
             {% endif %}
             {% if is_granted('ROLE_ADMIN') %}

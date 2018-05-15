@@ -1,0 +1,22 @@
+{% extends "compte.html.twig" %}
+
+{% block content %}
+    <div>
+        <h3>Modifier le cours</h3>
+        <div>
+            {{ form_start(form) }}
+            {{ form_row(form.matiere) }}
+            {{ form_row(form.niveau) }}
+            {{ form_row(form.objet) }}
+            {{ form_row(form.description) }}
+
+            <p>Disponibilités du demandeur : {{ course.disponibiliteDemandeur }}</p>
+            {{ form_row(form.debut) }}
+            {{ form_row(form.duree) }}
+            {{ form_row(form.professeur) }}
+            <br />
+            {{ form_row(form.Valider) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

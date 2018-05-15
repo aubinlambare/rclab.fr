@@ -54,3 +54,7 @@ services:
   #  RCLAB\WebsiteBundle\Entity\Image:
    #     arguments:
     #        $uploadsDirectory: '%image_directory%'
+
+    swiftmailer.mailer.default.transport:
+            class:     Swift_SendmailTransport
+            arguments: ['/usr/sbin/sendmail -t']

@@ -16,7 +16,7 @@ class Demande
     /**
      * @var int
      *
-     * @ORM\Column(name="idDemande", type="integer")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -53,6 +53,20 @@ class Demande
     /**
      * @var \DateTime
      *
+     * @ORM\Column(name="date_demande", type="datetime")
+     */
+    private $dateDemande;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="duree", type="time", nullable=true)
+     */
+    private $duree;
+
+    /**
+     * @var \DateTime
+     *
      * @ORM\Column(name="Fin", type="datetime", nullable=true)
      */
     private $fin;
@@ -60,17 +74,24 @@ class Demande
     /**
      * @var bool
      *
-     * @ORM\Column(name="GroupeEvent", type="boolean")
+     * @ORM\Column(name="GroupeEvent", type="boolean", nullable=true)
      */
     private $groupeEvent;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="autorise", type="boolean")
+     * @ORM\Column(name="autorise", type="boolean", nullable=true)
      */
     private $autorise;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="etat", type="string", length=255)
+     */
+    private $etat;
 
     /**
      * @var T_Demande
@@ -100,7 +121,7 @@ class Demande
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="RCLAB\UserBundle\Entity\User")
-     * @ORM\JoinColumn(name="demandeur", referencedColumnName="id")
+     * @ORM\JoinColumn(name="idDemandeur", referencedColumnName="id")
      *
      */
     private $demandeur;
@@ -109,9 +130,23 @@ class Demande
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="RCLAB\UserBundle\Entity\User")
-     * @ORM\JoinColumn(name="responsable", referencedColumnName="id")
+     * @ORM\JoinColumn(name="idResponsable", referencedColumnName="id")
      */
     private $responsable;
+
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="RCLAB\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="idProfesseur", referencedColumnName="id")
+     */
+    private $professeur;
+
+
+    /**
+     * @ORM\ManyToMany(targetEntity="RCLAB\UserBundle\Entity\User")
+     */
+    private $inscrits;
 
     /**
      * Get id
@@ -298,7 +333,7 @@ class Demande
      *
      * @return Demande
      */
-    public function setTdemande(\RCLAB\WebsiteBundle\Entity\T_Demande $tdemande = null)
+    public function setTdemande(T_Demande $tdemande = null)
     {
         $this->tdemande = $tdemande;
 
@@ -322,7 +357,7 @@ class Demande
      *
      * @return Demande
      */
-    public function setMatiere(\RCLAB\WebsiteBundle\Entity\Matiere $matiere = null)
+    public function setMatiere(Matiere $matiere = null)
     {
         $this->matiere = $matiere;
 
@@ -346,7 +381,7 @@ class Demande
      *
      * @return Demande
      */
-    public function setNiveau(\RCLAB\WebsiteBundle\Entity\Niveau $niveau = null)
+    public function setNiveau(Niveau $niveau = null)
     {
         $this->niveau = $niveau;
 
@@ -371,7 +406,7 @@ class Demande
      *
      * @return Demande
      */
-    public function setDemandeur(\RCLAB\UserBundle\Entity\User $demandeur = null)
+    public function setDemandeur(User $demandeur = null)
     {
         $this->demandeur = $demandeur;
 
@@ -395,7 +430,7 @@ class Demande
      *
      * @return Demande
      */
-    public function setResponsable(\RCLAB\UserBundle\Entity\User $responsable = null)
+    public function setResponsable(User $responsable = null)
     {
         $this->responsable = $responsable;
 
@@ -410,5 +445,143 @@ class Demande
     public function getResponsable()
     {
         return $this->responsable;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->inscrits = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->dateDemande = new \DateTime('NOW');
+    }
+
+    /**
+     * Set professeur
+     *
+     * @param \RCLAB\UserBundle\Entity\User $professeur
+     *
+     * @return Demande
+     */
+    public function setProfesseur(User $professeur = null)
+    {
+        $this->professeur = $professeur;
+
+        return $this;
+    }
+
+    /**
+     * Get professeur
+     *
+     * @return \RCLAB\UserBundle\Entity\User
+     */
+    public function getProfesseur()
+    {
+        return $this->professeur;
+    }
+
+    /**
+     * Add inscrit
+     *
+     * @param \RCLAB\UserBundle\Entity\User $inscrit
+     *
+     * @return Demande
+     */
+    public function addInscrit(User $inscrit)
+    {
+        $this->inscrits[] = $inscrit;
+
+        return $this;
+    }
+
+    /**
+     * Remove inscrit
+     *
+     * @param \RCLAB\UserBundle\Entity\User $inscrit
+     */
+    public function removeInscrit(User $inscrit)
+    {
+        $this->inscrits->removeElement($inscrit);
+    }
+
+    /**
+     * Get inscrits
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getInscrits()
+    {
+        return $this->inscrits;
+    }
+
+    /**
+     * Set etat
+     *
+     * @param string $etat
+     *
+     * @return Demande
+     */
+    public function setEtat($etat)
+    {
+        $this->etat = $etat;
+
+        return $this;
+    }
+
+    /**
+     * Get etat
+     *
+     * @return string
+     */
+    public function getEtat()
+    {
+        return $this->etat;
+    }
+
+    /**
+     * Set dateDemande
+     *
+     * @param \DateTime $dateDemande
+     *
+     * @return Demande
+     */
+    public function setDateDemande($dateDemande)
+    {
+        $this->dateDemande = $dateDemande;
+
+        return $this;
+    }
+
+    /**
+     * Get dateDemande
+     *
+     * @return \DateTime
+     */
+    public function getDateDemande()
+    {
+        return $this->dateDemande;
+    }
+
+    /**
+     * Set duree
+     *
+     * @param \DateTime $duree
+     *
+     * @return Demande
+     */
+    public function setDuree($duree)
+    {
+        $this->duree = $duree;
+
+        return $this;
+    }
+
+    /**
+     * Get duree
+     *
+     * @return \DateTime
+     */
+    public function getDuree()
+    {
+        return $this->duree;
     }
 }

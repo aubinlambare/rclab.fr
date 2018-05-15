@@ -11,7 +11,7 @@ body{
 @media (min-width: 768px) and (max-width: 991px) {
     .header-fixe > li > a {
         margin-left: 20px !important;
-        padding-right: 0px !important;
+        padding-right: 0 !important;
         margin-right: -40px !important;
     }
     .header-user > li > a {
@@ -26,12 +26,12 @@ body{
     .header-user > li > a {
         margin-left: -20px !important;
         padding-right: 40px;
-        margin-top: 0px !important;
+        margin-top: 0 !important;
     }
 }
 @media (min-width: 768px) {
     .header .dropdown a > span {
-        margin: 11px 0px !important;
+        margin: 11px 0 !important;
     }
 }
 @media (min-width: 1200px) {
@@ -40,7 +40,7 @@ body{
         margin-left: -15px !important;
     }
     .header-user > li > a {
-        margin-top: 0px !important;
+        margin-top: 0 !important;
     }
 }
 @media (max-width: 767px) {
@@ -53,7 +53,7 @@ body{
     }
 }
 .navbar-header > a > img{
-    padding-left: 0px;
+    padding-left: 0;
     margin-left: -20px;
 }
 
@@ -109,7 +109,7 @@ body{
 
 footer{
     background-color:#222222;
-    padding: 30px 0px;
+    padding: 30px 0;
 }
 
 footer ul{

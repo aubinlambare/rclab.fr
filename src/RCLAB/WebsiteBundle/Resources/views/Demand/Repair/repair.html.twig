@@ -1,0 +1,69 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+
+    <a href="{{ path('rclab_website_repair_request') }}">Demander une réparation</a>
+
+
+    {% if toMake_repairs is defined %}
+        <div>
+            <h3>Les réparations que je gère</h3>
+
+            <table>
+                <tr>
+                    <th>Objet</th>
+                    <th>Date et heure de la demande</th>
+                    <th>Date et heure de rendez-vous</th>
+                    <th>Voir plus</th>
+                    <th>Etat de la réparation</th>
+                    <th>Gérer</th>
+                </tr>
+                {% for repair in toMake_repairs %}
+                    <tr>
+                        <td>{{ repair.objet }}</td>
+                        <td>{{ repair.etat == 'en attente' ? repair.debut|date('d/m/Y à H:i') }}</td>
+                        <td>{{ repair.demandeur.firstName }} {{ repair.demandeur.lastName }}</td>
+                        <td>{{ repair.debut|date('d/m/Y à H:i') }}</td>
+                        <td><a href="{{ path('rclab_website_repair_detail', {'id': repair.id}) }}">Voir plus</a></td>
+                        <td>{{ repair.etat }}</td>
+                        <td><a href="{{ path('rclab_website_repair_edit', {'id': repair.id}) }}">Gérer</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    {% endif %}
+
+    <div>
+        <h3>Mes réparations</h3>
+
+        {% if my_repairs is empty %}
+            <p>Vous n'avez pas encore demandé de réparation</p>
+        {% else %}
+            <table>
+                <tr>
+                    <th>Objet</th>
+                    <th>Date et heure de la demande</th>
+                    <th>Responsable</th>
+                    <th>Date et heure de rendez-vous</th>
+                    <th>Voir plus</th>
+                    <th>Etat de la réparation</th>
+                </tr>
+                {% for repair in my_repairs %}
+                    <tr>
+                        <td>{{ repair.objet }}</td>
+                        <td>{{ repair.dateDemande|date('d/m/Y à H:i') }}</td>
+                        <td>
+                            {% if repair.responsable is not null %}
+                                {{ repair.responsable.firstName }} {{ repair.responsable.lastName }}
+                            {% endif %}
+                        </td>
+                        <td>{{ repair.debut|date('d/m/Y à H:i') }}</td>
+                        <td><a href="{{ path('rclab_website_repair_detail', {'id': repair.id}) }}">Voir plus</a></td>
+                        <td>{{ repair.etat }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+    </div>
+{% endblock %}

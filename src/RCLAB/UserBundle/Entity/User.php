@@ -80,12 +80,25 @@ class User extends BaseUser
     protected $fonction;
 
     /**
-     * Set lastName
+     * @var string
      *
-     * @param string $lastName
-     *
-     * @return User
+     * @ORM\Column(unique=true)
+     * @Assert\NotBlank(message = "L'email est obligatoire")
      */
+    protected $email;
+
+    /**
+     * Encrypted password. Must be persisted.
+     *
+     * @var string
+     *
+     */
+    protected $password;
+
+    public function __toString()
+    {
+        return $this->firstName .' '. $this->lastName;
+    }
 
     /**
      * Set lastName

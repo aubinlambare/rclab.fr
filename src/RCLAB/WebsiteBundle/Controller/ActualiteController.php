@@ -14,6 +14,7 @@ use RCLAB\WebsiteBundle\Entity\News;
 use RCLAB\WebsiteBundle\Form\EventType;
 use RCLAB\WebsiteBundle\Form\NewsType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 
 class ActualiteController extends Controller
@@ -114,7 +115,7 @@ class ActualiteController extends Controller
 
         $listEvents = $repository->findBy(
             [],
-            array('finEvent' => 'desc'),
+            ['finEvent' => 'desc'],
             10,
             $offset
         );
@@ -128,11 +129,11 @@ class ActualiteController extends Controller
 
         $isSuivant = $suivant ? true : null;
 
-        return $this->render('@RCLABWebsite/Actualite/Events/events.html.twig', array(
+        return $this->render('@RCLABWebsite/Actualite/Events/events.html.twig', [
             'page' => $page,
             'listEvents' => $listEvents,
             'isSuivant' => $isSuivant,
-        ));
+        ]);
     }
 
     /**
@@ -147,7 +148,7 @@ class ActualiteController extends Controller
 
         $listNews = $repository->findBy(
             [],
-            array('debutPublication' => 'desc'),
+            ['debutPublication' => 'desc'],
             10,
             $offset
         );
@@ -161,11 +162,11 @@ class ActualiteController extends Controller
 
         $isSuivant = $suivant ? true : null;
 
-        return $this->render('@RCLABWebsite/Actualite/News/news.html.twig', array(
+        return $this->render('@RCLABWebsite/Actualite/News/news.html.twig', [
             'page' => $page,
             'listNews' => $listNews,
             'isSuivant' => $isSuivant,
-        ));
+        ]);
     }
 
     /**
@@ -187,9 +188,9 @@ class ActualiteController extends Controller
         }
 
         return $this
-            ->render('@RCLABWebsite/Actualite/News/add_news.html.twig', array(
+            ->render('@RCLABWebsite/Actualite/News/add_news.html.twig', [
                 'form' => $form->createView(),
-            ));
+            ]);
     }
 
     /**
@@ -211,9 +212,9 @@ class ActualiteController extends Controller
         }
 
         return $this
-            ->render('@RCLABWebsite/Actualite/Events/add_event.html.twig', array(
+            ->render('@RCLABWebsite/Actualite/Events/add_event.html.twig', [
                 'form' => $form->createView(),
-            ));
+            ]);
     }
 
     /**
@@ -282,7 +283,7 @@ class ActualiteController extends Controller
 
         $news = $em->getRepository('RCLABWebsiteBundle:News')->find($id);
 
-        return $this->render('@RCLABWebsite/Actualite/News/detail_news.html.twig', array('news' => $news));
+        return $this->render('@RCLABWebsite/Actualite/News/detail_news.html.twig', ['news' => $news]);
     }
 
     public function eventDetailAction($id)
@@ -291,10 +292,10 @@ class ActualiteController extends Controller
 
         $event = $em->getRepository('RCLABWebsiteBundle:Event')->find($id);
 
-        return $this->render('@RCLABWebsite/Actualite/Events/detail_event.html.twig', array(
+        return $this->render('@RCLABWebsite/Actualite/Events/detail_event.html.twig', [
             'event' => $event,
             'logo_asso' => $this->getDoctrine()->getManager()->getRepository('RCLABWebsiteBundle:Association')->findOneBy(array())->getLogoAsso()
-        ));
+        ]);
     }
 
     /**
@@ -319,10 +320,10 @@ class ActualiteController extends Controller
             return $this->redirectToRoute('rclab_website_actualite_news');
         }
 
-        return $this->render('@RCLABWebsite/Actualite/News/edit_news.html.twig', array(
+        return $this->render('@RCLABWebsite/Actualite/News/edit_news.html.twig', [
             'form' => $form->createView(),
             'news' => $news,
-        ));
+        ]);
     }
 
     /**
@@ -353,9 +354,9 @@ class ActualiteController extends Controller
             }
         }
 
-        return $this->render('@RCLABWebsite/Actualite/Events/edit_event.html.twig', array(
+        return $this->render('@RCLABWebsite/Actualite/Events/edit_event.html.twig', [
             'form' => $form->createView(),
             'event' => $event,
-        ));
+        ]);
     }
 }

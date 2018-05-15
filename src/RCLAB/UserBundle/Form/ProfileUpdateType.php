@@ -21,46 +21,46 @@ class ProfileUpdateType extends AbstractType
         $this->function = $options['function'];
 
         $builder
-            ->add('facebook', TextType::class, array(
+            ->add('facebook', TextType::class, [
                 'label' => 'Facebook',
                 'required' => false
-            ))
-            ->add('telephone', TelType::class, array(
+            ])
+            ->add('telephone', TelType::class, [
                 'label' => 'Téléphone',
                 'required' => false
-            ))
-            ->add('email', EmailType::class, array(
+            ])
+            ->add('email', EmailType::class, [
                 'label' => 'Adresse email',
                 'translation_domain' => 'FOSUserBundle'
-            ))
-            ->add('plainPassword', RepeatedType::class, array(
+            ])
+            ->add('plainPassword', RepeatedType::class, [
                 'required' => false,
                 'type' => PasswordType::class,
-                'options' => array(
+                'options' => [
                     'translation_domain' => 'FOSUserBundle',
-                    'attr' => array(
+                    'attr' => [
                         'autocomplete' => 'new-password',
-                    ),
-                ),
-                'first_options' => array('label' => 'form.password'),
-                'second_options' => array('label' => 'form.password_confirmation'),
+                    ],
+                ],
+                'first_options' => ['label' => 'form.password'],
+                'second_options' => ['label' => 'form.password_confirmation'],
                 'invalid_message' => 'fos_user.password.mismatch',
-            ));
+            ]);
 
         if (!is_null($this->function)) {
-            $builder->add('photo', FileType::class, array(
+            $builder->add('photo', FileType::class, [
                 'label' => 'Photo',
                 'required' => false,
-            ));
+            ]);
         }
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => 'RCLAB\UserBundle\Entity\User',
             'function' => null
-        ));
+        ]);
     }
 
     public function getBlockPrefix()
