@@ -109,14 +109,13 @@ class ActualiteController extends Controller
      */
     public function eventsAction($page)
     {
-        $offset = $page == 1 ? null : ($page - 1) * 10;
+        $offset = $page == 1 ? null : ($page - 1) * 12;
 
         $repository = $this->getDoctrine()->getManager()->getRepository('RCLABWebsiteBundle:Event');
 
         $listEvents = $repository->findBy(
-            [],
-            ['finEvent' => 'desc'],
-            10,
+            array('finEvent' => 'desc'),
+            12,
             $offset
         );
 
@@ -124,7 +123,7 @@ class ActualiteController extends Controller
             [],
             [],
             1,
-            ($offset + 10)
+            ($offset + 12)
         );
 
         $isSuivant = $suivant ? true : null;
