@@ -82,8 +82,7 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(unique=true)
-     * @Assert\NotBlank(message = "L'email est obligatoire")
+
      */
     protected $email;
 

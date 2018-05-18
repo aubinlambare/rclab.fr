@@ -25,7 +25,7 @@ body {
 }
 
 #remember_me{
-    margin: 6px auto 0px;
+    margin: 6px auto 0;
 }
 .checkbox label {
     color: white;

@@ -5,38 +5,6 @@
 
     <a href="{{ path('rclab_website_course_request') }}">Demander un cours</a>
 
-
-    {% if toTeach_courses is not empty %}
-        <div>
-            <h3>Les cours que j'enseigne</h3>
-
-            <table>
-                <tr>
-                    <th>Matière</th>
-                    <th>Niveau</th>
-                    <th>Objet</th>
-                    <th>Date et heure du cours</th>
-                    <th>Responsable</th>
-                    <th>Voir plus</th>
-                </tr>
-                {% for course in toTeach_courses %}
-                    <tr>
-                        <td>{{ course.matiere.matiere }}</td>
-                        <td>{{ course.niveau is not null ? course.niveau.niveau }}</td>
-                        <td>{{ course.objet }}</td>
-                        <td>{{ course.debut|date('d/m/Y à H:i') }}</td>
-                        <td>
-                            {% if course.responsable is not null %}
-                                {{ course.responsable.firstName }} {{ course.responsable.lastName }}
-                            {% endif %}
-                        </td>
-                        <td><a href="{{ path('rclab_website_course_detail', {'id': course.id}) }}">Voir plus</a></td>
-                    </tr>
-                {% endfor %}
-            </table>
-        </div>
-    {% endif %}
-
     <div>
         <h3>Mes demandes de cours</h3>
 
@@ -62,7 +30,7 @@
         <h3>Mes cours</h3>
 
         {% if my_courses is empty %}
-            <p>Vous n'êtes inscrit à aucun cours</p>
+            <p>Vous n'avez pas encore de cours</p>
         {% else %}
             <table>
                 <tr>
@@ -86,8 +54,12 @@
                             {% endif %}
                         </td>
                         <td><a href="{{ path('rclab_website_course_detail', {'id': course.id}) }}">Voir plus</a></td>
-                        <td><a href="{{ path('rclab_website_course_unsubscribe', {'id': course.id}) }}">Se
-                                désinscrire</a></td>
+                        <td>
+                            {% if course.professeur !=  app.user %}
+                            <a href="{{ path('rclab_website_course_unsubscribe', {'id': course.id}) }}">Se
+                                désinscrire</a>
+                            {% endif %}
+                        </td>
                     </tr>
                 {% endfor %}
             </table>

@@ -15,8 +15,7 @@
 
     {% stylesheets
         '@RCLABWebsiteBundle/Resources/public/css/base.css'
-        '@RCLABWebsiteBundle/Resources/public/css/actualite.css'
-    %}
+        '@RCLABWebsiteBundle/Resources/public/css/actualite.css' %}
         <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
     {% endstylesheets %}
 
@@ -35,19 +34,27 @@
                 </div>
                 <div class="header col-lg-10 col-md-11 col-sm-11 col-xs-6" id="header-bar">
                     <ul class="nav navbar-nav header-fixe">
-                        <li class="navbar-text hidden-xs"><a href="{{ path('rclab_website_association') }}">L'association</a></li>
-                        <li class="navbar-text hidden-xs"><a href="{{ path('rclab_website_actualite') }}">Actualités</a></li>
-                        <li class="navbar-text hidden-xs"><a href="{{ path('rclab_website_repair') }}">Réparations</a></li>
+                        <li class="navbar-text hidden-xs"><a href="{{ path('rclab_website_association') }}">L'association</a>
+                        </li>
+                        <li class="navbar-text hidden-xs"><a href="{{ path('rclab_website_actualite') }}">Actualités</a>
+                        </li>
+                        <li class="navbar-text hidden-xs"><a
+                                    href="{{ path('rclab_website_repair') }}">Réparations</a></li>
                         <li class="navbar-text hidden-xs"><a href="{{ path('rclab_website_course') }}">Cours</a></li>
-                        <li class="navbar-text hidden-xs"><a href="{{ path('rclab_website_contact') }}">Contacts</a></li>
+                        <li class="navbar-text hidden-xs"><a href="{{ path('rclab_website_contact') }}">Contacts</a>
+                        </li>
                     </ul>
                     <ul class="nav navbar-right header-user">
                         {% if is_granted("IS_AUTHENTICATED_FULLY") %}
-                            <li class="navbar-text hidden-xs hidden-sm"><a href="{{ path('rclab_user_profile') }}">Compte</a></li>
-                            <li class="navbar-text hidden-xs hidden-sm"><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+                            <li class="navbar-text hidden-xs hidden-sm"><a href="{{ path('rclab_user_profile') }}">Compte</a>
+                            </li>
+                            <li class="navbar-text hidden-xs hidden-sm"><a
+                                        href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
                         {% else %}
-                            <li class="navbar-text hidden-xs hidden-sm"><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
-                            <li class="navbar-text hidden-xs hidden-sm"><a href="{{ path('rclab_user_registration_register') }}">S'inscrire</a></li>
+                            <li class="navbar-text hidden-xs hidden-sm"><a href="{{ path('fos_user_security_login') }}">Connexion</a>
+                            </li>
+                            <li class="navbar-text hidden-xs hidden-sm"><a
+                                        href="{{ path('rclab_user_registration_register') }}">S'inscrire</a></li>
                         {% endif %}
                         <li class="dropdown hidden-lg hidden-md pull-right">
                             <a class="dropdown-toggle pull-right" id="dropdownMenuUser" data-toggle="dropdown"
@@ -55,23 +62,30 @@
                                 <span class="glyphicon glyphicon-menu-hamburger"></span>
                             </a>
                             <ul class="dropdown-menu menu-user" aria-labelledby="dropdownMenuUser">
-                                <li class="navbar-text hidden-sm item-header"><a href="{{ path('rclab_website_association') }}">L'association</a>
+                                <li class="navbar-text hidden-sm item-header"><a
+                                            href="{{ path('rclab_website_association') }}">L'association</a>
                                 </li>
                                 <li class="navbar-text hidden-sm item-header"><a
-                                        href="{{ path('rclab_website_actualite') }}">Actualités</a></li>
+                                            href="{{ path('rclab_website_actualite') }}">Actualités</a></li>
                                 <li class="navbar-text hidden-sm item-header"><a
-                                        href="{{ path('rclab_website_repair') }}">Réparations</a></li>
-                                <li class="navbar-text hidden-sm item-header"><a href="{{ path('rclab_website_course') }}">Cours</a>
+                                            href="{{ path('rclab_website_repair') }}">Réparations</a></li>
+                                <li class="navbar-text hidden-sm item-header"><a
+                                            href="{{ path('rclab_website_course') }}">Cours</a>
                                 </li>
                                 <li class="navbar-text hidden-sm item-header"><a
-                                        href="{{ path('rclab_website_contact') }}">Contacts</a></li>
+                                            href="{{ path('rclab_website_contact') }}">Contacts</a></li>
                                 <li role="separator" class="divider hidden-sm"></li>
                                 {% if is_granted("IS_AUTHENTICATED_FULLY") %}
-                                    <li class="navbar-text item-user"><a href="{{ path('rclab_user_profile') }}">Compte</a></li>
-                                    <li class="navbar-text item-user"><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+                                    <li class="navbar-text item-user"><a
+                                                href="{{ path('rclab_user_profile') }}">Compte</a></li>
+                                    <li class="navbar-text item-user"><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+                                    </li>
                                 {% else %}
-                                    <li class="navbar-text item-user"><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
-                                    <li class="navbar-text item-user"><a href="{{ path('rclab_user_registration_register') }}">S'inscrire</a></li>
+                                    <li class="navbar-text item-user"><a href="{{ path('fos_user_security_login') }}">Connexion</a>
+                                    </li>
+                                    <li class="navbar-text item-user"><a
+                                                href="{{ path('rclab_user_registration_register') }}">S'inscrire</a>
+                                    </li>
                                 {% endif %}
                             </ul>
                         </li>

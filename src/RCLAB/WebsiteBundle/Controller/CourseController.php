@@ -23,14 +23,11 @@ class CourseController extends Controller
 
         $my_course = $repository->findMyCourses($user);
 
-        $toTeach_courses = $repository->findToTeachCourses($user);
+        $all_courses = $repository->findAvailableCourses($user);
 
-        $all_courses = $repository->findAllCourses();
-
-        $available_courses = [];
+        $available_courses = array();
 
         foreach ($all_courses as $course) {
-
 
             $inscrits = $course->getInscrits();
 
@@ -40,22 +37,22 @@ class CourseController extends Controller
 
             foreach ($inscrits as $inscrit) {
 
-                if($inscrit != $user) $token++;
+                if ($inscrit != $user) $token++;
             }
 
-            if($token == $nbInscrits) {
+            if ($token == $nbInscrits) {
                 array_push($available_courses, $course);
             }
         }
 
         $my_demands = $repository->findMyCoursesDemandsNotHistory($user);
 
-        return $this->render('@RCLABWebsite/Demand/Course/course.html.twig', [
+
+        return $this->render('@RCLABWebsite/Demand/Course/course.html.twig', array(
             'my_courses' => $my_course,
-            'toTeach_courses' => $toTeach_courses,
             'available_courses' => $available_courses,
             'my_demands' => $my_demands,
-        ]);
+        ));
     }
 
 
@@ -76,9 +73,9 @@ class CourseController extends Controller
             $user = $this->get('security.token_storage')->getToken()->getUser();
             $demande->setDemandeur($user);
 
-            $tdemande = $this->getDoctrine()->getRepository('RCLABWebsiteBundle:T_Demande')->findOneBy(['typeDemande' => 'cours']);
-            $demande->setTdemande($tdemande);
+            $tdemande = $this->getDoctrine()->getRepository('RCLABWebsiteBundle:T_Demande')->findOneBy(array('typeDemande' => 'cours'));
 
+            $demande->setTdemande($tdemande);
             $demande->setEtat('demande');
 
             $em->persist($demande);
@@ -89,18 +86,20 @@ class CourseController extends Controller
             return $this->redirectToRoute('rclab_website_course');
         }
 
-        return $this->render('RCLABWebsiteBundle:Demand/Course:request_course.html.twig', [
+        return $this->render('RCLABWebsiteBundle:Demand/Course:request_course.html.twig', array(
             'form' => $form->createView(),
-        ]);
+        ));
     }
 
-    private function editCourse(Request $request, Demande $course)
+    public function editAction(Request $request, $id)
     {
         $this->denyAccessUnlessGranted('ROLE_MODERATOR', null, 'Impossible d\'accéder à cette page');
 
-        if(!$course) {
+        $course = $this->getDoctrine()->getRepository('RCLABWebsiteBundle:Demande')->find($id);
 
-            $this->addFlash('warning', 'Impossible de gérer cette demande de cours');
+        if (!$course) {
+
+            $this->addFlash('warning', 'Impossible de valider cette demande de cours');
             return $this->redirectToRoute('rclab_website_course_handle');
         }
 
@@ -110,14 +109,7 @@ class CourseController extends Controller
 
         $form->handleRequest($request);
 
-        return $form;
-    }
-
-    public function editAction(Request $request, Demande $course)
-    {
-        $form = $this->editCourse($request, $course);
-
-        if($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
 
             $user = $this->get('security.token_storage')->getToken()->getUser();
 
@@ -131,47 +123,28 @@ class CourseController extends Controller
             return $this->redirectToRoute('rclab_website_course_handle');
         }
 
-        return $this->render('@RCLABWebsite/Demand/Course/edit_course.html.twig', [
-           'form' => $form->createView(),
-            'course' => $course,
-        ]);
-    }
-
-    public function validAction(Request $request, Demande $course)
-    {
-        $form = $this->editCourse($request, $course);
-
-        if($form->isSubmitted() && $form->isValid()) {
-
-            $user = $this->get('security.token_storage')->getToken()->getUser();
-
-            $course->setResponsable($user);
-            $course->setEtat('validé');
-            $course->addInscrit($course->getDemandeur());
-
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($course);
-            $em->flush();
-
-            $this->addFlash('success', 'Cours validé avec succès');
-            return $this->redirectToRoute('rclab_website_course_handle');
-        }
-
-        return $this->render('@RCLABWebsite/Demand/Course/edit_course.html.twig', [
+        return $this->render('@RCLABWebsite/Demand/Course/edit_course.html.twig', array(
             'form' => $form->createView(),
             'course' => $course,
-        ]);
+        ));
     }
 
-    public function handleAction()
+    public function handleAction($page)
     {
         $this->denyAccessUnlessGranted('ROLE_MODERATOR', null, 'Impossible d\'accéder à cette page');
 
-        $toHandle_courses = $this->getDoctrine()->getRepository('RCLABWebsiteBundle:Demande')->findCoursesToHandle();
+        $offset = $page == 1 ? null : ($page - 1) * 10;
+
+        $repository = $this->getDoctrine()->getRepository('RCLABWebsiteBundle:Demande');
+
+        $toHandle_courses = $repository->findCoursesToHandle($offset, 10);
+
+        $isSuivant = $repository->findCoursesToHandle($offset + 10, 1) ? true : null;
 
         return $this->render('RCLABWebsiteBundle:Demand/Course:handle_course.html.twig', [
-           'toHandle_courses' => $toHandle_courses,
+            'toHandle_courses' => $toHandle_courses,
+            'page' => $page,
+            'isSuivant' => $isSuivant,
         ]);
     }
 
@@ -181,7 +154,7 @@ class CourseController extends Controller
 
         $course = $this->getDoctrine()->getRepository('RCLABWebsiteBundle:Demande')->find($id);
 
-        if(!$course) {
+        if (!$course) {
 
             $this->addFlash('warning', 'Impossible de refuser cette demande');
             return $this->redirectToRoute('rclab_website_course_handle');
@@ -201,7 +174,47 @@ class CourseController extends Controller
         return $this->redirectToRoute('rclab_website_course_handle');
     }
 
-    public function historyAction()
+    public function validAction($id, Request $request)
+    {
+        $this->denyAccessUnlessGranted('ROLE_MODERATOR', null, 'Impossible d\'accéder à cette page');
+
+        $course = $this->getDoctrine()->getRepository('RCLABWebsiteBundle:Demande')->find($id);
+
+        if (!$course) {
+
+            $this->addFlash('warning', 'Impossible de valider cette demande de cours');
+            return $this->redirectToRoute('rclab_website_course_handle');
+        }
+
+        $form = $this->createForm(EditCourseType::class, $course, array(
+            'course' => $course,
+        ));
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $user = $this->get('security.token_storage')->getToken()->getUser();
+
+            $course->setResponsable($user);
+            $course->setEtat('validé');
+            $course->addInscrit($course->getDemandeur());
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($course);
+            $em->flush();
+
+            $this->addFlash('success', 'Cours validé avec succès');
+            return $this->redirectToRoute('rclab_website_course_handle');
+        }
+
+        return $this->render('@RCLABWebsite/Demand/Course/edit_course.html.twig', array(
+            'form' => $form->createView(),
+            'course' => $course,
+        ));
+    }
+
+    public function myHistoryAction($page)
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY', null, 'Impossible d\'accéder à cette page');
 
@@ -209,26 +222,35 @@ class CourseController extends Controller
 
         $repository = $this->getDoctrine()->getRepository('RCLABWebsiteBundle:Demande');
 
-        $my_courses = $repository->findMyCoursesHistory($user);
-        $my_demands = $repository->findMyCoursesDemandsHistory($user);
-        $options['my_courses'] = $my_courses;
-        $options['my_demands'] = $my_demands;
+        $offset = $page == 1 ? null : ($page - 1) * 10;
 
-        $teached_courses = $repository->findTeachedCourses($user);
-        if(!empty($teached_courses)) {
-            $options['teached_courses'] = $teached_courses;
-        }
+        $my_courses = $repository->findMyCoursesHistory($user, $offset, 10);
+        $isSuivant = $repository->findMyCoursesHistory($user, $offset + 10, 1) ? true : null;
+//        $my_demands = $repository->findMyCoursesDemandsHistory($user);
 
-        if($this->get('security.authorization_checker')->isGranted('ROLE_MODERATOR')) {
+        return $this->render('@RCLABWebsite/Demand/Course/user_history_course.html.twig', [
+//            'my_demands' => $my_demands,
+            'my_courses' => $my_courses,
+            'page' => $page,
+            'isSuivant' => $isSuivant,
+        ]);
+    }
 
-            $all_demands = $repository->findAllCoursesDemandsHistory();
-            $all_courses = $repository->findAllCoursesHistory();
-            $options['all_courses'] = $all_courses;
-            $options['all_demands'] = $all_demands;
-        }
+    public function allHistoryAction($page)
+    {
+        $this->denyAccessUnlessGranted('ROLE_MODERATOR', null, 'Impossible d\'accéder à cette page');
 
+        $offset = $page == 1 ? null : ($page - 1) * 10;
 
-        return $this->render('RCLABWebsiteBundle:Demand/Course:history_course.html.twig', $options);
+        $repository = $this->getDoctrine()->getRepository('RCLABWebsiteBundle:Demande');
+        $all_courses = $repository->findAllCoursesHistory($offset, 10);
+        $isSuivant = $repository->findAllCoursesHistory($offset + 10, 1) ? true : null;
+
+        return $this->render('@RCLABWebsite/Demand/Course/all_history_course.html.twig', [
+            'all_courses' => $all_courses,
+            'page' => $page,
+            'isSuivant' => $isSuivant,
+        ]);
     }
 
     public function subscribeAction($id)
@@ -237,7 +259,7 @@ class CourseController extends Controller
 
         $course = $this->getDoctrine()->getRepository('RCLABWebsiteBundle:Demande')->find($id);
 
-        if(!$course) {
+        if (!$course) {
             $this->addFlash('warning', 'Impossible de s\'inscrire à ce cours');
             return $this->redirectToRoute('rclab_website_course');
         }
@@ -259,7 +281,9 @@ class CourseController extends Controller
 
         $course = $this->getDoctrine()->getRepository('RCLABWebsiteBundle:Demande')->find($id);
 
-        if(!$course) {
+
+        if (!$course) {
+
             $this->addFlash('warning', 'Impossible de se désinscrire à ce cours');
             return $this->redirectToRoute('rclab_website_course');
         }
@@ -281,7 +305,8 @@ class CourseController extends Controller
 
         $course = $this->getDoctrine()->getRepository('RCLABWebsiteBundle:Demande')->find($id);
 
-        if(!$course) {
+        if (!$course) {
+
             $this->addFlash('warning', 'Impossible de voir ce cours en détail');
             return $this->redirectToRoute('rclab_website_course');
         }

@@ -24,12 +24,14 @@ class EditCourseType extends AbstractType
      */
     private $course;
 
+
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $this->course = $options['course'];
+
 
         $builder
             ->add('matiere', EntityType::class, [
@@ -53,12 +55,12 @@ class EditCourseType extends AbstractType
                     ->where("m.historique = 'false'");
                 }
             ])
-            ->add('objet', TextType::class, [
+            ->add('objet', TextType::class, array(
                 'label' => 'Objet du cours',
-            ])
-            ->add('description', TextareaType::class, [
+            ))
+            ->add('description', TextareaType::class, array(
                 'label' => 'Précisez votre demande',
-            ])
+            ))
             ->add('professeur', EntityType::class, [
                 'class' => User::class,
                 'data' => $this->course->getProfesseur(),

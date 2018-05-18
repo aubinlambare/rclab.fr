@@ -23,28 +23,27 @@ class EditRepairType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $this->etat = $options['etat'];
-
-        $choices = array(
+        $choices = [
           'en attente' => 'en attente',
             'en cours' => 'en cours',
-            'terminée' => 'terminée'
-        );
+            'terminée' => 'terminée',
+        ];
 
         if($this->etat == 'terminée') {
-            $options['historise'] = 'historise';
+            $choices['délivré'] = 'délivré';
         }
 
         $builder
-            ->add('objet', TextType::class, array(
+            ->add('objet', TextType::class, [
                 'label' => 'Objet de la réparation',
-            ))
-            ->add('description', TextareaType::class, array(
+            ])
+            ->add('description', TextareaType::class, [
                 'label' => 'Précisez votre problème',
-            ))
-            ->add('etat', ChoiceType::class, array(
+            ])
+            ->add('etat', ChoiceType::class, [
                 'label' => 'Etat de la réparation',
                 'choices' => $choices,
-            ))
+            ])
             ->add('responsable', EntityType::class, [
                 'label' => 'Responsable de cette réparation',
                 'class' => User::class,
@@ -56,10 +55,10 @@ class EditRepairType extends AbstractType
             ->add('Valider', SubmitType::class);
 
             if($this->etat == 'demande') {
-                $builder->add('debut', DateTimeType::class, array(
+                $builder->add('debut', DateTimeType::class, [
                    'label' => 'Date et heure du rendez-vous',
                     'data' => new \DateTime()
-                ));
+                ]);
             }
 
     }

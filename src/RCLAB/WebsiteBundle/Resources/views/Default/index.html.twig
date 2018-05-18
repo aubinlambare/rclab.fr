@@ -4,4 +4,10 @@
 
 	Body de la page d'accueil du site
 
+	{#<h4>Actualités en focus</h4>#}
+	{#{% for actu in list_actu_focus %}#}
+		{#{{ actu.event ? actu.event }}#}
+		{#{{ actu.news ? actu.news }}#}
+	{#{% endfor %}#}
+
 {% endblock %}

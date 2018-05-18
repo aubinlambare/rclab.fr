@@ -54,18 +54,22 @@ class DemandeRepository extends \Doctrine\ORM\EntityRepository
             ->orderBy('d.debut', 'desc');
     }
 
-    public function findAllCourses()
+    public function findAvailableCourses($user)
     {
         return $this
             ->allCoursesNotHistory()
+            ->andWhere('d.professeur != :USER')
+            ->setParameter('USER', $user)
             ->getQuery()
             ->getResult();
     }
 
-    public function findAllCoursesHistory()
+    public function findAllCoursesHistory($offset, $nbResults)
     {
         return $this
             ->allCoursesHistory()
+            ->setFirstResult($offset)
+            ->setMaxResults($nbResults)
             ->getQuery()
             ->getResult();
     }
@@ -74,60 +78,67 @@ class DemandeRepository extends \Doctrine\ORM\EntityRepository
     {
         return $this
             ->allCoursesNotHistory()
-            ->andWhere('inscrits = :USER')
+            ->andWhere('(inscrits = :USER) OR (professeur = :USER)')
             ->setParameter('USER', $user)
             ->getQuery()
             ->getResult();
     }
 
-    public function findMyCoursesHistory(User $user)
+    public function findMyCoursesHistory(User $user, $offset, $nbResults)
     {
         return $this
             ->allCoursesHistory()
-            ->andWhere('inscrits = :USER')
+            ->andWhere('(inscrits = :USER) OR (professeur = :USER)')
             ->setParameter('USER', $user)
+            ->setFirstResult($offset)
+            ->setMaxResults($nbResults)
             ->getQuery()
             ->getResult();
     }
 
-    public function findToTeachCourses(User $user)
-    {
-        return $this
-            ->allCoursesNotHistory()
-            ->andWhere('professeur = :USER')
-            ->setParameter('USER', $user)
-            ->getQuery()
-            ->getResult();
-    }
+//    public function findToTeachCourses(User $user)
+//    {
+//        return $this
+//            ->allCoursesNotHistory()
+//            ->andWhere('professeur = :USER')
+//            ->setParameter('USER', $user)
+//            ->getQuery()
+//            ->getResult();
+//    }
+//
+//    public function findTeachedCourses(User $user)
+//    {
+//        return $this
+//            ->allCoursesHistory()
+//            ->andWhere('professeur = :USER')
+//            ->setParameter('USER', $user)
+//            ->getQuery()
+//            ->getResult();
+//    }
 
-    public function findTeachedCourses(User $user)
-    {
-        return $this
-            ->allCoursesHistory()
-            ->andWhere('professeur = :USER')
-            ->setParameter('USER', $user)
-            ->getQuery()
-            ->getResult();
-    }
-
-    public function findCoursesToHandle()
+    public function findCoursesToHandle($offset, $nbResults)
     {
         return $this
             ->allDemandsCourses()
             ->andWhere("(d.etat = 'demande') OR ( (d.etat = 'validé') AND (d.debut > :NOW) )" )
             ->setParameter('NOW', new \DateTime('NOW'))
+            ->setFirstResult($offset)
+            ->setMaxResults($nbResults)
             ->orderBy('d.dateDemande', 'desc')
             ->getQuery()
             ->getResult();
     }
 
-    public function findMyCoursesDemandsHistory(User $user)
+    public function findMyCoursesDemandsHistory(User $user, $offset, $nbResults)
     {
         return $this
             ->allDemandsCourses()
             ->andWhere("d.etat != 'demande'")
             ->andWhere("d.demandeur = :USER")
             ->setParameter("USER", $user)
+            ->setFirstResult($offset)
+            ->setMaxResults($nbResults)
+            ->orderBy("d.dateDemande", 'desc')
             ->getQuery()
             ->getResult();
     }
@@ -143,14 +154,14 @@ class DemandeRepository extends \Doctrine\ORM\EntityRepository
             ->getResult();
     }
 
-    public function findAllCoursesDemandsHistory()
-    {
-        return $this
-            ->allDemandsCourses()
-            ->andWhere("d.etat != 'demande'")
-            ->getQuery()
-            ->getResult();
-    }
+//    public function findAllCoursesDemandsHistory()
+//    {
+//        return $this
+//            ->allDemandsCourses()
+//            ->andWhere("d.etat != 'demande'")
+//            ->getQuery()
+//            ->getResult();
+//    }
 
     /** Les réparations **/
 
@@ -172,68 +183,74 @@ class DemandeRepository extends \Doctrine\ORM\EntityRepository
     {
         return $this
             ->allRepairs()
-            ->andWhere("d.etat != 'terminée'");
+            ->andWhere("d.etat != 'délivré'");
     }
 
     private function allRepairsHistory()
     {
         return $this
             ->allRepairs()
-            ->andWhere("d.etat = 'terminée'");
+            ->andWhere("d.etat = 'délivré'");
     }
     public function findMyRepairsNotHistory(User $user)
     {
         return $this
             ->allRepairsNotHistory()
-            ->andWhere('demandeur = :USER')
+            ->andWhere('(demandeur = :USER) OR (responsable = :USER)')
             ->setParameter('USER', $user)
             ->getQuery()
             ->getResult();
     }
 
-    public function findMyRepairsHistory(User $user)
+    public function findMyRepairsHistory(User $user, $offset, $nbResults)
     {
         return $this
             ->allRepairsHistory()
-            ->andWhere('demandeur = :USER')
+            ->andWhere('(demandeur = :USER) OR (responsable = :USER)')
             ->setParameter('USER', $user)
+            ->setFirstResult($offset)
+            ->setMaxResults($nbResults)
             ->getQuery()
             ->getResult();
     }
 
-    public function findAllRepairsNotHistory()
+    public function findAllRepairsNotHistory($offset, $nbResults)
     {
         return $this
             ->allRepairsNotHistory()
+            ->setFirstResult($offset)
+            ->setMaxResults($nbResults)
             ->getQuery()
             ->getResult();
     }
 
-    public function findAllRepairsHistory()
+    public function findAllRepairsHistory($offset, $nbResults)
     {
         return $this
             ->allRepairsHistory()
+            ->setFirstResult($offset)
+            ->setMaxResults($nbResults)
             ->getQuery()
             ->getResult();
     }
 
-    public function findToMakeRepairs(User $user)
-    {
-        return $this
-            ->allRepairsNotHistory()
-            ->andWhere('responsable = :USER')
-            ->setParameter('USER', $user)
-            ->getQuery()
-            ->getResult();
-    }
-
-    public function findMadeRepairs(User $user)
-    {
-        return $this
-            ->allRepairsHistory()
-            ->andWhere('responsable = :USER')
-            ->setParameter('USER', $user)
-            ->getQuery()
-            ->getResult();
-    }
+//    public function findToMakeRepairs(User $user)
+//    {
+//        return $this
+//            ->allRepairsNotHistory()
+//            ->andWhere('responsable = :USER')
+//            ->setParameter('USER', $user)
+//            ->getQuery()
+//            ->getResult();
+//    }
+//
+//    public function findMadeRepairs(User $user)
+//    {
+//        return $this
+//            ->allRepairsHistory()
+//            ->andWhere('responsable = :USER')
+//            ->setParameter('USER', $user)
+//            ->getQuery()
+//            ->getResult();
+//    }
 }

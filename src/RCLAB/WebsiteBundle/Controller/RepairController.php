@@ -25,18 +25,11 @@ class RepairController extends Controller
 
         $user = $this->get('security.token_storage')->getToken()->getUser();
 
-        $options['my_repairs'] = $repository->findMyRepairsNotHistory($user);
+        $my_repairs = $repository->findMyRepairsNotHistory($user);
 
-        $toMake_repairs = $repository->findToMakeRepairs($user);
-        if(!empty($toMake_repairs)) {
-            $options['toMake_repairs'] = $toMake_repairs;
-        }
-
-        if($this->get('security.authorization_checker')->isGranted('ROLE_MODERATOR')) {
-            $options['all_repairs'] = $repository->findAllRepairsNotHistory();
-        }
-
-        return $this->render('@RCLABWebsite/Demand/Repair/repair.html.twig', $options);
+        return $this->render('@RCLABWebsite/Demand/Repair/repair.html.twig', [
+            'my_repairs' => $my_repairs,
+        ]);
     }
 
     public function requestAction(Request $request)
@@ -82,9 +75,9 @@ class RepairController extends Controller
             return $this->redirectToRoute('rclab_website_repair');
         }
 
-        $form = $this->createForm(EditRepairType::class, $repair, array(
+        $form = $this->createForm(EditRepairType::class, $repair, [
             'etat' => $repair->getEtat(),
-        ));
+        ]);
 
         $form->handleRequest($request);
 
@@ -95,45 +88,74 @@ class RepairController extends Controller
             $em->flush();
 
             $this->addFlash('success', 'La modification a été prise en compte');
-            return $this->redirectToRoute('rclab_website_repair');
+
+            return $this->redirect($request->getSession()->get('referer'));
+        } else {
+
+            $request->getSession()->set('referer', $request->headers->get('referer'));
         }
 
-        return $this->render('RCLABWebsiteBundle:Demand/Repair:edit_repair.html.twig', array(
+        return $this->render('RCLABWebsiteBundle:Demand/Repair:edit_repair.html.twig', [
             'form' => $form->createView(),
             'repair' => $repair,
-        ));
+        ]);
     }
 
-    public function handleAction()
+    public function handleAction($page)
     {
         $this->denyAccessUnlessGranted('ROLE_MODERATOR', null, 'Impossible d\'accéder à cette page');
 
-        $toHandle_repairs = $this->getDoctrine()->getRepository('RCLABWebsiteBundle:Demande')->findAllRepairsNotHistory();
-
-        return $this->render('@RCLABWebsite/Demand/Repair/handle_repair.html.twig', array(
-            'toHandle_repairs' => $toHandle_repairs,
-        ));
-    }
-
-    public function historyAction()
-    {
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY', null, 'Impossible d\'accéder à cette page');
+        $offset = $page == 1 ? null : ($page - 1) * 10;
 
         $repository = $this->getDoctrine()->getRepository('RCLABWebsiteBundle:Demande');
 
+        $toHandle_repairs = $repository->findAllRepairsNotHistory($offset, 10);
+
+        $isSuivant = $repository->findAllRepairsNotHistory($offset + 10, 1) ? true : null;
+
+        return $this->render('@RCLABWebsite/Demand/Repair/handle_repair.html.twig', [
+            'toHandle_repairs' => $toHandle_repairs,
+            'page' => $page,
+            'isSuivant' => $isSuivant,
+        ]);
+    }
+
+    public function myHistoryAction($page)
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY', null, 'Impossible d\'accéder à cette page');
+
         $user = $this->get('security.token_storage')->getToken()->getUser();
 
-        $made_repairs = $repository->findMadeRepairs($user);
-        $options['made_repairs'] = $made_repairs;
+        $offset = $page == 1 ? null : ($page - 1) * 10;
 
-        $options['my_repairs'] = $repository->findMyRepairsHistory($user);
+        $repository = $this->getDoctrine()->getRepository('RCLABWebsiteBundle:Demande');
 
-        if($this->get('security.authorization_checker')->isGranted('ROLE_MODERATOR')) {
+        $my_repairs = $repository->findMyRepairsHistory($user, $offset, 10);
+        $isSuivant = $repository->findMyRepairsHistory($user, $offset + 10, 1) ? true : null;
 
-            $options['all_repairs'] = $repository->findAllRepairsHistory();
-        }
+        return $this->render('@RCLABWebsite/Demand/Repair/user_history_repair.html.twig', [
+            'my_repairs' => $my_repairs,
+            'page' => $page,
+            'isSuivant' => $isSuivant,
+        ]);
+    }
 
-        return $this->render('RCLABWebsiteBundle:Demand/Repair:history_repair.html.twig', $options);
+    public function allHistoryAction($page)
+    {
+        $this->denyAccessUnlessGranted('ROLE_MODERATOR', null, 'Impossible d\'accéder à cette page');
+
+        $offset = $page == 1 ? null : ($page - 1) * 10;
+
+        $repository = $this->getDoctrine()->getRepository('RCLABWebsiteBundle:Demande');
+
+        $all_repairs = $repository->findAllRepairsHistory($offset, 10);
+        $isSuivant = $repository->findAllRepairsHistory($offset + 10, 1) ? true : null;
+
+        return $this->render('@RCLABWebsite/Demand/Repair/all_history_repair.html.twig', [
+            'all_repairs' => $all_repairs,
+            'page' => $page,
+            'isSuivant' => $isSuivant,
+        ]);
     }
 
     public function detailAction($id)

@@ -35,10 +35,10 @@ class EventType extends AbstractType
             ->add('debutPublication', DateTimeType::class)
             ->add('finPublication', DateTimeType::class)
             ->add('focus', CheckboxType::class)
-            ->add('prioriteFocus', IntegerType::class, array('attr' => array(
-                'min' => 1,
-                'max' => 10,
-            )))
+//            ->add('prioriteFocus', IntegerType::class, array('attr' => array(
+//                'min' => 1,
+//                'max' => 10,
+//            )))
             ->add('Valider', SubmitType::class);
     }
 

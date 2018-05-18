@@ -14,7 +14,6 @@ use RCLAB\WebsiteBundle\Entity\News;
 use RCLAB\WebsiteBundle\Form\EventType;
 use RCLAB\WebsiteBundle\Form\NewsType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 
 class ActualiteController extends Controller
@@ -109,13 +108,16 @@ class ActualiteController extends Controller
      */
     public function eventsAction($page)
     {
-        $offset = $page == 1 ? null : ($page - 1) * 12;
+        $nb_max_events = $this->isGranted('ROLE_MODERATOR') ? 11 : 12;
+
+        $offset = $page == 1 ? null : ($page - 1) * $nb_max_events;
 
         $repository = $this->getDoctrine()->getManager()->getRepository('RCLABWebsiteBundle:Event');
 
         $listEvents = $repository->findBy(
-            array('finEvent' => 'desc'),
-            12,
+            [],
+            ['finEvent' => 'desc'],
+            $nb_max_events,
             $offset
         );
 
@@ -123,7 +125,7 @@ class ActualiteController extends Controller
             [],
             [],
             1,
-            ($offset + 12)
+            ($offset + $nb_max_events)
         );
 
         $isSuivant = $suivant ? true : null;
@@ -141,14 +143,15 @@ class ActualiteController extends Controller
      */
     public function newsAction($page)
     {
-        $offset = $page == 1 ? null : ($page - 1) * 10;
+        $nb_max_news = 10;
+        $offset = $page == 1 ? null : ($page - 1) * $nb_max_news;
 
         $repository = $this->getDoctrine()->getManager()->getRepository('RCLABWebsiteBundle:News');
 
         $listNews = $repository->findBy(
             [],
             ['debutPublication' => 'desc'],
-            10,
+            $nb_max_news,
             $offset
         );
 
@@ -156,7 +159,7 @@ class ActualiteController extends Controller
             [],
             [],
             1,
-            ($offset + 10)
+            ($offset + $nb_max_news)
         );
 
         $isSuivant = $suivant ? true : null;

@@ -31,4 +31,15 @@
             </tr>
         {% endfor %}
     </table>
+
+    <div>
+        <p>pagination : </p>
+        {% if page > 1 %}
+            <a href="{{ path('rclab_website_repair_handle', { 'page': (page - 1) }) }}">précédent</a>
+        {% endif %}
+        {{ page }}
+        {% if isSuivant is not null %}
+            <a href="{{ path('rclab_website_repair_handle', {'page': (page + 1) }) }}">suivant</a>
+        {% endif %}
+    </div>
 {% endblock %}

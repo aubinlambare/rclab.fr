@@ -43,13 +43,29 @@ rclab_website_repair_edit:
     requirements:
         id:    \d+
 
-rclab_website_repair_history:
-    path:    /compte/historique/reparations
-    defaults: { _controller: RCLABWebsiteBundle:Repair:history }
+rclab_website_repair_history_user:
+    path:    /compte/monHistorique/reparations/{page}
+    defaults:
+        _controller: RCLABWebsiteBundle:Repair:myHistory
+        page:        1
+    requirements:
+        page:    \d+
+
+rclab_website_repair_history_all:
+    path:    /compte/historique/reparations/{page}
+    defaults:
+        _controller: RCLABWebsiteBundle:Repair:allHistory
+        page:        1
+    requirements:
+        page:    \d+
 
 rclab_website_repair_handle:
-    path:    /compte/reparations
-    defaults:  { _controller: RCLABWebsiteBundle:Repair:handle }
+    path:    /compte/reparations/{page}
+    defaults:
+        _controller: RCLABWebsiteBundle:Repair:handle
+        page:        1
+    requirements:
+        page:    \d+
 
 rclab_website_repair_detail:
     path:    /reparations/{id}
@@ -84,12 +100,28 @@ rclab_website_course_valid:
         id:    \d+
 
 rclab_website_course_handle:
-    path:    /compte/cours
-    defaults: { _controller: RCLABWebsiteBundle:Course:handle }
+    path:    /compte/cours/{page}
+    defaults:
+        _controller: RCLABWebsiteBundle:Course:handle
+        page:        1
+    requirements:
+        page:    \d+
 
-rclab_website_course_history:
-    path:    /compte/history/cours
-    defaults: { _controller: RCLABWebsiteBundle:Course:history }
+rclab_website_course_history_user:
+    path:    /compte/monHitorique/cours/{page}
+    defaults:
+        _controller: RCLABWebsiteBundle:Course:myHistory
+        page:        1
+    requirements:
+        page:    \d+
+
+rclab_website_course_history_all:
+    path:    /compte/Historique/cours/{page}
+    defaults:
+        _controller: RCLABWebsiteBundle:Course:allHistory
+        page:        1
+    requirements:
+        page:    \d+
 
 rclab_website_course_detail:
     path:    /cours/{id}
