@@ -92,6 +92,7 @@
                                     </div>
 
                                     {{ form_rest(form) }}
+                                    <div class="g-recaptcha" data-sitekey="6LeTG1oUAAAAAKOSWG1q2zWIDS4DDSlSwISRATVN"></div>
                                     <button type="submit" class="btn"><strong>Je m'inscris !</strong></button>
                                 </form>
                             </div>
@@ -102,6 +103,32 @@
 
         </div>
     </div>
+
+    <?php
+
+	// Ma clé privée
+	$secret = "6LeTG1oUAAAAAMLikUWdo4o3qxRcXqhJL7GDPGop";
+	// Paramètre renvoyé par le recaptcha
+	$response = $_POST['g-recaptcha-response'];
+	// On récupère l'IP de l'utilisateur
+	$remoteip = $_SERVER['REMOTE_ADDR'];
+
+	$api_url = "https://www.google.com/recaptcha/api/siteverify?secret="
+	    . $secret
+	    . "&response=" . $response
+	    . "&remoteip=" . $remoteip ;
+
+	$decode = json_decode(file_get_contents($api_url), true);
+
+	if ($decode['success'] == true) {
+		// C'est un humain
+	}
+
+	else {
+		// C'est un robot ou le code de vérification est incorrecte
+	}
+
+?>
 
     {{ form_end(form) }}
 

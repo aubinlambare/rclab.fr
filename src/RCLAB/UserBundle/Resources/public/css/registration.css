@@ -159,7 +159,9 @@ body {
     text-align: right;
 }
 
-
+.g-recaptcha {
+	margin-bottom: 12px;
+}
 
 /***** Media queries *****/
 

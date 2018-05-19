@@ -34,6 +34,33 @@ class RegistrationController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $response = $form->getData();
+
+            $secret = "6LeTG1oUAAAAAMLikUWdo4o3qxRcXqhJL7GDPGop";
+
+            //paramètres renvoyés par le captcha
+            $captcha = $form['g-recaptcha-response'];
+
+            //on récupère l'ip de l'utilisateur
+            $remoteip = $request->getClientIp();
+
+            //TODO: Le reste devrait fonctionner comme sur ton tuto ;)
+            $api_url = "https://www.google.com/recaptcha/api/siteverify?secret="
+                . $secret
+                . "&response=" . $captcha
+                . "&remoteip=" . $remoteip ;
+
+            $decode = json_decode(file_get_contents($api_url), true);
+
+            if ($decode['success'] == false) {
+
+                $this->addFlash('warning', "Captcha invalide");
+                return $this->render('@RCLABUser/User/registration.html.twig', [
+                    'form' => $form->createView()
+                ]);
+
+            }
+
             $confirmationToken = md5(microtime(TRUE) * 10000);
 
             $user->setConfirmationToken($confirmationToken);
