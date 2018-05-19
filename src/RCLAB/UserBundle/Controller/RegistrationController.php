@@ -39,7 +39,7 @@ class RegistrationController extends Controller
             $secret = "6LeTG1oUAAAAAMLikUWdo4o3qxRcXqhJL7GDPGop";
 
             //paramètres renvoyés par le captcha
-            $captcha = $form['g-recaptcha-response'];
+            $captcha = $request->request->get('g-recaptcha-response');
 
             //on récupère l'ip de l'utilisateur
             $remoteip = $request->getClientIp();
