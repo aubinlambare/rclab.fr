@@ -1,26 +1,48 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-
-    <h3>Detail de l'évènement {{ event.event }}</h3>
-
-    <div>
-        {% if event.maxParticipants is not null %}
-            <p><strong>Seulement {{ event.maxParticipants }} place{% if event.maxParticipants > 1 %}s{% endif %} de disponible{% if event.maxParticipants > 1 %}s{% endif %} !</strong></p>
-            <br/>
-        {% endif %}
-        <p>Du {{ event.debutEvent|date('d/m/Y H:i') }} au {{ event.finEvent|date('d/m/Y H:i') }}</p>
-        <br/>
-        <p>Description de l'évènement :</p>
-        <p>{{ event.description }}</p>
-        {% if event.lien is not null %}
-            <br/>
-            <p><a href="{{ event.lien }}">{{ event.lien }}</a></p>
-        {% endif %}
-    </div>
-    {% if event.image is not null %}
-        <div>
-            <img src="{{ asset('uploads/images/'~event.image) }}"/>
+    <section class="index-content">
+        <div class="detail-event-body">
+            <div class="container">
+                <div class="row">
+                    {% if event.image is not null %}
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="picture-detail">
+                                <img src="{{ asset('uploads/images/'~event.image) }}"/>
+                            </div>
+                        </div>
+                    {% endif %}
+                    <div class=" test col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="detail-event">
+                            <h4><p>{{ event.event }}</p></h4>
+                            <br/>
+                            <p>Début: {{ event.debutEvent|date('d/m/Y H:i') }}</p>
+                            <p>Fin : {{ event.finEvent|date('d/m/Y H:i') }}</p>
+                            <br/>
+                            <p><strong>Description de l'évènement :</strong></p>
+                            <p>{{ event.description }}</p>
+                            {% if event.lien is not null %}
+                                <br/>
+                                <p>Pour plus d'informations, cliquez sur ce lien:</p>
+                                <p><a href="{{ event.lien }}">{{ event.lien }}</a></p>
+                            {% endif %}
+                            {% if event.maxParticipants is not null %}
+                                <br/>
+                                <p><strong>Seulement {{ event.maxParticipants }} place{% if event.maxParticipants > 1 %}s{% endif %} de disponible{% if event.maxParticipants > 1 %}s{% endif %} !</strong></p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <nav aria-label="...">
+                    <ul class="pager">
+                        <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Précédent</a></li>
+                        {% if event.maxParticipants is not null %}
+                            <a href="" class="btn btn-primary">Je m'inscris</a>
+                        {% endif %}
+                        <li class="next"><a href="#">Suivant <span aria-hidden="true">&rarr;</span></a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
-    {% endif %}
+    </section>
 {% endblock %}

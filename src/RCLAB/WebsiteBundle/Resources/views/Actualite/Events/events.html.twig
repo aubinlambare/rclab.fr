@@ -1,14 +1,14 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <section class="index-content">
-        <div class="container-fluid">
-            <h1>Évènements</h1>
+        <section class="index-content">
+            <div class="container-fluid">
+            <h1>Toute l'actualité</h1>
             <div class="row">
                 {% if is_granted('ROLE_MODERATOR') %}
                     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
                         <div class="card">
-                            <div class="picture-block add-event">
+                            <div class="add-picture-block add-event">
                                 <a href="{{ path('rclab_website_actualite_events_add') }}" ><img src="{{ asset('bundles/rclabwebsite/image/icon-plus.png') }}"/></a>
                             </div>
 
@@ -37,8 +37,8 @@
                                         <a href="{{ path('rclab_website_actualite_events_remove', { 'id': event.id}) }}"><i class="glyphicon glyphicon-trash"></i>Supprimer</a>
                                     </p>
                                 {% endif %}
-                                <p>{{ event.description }}</p>
-                                <a href="{{ path('rclab_website_actualite_events_detail', {'id': event.id}) }}" class="btn btn-primary"><i class="fa fa-plus"></i></a>
+
+                                <a href="{{ path('rclab_website_actualite_events_detail', {'id': event.id}) }}" class="btn btn-primary">Voir plus</a>
                             </div>
                         </div>
                     </div>
@@ -59,7 +59,6 @@
                     </li>
                 </ul>
             </nav>
-
         </div>
     </section>
 

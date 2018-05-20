@@ -8,9 +8,11 @@
     outline: none;
 }
 
-.btn-primary {
-    color: #fff;
+.card .card-body .btn-primary {
     margin: 20px;
+}
+.detail-event-body .btn-primary {
+    border-radius: 20px;
 }
 
 section h1{
@@ -19,11 +21,10 @@ section h1{
 }
 
 .index-content{
-    margin-bottom:20px;
-    padding:50px 50px;
+    padding:30px 20px;
 }
 
-.index-content .card{
+.index-content .card {
     background-color: #FFFFFF;
     padding: 0px;
     margin-bottom: 30px;
@@ -36,33 +37,62 @@ section h1{
     color:black;
 }
 
-.picture-block {
+.add-picture-block {
     height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.index-content .card img {
+.picture-block {
+    height: 400px;
+}
+.card-body {
+    padding-top: 20px;
+}
+
+.picture-block img {
     width: 100%;
     max-height: 400px;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
 }
+.picture-detail {
+    height: 600px;
+    margin-top: 20px;
+}
+.picture-detail img {
+    width: 100%;
+    max-height: 600px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+.detail-event {
+    padding-left: 25px;
+
+}
+
+@media (min-width: 992px){
+    .detail-event {
+        border-left: 2px solid #337ab7;
+    }
+}
+
 .add-event a {
     width: 100%;
     display: flex;
     justify-content: center;
     text-decoration: none;
 }
+
 .add-event img {
     width: 50% !important;
 }
 
-.index-content .card h4{
-    margin:20px;
+.index-content .card h4, .index-content .detail-event h4 {
+    margin: 20px 0px;
 }
-.index-content .card p{
+.index-content .card p, .index-content .detail-event p{
     opacity: 0.65;
 }
 
