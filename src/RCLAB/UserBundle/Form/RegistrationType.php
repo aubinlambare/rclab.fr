@@ -61,7 +61,7 @@ class RegistrationType extends AbstractType
                 'attr' => [
                     'class' => 'form-user-name form-control',
                     'placeholder' => 'Nom d\'utilisateur...',
-                    'id' => 'form-email',
+                    'id' => 'form-username',
                     'required' =>  'required',
                 ],
             ])

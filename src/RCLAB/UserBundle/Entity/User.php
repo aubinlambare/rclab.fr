@@ -82,7 +82,8 @@ class User extends BaseUser
     /**
      * @var string
      *
-
+     *
+     * @Assert\NotBlank(message = "Veuillez indiquer un email")
      */
     protected $email;
 
@@ -91,6 +92,7 @@ class User extends BaseUser
      *
      * @var string
      *
+     * @Assert\NotBlank(message = "Choisissez un mot de passe")
      */
     protected $password;
 

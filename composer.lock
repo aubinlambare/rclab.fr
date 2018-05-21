@@ -999,12 +999,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "dc4a927491a7082402a890976b5452d3ad474f9c"
+                "reference": "d3c0d3223e6adbb1d5698449a25352b816afd973"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/dc4a927491a7082402a890976b5452d3ad474f9c",
-                "reference": "dc4a927491a7082402a890976b5452d3ad474f9c",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/d3c0d3223e6adbb1d5698449a25352b816afd973",
+                "reference": "d3c0d3223e6adbb1d5698449a25352b816afd973",
                 "shasum": ""
             },
             "require": {
@@ -1067,7 +1067,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2018-03-25T11:43:48+00:00"
+            "time": "2018-05-14T09:07:59+00:00"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -2086,6 +2086,7 @@
                 "compression",
                 "minification"
             ],
+            "abandoned": "symfony/webpack-encore-pack",
             "time": "2017-07-14T07:26:46+00:00"
         },
         {
