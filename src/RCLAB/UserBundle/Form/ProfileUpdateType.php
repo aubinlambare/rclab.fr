@@ -2,6 +2,8 @@
 
 namespace RCLAB\UserBundle\Form;
 
+use RCLAB\WebsiteBundle\Entity\Image;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -48,7 +50,7 @@ class ProfileUpdateType extends AbstractType
             ]);
 
         if (!is_null($this->function)) {
-            $builder->add('photo', FileType::class, [
+            $builder->add('Photo', Image::class, [
                 'label' => 'Photo',
                 'required' => false,
             ]);

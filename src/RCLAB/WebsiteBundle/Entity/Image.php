@@ -51,17 +51,15 @@ class Image
     private $extension;
 
 
-    public function __construct($uploadsDirectory)
+    public function __construct($uploadsDirectory, UploadedFile $file)
     {
         $this->addedDate = new \Datetime('NOW');
+
         $this->path = $uploadsDirectory;
-    }
 
-    public function create(UploadedFile $file)
-    {
-        if(!$file) return false;
+        $valid_extension = ['png', 'jpg', 'jpeg', 'gif', 'tif', 'svg'];
 
-        $valid_extension = array('png', 'jpg', 'jpeg', 'gif', 'tif', 'svg');
+        //TODO: Vérifier le mime type
 
         $this->extension = $file->guessExtension();
 
@@ -72,10 +70,16 @@ class Image
             $file->move($this->path, $this->name);
 
             return $this;
+
         } else {
 
             return false;
         }
+    }
+
+    public function create(UploadedFile $file)
+    {
+
     }
 
     /**

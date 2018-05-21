@@ -6,11 +6,15 @@ namespace RCLAB\UserBundle\Entity;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use RCLAB\WebsiteBundle\Entity\Fonction;
+use RCLAB\WebsiteBundle\Entity\Image;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="RCLAB\UserBundle\Repository\User")
  * @ORM\Table(name="user")
+ * @UniqueEntity(fields="email", message="Cette adresse mail existe déjà")
+ * @UniqueEntity(fields="username", message="Cet utilisateur existe déjà")
  */
 class User extends BaseUser
 {
@@ -58,7 +62,7 @@ class User extends BaseUser
     protected $presentation;
 
     /**
-     * @var string
+     * @var Image
      *
      * @ORM\Column(name="photo", type="string", nullable=true)
      */
@@ -78,21 +82,25 @@ class User extends BaseUser
      * @ORM\JoinColumn(name="idFonction", referencedColumnName="idFonction")
      */
     protected $fonction;
-
-    /**
-     * @var string
-     *
-
-     */
-    protected $email;
-
-    /**
-     * Encrypted password. Must be persisted.
-     *
-     * @var string
-     *
-     */
-    protected $password;
+//
+//    /**
+//     * @Assert\NotBlank(message="L'adresse mail est obligatoire")
+//     * @Assert\Email(
+//     *     message="L'adresse mail '{{ value }}' n'est pas valide",
+//     *     checkMX=true
+//     * )
+//     */
+//    protected $email;
+//
+//    /**
+//     * @Assert\NotBlank(message="Le nom d'utilisateur est obligatoire")
+//     */
+//    protected $username;
+//
+//    /**
+//     * @Assert\NotBlank(message="Mot de passe obligatoire")
+//     */
+//    protected $plainpassword;
 
     public function __toString()
     {
