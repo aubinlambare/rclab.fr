@@ -9,15 +9,24 @@
 namespace RCLAB\WebsiteBundle\Service;
 
 
-use RCLAB\WebsiteBundle\Entity\Image;
-
 class RemoveFile
 {
-    public function removeFile(Image $image)
+    private $root_path;
+
+    public function __construct($root_path)
     {
-        if (!$image) return false;
+        $this->root_path = $root_path;
+    }
 
-        unlink($image->getPath());
+    public function removeFile($filename)
+    {
+        $file_path = $this->root_path .'/web/uploads/images/' . $filename;
 
+        if($filename != 'default.jpg' && is_file($file_path)) {
+
+            unlink($file_path);
+        }
+
+        return $file_path;
     }
 }

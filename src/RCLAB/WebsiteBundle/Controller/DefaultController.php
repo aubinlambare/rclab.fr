@@ -36,4 +36,18 @@ class DefaultController extends Controller
             'personnes' => $personnes,
         ));
     }
+
+    public function reparationAction()
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY', null, 'Impossible d\'accéder à cette page !');
+
+        return $this->render('@RCLABWebsite/Default/reparation.html.twig');
+    }
+
+    public function compteAction()
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY', null, 'Impossible d\'accéder à cette page !');
+
+        return $this->render('@RCLABWebsite/Default/compte.html.twig');
+    }
 }

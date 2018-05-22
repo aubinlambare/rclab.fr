@@ -8,9 +8,8 @@
 
 namespace RCLAB\UserBundle\Controller;
 
-use RCLAB\UserBundle\Entity\User;
 use RCLAB\UserBundle\Form\ProfileUpdateType;
-use RCLAB\WebsiteBundle\Entity\Image;
+//use RCLAB\WebsiteBundle\Entity\Image;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -18,6 +17,10 @@ use Symfony\Component\HttpFoundation\Request;
 
 class UserController extends Controller
 {
+    private function generateUniqueFileName()
+    {
+        return md5(uniqid());
+    }
 
     public function usersAction()
     {
@@ -39,13 +42,16 @@ class UserController extends Controller
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY', null, 'Impossible d\'accéder à cette page !');
 
-        /** @var User $user */
         $user = $this->get('security.token_storage')->getToken()->getUser();
 
         $function = null;
         if (!empty($user->getFonction())) {
             $function = 1;
         }
+        $oldImage = $user->getPhoto();
+        $user->setPhoto(null);
+        //$oldImageId = $user->getIdPhoto();
+        //$user->setIdPhoto(null);
 
         $form = $this->createForm(ProfileUpdateType::class, $user, [
             'function' => $function
@@ -54,15 +60,45 @@ class UserController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-        dump($form);die;
-           //if($user->getPhoto())
 
-          //  $image = new Image('image_directory', $form->getData());
 
-            //$user->setPhoto($image->getId());
+            $file = $user->getPhoto();
+            if (!empty($file)) {
+                $fileName = $this->generateUniqueFileName() . '.' . $file->guessExtension();
+                $file->move(
+                    $this->getParameter('image_directory'),
+                    $fileName
+                );
+                $user->setPhoto($fileName);
+                $this->get('rclab_website.remove.file')->removeFile($oldImage);
+            } else {
+
+                $user->setPhoto($oldImage);
+            }
 
             $em = $this->getDoctrine()->getManager();
+/*
+            $photo = $user->getIdPhoto();
 
+            if ($photo) {
+                $file = new Image();
+
+                if ($file->create($photo)) {
+
+                    $em->persist($file);
+
+                    $user->setIdPhoto($file->getId());
+
+                    $oldImage = $em->getRepository('Image')->find($oldImageId);
+                    $test = $this->container->get('rclab_website.remove.file')->removeFile($oldImage);
+                    $this->addFlash('warning', $test);
+                }
+
+            } else {
+
+                $user->setPhoto($oldImageId);
+            }
+*/
             $em->persist($user);
             $em->flush();
 
@@ -72,8 +108,11 @@ class UserController extends Controller
         }
 
 
-        return $this->render('@RCLABUser/User/profile.html.twig', ['form' => $form->createView(),
-            'user' => $user,]);
+        return $this->render('@RCLABUser/User/profile.html.twig', [
+            'form' => $form->createView(),
+            'user' => $user,
+            'user_photo' => $oldImage,
+        ]);
     }
 
     public function resetPhotoAction($id)
@@ -98,13 +137,21 @@ class UserController extends Controller
 
     }
 
-    public function editAction(Request $request, User $user)
+    public function editAction(Request $request, $id)
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Impossible d\'accéder à cette page !');
 
+        $user = $this->getDoctrine()->getManager()->getRepository('RCLABUserBundle:User')->find($id);
+
+        if (!$user) {
+
+            $this->addFlash('error', 'L\'utilisateur n\'a pas pu être modifié');
+            return $this->redirectToRoute('rclab_user_users_list');
+        }
+
         $em = $this->getDoctrine()->getManager();
 
-        $userFunction = null == $user->getFonction() ? '' : $user->getFonction();
+        $userFunction = null == $user->getFonction() ? '' : $em->getRepository('RCLABWebsiteBundle:Fonction')->findOneBy(['id' => $user->getFonction()])->getFonction();
         $Listfunctions = $em->getRepository('RCLABWebsiteBundle:Fonction')->findAll();
         $functions = [];
         foreach ($Listfunctions as $function) {
@@ -112,8 +159,9 @@ class UserController extends Controller
             $functions[$code] = $code;
         }
 
+
         $roles = [
-            'utilisateur' => 'ROLE_USEhttps://www.google.com/search?q=check+mime+type+symfony&ie=utf-8&oe=utf-8&client=firefox-bR',
+            'utilisateur' => 'ROLE_USER',
             'modérateur' => 'ROLE_MODERATOR'
         ];
         if ($this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
@@ -157,6 +205,9 @@ class UserController extends Controller
                 $user->addRole($data['role']);
             }
 
+            if (!is_null($data['fonction'])) {
+                $user->setPhoto('default.jpg');
+            }
             $em->persist($user);
             $em->flush();
 

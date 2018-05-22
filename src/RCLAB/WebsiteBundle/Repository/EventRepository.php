@@ -12,11 +12,4 @@ use Doctrine\ORM\EntityRepository;
  */
 class EventRepository extends EntityRepository
 {
-    public function findFocusNewsEvents()
-    {
-        $sql = "SELECT *, Event.DebutEvent as date FROM Event UNION (SELECT *, News.DebutPublication as date FROM News) ORDER BY date DESC ";
-
-        return $this->getEntityManager()->getConnection()->executeQuery($sql)->fetchAll();
-    }
-
 }

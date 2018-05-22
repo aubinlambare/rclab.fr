@@ -110,8 +110,8 @@ class RegistrationType extends AbstractType
         ]);
     }
 
-    public function getName()
+    public function getBlockPrefix()
     {
-        return 'rclab_user_registration';
+        return 'rclab_userbundle_registration';
     }
 }

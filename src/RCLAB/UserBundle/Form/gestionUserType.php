@@ -2,31 +2,32 @@
 
 namespace RCLAB\UserBundle\Form;
 
-use RCLAB\WebsiteBundle\Entity\Fonction;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class EditType extends AbstractType
+class gestionUserType extends AbstractType
 {
-    private $user;
+    private $functions;
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-//        $builder
-//            ->add('fonction', EntityType::class, [
-//                'class' => Fonction::class,
-//
-//            ])
-//            ->add('roles', )
+        $this->functions = $options['functions'];
+        array_unshift($this->functions, '');
+
+        $builder
+            ->add('fonction', ChoiceType::class, [
+               'choices' => $this->functions
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'data_class' => 'RCLAB\UserBundle\Entity\User',
+            'function' => '',
+            'statut' => null
         ]);
     }
 
