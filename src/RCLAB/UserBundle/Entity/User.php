@@ -90,10 +90,9 @@ class User extends BaseUser
     /**
      * Encrypted password. Must be persisted.
      *
-     * @var string
-     *
-     * @Assert\NotBlank(message = "Choisissez un mot de passe")
-     */
+   * @var string
+    *
+    */
     protected $password;
 
     public function __toString()

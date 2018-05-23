@@ -1,27 +1,4 @@
-$(document).ready(function(){
-
-    var lastName = $("#form-last-name");
-    var firstName = $("#form-first-name");
-    var email = $("#form-email");
-    var username = $("#form-user-name");
-    var password = $("#form-password");
-    var passwordConfirmed = $("#form-password-confirmed");
-
-    $allDataValidates = $(".registration-form").find("data-validate");
-    
-    $allDataValidates.each(function(){
-        $class = $this.children().className;
-        if($class === 'form-email') {
-            if()
-        }
-    });
-});
-
-
-// (function ($) {
-//     "use strict";
-//
-//     $( "form" ).submit(function( event ) {
+// $( "form" ).submit(function( event ) {
 //         var lastName = $("#form-last-name");
 //         var firstName = $("#form-first-name");
 //         var email = $("#form-email");
@@ -86,7 +63,6 @@ $(document).ready(function(){
 //
 //         $(thisAlert).removeClass('alert-validate');
 //     }
-
-
 //
-// })(jQuery);
+//
+// });

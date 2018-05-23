@@ -44,7 +44,6 @@ class RegistrationController extends Controller
             //on récupère l'ip de l'utilisateur
             $remoteip = $request->getClientIp();
 
-            //TODO: Le reste devrait fonctionner comme sur ton tuto ;)
             $api_url = "https://www.google.com/recaptcha/api/siteverify?secret="
                 . $secret
                 . "&response=" . $captcha

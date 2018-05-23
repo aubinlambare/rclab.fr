@@ -14,7 +14,7 @@ jQuery(document).ready(function() {
     
     /*
         Form validation
-    */
+
     $('[type="text"], [type="password"], [type="email"], textarea').on('focus', function() {
     	$(this).removeClass('input-error');
     });
@@ -31,4 +31,5 @@ jQuery(document).ready(function() {
     		}
     	});
     });
+*/
 });

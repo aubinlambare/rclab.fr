@@ -1,32 +1,125 @@
 {% extends "compte.html.twig" %}
 
-{% block content %}
-    <h3>Mon profil</h3>
-    <div>
-        {{ form_start(form) }}
-        <div>
-            <h4>Mes informations personnelles</h4>
-            <p>{{ user.firstName }} {{ user.lastName }}</p>
-            <div>
-                {{ user.username }}
-                {{ form_row(form.facebook) }}
-                {{ form_row(form.telephone) }}
-                {{ form_row(form.email) }}
-            </div>
-            {% if user.fonction is not null %}
-                <div>
-                    <img src="{{ asset('uploads/images/'~user_photo) }}">
-                    {{ form_row(form.photo) }}
-                </div>
-            {% endif %}
-        </div>
-        <div>
-            <h4>Modifier le mot de passe</h4>
-            {{ form_rest(form) }}
-        </div>
-        <div>
-            <input type="submit" value="Enregistrer"/>
-        </div>
-        {{ form_end(form) }}
-    </div>
+{% block stylesheets_registration %}
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+    <link rel="stylesheet" href="{{ asset('bundles/rclabuser/css/form-registration.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/rclabuser/css/registration.css') }}" />
 {% endblock %}
+
+{% block content %}
+
+                <div class="col-xs-8 col-sm-8 col-md-8">
+                    <div class="form-top">
+                        <div class="form-top-left">
+                            <h1><strong>Mon profil</strong></h1>
+                        </div>
+                        <div class="form-top-right">
+                            <i class="fa fa-user-o"></i>
+                        </div>
+                    </div>
+                    <div class="form-bottom">
+                        <div class="row">
+                            {{ form_start(form) }}
+                            {% if ((is_granted('ROLE_ADMIN')) or (is_granted('ROLE_MODERATOR')) or (user.fonction is not null)) %}
+                                <div class="col-xs-8 col-sm-8 col-md-4 col-xs-offset-2 col-sm-offset-2 col-md-offset-0" style="text-align:center">
+                                    <div class="form-bottom-left">
+                                        {% if is_granted('ROLE_ADMIN') %}
+                                            <h2>Administrateur</h2>
+                                        {% elseif is_granted('ROLE_MODERATOR') %}
+                                            <h2>Modérateur</h2>
+                                        {% endif %}
+                                        {% if user.fonction is not null %}
+                                            <h3>{{ user.fonction.fonction }}</h3>
+                                            <img src="{{ asset('uploads/images/'~user_photo) }}">
+                                            {{ form_row(form.photo) }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-xs-10 col-sm-10 col-md-7 col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
+                            {% else %}
+                                <div class="col-xs-10 col-sm-10 col-md-8 col-md-offset-2 col-sm-offset-1 col-xs-offset-1">
+                            {% endif %}
+                                <div class="form-bottom-right">
+                                    <h2>{{ user.firstName }} {{ user.lastName }}</h2>
+                                    <h3>{{ user.username }}</h3>
+                                    <form role="form" method="post" class="profile-form">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-facebook-square facebook" ></i></span>
+                                                {{ form_label(form.facebook) }}
+                                                {{ form_errors(form.facebook) }}
+                                                {{ form_widget(form.facebook) }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-phone" style="color: green"></i></span>
+                                                {{ form_label(form.telephone) }}
+                                                {{ form_errors(form.telephone) }}
+                                                {{ form_widget(form.telephone) }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                                {{ form_label(form.email) }}
+                                                {{ form_errors(form.email) }}
+                                                {{ form_widget(form.email) }}
+                                            </div>
+                                        </div>
+                                        <h4>Modifier le mot de passe</h4>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                                {{ form_label(form.plainPassword.first) }}
+                                                {{ form_errors(form.plainPassword.first) }}
+                                                {{ form_widget(form.plainPassword.first) }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                                {{ form_label(form.plainPassword.second) }}
+                                                {{ form_errors(form.plainPassword.second) }}
+                                                {{ form_widget(form.plainPassword.second) }}
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                {{ form_rest(form) }}
+                                <button type="submit" class="btn">Enregistrer</button>
+                            </div>
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+
+
+{% endblock %}
+{% block javascripts %}
+    {% javascripts
+        '@RCLABUserBundle/Resources/public/js/jquery.backstretch.min.js'
+        '@RCLABUserBundle/Resources/public/js/profile.js' %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+{% endblock %}
+{#<div>
+            <div class="form-bottom">
+                <div class="row">
+                    {% if ((is_granted('ROLE_ADMIN')) or (is_granted('ROLE_MODERATOR')) or (user.fonction is not null)) %}
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <h2>Administrateur</h2>
+                        {% elseif is_granted('ROLE_MODERATOR') %}
+                            <h2>Modérateur</h2>
+                        {% endif %}
+                        {% if user.fonction is not null %}
+                            <h3>{{ user.fonction.fonction }}</h3>
+                            <img src="{{ asset('uploads/images/'~user_photo) }}">
+                            {{ form_row(form.photo) }}
+                        {% endif %}
+                    {% else %}
+
+                    {% endif %}
+                </div>
+            </div>
+        </div>#}

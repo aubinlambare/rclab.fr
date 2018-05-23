@@ -19,7 +19,6 @@
                     <div class="row">
                         <div class="col-sm-8 col-sm-offset-2">
                             <h1><strong>Rejoins notre communauté et fais appel à nos services !</strong></h1>
-
                         </div>
                     </div>
                     <div class="row">
@@ -36,58 +35,51 @@
                             <div class="form-bottom">
                                 <form role="form" method="post" class="registration-form">
                                     <div class="form-group">
-                                        <div class="input-group" data-validate="Le nom est requis">
+                                        <div class="input-group {% if form_errors(form.firstName) is not empty %}error{% endif %}">
                                             <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
                                             {{ form_label(form.firstName) }}
-                                            {{ form_errors(form.firstName) }}
                                             {{ form_widget(form.firstName) }}
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div class="input-group" data-validate="{{ form_errors(form.lastName) }}">
+                                        <div class="input-group {% if form_errors(form.lastName) is not empty %}error{% endif %}">
                                             <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
-                                            {#{{ form_label(form.lastName) }}#}
+                                            {{ form_label(form.lastName) }}
                                             {{ form_widget(form.lastName) }}
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div class="input-group" data-validate="L'email est requis">
+                                        <div class="input-group {% if form_errors(form.email) is not empty %}error{% endif %}">
                                             <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
                                             {{ form_label(form.email) }}
-                                            {{ form_errors(form.email) }}
                                             {{ form_widget(form.email) }}
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div class="input-group" data-validate="Le nom d'utilisateur est requis">
+                                        <div class="input-group {% if form_errors(form.username) is not empty %}error{% endif %}">
                                             <span class="input-group-addon"><i class="fa fa-users" aria-hidden="true"></i></span>
                                             {{ form_label(form.username) }}
-                                            {{ form_errors(form.username) }}
                                             {{ form_widget(form.username) }}
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div class="input-group" data-validate="Vous devez choisir un mot de passe">
+                                        <div class="input-group {% if form_errors(form.plainPassword.first) is not empty %}error{% endif %}">
                                             <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></span>
                                             {{ form_label(form.plainPassword.first) }}
-                                            {{ form_errors(form.plainPassword.first) }}
                                             {{ form_widget(form.plainPassword.first) }}
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div class="input-group" data-validate="Veuillez confirmer votre mot de passe">
+                                        <div class="input-group {% if form_errors(form.plainPassword.second) is not empty %}error{% endif %}">
                                             <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></span>
                                             {{ form_label(form.plainPassword.second) }}
-                                            {{ form_errors(form.plainPassword.second) }}
                                             {{ form_widget(form.plainPassword.second) }}
                                         </div>
                                     </div>
-
                                     {{ form_rest(form) }}
                                     <div class="g-recaptcha" data-sitekey="6LeTG1oUAAAAAKOSWG1q2zWIDS4DDSlSwISRATVN"></div>
                                     <button type="submit" class="btn"><strong>Je m'inscris !</strong></button>
                                 </form>
-                                <p class="test"></p>
                             </div>
                         </div>
                     </div>
@@ -103,7 +95,6 @@
 {% block javascripts %}
     {% javascripts
         '@RCLABUserBundle/Resources/public/js/jquery.backstretch.min.js'
-        '@RCLABUserBundle/Resources/public/js/scripts.js'
         '@RCLABUserBundle/Resources/public/js/registration.js' %}
         <script src="{{ asset_url }}" type="text/javascript"></script>
     {% endjavascripts %}

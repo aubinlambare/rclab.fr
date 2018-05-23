@@ -152,7 +152,7 @@ footer ul li a:hover {
     text-decoration:none;
 }
 
-.footer-top .facebook .fa , .footer-top .facebook:hover a {
+.footer-top .facebook .fa , .footer-top .facebook:hover a, .facebook {
     color:#446cb3;
     text-decoration:none;
 }
