@@ -103,23 +103,3 @@
         <script src="{{ asset_url }}" type="text/javascript"></script>
     {% endjavascripts %}
 {% endblock %}
-{#<div>
-            <div class="form-bottom">
-                <div class="row">
-                    {% if ((is_granted('ROLE_ADMIN')) or (is_granted('ROLE_MODERATOR')) or (user.fonction is not null)) %}
-                        {% if is_granted('ROLE_ADMIN') %}
-                            <h2>Administrateur</h2>
-                        {% elseif is_granted('ROLE_MODERATOR') %}
-                            <h2>Modérateur</h2>
-                        {% endif %}
-                        {% if user.fonction is not null %}
-                            <h3>{{ user.fonction.fonction }}</h3>
-                            <img src="{{ asset('uploads/images/'~user_photo) }}">
-                            {{ form_row(form.photo) }}
-                        {% endif %}
-                    {% else %}
-
-                    {% endif %}
-                </div>
-            </div>
-        </div>#}
