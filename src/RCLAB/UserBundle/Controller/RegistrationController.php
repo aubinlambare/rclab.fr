@@ -107,9 +107,7 @@ class RegistrationController extends Controller
             $em->persist($user);
             $em->flush();
 
-            $this->addFlash(
-                'success', 'Votre inscription à bien été confirmée'
-            );
+            $this->addFlash('success', 'Votre inscription a bien été confirmée !');
 
             //login
             $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
