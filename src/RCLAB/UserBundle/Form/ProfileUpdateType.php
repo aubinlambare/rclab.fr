@@ -70,7 +70,7 @@ class ProfileUpdateType extends AbstractType
                     ],
                     'attr' => [
                         'class' => 'form-password form-control',
-                        'placeholder' => 'Mot de passe...',
+                        'placeholder' => 'Nouveau mot de passe...',
                     ],
                 ],
                 'second_options' => [
@@ -90,6 +90,12 @@ class ProfileUpdateType extends AbstractType
             $builder->add('photo', FileType::class, [
                 'label' => 'Photo',
                 'required' => false,
+                'label_attr' => [
+                    'id' => 'fileButton',
+                ],
+                'attr' => [
+                    'id' => 'fileButton',
+                ],
             ]);
         }
     }

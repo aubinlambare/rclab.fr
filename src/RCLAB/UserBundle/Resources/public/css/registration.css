@@ -52,19 +52,33 @@ body {
 .inner-bg {
     padding: 60px 0 150px 0;
 }
-
+.input-group {
+	width: 100%;
+}
 .registration-body .input-group-addon {
 	background: rgba(19, 185, 231, 0.95);
 	border: none;
+	width: 50px;
 }
 .profile-body .input-group-addon {
 	background: rgba(0, 0, 0, 0.4);
 	border: none;
+	width: 50px;
 }
 
 .fa-lock, .fa-envelope, .fa-user, .fa-users {
 	color:white;
 }
+
+.form-bottom {
+	padding: 25px 25px 30px 25px;
+	margin-bottom: 20px;
+	background: #444;
+	background: rgba(0, 0, 0, 0.5);
+	border-radius: 0 0 4px 4px;
+	text-align: left;
+}
+
 .form-bottom .fa {
 	font-size: 24px;
 }
@@ -104,14 +118,6 @@ body {
 	opacity: 0.3;
 }
 
-.form-bottom {
-	padding: 25px 25px 30px 25px;
-	margin-bottom: 20px;
-	background: #444;
-	background: rgba(0, 0, 0, 0.5);
-	-moz-border-radius: 0 0 4px 4px; -webkit-border-radius: 0 0 4px 4px; border-radius: 0 0 4px 4px;
-	text-align: left;
-}
 .first-section a {
 	color: rgba(255, 255, 255, 0.9);
 }
@@ -137,10 +143,22 @@ body {
     text-align: left;
 }
 
+.form-bottom-left img {
+	padding-top: 20px;
+}
+
 .form-under-right {
     float: left;
     width: 50%;
     text-align: right;
+}
+
+
+[type="file"]{
+	visibility: hidden;
+}
+#fileButton {
+	visibility: hidden;
 }
 
 .g-recaptcha {

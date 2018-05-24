@@ -32,7 +32,6 @@
     box-shadow: none;
 }
 
-
 button.btn {
     height: 50px;
     margin: 0;
@@ -53,10 +52,21 @@ button.btn {
     -webkit-box-shadow: none;
     box-shadow: none;
 }
-
 button.btn:hover {
     opacity: 0.9;
     color: #fff;
+}
+
+button.btn-upload {
+    margin-top: 10px;
+    padding: 0 20px;
+    border: 2px solid #ffffff;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.3);
+}
+button.btn-upload:active, button.btn-upload:focus, button.btn-upload:hover {
+    border: 2px solid #19b9e7;
+    background: rgba(0, 0, 0, 0.6);
 }
 
 button.btn:active {
