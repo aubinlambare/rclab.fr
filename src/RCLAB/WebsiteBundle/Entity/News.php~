@@ -56,14 +56,14 @@ class News
      * @ORM\Column(name="DebutPublication", type="datetime")
      *
      */
-    private $debutPublication;
+    private $dateDebut;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="FinPublication", type="datetime", nullable=true)
      */
-    private $finPublication;
+    private $dateFin;
 
     /**
      * @var bool
@@ -193,55 +193,7 @@ class News
     {
         return $this->lien;
     }
-
-    /**
-     * Set debutPublication
-     *
-     * @param \DateTime $debutPublication
-     *
-     * @return News
-     */
-    public function setDebutPublication($debutPublication)
-    {
-        $this->debutPublication = $debutPublication;
-
-        return $this;
-    }
-
-    /**
-     * Get debutPublication
-     *
-     * @return \DateTime
-     */
-    public function getDebutPublication()
-    {
-        return $this->debutPublication;
-    }
-
-    /**
-     * Set finPublication
-     *
-     * @param \DateTime $finPublication
-     *
-     * @return News
-     */
-    public function setFinPublication($finPublication)
-    {
-        $this->finPublication = $finPublication;
-
-        return $this;
-    }
-
-    /**
-     * Get finPublication
-     *
-     * @return \DateTime
-     */
-    public function getFinPublication()
-    {
-        return $this->finPublication;
-    }
-
+    
     /**
      * Set focus
      *

@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <nav>
+        <ul>
+            <li><a href="{{ path('rclab_user_profile') }}">Mon Profil</a></li>
+            <li><a href="{{ path('rclab_website_course_history_user') }}">Mon historique</a></li>
+            {% if is_granted('ROLE_MODERATOR') %}
+                <li><a href="{{ path('rclab_website_course_handle') }}">Gérer les cours</a></li>
+                <li><a href="{{ path('rclab_website_repair_handle') }}">Gérer les réparations</a></li>
+                <li><a href="{{ path('rclab_website_association_edit') }}">Informations de l'association</a></li>
+                <li><a href="{{ path('rclab_website_course_history_all') }}">Historique de l'association</a></li>
+            {% endif %}
+            {% if is_granted('ROLE_ADMIN') %}
+                <li><a href="{{ path('rclab_user_users_list') }}">Gestion des utilisateurs</a></li>
+                <li><a href="{{ path('rclab_website_tdemandes') }}">Les types de demandes</a></li>
+                <li><a href="{{ path('rclab_website_fonction_list') }}">Gestion des fonctions</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% block content %}{% endblock %}
+
+{% endblock %}

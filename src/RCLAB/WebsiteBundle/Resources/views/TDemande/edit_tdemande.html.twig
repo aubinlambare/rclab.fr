@@ -1,0 +1,9 @@
+{% extends "compte.html.twig" %}
+
+{% block content %}
+    <h3>Modification du type de demande {{ tdemande.typeDemande }}</h3>
+    <div>
+        {{ form(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+    </div>
+{% endblock %}

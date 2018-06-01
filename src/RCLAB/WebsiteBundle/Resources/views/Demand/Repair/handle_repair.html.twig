@@ -1,0 +1,45 @@
+{% extends "compte.html.twig" %}
+
+{% block content %}
+
+    <h3>Liste des demandes de réparations</h3>
+    <table>
+        <tr>
+            <th>Objet</th>
+            <th>Date et heure de la demande</th>
+            <th>Demandeur</th>
+            <th>Date et heure de rendez-vous</th>
+            <th>Responsable</th>
+            <th>Voir plus</th>
+            <th>Etat de la demande</th>
+            <th>Gérer</th>
+        </tr>
+        {% for repair in toHandle_repairs %}
+            <tr>
+                <td>{{ repair.objet }}</td>
+                <td>{{ repair.dateDemande|date('d/m/Y à H:i') }}</td>
+                <td>{{ repair.demandeur.firstName }} {{ repair.demandeur.lastName }}</td>
+                <td>{{ repair.etat == 'en attente' ? repair.debut|date('d/m/Y à H:i') }}</td>
+                <td>
+                    {% if repair.responsable is not null %}
+                        {{ repair.responsable.firstName }} {{ repair.responsable.lastName }}
+                    {% endif %}
+                </td>
+                <td><a href="{{ path('rclab_website_repair_detail', {'id': repair.id}) }}">Voir plus</a></td>
+                <td>{{ repair.etat }}</td>
+                <td><a href="{{ path('rclab_website_repair_edit', {'id': repair.id}) }}">Gérer</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <div>
+        <p>pagination : </p>
+        {% if page > 1 %}
+            <a href="{{ path('rclab_website_repair_handle', { 'page': (page - 1) }) }}">précédent</a>
+        {% endif %}
+        {{ page }}
+        {% if isSuivant is not null %}
+            <a href="{{ path('rclab_website_repair_handle', {'page': (page + 1) }) }}">suivant</a>
+        {% endif %}
+    </div>
+{% endblock %}

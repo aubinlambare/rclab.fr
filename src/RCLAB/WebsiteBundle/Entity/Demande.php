@@ -3,6 +3,7 @@
 namespace RCLAB\WebsiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use RCLAB\UserBundle\Entity\User;
 
 /**
  * Demande
@@ -15,7 +16,7 @@ class Demande
     /**
      * @var int
      *
-     * @ORM\Column(name="idDemande", type="integer")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -52,6 +53,20 @@ class Demande
     /**
      * @var \DateTime
      *
+     * @ORM\Column(name="date_demande", type="datetime")
+     */
+    private $dateDemande;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="duree", type="time", nullable=true)
+     */
+    private $duree;
+
+    /**
+     * @var \DateTime
+     *
      * @ORM\Column(name="Fin", type="datetime", nullable=true)
      */
     private $fin;
@@ -59,10 +74,24 @@ class Demande
     /**
      * @var bool
      *
-     * @ORM\Column(name="GroupeEvent", type="boolean")
+     * @ORM\Column(name="GroupeEvent", type="boolean", nullable=true)
      */
     private $groupeEvent;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="autorise", type="boolean", nullable=true)
+     */
+    private $autorise;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="etat", type="string", length=255)
+     */
+    private $etat;
 
     /**
      * @var T_Demande
@@ -89,34 +118,40 @@ class Demande
     private $niveau;
 
     /**
-     * @var Personne
+     * @var User
      *
-     * @ORM\ManyToOne(targetEntity="RCLAB\WebsiteBundle\Entity\Personne")
-     * @ORM\JoinColumn(name="faire", referencedColumnName="idPersonne")
+     * @ORM\ManyToOne(targetEntity="RCLAB\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="idDemandeur", referencedColumnName="id")
      *
      */
-    private $faireDemande;
+    private $demandeur;
 
     /**
-     * @var Personne
+     * @var User
      *
-     * @ORM\ManyToOne(targetEntity="RCLAB\WebsiteBundle\Entity\Personne")
-     * @ORM\JoinColumn(name="demander", referencedColumnName="idPersonne")
+     * @ORM\ManyToOne(targetEntity="RCLAB\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="idResponsable", referencedColumnName="id")
      */
-    private $demander;
+    private $responsable;
 
     /**
-     * @var Personne
+     * @var User
      *
-     * @ORM\ManyToOne(targetEntity="RCLAB\WebsiteBundle\Entity\Personne")
-     * @ORM\JoinColumn(name="autoriser", referencedColumnName="idPersonne")
+     * @ORM\ManyToOne(targetEntity="RCLAB\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="idProfesseur", referencedColumnName="id")
      */
-    private $autoriser;
+    private $professeur;
+
+
+    /**
+     * @ORM\ManyToMany(targetEntity="RCLAB\UserBundle\Entity\User")
+     */
+    private $inscrits;
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -260,11 +295,35 @@ class Demande
     /**
      * Get groupeEvent
      *
-     * @return bool
+     * @return boolean
      */
     public function getGroupeEvent()
     {
         return $this->groupeEvent;
+    }
+
+    /**
+     * Set autorise
+     *
+     * @param boolean $autorise
+     *
+     * @return Demande
+     */
+    public function setAutorise($autorise)
+    {
+        $this->autorise = $autorise;
+
+        return $this;
+    }
+
+    /**
+     * Get autorise
+     *
+     * @return boolean
+     */
+    public function getAutorise()
+    {
+        return $this->autorise;
     }
 
     /**
@@ -339,75 +398,190 @@ class Demande
         return $this->niveau;
     }
 
+
     /**
-     * Set faireDemande
+     * Set demandeur
      *
-     * @param \RCLAB\WebsiteBundle\Entity\Personne $faireDemande
+     * @param \RCLAB\UserBundle\Entity\User $demandeur
      *
      * @return Demande
      */
-    public function setFaireDemande(Personne $faireDemande = null)
+    public function setDemandeur(User $demandeur = null)
     {
-        $this->faireDemande = $faireDemande;
+        $this->demandeur = $demandeur;
 
         return $this;
     }
 
     /**
-     * Get faireDemande
+     * Get demandeur
      *
-     * @return \RCLAB\WebsiteBundle\Entity\Personne
+     * @return \RCLAB\UserBundle\Entity\User
      */
-    public function getFaireDemande()
+    public function getDemandeur()
     {
-        return $this->faireDemande;
+        return $this->demandeur;
     }
 
     /**
-     * Set demander
+     * Set responsable
      *
-     * @param \RCLAB\WebsiteBundle\Entity\Personne $demander
+     * @param \RCLAB\UserBundle\Entity\User $responsable
      *
      * @return Demande
      */
-    public function setDemander(Personne $demander = null)
+    public function setResponsable(User $responsable = null)
     {
-        $this->demander = $demander;
+        $this->responsable = $responsable;
 
         return $this;
     }
 
     /**
-     * Get demander
+     * Get responsable
      *
-     * @return \RCLAB\WebsiteBundle\Entity\Personne
+     * @return \RCLAB\UserBundle\Entity\User
      */
-    public function getDemander()
+    public function getResponsable()
     {
-        return $this->demander;
+        return $this->responsable;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->inscrits = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->dateDemande = new \DateTime('NOW');
     }
 
     /**
-     * Set autoriser
+     * Set professeur
      *
-     * @param \RCLAB\WebsiteBundle\Entity\Personne $autoriser
+     * @param \RCLAB\UserBundle\Entity\User $professeur
      *
      * @return Demande
      */
-    public function setAutoriser(Personne $autoriser = null)
+    public function setProfesseur(User $professeur = null)
     {
-        $this->autoriser = $autoriser;
+        $this->professeur = $professeur;
 
         return $this;
     }
 
     /**
-     * Get autoriser
+     * Get professeur
      *
-     * @return \RCLAB\WebsiteBundle\Entity\Personne
+     * @return \RCLAB\UserBundle\Entity\User
      */
-    public function getAutoriser()
+    public function getProfesseur()
     {
-        return $this->autoriser;
+        return $this->professeur;
+    }
+
+    /**
+     * Add inscrit
+     *
+     * @param \RCLAB\UserBundle\Entity\User $inscrit
+     *
+     * @return Demande
+     */
+    public function addInscrit(User $inscrit)
+    {
+        $this->inscrits[] = $inscrit;
+
+        return $this;
+    }
+
+    /**
+     * Remove inscrit
+     *
+     * @param \RCLAB\UserBundle\Entity\User $inscrit
+     */
+    public function removeInscrit(User $inscrit)
+    {
+        $this->inscrits->removeElement($inscrit);
+    }
+
+    /**
+     * Get inscrits
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getInscrits()
+    {
+        return $this->inscrits;
+    }
+
+    /**
+     * Set etat
+     *
+     * @param string $etat
+     *
+     * @return Demande
+     */
+    public function setEtat($etat)
+    {
+        $this->etat = $etat;
+
+        return $this;
+    }
+
+    /**
+     * Get etat
+     *
+     * @return string
+     */
+    public function getEtat()
+    {
+        return $this->etat;
+    }
+
+    /**
+     * Set dateDemande
+     *
+     * @param \DateTime $dateDemande
+     *
+     * @return Demande
+     */
+    public function setDateDemande($dateDemande)
+    {
+        $this->dateDemande = $dateDemande;
+
+        return $this;
+    }
+
+    /**
+     * Get dateDemande
+     *
+     * @return \DateTime
+     */
+    public function getDateDemande()
+    {
+        return $this->dateDemande;
+    }
+
+    /**
+     * Set duree
+     *
+     * @param \DateTime $duree
+     *
+     * @return Demande
+     */
+    public function setDuree($duree)
+    {
+        $this->duree = $duree;
+
+        return $this;
+    }
+
+    /**
+     * Get duree
+     *
+     * @return \DateTime
+     */
+    public function getDuree()
+    {
+        return $this->duree;
     }
 }

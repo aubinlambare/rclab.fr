@@ -1,0 +1,30 @@
+{% extends 'compte.html.twig' %}
+
+{% block content %}
+    <h3>Liste des types de demande disponibles</h3>
+    {% if is_granted('ROLE_SUPER_ADMIN') %}
+        <a href="{{ path('rclab_website_tdemandes_add') }}">Ajouter un type de demande</a>
+    {% endif %}
+    {% for tdemande in tdemandes %}
+        <div>
+            <div>
+                <p><strong> {{ tdemande.typeDemande }}</strong></p>
+                {% if tdemande.couleur is not null %}
+                    <p>Couleur du type de demande : {{ tdemande.couleur }}</p>
+                {% endif %}
+                {% if tdemande.historique == true %}
+                    <p><i>Historisé</i></p>
+                {% endif %}
+                <a href="{{ path('rclab_website_tdemandes_edit', {'id': tdemande.id}) }}">Modifier</a>
+                {% if is_granted('ROLE_SUPER_ADMIN') %}
+                    <a href="{{ path('rclab_website_tdemandes_remove', {'id': tdemande.id}) }}">Supprimer</a>
+                {% endif %}
+            </div>
+            {% if tdemande.icone is not null %}
+                <div>
+                    <img src="{{ asset('uploads/images/'~tdemande.icone) }}"/>
+                </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+{% endblock %}

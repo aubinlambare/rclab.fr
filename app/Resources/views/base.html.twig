@@ -1,52 +1,171 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <meta charset="UTF-8"/>
-    <title>RC Lab</title>
-    {% stylesheets '@RCLABWebsiteBundle/Resources/public/css/base.css'
+    <meta charset="UTF-8">
+    <title>RC LAB</title>
+
+    <link rel="shortcut icon" href="{{ asset('images/rclab.png') }}">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    {% stylesheets
+        '@RCLABWebsiteBundle/Resources/public/css/base.css'
         '@RCLABWebsiteBundle/Resources/public/css/actualite.css' %}
         <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
     {% endstylesheets %}
 
+    {% block stylesheets_registration %}{% endblock %}
+
 </head>
-
 <body>
-<header>
-    <a href="{{ path('rclab_website_home') }}"><img src="{{ asset('images/logo_rclab.png') }}" alt="logo RC Lab"/></a>
-    <nav>
-        <ul>
-            <li><a href="{{ path('rclab_website_association') }}">L'association</a></li>
-            <li><a href="{{ path('rclab_website_contact') }}">Nous contacter</a></li>
-            <li><a href="{{ path('rclab_website_actualite') }}">Actualités</a>
-                <ul>
-                    <li><a href="{{ path('rclab_website_actualite_events') }}">Evènements</a></li>
-                    <li><a href="{{ path('rclab_website_actualite_news') }}">News</a></li>
-                </ul>
-            </li>
-            {% if is_granted("IS_AUTHENTICATED_FULLY") %}
-                <li><a href="{{ path('rclab_website_reparation') }}">Réparations</a></li>
-                <li><a href="{{ path('rclab_website_cours') }}">Cours</a></li>
-                <li><a href="{{ path('rclab_website_compte') }}">Compte</a></li>
-                <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
-            {% else %}
-                <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
-                <li><a href="{{ path('rclab_user_registration_register') }}">Inscription</a></li>
-            {% endif %}
-        </ul>
-    </nav>
-</header>
+<div id="page">
+    <div id="header-page">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header col-lg-2 col-md-1 col-sm-1 col-xs-6">
+                    <a class="navbar-brand" href="{{ path('rclab_website_home') }}">
+                        <img alt="RC LAB" src="{{ asset('images/rclabheader.png') }}"/>
+                    </a>
+                </div>
+                <div class="header col-lg-10 col-md-11 col-sm-11 col-xs-6" id="header-bar">
+                    <ul class="nav navbar-nav header-fixe">
+                        <li class="navbar-text hidden-xs"><a href="{{ path('rclab_website_association') }}">L'association</a>
+                        </li>
+                        <li class="navbar-text hidden-xs"><a href="{{ path('rclab_website_actualite') }}">Actualités</a>
+                        </li>
+                        <li class="navbar-text hidden-xs"><a
+                                    href="{{ path('rclab_website_repair') }}">Réparations</a></li>
+                        <li class="navbar-text hidden-xs"><a href="{{ path('rclab_website_course') }}">Cours</a></li>
+                        <li class="navbar-text hidden-xs"><a href="{{ path('rclab_website_contact') }}">Contacts</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-right header-user">
+                        {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                            <li class="navbar-text hidden-xs hidden-sm"><a href="{{ path('rclab_user_profile') }}">Compte</a>
+                            </li>
+                            <li class="navbar-text hidden-xs hidden-sm"><a
+                                        href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+                        {% else %}
+                            <li class="navbar-text hidden-xs hidden-sm"><a href="{{ path('fos_user_security_login') }}">Connexion</a>
+                            </li>
+                            <li class="navbar-text hidden-xs hidden-sm"><a
+                                        href="{{ path('rclab_user_registration_register') }}">S'inscrire</a></li>
+                        {% endif %}
+                        <li class="dropdown hidden-lg hidden-md pull-right">
+                            <a class="dropdown-toggle pull-right" id="dropdownMenuUser" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="true" href="">
+                                <span class="glyphicon glyphicon-menu-hamburger"></span>
+                            </a>
+                            <ul class="dropdown-menu menu-user" aria-labelledby="dropdownMenuUser">
+                                <li class="navbar-text hidden-sm item-header"><a
+                                            href="{{ path('rclab_website_association') }}">L'association</a>
+                                </li>
+                                <li class="navbar-text hidden-sm item-header"><a
+                                            href="{{ path('rclab_website_actualite') }}">Actualités</a></li>
+                                <li class="navbar-text hidden-sm item-header"><a
+                                            href="{{ path('rclab_website_repair') }}">Réparations</a></li>
+                                <li class="navbar-text hidden-sm item-header"><a
+                                            href="{{ path('rclab_website_course') }}">Cours</a>
+                                </li>
+                                <li class="navbar-text hidden-sm item-header"><a
+                                            href="{{ path('rclab_website_contact') }}">Contacts</a></li>
+                                <li role="separator" class="divider hidden-sm"></li>
+                                {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                                    <li class="navbar-text item-user"><a
+                                                href="{{ path('rclab_user_profile') }}">Compte</a></li>
+                                    <li class="navbar-text item-user"><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+                                    </li>
+                                {% else %}
+                                    <li class="navbar-text item-user"><a href="{{ path('fos_user_security_login') }}">Connexion</a>
+                                    </li>
+                                    <li class="navbar-text item-user"><a
+                                                href="{{ path('rclab_user_registration_register') }}">S'inscrire</a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div id="content-page">
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
 
-<div>
-    {% for message in app.flashes('success') %}
-        <div class="flash-notice">
-            {{ message }}
+        {% block body %}{% endblock %}
+    </div>
+    <div id="footer-page">
+        <footer>
+            <div class="footer-top">
+                <div class="container">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center facebook">
+                        <a href="#"><i class="fa fa-facebook-square"></i><span class="hidden-xs">Facebook</span></a>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center email">
+                        <a><i class="fa fa-envelope-square"></i><span class="hidden-xs">rclab@et.esiea.fr</span></a>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center snapchat">
+                        <a href="#"><i class="fa fa-snapchat-square"></i><span class="hidden-xs">Snapchat</span></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container" style="border-top:1px solid grey;">
+                <div class="row text-center">
+                    <div class="col-lg-6 col-lg-offset-3">
+                        <ul class="menu-footer">
+
+                            <li>
+                                <a href="{{ path('rclab_website_home') }}">Accueil</a>
+                            </li>
+
+                            <li>
+                                <a href="{{ path('rclab_website_contact') }}">Contacts</a>
+                            </li>
+
+                            <li>
+                                <a class="hidden-xs">Suivez-nous</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+
+
+        <div class="copyright">
+            <div class="container">
+
+                <div class="row text-center">
+                    <p>Copyright © 2018 Tous droits réservés</p>
+                </div>
+
+            </div>
         </div>
-    {% endfor %}
-
-    {% block body %}{% endblock %}
+    </div>
 </div>
-<footer>
-    <p>footer de notre site web</p>
-</footer>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+{% block javascripts %}{% endblock %}
 </body>
+
+
 </html>

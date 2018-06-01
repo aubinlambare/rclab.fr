@@ -2,6 +2,7 @@
 
 namespace RCLAB\WebsiteBundle\Form;
 
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -30,7 +31,8 @@ class NewsType extends AbstractType
                 'min' => 1,
                 'max' => 10,
             )))
-            ->add('image', FileType::class);
+            ->add('image', FileType::class)
+            ->add('Valider', SubmitType::class);
     }
 
     /**

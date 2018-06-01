@@ -14,7 +14,7 @@ services:
         autoconfigure: true
         # this means you cannot fetch services directly from the container via $container->get()
         # if you need to do this, you can override this setting on individual services
-        public: false
+        public: true
 
     # makes classes in src/AppBundle available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
@@ -43,9 +43,18 @@ services:
         #    - { name: kernel.event_subscriber }
 
 
-    rclab.form.registration:
-        class: RCLAB\UserBundle\Form\RegistrationType
-        tags:
-            - { name: form.type, alias: rclab_user_registration }
+    rclab_user.service.role:
+        class: RCLAB\UserBundle\Service\RoleService
+        arguments: [security.role_hierarchy]
 
+    rclab_website.remove.file:
+        class: RCLAB\WebsiteBundle\Service\RemoveFile
+        arguments: ["%kernel.project_dir%"]
 
+  #  RCLAB\WebsiteBundle\Entity\Image:
+   #     arguments:
+    #        $uploadsDirectory: '%image_directory%'
+
+    swiftmailer.mailer.default.transport:
+            class:     Swift_SendmailTransport
+            arguments: ['/usr/sbin/sendmail -t']

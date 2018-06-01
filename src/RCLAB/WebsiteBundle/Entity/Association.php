@@ -31,7 +31,7 @@ class Association
     /**
      * @var string
      *
-     * @ORM\Column(name="LogoAsso", type="blob", nullable=true)
+     * @ORM\Column(name="LogoAsso", type="string", nullable=true)
      */
     private $logoAsso;
 
@@ -66,7 +66,7 @@ class Association
     /**
      * @var string
      *
-     * @ORM\Column(name="ImageFocus", type="blob")
+     * @ORM\Column(name="ImageFocus", type="string")
      */
     private $imageFocus;
 
@@ -77,11 +77,10 @@ class Association
      */
     private $texteFocus;
 
-
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {

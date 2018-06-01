@@ -1,0 +1,103 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+
+    <a href="{{ path('rclab_website_course_request') }}">Demander un cours</a>
+
+    <div>
+        <h3>Mes demandes de cours</h3>
+
+        <table>
+            <tr>
+                <th>Matière</th>
+                <th>Objet</th>
+                <th>Date et heure de la demande</th>
+                <th>Etat de la demande</th>
+            </tr>
+            {% for demand in my_demands %}
+                <tr>
+                    <td>{{ demand.matiere.matiere }}</td>
+                    <td>{{ demand.objet }}</td>
+                    <td>{{ demand.dateDemande|date('d/m/Y à H:i') }}
+                    <td>{{ demand.etat }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div>
+        <h3>Mes cours</h3>
+
+        {% if my_courses is empty %}
+            <p>Vous n'avez pas encore de cours</p>
+        {% else %}
+            <table>
+                <tr>
+                    <th>Matière</th>
+                    <th>Niveau</th>
+                    <th>Objet</th>
+                    <th>Date et heure du cours</th>
+                    <th>Professeur</th>
+                    <th>Voir plus</th>
+                    <th>Se désinscrire</th>
+                </tr>
+                {% for course in my_courses %}
+                    <tr>
+                        <td>{{ course.matiere.matiere }}</td>
+                        <td>{{ course.niveau is not null ? course.niveau.niveau }}</td>
+                        <td>{{ course.objet }}</td>
+                        <td>{{ course.debut|date('d/m/Y à H:i') }}</td>
+                        <td>
+                            {% if course.professeur is not null %}
+                                {{ course.professeur.firstName }} {{ course.professeur.lastName }}
+                            {% endif %}
+                        </td>
+                        <td><a href="{{ path('rclab_website_course_detail', {'id': course.id}) }}">Voir plus</a></td>
+                        <td>
+                            {% if course.professeur !=  app.user %}
+                            <a href="{{ path('rclab_website_course_unsubscribe', {'id': course.id}) }}">Se
+                                désinscrire</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+    </div>
+
+    <div>
+        <h3>Les cours disponibles</h3>
+
+        {% if available_courses is empty %}
+            <p>Aucun cours disponible</p>
+        {% else %}
+            <table>
+                <tr>
+                    <th>Matière</th>
+                    <th>Niveau</th>
+                    <th>Objet</th>
+                    <th>Date et heure du cours</th>
+                    <th>Professeur</th>
+                    <th>Voir plus</th>
+                    <th>S'inscrire</th>
+                </tr>
+                {% for course in available_courses %}
+                    <tr>
+                        <td>{{ course.matiere.matiere }}</td>
+                        <td>{{ course.niveau is not null ? course.niveau.niveau }}</td>
+                        <td>{{ course.objet }}</td>
+                        <td>{{ course.debut|date('d/m/Y à H:i') }}</td>
+                        <td>
+                            {% if course.professeur is not null %}
+                                {{ course.professeur.firstName }} {{ course.professeur.lastName }}
+                            {% endif %}
+                        </td>
+                        <td><a href="{{ path('rclab_website_course_detail', {'id': course.id}) }}">Voir plus</a></td>
+                        <td><a href="{{ path('rclab_website_course_subscribe', {'id': course.id}) }}">S'inscrire</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -67,8 +67,8 @@ doctrine:
 swiftmailer:
     transport: '%mailer_transport%'
     host: '%mailer_host%'
-    username: '%mailer_user%'
-    password: '%mailer_password%'
+    #username: '%mailer_user%'
+    #password: '%mailer_password%'
     spool: { type: memory }
 
 # fosuserbundle configuration
@@ -91,3 +91,8 @@ fos_user:
     service:
         mailer: fos_user.mailer.twig_swift
 
+#unoconv configuration
+#jmd_unoconv:
+ #   config:
+  #      timeout: 42
+   #     binaries: /usr/bin/unoconv
