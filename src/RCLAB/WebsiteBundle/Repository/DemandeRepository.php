@@ -1,8 +1,6 @@
 <?php
-
 namespace RCLAB\WebsiteBundle\Repository;
 use RCLAB\UserBundle\Entity\User;
-
 /**
  * DemandeRepository
  *
@@ -11,10 +9,7 @@ use RCLAB\UserBundle\Entity\User;
  */
 class DemandeRepository extends \Doctrine\ORM\EntityRepository
 {
-
     /** Les cours **/
-
-
     private function allDemandsCourses()
     {
         return $this
@@ -28,14 +23,12 @@ class DemandeRepository extends \Doctrine\ORM\EntityRepository
             ->leftJoin('d.professeur', 'professeur')
             ->where("tdemande.typeDemande = 'cours'");
     }
-
     private function allCourses()
     {
         return $this
             ->allDemandsCourses()
             ->andWhere("d.etat = 'validé'");
     }
-
     private function allCoursesNotHistory()
     {
         return $this
@@ -44,7 +37,6 @@ class DemandeRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('NOW', new \DateTime('NOW'))
             ->orderBy('d.debut', 'asc');
     }
-
     private function allCoursesHistory()
     {
         return $this
@@ -53,7 +45,6 @@ class DemandeRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('NOW', new \DateTime('NOW'))
             ->orderBy('d.debut', 'desc');
     }
-
     public function findAvailableCourses($user)
     {
         return $this
@@ -63,7 +54,6 @@ class DemandeRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery()
             ->getResult();
     }
-
     public function findAllCoursesHistory($offset, $nbResults)
     {
         return $this
@@ -73,7 +63,13 @@ class DemandeRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery()
             ->getResult();
     }
-
+    public function findAllCoursesNotHistory()
+    {
+        return $this
+            ->allCoursesNotHistory()
+            ->getQuery()
+            ->getResult();
+    }
     public function findMyCourses(User $user)
     {
         return $this
@@ -83,7 +79,6 @@ class DemandeRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery()
             ->getResult();
     }
-
     public function findMyCoursesHistory(User $user, $offset, $nbResults)
     {
         return $this
@@ -95,7 +90,6 @@ class DemandeRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery()
             ->getResult();
     }
-
 //    public function findToTeachCourses(User $user)
 //    {
 //        return $this
@@ -115,7 +109,6 @@ class DemandeRepository extends \Doctrine\ORM\EntityRepository
 //            ->getQuery()
 //            ->getResult();
 //    }
-
     public function findCoursesToHandle($offset, $nbResults)
     {
         return $this
@@ -128,7 +121,6 @@ class DemandeRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery()
             ->getResult();
     }
-
     public function findMyCoursesDemandsHistory(User $user, $offset, $nbResults)
     {
         return $this
@@ -142,7 +134,6 @@ class DemandeRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery()
             ->getResult();
     }
-
     public function findMyCoursesDemandsNotHistory(User $user)
     {
         return $this
@@ -153,7 +144,6 @@ class DemandeRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery()
             ->getResult();
     }
-
 //    public function findAllCoursesDemandsHistory()
 //    {
 //        return $this
@@ -162,9 +152,7 @@ class DemandeRepository extends \Doctrine\ORM\EntityRepository
 //            ->getQuery()
 //            ->getResult();
 //    }
-
     /** Les réparations **/
-
     private function allRepairs()
     {
         return $this
@@ -178,14 +166,12 @@ class DemandeRepository extends \Doctrine\ORM\EntityRepository
             ->where("tdemande.typeDemande = 'réparation'")
             ->orderBy('d.dateDemande', 'desc');
     }
-
     private function allRepairsNotHistory()
     {
         return $this
             ->allRepairs()
             ->andWhere("d.etat != 'délivré'");
     }
-
     private function allRepairsHistory()
     {
         return $this
@@ -201,7 +187,6 @@ class DemandeRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery()
             ->getResult();
     }
-
     public function findMyRepairsHistory(User $user, $offset, $nbResults)
     {
         return $this
@@ -213,7 +198,6 @@ class DemandeRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery()
             ->getResult();
     }
-
     public function findAllRepairsNotHistory($offset, $nbResults)
     {
         return $this
@@ -223,7 +207,6 @@ class DemandeRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery()
             ->getResult();
     }
-
     public function findAllRepairsHistory($offset, $nbResults)
     {
         return $this
@@ -233,7 +216,6 @@ class DemandeRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery()
             ->getResult();
     }
-
 //    public function findToMakeRepairs(User $user)
 //    {
 //        return $this

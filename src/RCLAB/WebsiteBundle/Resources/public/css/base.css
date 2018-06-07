@@ -10,6 +10,12 @@ body{
     line-height: 30px;
 }
 
+.navbar-brand img {
+    margin-top: -10px;
+    width: 80px;
+    height: 70px;
+}
+
 @media (min-width: 768px) and (max-width: 991px) {
     .header-fixe > li > a {
         margin-left: 20px !important;
@@ -77,6 +83,7 @@ body{
 }
 
 .navbar-inverse {
+    height: 80px !important;
     background-color: rgba(0, 0, 0, 0.9);
 }
 

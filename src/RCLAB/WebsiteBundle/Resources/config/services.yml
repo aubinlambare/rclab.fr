@@ -2,3 +2,7 @@ services:
 #    rclab_website.example:
 #        class: RCLAB\WebsiteBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+#    twig.extension.intl:
+#        class: Twig_Extensions_Extension_Intl
+#        tags:
+#           - { name: twig.extension }

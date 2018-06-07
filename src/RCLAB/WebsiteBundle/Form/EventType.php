@@ -1,7 +1,5 @@
 <?php
-
 namespace RCLAB\WebsiteBundle\Form;
-
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
@@ -13,7 +11,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-
 class EventType extends AbstractType
 {
     /**
@@ -22,26 +19,41 @@ class EventType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('event', TextType::class)
+            ->add('title', TextType::class, [
+                'label' => 'titre',
+            ])
             ->add('description', TextareaType::class)
-            ->add('lien', UrlType::class)
-            ->add('image', FileType::class)
-            ->add('maxParticipants', IntegerType::class, array('attr' => array(
-                'min' => 1,
-                'max' => 32767,
-            )))
-            ->add('debutEvent', DateTimeType::class)
-            ->add('finEvent', DateTimeType::class)
-            ->add('debutPublication', DateTimeType::class)
-            ->add('finPublication', DateTimeType::class)
-            ->add('focus', CheckboxType::class)
+            ->add('link', UrlType::class, [
+                'label' => 'lien',
+            ])
+            ->add('image', FileType::class, [
+                'label' => 'Affiche',
+            ])
+            ->add('maxParticipants', IntegerType::class, [
+                'label' => 'Nombre maximum de participants',
+                'attr' => [
+                    'min' => 1,
+                    'max' => 32767,
+                ],
+            ])
+            ->add('dateStart', DateTimeType::class, [
+                'label' => 'Date de début de l\'évènement',
+            ])
+            ->add('dateEnd', DateTimeType::class, [
+                'label' => 'Date de fin de l\'évènement',
+            ])
+            ->add('shareDate', DateTimeType::class, [
+                'label' => 'Date de publication',
+            ])
+            ->add('focus', CheckboxType::class, [
+                'label' => 'Mettre l\'évènement en focus'
+            ])
 //            ->add('prioriteFocus', IntegerType::class, array('attr' => array(
 //                'min' => 1,
 //                'max' => 10,
 //            )))
             ->add('Valider', SubmitType::class);
     }
-
     /**
      * {@inheritdoc}
      */
@@ -51,7 +63,6 @@ class EventType extends AbstractType
             'data_class' => 'RCLAB\WebsiteBundle\Entity\Event'
         ));
     }
-
     /**
      * {@inheritdoc}
      */
@@ -59,6 +70,4 @@ class EventType extends AbstractType
     {
         return 'rclab_websitebundle_event';
     }
-
-
 }

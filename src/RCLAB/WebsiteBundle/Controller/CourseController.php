@@ -114,7 +114,6 @@ class CourseController extends Controller
             $user = $this->get('security.token_storage')->getToken()->getUser();
 
             $course->setResponsable($user);
-
             $em = $this->getDoctrine()->getManager();
             $em->persist($course);
             $em->flush();

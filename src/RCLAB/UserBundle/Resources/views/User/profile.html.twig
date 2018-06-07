@@ -1,6 +1,6 @@
 {% extends "compte.html.twig" %}
 
-{% block stylesheets_registration %}
+{% block stylesheets %}
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
     <link rel="stylesheet" href="{{ asset('bundles/rclabuser/css/form-registration.css') }}" />
     <link rel="stylesheet" href="{{ asset('bundles/rclabuser/css/registration.css') }}" />
@@ -96,11 +96,4 @@
     </div>
 
 
-{% endblock %}
-{% block javascripts %}
-    {% javascripts
-        '@RCLABUserBundle/Resources/public/js/jquery.backstretch.min.js'
-        '@RCLABUserBundle/Resources/public/js/profile.js' %}
-        <script src="{{ asset_url }}" type="text/javascript"></script>
-    {% endjavascripts %}
 {% endblock %}

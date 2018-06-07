@@ -1,151 +1,57 @@
 <?php
-
 namespace RCLAB\WebsiteBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
-
-use Symfony\Component\Validator\Constraints as Assert;
-
 /**
  * News
  *
  * @ORM\Table(name="News")
  * @ORM\Entity(repositoryClass="RCLAB\WebsiteBundle\Repository\NewsRepository")
  */
-class News
+class News extends Actualite
 {
     /**
      * @var int
      *
-     * @ORM\Column(name="idNews", type="integer")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="News", type="string", length=255)
-     *
-     * @Assert\NotBlank(message="Le titre est obligatoire")
-     */
-    private $news;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="Description", type="text")
-     *
-     * @Assert\NotBlank(message="La description est obligatoire")
-     */
-    private $description;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="Lien", type="string", length=1000, nullable=true)
-     *
-     * @Assert\Url(message="L'adresse '{{ value }}' n'est pas valide")
-     */
-    private $lien;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="DebutPublication", type="datetime")
-     *
-     */
-    private $debutPublication;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="FinPublication", type="datetime", nullable=true)
-     */
-    private $finPublication;
-
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="Focus", type="boolean")
-     */
-    private $focus;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="PrioriteFocus", type="smallint", nullable=true)
-     *
-     * @Assert\GreaterThan(
-     *     value = 0,
-     *     message = "La valeur doit être comprise entre 1 et 10"
-     * )
-     *
-     * @Assert\LessThanOrEqual(
-     *     value = 10,
-     *     message = "La valeur doit être comprise entre 1 et 10"
-     * )
-     */
-    private $prioriteFocus;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="Image", type="string", nullable=true)
-     *
-     */
-    private $image;
-
-
-    /**
-     * @var Personne
-     *
-     * @ORM\ManyToOne(targetEntity="RCLAB\WebsiteBundle\Entity\Personne")
-     * @ORM\JoinColumn(name="publier", referencedColumnName="idPersonne")
-     */
-    private $publier;
-
-
     public function __construct()
     {
-        $this->debutPublication = new \DateTime('NOW');
+        $this->share_date = new \DateTime('NOW');
+        $this->date_start = $this->share_date;
     }
-
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
     }
-
     /**
-     * Set news
+     * Set title
      *
-     * @param string $news
+     * @param string $title
      *
      * @return News
      */
-    public function setNews($news)
+    public function setTitle($title)
     {
-        $this->news = $news;
-
+        $this->title = $title;
         return $this;
     }
-
     /**
-     * Get news
+     * Get title
      *
      * @return string
      */
-    public function getNews()
+    public function getTitle()
     {
-        return $this->news;
+        return $this->title;
     }
-
     /**
      * Set description
      *
@@ -156,10 +62,8 @@ class News
     public function setDescription($description)
     {
         $this->description = $description;
-
         return $this;
     }
-
     /**
      * Get description
      *
@@ -169,127 +73,27 @@ class News
     {
         return $this->description;
     }
-
     /**
-     * Set lien
+     * Set link
      *
-     * @param string $lien
+     * @param string $link
      *
      * @return News
      */
-    public function setLien($lien)
+    public function setLink($link)
     {
-        $this->lien = $lien;
-
+        $this->link = $link;
         return $this;
     }
-
     /**
-     * Get lien
+     * Get link
      *
      * @return string
      */
-    public function getLien()
+    public function getLink()
     {
-        return $this->lien;
+        return $this->link;
     }
-
-    /**
-     * Set debutPublication
-     *
-     * @param \DateTime $debutPublication
-     *
-     * @return News
-     */
-    public function setDebutPublication($debutPublication)
-    {
-        $this->debutPublication = $debutPublication;
-
-        return $this;
-    }
-
-    /**
-     * Get debutPublication
-     *
-     * @return \DateTime
-     */
-    public function getDebutPublication()
-    {
-        return $this->debutPublication;
-    }
-
-    /**
-     * Set finPublication
-     *
-     * @param \DateTime $finPublication
-     *
-     * @return News
-     */
-    public function setFinPublication($finPublication)
-    {
-        $this->finPublication = $finPublication;
-
-        return $this;
-    }
-
-    /**
-     * Get finPublication
-     *
-     * @return \DateTime
-     */
-    public function getFinPublication()
-    {
-        return $this->finPublication;
-    }
-
-    /**
-     * Set focus
-     *
-     * @param boolean $focus
-     *
-     * @return News
-     */
-    public function setFocus($focus)
-    {
-        $this->focus = $focus;
-
-        return $this;
-    }
-
-    /**
-     * Get focus
-     *
-     * @return bool
-     */
-    public function getFocus()
-    {
-        return $this->focus;
-    }
-
-    /**
-     * Set prioriteFocus
-     *
-     * @param integer $prioriteFocus
-     *
-     * @return News
-     */
-    public function setPrioriteFocus($prioriteFocus)
-    {
-        $this->prioriteFocus = $prioriteFocus;
-
-        return $this;
-    }
-
-    /**
-     * Get prioriteFocus
-     *
-     * @return int
-     */
-    public function getPrioriteFocus()
-    {
-        return $this->prioriteFocus;
-    }
-
     /**
      * Set image
      *
@@ -300,10 +104,8 @@ class News
     public function setImage($image)
     {
         $this->image = $image;
-
         return $this;
     }
-
     /**
      * Get image
      *
@@ -313,28 +115,109 @@ class News
     {
         return $this->image;
     }
-
     /**
-     * Set publier
+     * Set shareDate
      *
-     * @param \RCLAB\WebsiteBundle\Entity\Personne $publier
+     * @param \DateTime $shareDate
      *
      * @return News
      */
-    public function setPublier(\RCLAB\WebsiteBundle\Entity\Personne $publier = null)
+    public function setShareDate($shareDate)
     {
-        $this->publier = $publier;
-
+        $this->share_date = $shareDate;
         return $this;
     }
-
     /**
-     * Get publier
+     * Get shareDate
+     *
+     * @return \DateTime
+     */
+    public function getShareDate()
+    {
+        return $this->share_date;
+    }
+    /**
+     * Set focus
+     *
+     * @param boolean $focus
+     *
+     * @return News
+     */
+    public function setFocus($focus)
+    {
+        $this->focus = $focus;
+        return $this;
+    }
+    /**
+     * Get focus
+     *
+     * @return boolean
+     */
+    public function getFocus()
+    {
+        return $this->focus;
+    }
+    /**
+     * Set prioriteFocus
+     *
+     * @param integer $prioriteFocus
+     *
+     * @return News
+     */
+    public function setPrioriteFocus($prioriteFocus)
+    {
+        $this->priorite_focus = $prioriteFocus;
+        return $this;
+    }
+    /**
+     * Get prioriteFocus
+     *
+     * @return integer
+     */
+    public function getPrioriteFocus()
+    {
+        return $this->priorite_focus;
+    }
+    /**
+     * Set dateStart
+     *
+     * @param \DateTime $dateStart
+     *
+     * @return News
+     */
+    public function setDateStart($dateStart)
+    {
+        $this->date_start = $dateStart;
+        return $this;
+    }
+    /**
+     * Get dateStart
+     *
+     * @return \DateTime
+     */
+    public function getDateStart()
+    {
+        return $this->date_start;
+    }
+    /**
+     * Set sharedBy
+     *
+     * @param \RCLAB\WebsiteBundle\Entity\Personne $sharedBy
+     *
+     * @return News
+     */
+    public function setSharedBy(Personne $sharedBy = null)
+    {
+        $this->sharedBy = $sharedBy;
+        return $this;
+    }
+    /**
+     * Get sharedBy
      *
      * @return \RCLAB\WebsiteBundle\Entity\Personne
      */
-    public function getPublier()
+    public function getSharedBy()
     {
-        return $this->publier;
+        return $this->sharedBy;
     }
 }

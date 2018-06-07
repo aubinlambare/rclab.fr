@@ -14,17 +14,17 @@
                     {% endif %}
                     <div class=" test col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <div class="detail-event">
-                            <h4><p>{{ event.event }}</p></h4>
+                            <h4>{{ event.title }}</h4>
                             <br/>
-                            <p>Début: {{ event.debutEvent|date('d/m/Y H:i') }}</p>
-                            <p>Fin : {{ event.finEvent|date('d/m/Y H:i') }}</p>
+                            <p>Début: {{ event.dateStart|date('d/m/Y H:i') }}</p>
+                            <p>Fin : {{ event.dateEnd|date('d/m/Y H:i') }}</p>
                             <br/>
                             <p><strong>Description de l'évènement :</strong></p>
                             <p>{{ event.description }}</p>
-                            {% if event.lien is not null %}
+                            {% if event.link is not null %}
                                 <br/>
                                 <p>Pour plus d'informations, cliquez sur ce lien:</p>
-                                <p><a href="{{ event.lien }}">{{ event.lien }}</a></p>
+                                <p><a href="{{ event.link }}">{{ event.link }}</a></p>
                             {% endif %}
                             {% if event.maxParticipants is not null %}
                                 <br/>

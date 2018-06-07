@@ -1,43 +1,51 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-
-    <h3>Body de la page news</h3>
-    {% if is_granted('ROLE_MODERATOR') %}
-        <a href="{{ path('rclab_website_actualite_news_add') }}">Ajouter une news</a>
-    {% endif %}
-    <div>
-        {% for news in listNews %}
-            <div>
-                <h4>{{ news.news }} publiée le {{ news.debutPublication|date('d/m/Y H:i') }}</h4>
-                {% if is_granted('ROLE_MODERATOR') %}
+    <div class="news-body">
+        <h3>Body de la page news</h3>
+        {% if is_granted('ROLE_MODERATOR') %}
+            <a href="{{ path('rclab_website_actualite_news_add') }}">Ajouter une news</a>
+        {% endif %}
+        <div>
+            {% for news in listNews %}
+                <div>
+                    <h4>{{ news.title }} publiée le {{ news.shareDate|date('d/m/Y H:i') }}</h4>
+                    {% if is_granted('ROLE_MODERATOR') %}
+                        <p>
+                            <a href="{{ path('rclab_website_actualite_news_edit', {'id': news.id}) }}">Editer</a>
+                            <a href="{{ path('rclab_website_actualite_news_remove', { 'id': news.id}) }}">supprimer</a>
+                        </p>
+                    {% endif %}
+                    <p>{{ news.description }}</p>
+                    {% if news.link is not null %}
+                        <p><a href="{{ news.link }}">
+                                {{ news.link }}
+                            </a></p>
+                    {% endif %}
                     <p>
-                        <a href="{{ path('rclab_website_actualite_news_edit', {'id': news.id}) }}">Editer</a>
-                        <a href="{{ path('rclab_website_actualite_news_remove', { 'id': news.id}) }}">supprimer</a>
+                        <a href="{{ path('rclab_website_actualite_news_detail', {'id': news.id}) }}">Cliquer pour plus de
+                            détail</a>
                     </p>
-                {% endif %}
-                <p>{{ news.description }}</p>
-                {% if news.lien is not null %}
-                    <p><a href="{{ news.lien }}">
-                            {{ news.lien }}
-                        </a></p>
-                {% endif %}
-                <p>
-                    <a href="{{ path('rclab_website_actualite_news_detail', {'id': news.id}) }}">Cliquer pour plus de
-                        détail</a>
-                </p>
-            </div>
-        {% endfor %}
-    </div>
-    <div>
-        <p>pagination : </p>
-        {% if page > 1 %}
-            <a href="{{ path('rclab_website_actualite_news', { 'page': (page - 1) }) }}">précédent</a>
-        {% endif %}
-        {{ page }}
-        {% if isSuivant is not null %}
-            <a href="{{ path('rclab_website_actualite_news', {'page': (page + 1) }) }}">suivant</a>
-        {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+        <div>
+            <p>pagination : </p>
+            {% if page > 1 %}
+                <a href="{{ path('rclab_website_actualite_news', { 'page': (page - 1) }) }}">précédent</a>
+            {% endif %}
+            {{ page }}
+            {% if isSuivant is not null %}
+                <a href="{{ path('rclab_website_actualite_news', {'page': (page + 1) }) }}">suivant</a>
+            {% endif %}
+        </div>
     </div>
 
+{% endblock %}
+{% block javascripts %}
+    {% javascripts
+        '@RCLABUserBundle/Resources/public/js/jquery.backstretch.min.js'
+        '@RCLABUserBundle/Resources/public/js/actualite.js' %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
 {% endblock %}
