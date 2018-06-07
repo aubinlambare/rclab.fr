@@ -12,12 +12,4 @@ $(document).ready(function() {
     $('.focusNumber').eq(0).addClass('active');
     $('.alert').delay(4000).fadeOut(2000);
 
-    function LastWeek(day) {
-        day = day - 7;
-        return day;
-    }
-    function NewtWeek(day) {
-        day = day + 7;
-        return day;
-    }
 });
