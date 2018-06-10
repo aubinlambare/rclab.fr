@@ -1,9 +1,6 @@
 <?php
-
 namespace RCLAB\WebsiteBundle\Repository;
-
 use Doctrine\ORM\EntityRepository;
-
 /**
  * EventRepository
  *
@@ -12,4 +9,12 @@ use Doctrine\ORM\EntityRepository;
  */
 class EventRepository extends EntityRepository
 {
+    public function findEventsToHandle()
+    {
+        return $this
+            ->createQueryBuilder('e')
+            ->where("e.maxParticipants != 'null'")
+            ->getQuery()
+            ->getResult();
+    }
 }

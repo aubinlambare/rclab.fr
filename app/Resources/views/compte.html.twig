@@ -19,6 +19,7 @@
                     {% if is_granted('ROLE_MODERATOR') %}
                         <li><a href="{{ path('rclab_website_course_handle') }}">Gérer les cours</a></li>
                         <li><a href="{{ path('rclab_website_repair_handle') }}">Gérer les réparations</a></li>
+                        <li><a href="{{ path('rclab_website_actualite_events_handle') }}">Gérer les évènements</a></li>
                         <li><a href="{{ path('rclab_website_association_edit') }}">Informations de l'association</a></li>
                         <li><a href="{{ path('rclab_website_course_history_all') }}">Historique de l'association</a></li>
                     {% endif %}

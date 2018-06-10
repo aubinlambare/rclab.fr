@@ -11,10 +11,6 @@ rclab_website_contact:
     path:     /contact
     defaults:  { _controller: RCLABWebsiteBundle:Default:contact }
 
-rclab_website_compte:
-    path:    /profile/compte
-    defaults:  { _controller: RCLABWebsiteBundle:Default:compte }
-
 # AssociationController
 
 rclab_website_association:
@@ -151,7 +147,7 @@ rclab_website_course_refuse:
     requirements:
         id:    \d+
 
-# MatiereController
+# MatiereController
 
 rclab_website_matiere_matieres:
     path:    /cours/matieres
@@ -189,7 +185,7 @@ rclab_website_matiere_remove:
     requirements:
         id:    \d+
 
-# NiveauController
+# NiveauController
 
 rclab_website_niveau_niveaux:
     path:    /cours/niveaux
@@ -230,18 +226,28 @@ rclab_website_niveau_remove:
 # ActualiteController
 
 rclab_website_actualite:
-    path:     /actualite
+    path:     /actualite/{page}
     defaults:
         _controller: RCLABWebsiteBundle:Actualite:actualite
-
-# news
-rclab_website_actualite_news:
-    path:    /actualite/news/{page}
-    defaults:
-        _controller: RCLABWebsiteBundle:Actualite:news
         page:        1
     requirements:
         page:    \d+
+
+rclab_website_actualite_event_subscribe:
+    path:    /actualite/event/subscribe/{id}
+    defaults:
+        _controller: RCLABWebsiteBundle:Actualite:subscribeEvent
+    requirements:
+        id:    \d+
+
+# news
+#rclab_website_actualite_news:
+#    path:    /actualite/news/{page}
+#    defaults:
+#        _controller: RCLABWebsiteBundle:Actualite:news
+#        page:        1
+#    requirements:
+#        page:    \d+
 
 rclab_website_actualite_news_detail:
     path:    /actualite/news/news/{id}
@@ -269,13 +275,13 @@ rclab_website_actualite_news_remove:
         id:    \d+
 
 # events
-rclab_website_actualite_events:
-    path:    /actualite/events/{page}
-    defaults:
-        _controller: RCLABWebsiteBundle:Actualite:events
-        page:        1
-    requirements:
-        page:    \d+
+#rclab_website_actualite_events:
+#    path:    /actualite/events/{page}
+#    defaults:
+#        _controller: RCLABWebsiteBundle:Actualite:events
+#        page:        1
+#    requirements:
+#        page:    \d+
 
 rclab_website_actualite_events_detail:
     path:    /actualite/events/event/{id}
@@ -303,6 +309,33 @@ rclab_website_actualite_events_remove:
     requirements:
         id:    \d+
 
+rclab_website_actualite_events_handle:
+    path:    /compte/actaulite/events/gerer
+    defaults:
+        _controller: RCLABWebsiteBundle:Actualite:handleEvents
+
+rclab_website_actualite_events_handleSubscription:
+    path:    /compte/actualite/events/gerer/{id}
+    defaults:
+        _controller: RCLABWebsiteBundle:Actualite:handleSubscriptionEvent
+    requirements:
+        id:    \d+
+
+rclab_website_actualite_events_unsubscribe:
+    path:    /compte/actualites/events/gerer/{event}/desinscrire/{user}
+    defaults:
+        _controller: RCLABWebsiteBundle:Actualite:unsubscribeEvent
+    requirements:
+        event:    \d+
+        user:     \d+
+
+rclab_website_actualite_events_subscribe_confirmation:
+    path:    /compte/actualites/events/gerer/{event}/inscrire/{user}
+    defaults:
+        _controller: RCLABWebsiteBundle:Actualite:confirmationSubscriptionEvent
+    requirements:
+        event:    \d+
+        user:     \d+
 
 # TDemandeController
 

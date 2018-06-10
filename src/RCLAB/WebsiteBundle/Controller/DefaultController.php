@@ -8,11 +8,11 @@ class DefaultController extends Controller
         $focus_events = $this->getDoctrine()->getRepository('RCLABWebsiteBundle:Event')->findBy(['focus' => 1]);
         $focus_news = $this->getDoctrine()->getRepository('RCLABWebsiteBundle:News')->findBy(['focus' => 1]);
         $listFocus = array_merge($focus_events, $focus_news);
-        /*$list_focus = [];
-        foreach ($listFocus as $key => $focus) {
-            $list_focus[$key] = \DateTime::createFromFormat('Y-m-d h:i:s', $focus->getTitle());
-        }
-        sort($list_focus);*/
+//        $list_focus = [];
+//        foreach ($listFocus as $key => $focus) {
+//            $list_focus[$key] = \DateTime::createFromFormat('Y-m-d h:i:s', $focus->getTitle());
+//        }
+//        sort($list_focus);
         $list_courses = $this->getDoctrine()->getRepository('RCLABWebsiteBundle:Demande')->findAllCoursesNotHistory();
         return $this->render('@RCLABWebsite/Default/index.html.twig', [
             'list_focus' => $listFocus,

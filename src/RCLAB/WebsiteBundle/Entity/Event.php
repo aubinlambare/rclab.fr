@@ -1,7 +1,11 @@
 <?php
+
 namespace RCLAB\WebsiteBundle\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
+
 use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Event
  *
@@ -18,6 +22,7 @@ class Event extends Actualite
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
     /**
      * @var int
      *
@@ -34,6 +39,7 @@ class Event extends Actualite
      * )
      */
     private $maxParticipants;
+
     /**
      * @var int
      *
@@ -51,6 +57,7 @@ class Event extends Actualite
      *
      */
     private $nbInscrits;
+
     /**
      * @var \DateTime
      *
@@ -58,12 +65,14 @@ class Event extends Actualite
      *
      */
     private $date_end;
+
     public function __construct()
     {
         $this->share_date = new \DateTime('NOW');
         $this->date_start = new \DateTime('NOW');
         $this->date_end = new \DateTime('NOW');
     }
+
     /**
      * Get id
      *
@@ -73,6 +82,7 @@ class Event extends Actualite
     {
         return $this->id;
     }
+
     /**
      * Set maxParticipants
      *
@@ -83,8 +93,10 @@ class Event extends Actualite
     public function setMaxParticipants($maxParticipants)
     {
         $this->maxParticipants = $maxParticipants;
+
         return $this;
     }
+
     /**
      * Get maxParticipants
      *
@@ -94,6 +106,7 @@ class Event extends Actualite
     {
         return $this->maxParticipants;
     }
+
     /**
      * Set nbInscrits
      *
@@ -104,8 +117,10 @@ class Event extends Actualite
     public function setNbInscrits($nbInscrits)
     {
         $this->nbInscrits = $nbInscrits;
+
         return $this;
     }
+
     /**
      * Get nbInscrits
      *
@@ -115,153 +130,7 @@ class Event extends Actualite
     {
         return $this->nbInscrits;
     }
-    /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return Event
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-        return $this;
-    }
-    /**
-     * Get title
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return Event
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-        return $this;
-    }
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-    /**
-     * Set link
-     *
-     * @param string $link
-     *
-     * @return Event
-     */
-    public function setLink($link)
-    {
-        $this->link = $link;
-        return $this;
-    }
-    /**
-     * Get link
-     *
-     * @return string
-     */
-    public function getLink()
-    {
-        return $this->link;
-    }
-    /**
-     * Set image
-     *
-     * @param string $image
-     *
-     * @return Event
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-        return $this;
-    }
-    /**
-     * Get image
-     *
-     * @return string
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-    /**
-     * Set shareDate
-     *
-     * @param \DateTime $shareDate
-     *
-     * @return Event
-     */
-    public function setShareDate($shareDate)
-    {
-        $this->share_date = $shareDate;
-        return $this;
-    }
-    /**
-     * Get shareDate
-     *
-     * @return \DateTime
-     */
-    public function getShareDate()
-    {
-        return $this->share_date;
-    }
-    /**
-     * Set focus
-     *
-     * @param boolean $focus
-     *
-     * @return Event
-     */
-    public function setFocus($focus)
-    {
-        $this->focus = $focus;
-        return $this;
-    }
-    /**
-     * Get focus
-     *
-     * @return boolean
-     */
-    public function getFocus()
-    {
-        return $this->focus;
-    }
-    /**
-     * Set prioriteFocus
-     *
-     * @param integer $prioriteFocus
-     *
-     * @return Event
-     */
-    public function setPrioriteFocus($prioriteFocus)
-    {
-        $this->priorite_focus = $prioriteFocus;
-        return $this;
-    }
-    /**
-     * Get prioriteFocus
-     *
-     * @return integer
-     */
-    public function getPrioriteFocus()
-    {
-        return $this->priorite_focus;
-    }
+
     /**
      * Set dateEnd
      *
@@ -272,8 +141,10 @@ class Event extends Actualite
     public function setDateEnd($dateEnd)
     {
         $this->date_end = $dateEnd;
+
         return $this;
     }
+
     /**
      * Get dateEnd
      *
@@ -283,6 +154,175 @@ class Event extends Actualite
     {
         return $this->date_end;
     }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return Event
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Event
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set link
+     *
+     * @param string $link
+     *
+     * @return Event
+     */
+    public function setLink($link)
+    {
+        $this->link = $link;
+
+        return $this;
+    }
+
+    /**
+     * Get link
+     *
+     * @return string
+     */
+    public function getLink()
+    {
+        return $this->link;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Event
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set shareDate
+     *
+     * @param \DateTime $shareDate
+     *
+     * @return Event
+     */
+    public function setShareDate($shareDate)
+    {
+        $this->share_date = $shareDate;
+
+        return $this;
+    }
+
+    /**
+     * Get shareDate
+     *
+     * @return \DateTime
+     */
+    public function getShareDate()
+    {
+        return $this->share_date;
+    }
+
+    /**
+     * Set focus
+     *
+     * @param boolean $focus
+     *
+     * @return Event
+     */
+    public function setFocus($focus)
+    {
+        $this->focus = $focus;
+
+        return $this;
+    }
+
+    /**
+     * Get focus
+     *
+     * @return boolean
+     */
+    public function getFocus()
+    {
+        return $this->focus;
+    }
+
+    /**
+     * Set prioriteFocus
+     *
+     * @param integer $prioriteFocus
+     *
+     * @return Event
+     */
+    public function setPrioriteFocus($prioriteFocus)
+    {
+        $this->priorite_focus = $prioriteFocus;
+
+        return $this;
+    }
+
+    /**
+     * Get prioriteFocus
+     *
+     * @return integer
+     */
+    public function getPrioriteFocus()
+    {
+        return $this->priorite_focus;
+    }
+
     /**
      * Set dateStart
      *
@@ -293,8 +333,10 @@ class Event extends Actualite
     public function setDateStart($dateStart)
     {
         $this->date_start = $dateStart;
+
         return $this;
     }
+
     /**
      * Get dateStart
      *
@@ -304,6 +346,7 @@ class Event extends Actualite
     {
         return $this->date_start;
     }
+
     /**
      * Set sharedBy
      *
@@ -311,11 +354,13 @@ class Event extends Actualite
      *
      * @return Event
      */
-    public function setSharedBy(Personne $sharedBy = null)
+    public function setSharedBy(\RCLAB\WebsiteBundle\Entity\Personne $sharedBy = null)
     {
         $this->sharedBy = $sharedBy;
+
         return $this;
     }
+
     /**
      * Get sharedBy
      *
@@ -326,4 +371,3 @@ class Event extends Actualite
         return $this->sharedBy;
     }
 }
-

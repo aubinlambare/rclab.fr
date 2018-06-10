@@ -1,6 +1,9 @@
 <?php
+
 namespace RCLAB\WebsiteBundle\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
+
 /**
  * News
  *
@@ -17,11 +20,13 @@ class News extends Actualite
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
     public function __construct()
     {
         $this->share_date = new \DateTime('NOW');
         $this->date_start = $this->share_date;
     }
+
     /**
      * Get id
      *
@@ -31,6 +36,7 @@ class News extends Actualite
     {
         return $this->id;
     }
+
     /**
      * Set title
      *
@@ -41,8 +47,10 @@ class News extends Actualite
     public function setTitle($title)
     {
         $this->title = $title;
+
         return $this;
     }
+
     /**
      * Get title
      *
@@ -52,6 +60,7 @@ class News extends Actualite
     {
         return $this->title;
     }
+
     /**
      * Set description
      *
@@ -62,8 +71,10 @@ class News extends Actualite
     public function setDescription($description)
     {
         $this->description = $description;
+
         return $this;
     }
+
     /**
      * Get description
      *
@@ -73,6 +84,7 @@ class News extends Actualite
     {
         return $this->description;
     }
+
     /**
      * Set link
      *
@@ -83,8 +95,10 @@ class News extends Actualite
     public function setLink($link)
     {
         $this->link = $link;
+
         return $this;
     }
+
     /**
      * Get link
      *
@@ -94,6 +108,7 @@ class News extends Actualite
     {
         return $this->link;
     }
+
     /**
      * Set image
      *
@@ -104,8 +119,10 @@ class News extends Actualite
     public function setImage($image)
     {
         $this->image = $image;
+
         return $this;
     }
+
     /**
      * Get image
      *
@@ -115,6 +132,7 @@ class News extends Actualite
     {
         return $this->image;
     }
+
     /**
      * Set shareDate
      *
@@ -125,8 +143,10 @@ class News extends Actualite
     public function setShareDate($shareDate)
     {
         $this->share_date = $shareDate;
+
         return $this;
     }
+
     /**
      * Get shareDate
      *
@@ -136,6 +156,7 @@ class News extends Actualite
     {
         return $this->share_date;
     }
+
     /**
      * Set focus
      *
@@ -146,8 +167,10 @@ class News extends Actualite
     public function setFocus($focus)
     {
         $this->focus = $focus;
+
         return $this;
     }
+
     /**
      * Get focus
      *
@@ -157,6 +180,7 @@ class News extends Actualite
     {
         return $this->focus;
     }
+
     /**
      * Set prioriteFocus
      *
@@ -167,8 +191,10 @@ class News extends Actualite
     public function setPrioriteFocus($prioriteFocus)
     {
         $this->priorite_focus = $prioriteFocus;
+
         return $this;
     }
+
     /**
      * Get prioriteFocus
      *
@@ -178,6 +204,7 @@ class News extends Actualite
     {
         return $this->priorite_focus;
     }
+
     /**
      * Set dateStart
      *
@@ -188,8 +215,10 @@ class News extends Actualite
     public function setDateStart($dateStart)
     {
         $this->date_start = $dateStart;
+
         return $this;
     }
+
     /**
      * Get dateStart
      *
@@ -199,6 +228,7 @@ class News extends Actualite
     {
         return $this->date_start;
     }
+
     /**
      * Set sharedBy
      *
@@ -206,11 +236,13 @@ class News extends Actualite
      *
      * @return News
      */
-    public function setSharedBy(Personne $sharedBy = null)
+    public function setSharedBy(\RCLAB\WebsiteBundle\Entity\Personne $sharedBy = null)
     {
         $this->sharedBy = $sharedBy;
+
         return $this;
     }
+
     /**
      * Get sharedBy
      *
