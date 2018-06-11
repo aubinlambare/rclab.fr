@@ -11,7 +11,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src='https://www.google.com/recaptcha/api.js'></script>
-    <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+    <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
 
     {% stylesheets
         '@RCLABWebsiteBundle/Resources/public/css/base.css' %}
@@ -121,44 +121,33 @@
                 <div class="row text-center">
                     <div class="col-lg-6 col-lg-offset-3">
                         <ul class="menu-footer">
-
                             <li>
                                 <a href="{{ path('rclab_website_home') }}">Accueil</a>
                             </li>
-
                             <li>
                                 <a href="{{ path('rclab_website_contact') }}">Contacts</a>
                             </li>
-
                             <li>
                                 <a class="hidden-xs">Suivez-nous</a>
                             </li>
-
                         </ul>
                     </div>
                 </div>
             </div>
-
         </footer>
-
-
         <div class="copyright">
             <div class="container">
-
                 <div class="row text-center">
                     <p>Copyright © 2018 Tous droits réservés</p>
                 </div>
-
             </div>
         </div>
     </div>
 </div>
 
-<script src="{{ asset('bundles/rclabwebsite/css/bootstrap/js/bootstrap.js') }}"
+<script src="{{ asset('bundles/rclabwebsite/css/bootstrap/js/bootstrap.min.js') }}"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
 {% block javascripts %}{% endblock %}
 </body>
-
-
 </html>

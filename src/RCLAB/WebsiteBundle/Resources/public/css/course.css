@@ -102,3 +102,17 @@ h1{
         border-right: 2px solid #FFFFFF;
     }
 }
+
+.course-state-validate-detail {
+    color:  rgba(25, 231, 125, 1);
+}
+.course-state-demand-detail {
+    color: rgba(255, 0, 0, 1);
+}
+
+.detail-course-body p {
+    font-size: 20px;
+}
+.detail-course-body .form-top {
+    margin-top: 50px;
+}

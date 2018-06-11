@@ -118,12 +118,32 @@ h1{
 .repair-state-demand {
     background: rgba(255, 0, 0, 0.5);
 }
+.repair-state-demand-detail {
+    color: rgba(255, 0, 0, 1);
+}
 .repair-state-wait {
     background: rgba(180, 180, 180, 0.5);
+}
+.repair-state-wait-detail {
+    color: rgba(180, 180, 180, 1);
 }
 .repair-state-progress {
     background: rgba(255, 159, 26, 0.8);
 }
+.repair-state-progress-detail {
+    color: rgba(255, 159, 26, 1);
+}
 .repair-state-finish {
     background: rgba(25, 231, 125, 0.5);
+}
+.repair-state-finish-detail {
+    color:  rgba(25, 231, 125, 1);
+}
+
+.detail-repair-body p {
+    font-size: 20px;
+}
+
+.detail-repair-body .form-top {
+    margin-top: 50px;
 }
