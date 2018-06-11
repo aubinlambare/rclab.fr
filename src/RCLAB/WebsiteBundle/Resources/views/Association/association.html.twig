@@ -1,140 +1,59 @@
 {% extends "base.html.twig" %}
 {% block body %} 
 
-<!doctype html>
-<html>
-  <body>
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/rclabwebsite/css/association.css') }}" />
+{% endblock %}
 
- <!-- Le styles -->
-    <link href="../bundles/rclabwebsite/css/association.css" rel="stylesheet">
-
-      <style type="text/css">
-      body {
-        padding-top: 160px;
-      }
-    </style>
-    
 <div class="container">
     <!-- FIRST ROW OF BLOCKS -->     
     <div class="row">
       
       <!-- USER PROFILE BLOCK -->
-        <div class="col-sm-4 col-md-4 col-lg-4">
-            <div class="dash-unit">
-                <dtitle></dtitle>
-                <hr>
-                <div class="thumbnail">
-                     <img src="{{asset('uploads/images/audrey.jpg')}}" alt="Audrey" class="img-circle" >
-                    
-                </div><!-- /thumbnail -->
-                    <h1>Audrey Planchenault</h1>
-                    <h3>Présidente</h3>
-                <br>
-                    <div class="info-user"> 
-                        <span>
-                            <center>    
-                                <h4>Présidente depuis 2017, je suis passionnée d'informatique.</h4>
-                            </center>
-                        </span>
-                    </div>
-            </div>
-
-        </div>
-    
-    
-      
-      <!-- USER PROFILE BLOCK -->
-      <div class="col-sm-4 col-md-4 col-lg-4">
-            <div class="dash-unit">
-                <dtitle></dtitle>
-                <hr>
-                <div class="thumbnail">
-                     <img src="{{asset('uploads/images/lucas.jpg')}}" alt="Lucas" class="img-circle" >
-                </div><!-- /thumbnail -->
-                    <h1>Lucas Landais</h1>
-                    <h3>Vice-Président</h3>
-                <br>
-                    <div class="info-user"> 
-                        <span>
-                            <center>    
-                                <h4>Présidente depuis 2017, je suis passionnée d'informatique.</h4>
-                            </center>
-                        </span>
-                    </div>
-                </div>
-        </div>
-        
-    
-    <!-- USER PROFILE BLOCK -->
-    <div class="col-sm-4 col-md-4 col-lg-4">
-            <div class="dash-unit">
-                <dtitle></dtitle>
-                <hr>
-                <div class="thumbnail">
-                     <img src="{{asset('uploads/images/loic.jpg')}}" alt="Loïc" class="img-circle">
-                </div><!-- /thumbnail -->
-                    <h1>Loïc Ruat</h1>
-                    <h3>Vice-Président</h3>
-                <br>
-                    <div class="info-user"> 
-                        <span>
-                            <center>    
-                                <h4>Présidente depuis 2017, je suis passionnée d'informatique.</h4>
-                            </center>
-                        </span>
-                    </div>
-                </div>
-    </div>
-    
-        <!-- USER PROFILE BLOCK -->
-          <div class="col-lg-offset-2 col-sm-4 col-lg-4">
-                <div class="dash-unit">
-                    <dtitle></dtitle>
-                    <hr>
-                    <div class="thumbnail">
-                         <img src="{{asset('uploads/images/theo.jpg')}}" alt="Théo" class="img-circle">
-                    </div><!-- /thumbnail -->
-                        <h1>Théo Portier</h1>
-                        <h3>Trésorier</h3>
-                    <br>
+        {% set tmp = 0 %}
+        {% set iteration = 0 %}
+        {% for users in personnes %} 
+            {% set tmp = tmp + 1 %}
+        {% endfor %}
+        {% for users in personnes %} 
+            {% set iteration = iteration + 1 %}  
+            {% if users.fonction is not null %}
+                {% if tmp == 5 and iteration == 4 %}
+                    <div class="col-lg-offset-2 col-sm-offset-2 col-sm-4 col-md-4 col-lg-4">
+                {% else %}
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                {% endif %}
+                    <div class="dash-unit">
+                        <hr>
+                        <div class="thumbnail">
+                            {% if users.photo is not null %}
+                                <img src="{{ asset('uploads/images/'~users.photo) }}" class="img-circle" >
+                            {% endif %}    
+                        </div><!-- /thumbnail -->
+                            <h1>{{ users['firstName'] }} {{ users.lastName }}</h1>
+                            <h3><font color="red"> {{ users['fonction']['fonction']|upper }}</h3>
+                        <br>
                         <div class="info-user"> 
-                        <span>
-                            <center>    
-                                <h4>Présidente depuis 2017, je suis passionnée d'informatique.</h4>
-                            </center>
-                        </span>
+                            <span>
+                                <center>    
+                                    <h4>{{ users['presentation'] }}</h4>
+                                </center>
+                            </span>
+                        </div>
                     </div>
-                    </div>
-            </div>  
-            
-        <!-- USER PROFILE BLOCK -->
-          <div class="col-sm-4 col-md-4 col-lg-4">
-                <div class="dash-unit">
-                    <dtitle></dtitle>
-                    <hr>
-                    <div class="thumbnail">
-                         <img src="{{asset('uploads/images/pierrick.jpg')}}" alt="Pierrick" class="img-circle">
-                    </div><!-- /thumbnail -->
-                        <h1>Pierrick Guilloux</h1>
-                        <h3>Secrétaire</h3>
-                    <br>
-                            <center>   
-                                <h4>Présidente depuis 2017, je suis passionnée d'informatique.</h4>
-                            </center>
-                    </div>
-                    </div>
-            </div>              
-    <div class="col-lg-offset-2 "> </div>
-</div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    
+    </div> 
 
-    <div class="col-lg-offset-2 col-sm-8 col-lg-8 col-lg-offset-2">
+    <div class="col-lg-offset-1 col-sm-offset-1 col-sm-10 col-lg-10 ">
         <div class="dash-unit">
-        <hr>
-            <center>
-                <p><h7> L'association </h7></p>
-                <p><h6>RC-Lab met ses connaissances en informatique et son matériel à la disposition des étudiants de l'ESIEA-Ouest, pour permettre la mise en place de projets au sein de l'établissement (réparations, cours, conseils, LANs) ceux-ci favorisant le développement de la vie associative et étudiante à l'ESIEA Ouest.
-                </h6></p>
-            </center>
+            <hr>
+                <center>
+                    <p><h7><font color="red"> L'association </h7></p>
+                    <p><h6>{{ descriptionAssociation}}</p></h6>
+                </center>
         </div>
     </div>
 </body></html>
