@@ -1,0 +1,129 @@
+h1{
+    text-align: left;
+    font-size: 38px;
+    font-weight: 400;
+    line-height: 50px;
+    color: white;
+}
+
+.form-top {
+    color: white;
+    overflow: hidden;
+    padding: 0 25px 0 25px;
+    margin-top: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    -moz-border-radius: 4px 4px 0 0; -webkit-border-radius: 4px 4px 0 0; border-radius: 4px 4px 0 0;
+    text-align: left;
+}
+.form-top-left {
+    float: left;
+    padding: 5px 0 0 0;
+    width: 75%;
+}
+.form-top-right {
+    float: left;
+    height:100px;
+    width: 25%;
+    color: #fff;
+    line-height: 100px;
+    text-align: right;
+    opacity: 0.3;
+}
+.form-top-right .glyphicon {
+    padding: 27px 0 0 0;
+    font-size: 48px;
+}
+.form-bottom {
+    padding: 25px 25px 25px 25px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 0 0 4px 4px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.container-fluid > a {
+    background: #19b9e7;
+    border: none;
+    margin: 10px 0;
+}
+.btn-repair > a {
+    background: #19b9e7;
+    border: none;
+    margin: 0;
+}
+
+.title-table{
+    padding: 0;
+}
+.title-area {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px 0;
+    border-left: 2px solid #FFFFFF;
+    border-top: 2px solid #FFFFFF;
+    border-bottom: 2px solid #FFFFFF;
+    margin: 0;
+}
+.detail-area {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #FFFFFF;
+    border-left: 2px solid #FFFFFF;
+    border-bottom: 2px solid #FFFFFF;
+    min-height: 200px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+.detail-area > .one-detail {
+    height: 50px;
+    border-bottom: 1px solid darkgrey;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.title-area-right, .detail-area-right {
+    border-right: 2px solid #FFFFFF;
+}
+@media(max-width: 768px) {
+    .detail-area {
+        border-right: 2px solid #FFFFFF;
+
+    }
+    .title-area {
+        border-right: 2px solid #FFFFFF;
+    }
+}
+
+.repair-state, .repair-link {
+    height: 50px;
+    border-bottom: 1px solid darkgrey;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+.repair-link, .repair-link:hover, .repair-link:focus, .repair-link:active {
+    text-decoration: none;
+    color: white;
+}
+.repair-state-finish, .repair-state-progress, .repair-state-wait, .repair-state-demand {
+    height: 50px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.repair-state-demand {
+    background: rgba(255, 0, 0, 0.5);
+}
+.repair-state-wait {
+    background: rgba(180, 180, 180, 0.5);
+}
+.repair-state-progress {
+    background: rgba(255, 159, 26, 0.8);
+}
+.repair-state-finish {
+    background: rgba(25, 231, 125, 0.5);
+}

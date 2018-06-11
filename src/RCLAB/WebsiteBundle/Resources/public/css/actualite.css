@@ -91,7 +91,6 @@
 }
 .form-bottom {
     padding: 25px 25px 25px 25px;
-    background: #444;
     background: rgba(0, 0, 0, 0.5);
     border-radius: 0 0 4px 4px;
     text-align: center;
@@ -105,7 +104,6 @@
     overflow: hidden;
     padding: 0 25px 0 25px;
     margin-top: 20px;
-    background: #444;
     background: rgba(0, 0, 0, 0.6);
     -moz-border-radius: 4px 4px 0 0; -webkit-border-radius: 4px 4px 0 0; border-radius: 4px 4px 0 0;
     text-align: left;
@@ -116,7 +114,7 @@
 
 .form-top-left {
     float: left;
-    padding: 7px 0 0 0;
+    padding: 17px 0 0 0 !important;
     width: 75%;
 }
 .form-top-right {
@@ -129,12 +127,12 @@
     opacity: 0.3;
 }
 
-.formt-top-right .fa {
+.form-top-right .fa {
     font-size: 48px;
 }
 
 .index-content .card h4 {
-    margin: 20px 0px;
+    margin: 20px 0;
 }
 .index-content .card p {
     opacity: 0.65;

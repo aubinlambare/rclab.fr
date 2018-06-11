@@ -1,0 +1,34 @@
+{% extends "compte.html.twig" %}
+
+{% block content %}
+<div>
+    <h4>{{ event.title }}</h4>
+    <p>L'évènement débute le {{ event.dateStart|date('d/m/Y à H:i') }} et se termine
+        le {{ event.dateEnd|date('d/m/Y à H:i') }}</p>
+    <p>Description de l'évènement : {{ event.description }}</p>
+    <p>Nombre d'inscrits : {{ event.nbInscrits is null ? '0' : event.nbInscrits }}/{{ event.maxParticipants }}</p>
+
+    <p>Liste des inscrits : </p>
+    <table>
+        <tr>
+            <th>Nom prénom</th>
+            <th>Date de la demande</th>
+            <th>Etat de la demande</th>
+        </tr>
+        {% for inscrit in list_inscrits %}
+        <tr>
+            <td>{{ inscrit.inscrit.lastName|upper }} {{ inscrit.inscrit.firstName }}</td>
+            <td>{{ inscrit.date|date('d/m/Y à H:i') }}</td>
+            <td>
+                {% if inscrit.isInscrit == 1 %}
+                Inscrit
+                {% else %}
+                <a href="{{ path('rclab_website_actualite_events_subscribe_confirmation', {'event': event.id, 'user': inscrit.inscrit.id}) }}">Valider</a>
+                <a href="{{ path('rclab_website_actualite_events_unsubscribe', {'event': event.id, 'user': inscrit.inscrit.id}) }}">Refuser</a>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

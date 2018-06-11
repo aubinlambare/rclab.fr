@@ -1,47 +1,124 @@
 {% extends "base.html.twig" %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/rclabwebsite/css/repair.css') }}" />
+{% endblock %}
+
 {% block body %}
-
-
-    <a href="{{ path('rclab_website_repair_request') }}">Demander une réparation</a>
-    <div>
-        <h3>Mes réparations</h3>
-
-        {% if my_repairs is empty %}
-            <p>Vous n'avez pas encore de réparation en cours</p>
-        {% else %}
-            <table>
-                <tr>
-                    <th>Objet</th>
-                    <th>Date et heure de la demande</th>
-                    <th>Responsable</th>
-                    <th>Date et heure de rendez-vous</th>
-                    <th>Voir plus</th>
-                    <th>Etat de la réparation</th>
-                </tr>
-                {% for repair in my_repairs %}
-                    <tr>
-                        <td>{{ repair.objet }}</td>
-                        <td>{{ repair.dateDemande|date('d/m/Y à H:i') }}</td>
-                        <td>
-                            {% if repair.responsable is not null %}
-                                {{ repair.responsable.firstName }} {{ repair.responsable.lastName }}
-                            {% endif %}
-                        </td>
-                        <td>{{ repair.debut|date('d/m/Y à H:i') }}</td>
-                        <td><a href="{{ path('rclab_website_repair_detail', {'id': repair.id}) }}">Voir plus</a></td>
-                        <td>
-                            {{ repair.etat }}
-                            {% if repair.etat == 'terminée' %}
-                                <p>Veuillez prendre contact avec l'association pour récupérer votre matériel</p>
-                            {% endif %}
-                            {% if repair.responsable == app.user %}
-                                <a href="{{ path('rclab_website_repair_edit', {'id': repair.id}) }}">Gérer</a>
-                            {% endif %}
-                        </td>
-                    </tr>
-                {% endfor %}
-            </table>
-        {% endif %}
+<div class="repair-body">
+    <div class="container-fluid">
+        <a class="btn btn-primary" href="{{ path('rclab_website_repair_request') }}">Demander une réparation</a>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
+                <div class="form-top">
+                    <div class="form-top-left">
+                        <h1>Mes réparations</h1>
+                    </div>
+                    <div class="form-top-right">
+                        <i class="glyphicon glyphicon-wrench"></i>
+                    </div>
+                </div>
+                <div class="form-bottom">
+                    {% if my_repairs is empty %}
+                        <h4>Vous n'avez aucune réparation en cours.</h4>
+                    {% else %}
+                        <div class="row my-demand-place">
+                            <div class="col-lg-4 col-md-4 col-sm-4 title-table">
+                                <h4 class="title-area">Objet</h4>
+                                <div class="detail-area">
+                                    {% for repair in my_repairs %}
+                                        <div class="one-detail">
+                                            {{ repair.objet }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 title-table">
+                                <h4 class="title-area">Rendez-vous</h4>
+                                <div class="detail-area">
+                                    {% for repair in my_repairs %}
+                                        <div class="one-detail">
+                                            {{ repair.debut|date('d/m à H:i') }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 title-table">
+                                <h4 class="title-area">Etat de la réparation</h4>
+                                <div class="detail-area">
+                                    {% for repair in my_repairs %}
+                                        {% if repair.responsable == app.user %}
+                                            {% if repair.etat == 'terminée' %}
+                                                <a class="repair-link"  href="{{ path('rclab_website_repair_edit', {'id': repair.id}) }}">
+                                                    <div class="repair-state-finish">
+                                                        {{ repair.etat }}
+                                                    </div>
+                                                </a>
+                                            {% elseif repair.etat == 'en attente' %}
+                                                <a class="repair-link" href="{{ path('rclab_website_repair_edit', {'id': repair.id}) }}">
+                                                    <div class="repair-state-wait">
+                                                        {{ repair.etat }}
+                                                    </div>
+                                                </a>
+                                            {% elseif repair.etat == 'en cours' %}
+                                                <a class="repair-link" href="{{ path('rclab_website_repair_edit', {'id': repair.id}) }}">
+                                                    <div class="repair-state-progress">
+                                                        {{ repair.etat }}
+                                                    </div>
+                                                </a>
+                                            {% elseif repair.etat == 'demande' %}
+                                                <a class="repair-link" href="{{ path('rclab_website_repair_edit', {'id': repair.id}) }}">
+                                                    <div class="repair-state-demand">
+                                                        {{ repair.etat }}
+                                                    </div>
+                                                </a>
+                                            {% endif %}
+                                        {% else %}
+                                            {% if repair.etat == 'terminée' %}
+                                                <a class="repair-link"  href="{{ path('rclab_website_contact') }}">
+                                                    <div class="repair-state-finish">
+                                                        Contactez l'association
+                                                    </div>
+                                                </a>
+                                            {% elseif repair.etat == 'en attente' %}
+                                                <div class="repair-state">
+                                                    <div class="repair-state-wait">
+                                                        {{ repair.etat }}
+                                                    </div>
+                                                </div>
+                                            {% elseif repair.etat == 'en cours' %}
+                                                <div class="repair-state">
+                                                    <div class="repair-state-progress">
+                                                        {{ repair.etat }}
+                                                    </div>
+                                                </div>
+                                            {% elseif repair.etat == 'demande' %}
+                                                <div class="repair-state">
+                                                    <div class="repair-state-demand">
+                                                        {{ repair.etat }}
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 title-table">
+                                <h4 class="title-area title-area-right">Détails</h4>
+                                <div class="detail-area detail-area-right">
+                                    {% for repair in my_repairs %}
+                                        <div class="one-detail">
+                                            <div class="btn-repair">
+                                                <a class="btn btn-primary" href="{{ path('rclab_website_repair_detail', {'id': repair.id}) }}">Voir plus</a>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}

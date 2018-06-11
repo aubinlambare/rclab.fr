@@ -1,10 +1,5 @@
 {% extends "@RCLABWebsite/Actualite/actus.html.twig" %}
 
-{% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('@RCLABWebsiteBundle/Resources/public/css/actualite.css') }}"
-          type="text/css"/>
-{% endblock %}
-
 {% block actu %}
     <section class="index-content actualite-body">
         <div class="container-fluid">
@@ -14,7 +9,7 @@
                     <a class="btn btn-primary btn-right" href="{{ path('rclab_website_actualite_news_add') }}">Ajouter une news</a>
                 </div>
             {% endif %}
-            <h1>Toute l'actualité</h1>
+            <h1 class="title-page">Toute l'actualité</h1>
             <div class="row">
                 {% for event in listEvents %}
                     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">

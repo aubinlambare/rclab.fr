@@ -6,16 +6,15 @@
 
     <link rel="shortcut icon" href="{{ asset('images/rclab.png') }}">
     <link rel="stylesheet" href="{{ asset('bundles/rclabwebsite/css/bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ asset('bundles/rclabwebsite/Webfonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src='https://www.google.com/recaptcha/api.js'></script>
-    <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+    <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 
     {% stylesheets
-        '@RCLABWebsiteBundle/Resources/public/css/base.css'
-        '@RCLABWebsiteBundle/Resources/public/css/actualite.css' %}
+        '@RCLABWebsiteBundle/Resources/public/css/base.css' %}
         <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
     {% endstylesheets %}
 
@@ -154,10 +153,8 @@
         </div>
     </div>
 </div>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+
+<script src="{{ asset('bundles/rclabwebsite/css/bootstrap/js/bootstrap.js') }}"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
 {% block javascripts %}{% endblock %}
