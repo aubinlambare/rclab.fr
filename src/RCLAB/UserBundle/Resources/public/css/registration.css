@@ -37,10 +37,6 @@ body {
 	color: white;
 }
 
-#remember_me{
-    margin: 6px auto 0;
-}
-
 .forgetPassword {
     text-align: right;
 	text-decoration: none;
@@ -74,9 +70,13 @@ body {
 	margin-bottom: 20px;
 	background: rgba(0, 0, 0, 0.5);
 	border-radius: 0 0 4px 4px;
+}
+.history-course-content .form-bottom {
 	text-align: center;
 }
-
+.registration-body .form-bottom {
+	text-align: left;
+}
 .form-bottom .fa {
 	font-size: 24px;
 }
