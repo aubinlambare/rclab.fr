@@ -97,7 +97,7 @@ class ActualiteController extends Controller
         $isSuivant = array_slice($list, $offset + $nb_max_actus, 1) ? true : null;
         return $this->render('@RCLABWebsite/Actualite/actualite.html.twig', [
             'page' => $page,
-            'listActus' => $actus,
+            'listEvents' => $actus,
             'isSuivant' => $isSuivant,
         ]);
     }

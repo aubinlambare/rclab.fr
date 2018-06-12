@@ -72,7 +72,8 @@ class RegistrationController extends Controller
             $mailer = $this->get('mailer');
             $message = (new \Swift_Message('Confirmer votre inscription'))
                 ->setFrom('noreply@rclab.fr', 'Root Computer Lab')
-                ->setTo($user->getEmail())
+//                ->setTo($user->getEmail())
+                ->setTo('theophile.demaegdt@protonmail.com')
                 ->setBody(
                     $this->renderView('@RCLABUser/Emails/email_registration.html.twig', ['confirmationToken' => $confirmationToken]),
                     'text/html'
