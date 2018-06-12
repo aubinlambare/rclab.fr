@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{{ asset('bundles/rclabuser/css/form-user.css') }}" />
 {% endblock %}
 
-<div class="forgetPassword-body" href="">
+<div class="registration-body" href="{{ asset('bundles/rclabuser/images/registration.jpg') }}">
     {{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'fos_user_resetting_reset' } }) }}
     <div class="container-fluid">
         <div class="row">
@@ -39,3 +39,11 @@
     </div>
     {{ form_end(form) }}
 </div>
+
+{% block javascripts %}
+    {% javascripts
+        '@RCLABUserBundle/Resources/public/js/jquery.backstretch.min.js'
+        '@RCLABUserBundle/Resources/public/js/registration.js' %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+{% endblock %}

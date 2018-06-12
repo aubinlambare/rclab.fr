@@ -3,7 +3,8 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('bundles/rclabuser/css/form-user.css') }}" />
 {% endblock %}
-<div class="forgetPassword-body" href="">
+
+<div class="registration-body" href="{{ asset('bundles/rclabuser/images/registration.jpg') }}">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-8 col-xs-8 col-lg-offset-3 col-md-offset-3 col-sm-offset-2 col-xs-offset-2 form-box">
@@ -30,3 +31,11 @@
         </div>
     </div>
 </div>
+
+{% block javascripts %}
+    {% javascripts
+        '@RCLABUserBundle/Resources/public/js/jquery.backstretch.min.js'
+        '@RCLABUserBundle/Resources/public/js/registration.js' %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+{% endblock %}

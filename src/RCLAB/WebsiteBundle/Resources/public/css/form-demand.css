@@ -46,14 +46,6 @@ h1{
     border: none;
     margin:5px 0 5px 0;
 }
-
-.info-area {
-    text-align: center;
-}
-
-.input-group {
-    width: 100%;
-}
 .input-group-addon {
     background: rgba(19, 185, 231, 0.95);
     border: none;
@@ -67,7 +59,7 @@ h1{
     font-size: 24px;
 }
 
-[type="text"], [type="password"] {
+[type="text"] {
     height: 50px;
     margin: 0;
     width: 70%;
@@ -86,7 +78,7 @@ h1{
     -webkit-box-shadow: none;
     box-shadow: none;
 }
-[type="text"]:focus, [type="password"]:focus {
+[type="text"]:focus {
     outline: 0;
     background: #fff;
     border: 2px solid #19b9e7;
@@ -94,3 +86,4 @@ h1{
     -webkit-box-shadow: none;
     box-shadow: none;
 }
+
