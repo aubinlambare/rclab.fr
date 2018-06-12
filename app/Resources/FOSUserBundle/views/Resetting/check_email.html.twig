@@ -1,9 +1,31 @@
 {% extends "@FOSUser/layout.html.twig" %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/rclabuser/css/form-user.css') }}" />
+{% endblock %}
+
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
-<p>
-{{ 'resetting.check_email'|trans({'%tokenLifetime%': tokenLifetime})|nl2br }}
-</p>
+    <div class="forgetPassword-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-8 col-xs-8 col-lg-offset-3 col-md-offset-3 col-sm-offset-2 col-xs-offset-2">
+                    <div class="form-top">
+                        <div class="form-top-left">
+                            <h1>Important</h1>
+                        </div>
+                        <div class="form-top-right">
+                            <i class="glyphicon glyphicon-exclamation-sign"></i>
+                        </div>
+                    </div>
+                    <div class="form-bottom">
+                        <div class="info-area">
+                            <p>{{ 'resetting.check_email'|trans({'%tokenLifetime%': tokenLifetime})|nl2br }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

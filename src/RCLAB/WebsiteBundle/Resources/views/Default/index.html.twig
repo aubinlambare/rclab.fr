@@ -14,7 +14,9 @@
                             <!-- Indicators -->
                             <ol class="carousel-indicators">
                                 {%  for focus in list_focus %}
-                                    <li class="focusNumber"></li>
+                                    {% if focus.image is not null %}
+                                        <li class="focusNumber"></li>
+                                    {% endif %}
                                 {% endfor %}
                             </ol>
 
@@ -83,11 +85,11 @@
                             <div class="row">
                                 {% for i in range(0, 5) %}
                                     <div class="col-lg-2 col-md-2 col-sm-2 week-place">
-                                    {% if loop.last %}
-                                        <h3 class="h3-right">{{ 'now'|date_modify(first_day~" day")|date('D d') }}</h3>
-                                    {% else %}
-                                        <h3>{{ 'now'|date_modify(first_day~" day")|date('D d') }}</h3>
-                                    {% endif %}
+                                        {% if loop.last %}
+                                            <h3 class="h3-right">{{ 'now'|date_modify(first_day~" day")|date('D d') }}</h3>
+                                        {% else %}
+                                            <h3>{{ 'now'|date_modify(first_day~" day")|date('D d') }}</h3>
+                                        {% endif %}
                                         {% if loop.last %}
                                             <div class="day-area-right">
                                         {% else %}
@@ -115,8 +117,8 @@
                                                         <p>{% if course.objet is not null %}{{ (course.objet) }}{% endif %}
                                                             {% if course.matiere is not null %}{{ (course.matiere.matiere) }}{% endif %}
                                                             {% if course.niveau is not null %}{{ (course.niveau.niveau) }}{% endif %}</p>
-                                                        <p>{% if course.debut is not null %}{{ (course.debut|date('H:i')) }}{% endif %} -
-                                                            {% if course.fin is not null %}{{ (course.fin|date('H:i')) }}{% endif %}</p>
+                                                        <p>{% if course.debut is not null %}{{ (course.debut|date('H:i')) }}{% endif %}
+                                                            {% if course.fin is not null %} - {{ (course.fin|date('H:i')) }}{% endif %}</p>
                                                         </div>
                                                     </a>
                                                 {% endif %}

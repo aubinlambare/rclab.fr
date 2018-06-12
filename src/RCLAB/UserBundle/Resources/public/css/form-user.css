@@ -41,6 +41,10 @@ h1{
     color: white;
 }
 
+.info-area {
+    text-align: center;
+}
+
 .btn {
     background: #19b9e7;
     border: none;
@@ -64,7 +68,7 @@ h1{
     font-size: 24px;
 }
 
-[type="text"] {
+[type="text"], [type="password"] {
     height: 50px;
     margin: 0;
     width: 70%;
@@ -83,7 +87,7 @@ h1{
     -webkit-box-shadow: none;
     box-shadow: none;
 }
-[type="text"]:focus {
+[type="text"]:focus, [type="password"]:focus {
     outline: 0;
     background: #fff;
     border: 2px solid #19b9e7;

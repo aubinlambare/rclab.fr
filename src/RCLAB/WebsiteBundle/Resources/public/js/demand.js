@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    $.backstretch($("course-body").attr('href'));
+    $.backstretch($(".course-body").attr('href'));
     $('#header-bar').on('shown.bs.collapse', function(){
         $.backstretch("resize");
     });
