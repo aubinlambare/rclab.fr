@@ -19,14 +19,40 @@ class RequestRepairType extends AbstractType
         $builder
             ->add('objet', TextType::class, array(
                 'label' => 'Objet de la réparation',
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
+                'attr' => [
+                    'placeholder' => 'Objet de la réparation...',
+                ],
             ))
             ->add('description', TextareaType::class, array(
                 'label' => 'Précisez votre problème',
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
+                'attr' => [
+                    'placeholder' => 'Détaillez votre problème...',
+                    'class' => 'form-control',
+                    'rows' => '4',
+                ],
             ))
             ->add('disponibiliteDemandeur', TextareaType::class, array(
                 'label' => 'Indiquez ici vos disponiblités',
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
+                'attr' => [
+                    'placeholder' => 'Indiquez vos disponibilités...',
+                    'class' => 'form-control',
+                    'rows' => '4',
+                ],
             ))
-            ->add('Envoyer', SubmitType::class);
+            ->add('Envoyer', SubmitType::class, [
+                'attr' => [
+                    'class' => 'btn btn-primary',
+                ],
+            ]);
     }
 
     /**

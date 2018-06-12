@@ -19,17 +19,15 @@
                 </div>
                 <div class="form-bottom">
                     <div class="form-group">
-                        <div class="input-group {% if form_errors(form.new_password) is not empty %}error{% endif %}">
+                        <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></span>
-                            {{ form_label(form.new_password) }}
-                            {{ form_widget(form.new_password) }}
+                            {{ form_widget(form.plainPassword.first, {'attr':{ 'placeholder':'Nouveau mot de passe...' }}) }}
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="input-group {% if form_errors(form.new_password_confirmation) is not empty %}error{% endif %}">
+                        <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></span>
-                            {{ form_label(form.new_password_confirmation) }}
-                            {{ form_widget(form.new_password_confirmation) }}
+                            {{ form_widget(form.plainPassword.second, {'attr':{ 'placeholder':'Confirmer le mot de passe...' }}) }}
                         </div>
                     </div>
                     <input class="btn btn-primary" type="submit" value="{{ 'resetting.reset.submit'|trans }}" />

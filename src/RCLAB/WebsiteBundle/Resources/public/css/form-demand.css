@@ -37,7 +37,7 @@ h1{
     background: rgba(0, 0, 0, 0.5);
     border-radius: 0 0 4px 4px;
     text-align: left;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     color: white;
 }
 
@@ -51,18 +51,31 @@ h1{
     border: none;
     width: 50px;
 }
+.input-group {
+    width: 100%;
+}
 
-.fa-lock, .fa-envelope, .fa-user, .fa-users {
+.form-bottom .fa, .form-bottom .glyphicon {
+    font-size: 24px;
     color:white;
 }
-.form-bottom .fa {
-    font-size: 24px;
+
+.form-control:focus {
+    outline: 0;
+    border: 2px solid #19b9e7;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.form-control {
+    border-radius: 4px !important;
+    color: #555555;
 }
 
 [type="text"] {
     height: 50px;
     margin: 0;
-    width: 70%;
+    width: 100%;
     padding: 0 20px;
     background: #fff;
     border: 3px solid #fff;
@@ -70,7 +83,7 @@ h1{
     font-size: 16px;
     font-weight: 300;
     line-height: 50px;
-    color: #888;
+    color: #555555;
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
     border-radius: 0 4px 4px 0;
@@ -86,4 +99,41 @@ h1{
     -webkit-box-shadow: none;
     box-shadow: none;
 }
+
+.btn-matiere {
+    height: 50px;
+    color: #8c8c8c;
+    width: 70%;
+}
+
+select {
+    width:102% !important;
+    height:50px !important;
+    background-color:transparent;
+    -webkit-appearance: none;
+    border:none;
+    box-shadow:none;
+}
+select:focus{
+    border: transparent !important;
+}
+.styled {
+    overflow:hidden;
+    background: white;
+    height: 50px;
+    width: 80%;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    border: none;
+}
+
+select > option {
+    background-color: white;
+    color: #5e5e5e;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+
 

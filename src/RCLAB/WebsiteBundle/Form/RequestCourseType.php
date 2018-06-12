@@ -28,9 +28,9 @@ class RequestCourseType extends AbstractType
                     'class' => 'sr-only',
                 ],
                 'attr' => [
-                    'class' => 'selectpicker',
+                    'class' => 'form-control',
+                    'placeholder' => 'Choisir une matière',
                     'title' => 'Matière',
-                    'data-style' => 'btn-info',
                 ],
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('m')
@@ -65,11 +65,15 @@ class RequestCourseType extends AbstractType
                 'attr' => [
                     'placeholder' => 'Indiquez vos disponibilités...',
                     'class' => 'form-control',
-                    'rows' => '3',
+                    'rows' => '4',
                 ],
             ))
 
-            ->add('Envoyer', SubmitType::class);
+            ->add('Envoyer', SubmitType::class, [
+                'attr' => [
+                    'class' => 'btn btn-primary',
+                ],
+            ]);
     }
 
     /**
