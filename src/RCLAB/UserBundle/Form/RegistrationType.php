@@ -73,7 +73,6 @@ class RegistrationType extends AbstractType
                         'autocomplete' => 'new-password',
                     ],
                 ],
-
                 'first_options' => [
                     'label' => 'form.password',
                     'label_attr' => [
@@ -112,6 +111,6 @@ class RegistrationType extends AbstractType
 
     public function getBlockPrefix()
     {
-        return 'rclab_userbundle_registration';
+        return 'rclab_user_registration';
     }
 }

@@ -58,3 +58,8 @@ services:
     swiftmailer.mailer.default.transport:
             class:     Swift_SendmailTransport
             arguments: ['/usr/sbin/sendmail -t']
+
+    rclab_user.form.registration:
+        class: RCLAB\UserBundle\Form\RegistrationType
+        tags:
+            - { name: form.type, alias: rclab_user_registration }

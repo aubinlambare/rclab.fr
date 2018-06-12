@@ -84,7 +84,7 @@ fos_user:
                 sender_name: Root Computer Lab
            #template: RCLABUserBundle:User:check_email.html.twig
         form:
-           name: rclab_user_registration
+           type: RCLAB\UserBundle\Form\RegistrationType
     from_email:
         address: "noreply@rclab.fr"
         sender_name: "rclab"

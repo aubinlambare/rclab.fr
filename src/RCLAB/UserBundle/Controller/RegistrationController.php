@@ -36,29 +36,29 @@ class RegistrationController extends Controller
 
             $response = $form->getData();
 
-            $secret = "6LeTG1oUAAAAAMLikUWdo4o3qxRcXqhJL7GDPGop";
-
-            //paramètres renvoyés par le captcha
-            $captcha = $request->request->get('g-recaptcha-response');
-
-            //on récupère l'ip de l'utilisateur
-            $remoteip = $request->getClientIp();
-
-            $api_url = "https://www.google.com/recaptcha/api/siteverify?secret="
-                . $secret
-                . "&response=" . $captcha
-                . "&remoteip=" . $remoteip ;
-
-            $decode = json_decode(file_get_contents($api_url), true);
-
-            if ($decode['success'] == false) {
-
-                $this->addFlash('warning', "Captcha invalide");
-                return $this->render('@RCLABUser/User/registration.html.twig', [
-                    'form' => $form->createView()
-                ]);
-
-            }
+//            $secret = "6LeTG1oUAAAAAMLikUWdo4o3qxRcXqhJL7GDPGop";
+//
+//            //paramètres renvoyés par le captcha
+//            $captcha = $request->request->get('g-recaptcha-response');
+//
+//            //on récupère l'ip de l'utilisateur
+//            $remoteip = $request->getClientIp();
+//
+//            $api_url = "https://www.google.com/recaptcha/api/siteverify?secret="
+//                . $secret
+//                . "&response=" . $captcha
+//                . "&remoteip=" . $remoteip ;
+//
+//            $decode = json_decode(file_get_contents($api_url), true);
+//
+//            if ($decode['success'] == false) {
+//
+//                $this->addFlash('warning', "Captcha invalide");
+//                return $this->render('@RCLABUser/User/registration.html.twig', [
+//                    'form' => $form->createView()
+//                ]);
+//
+//            }
 
             $confirmationToken = md5(microtime(TRUE) * 10000);
 
