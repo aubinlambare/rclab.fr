@@ -13,10 +13,15 @@ class DefaultController extends Controller
 //            $list_focus[$key] = \DateTime::createFromFormat('Y-m-d h:i:s', $focus->getTitle());
 //        }
 //        sort($list_focus);
+
+        $info_asso = $this->getDoctrine()->getRepository('RCLABWebsiteBundle:Association')->findOneBy([]);
+
+
         $list_courses = $this->getDoctrine()->getRepository('RCLABWebsiteBundle:Demande')->findAllCoursesNotHistory();
         return $this->render('@RCLABWebsite/Default/index.html.twig', [
             'list_focus' => $listFocus,
             'list_course' => $list_courses,
+            'image_default_focus' => $info_asso->getImageFocus(),
         ]);
     }
     public function contactAction()

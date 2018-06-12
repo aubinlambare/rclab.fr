@@ -19,13 +19,13 @@ class AssociationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('facebookAsso', TextType::class, array(
-                'label' => 'Lien vers la page facebook de l\'association',
-                'required' => false,
-            ))
-            ->add('logoAsso', FileType::class, array(
-                'label' => 'Logo de l\'association',
-            ))
+//            ->add('facebookAsso', TextType::class, array(
+//                'label' => 'Lien vers la page facebook de l\'association',
+//                'required' => false,
+//            ))
+//            ->add('logoAsso', FileType::class, array(
+//                'label' => 'Logo de l\'association',
+//            ))
             ->add('numeroPermanence', TelType::class, array(
                 'label' => 'Numéro de téléphone de permanence',
                 'required' => false,
@@ -45,9 +45,9 @@ class AssociationType extends AbstractType
             ->add('imageFocus', FileType::class, array(
                 'label' => 'Image en focus',
             ))
-            ->add('texteFocus', TextareaType::class, array(
-                'label' => 'Texte en focus',
-            ))
+//            ->add('texteFocus', TextareaType::class, array(
+//                'label' => 'Texte en focus',
+//            ))
             ->add('Enregistrer', SubmitType::class);
     }
 

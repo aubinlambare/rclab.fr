@@ -26,46 +26,50 @@
             </div>
             <h1 class="title-page">Toute l'actualité</h1>
             <div class="row">
-                {% for event in listEvents %}
-                    {% if event.dateEnd is defined %}
+                {% for actu in listActus %}
+                    {% if actu.dateEnd is defined %}
                         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 card-event">
                     {% else %}
                         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 card-news">
                     {% endif %}
                         <div class="card">
                             <div class="picture-block">
-                                {% if event.image is not null %}
-                                    <img src="{{ asset('uploads/images/'~event.image) }}"/>
+                                {% if actu.image is not null %}
+                                    <img src="{{ asset('uploads/images/'~actu.image) }}"/>
                                 {% endif %}
                             </div>
                             <div class="card-body text-center">
-                                <h4>{{ event.title }}</h4>
-                                <h4>{{ event.dateStart|date('d/m/Y H:i') }}
-                                    {% if event.dateEnd is defined %}
-                                        - {{ event.dateEnd|date('d/m/Y H:i') }}
+                                <h4>{{ actu.title }}</h4>
+                                <h4>{{ actu.dateStart|date('d/m/Y H:i') }}
+                                    {% if actu.dateEnd is defined %}
+                                        - {{ actu.dateEnd|date('d/m/Y H:i') }}
                                     {% endif %}
                                 </h4>
                                 {% if is_granted('ROLE_MODERATOR') %}
-                                    <p>
-                                        {% if event.dateEnd is defined %}
-                                            <a href="{{ path('rclab_website_actualite_events_edit', {'id': event.id}) }}"><i
+                                    {% if actu.dateEnd is defined %}
+                                        <p>
+                                            <a href="{{ path('rclab_website_actualite_events_edit', {'id': actu.id}) }}"><i
                                                         class="fa fa-edit"></i>Éditer</a>
-                                            <a href="{{ path('rclab_website_actualite_events_remove', { 'id': event.id}) }}"><i
+                                            <a href="{{ path('rclab_website_actualite_events_remove', { 'id': actu.id}) }}"><i
                                                         class="fa fa-trash"></i>Supprimer</a>
-                                        {% else %}
-                                            <a href="{{ path('rclab_website_actualite_news_edit', {'id': event.id}) }}"><i
+                                        </p>
+                                    {% else %}
+
+                                        <p>
+                                            <a href="{{ path('rclab_website_actualite_news_edit', {'id': actu.id}) }}"><i
                                                         class="fa fa-edit"></i>Éditer</a>
-                                            <a href="{{ path('rclab_website_actualite_news_remove', { 'id': event.id}) }}"><i
+                                            <a href="{{ path('rclab_website_actualite_news_remove', { 'id': actu.id}) }}"><i
                                                         class="fa fa-trash"></i>Supprimer</a>
-                                        {% endif %}
-                                    </p>
+                                        </p>
+                                    {% endif %}
                                 {% endif %}
-                                {% if event.dateEnd is defined %}
-                                    <a href="{{ path('rclab_website_actualite_events_detail', {'id': event.id}) }}"
-                                    class="btn btn-primary">Voir plus</a>
+
+                                {% if actu.dateEnd is defined %}
+                                    <a href="{{ path('rclab_website_actualite_events_detail', {'id': actu.id}) }}"
+                                       class="btn btn-primary">Voir plus</a>
                                 {% else %}
-                                    <a href="{{ path('rclab_website_actualite_news_detail', {'id': event.id}) }}"
-                                    class="btn btn-primary">Voir plus</a>
+                                    <a href="{{ path('rclab_website_actualite_news_detail', {'id': actu.id}) }}"
+                                       class="btn btn-primary">Voir plus</a>
                                 {% endif %}
                             </div>
                         </div>
