@@ -21,15 +21,22 @@
                             <!-- Wrapper for slides -->
                             <div class="carousel-inner">
                                 {% for focus in list_focus %}
+
                                     {% if focus.image is not null %}
                                         <div class="item">
-                                            <img src="{{ asset('uploads/images/'~focus.image) }}"/>
-                                            <h1>{{ (focus.title) }}</h1>
+                                            {% if focus.dateEnd is defined %}
+                                                <a href="{{ path('rclab_website_actualite_events_detail', {'id': focus.id}) }}">
+                                            {% else %}
+                                                <a href="{{ path('rclab_website_actualite_news_detail', {'id': focus.id}) }}">
+                                            {% endif %}
+                                                <img src="{{ asset('uploads/images/'~focus.image) }}"/>
+                                                <h1>{{ (focus.title) }}</h1>
+                                            </a>
                                         </div>
                                     {% endif %}
+
                                 {% endfor %}
                             </div>
-
                             <!-- Controls -->
                             <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
                                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>

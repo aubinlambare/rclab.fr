@@ -9,5 +9,19 @@ $(document).ready(function() {
     });
 
     $('.alert').delay(4000).fadeOut(2000);
-
 });
+
+function onlyEvent(){
+    $(".card-news").css("display", "none");
+    $(".card-event").css("display", "block");
+}
+
+function onlyNews(){
+    $(".card-news").css("display", "block");
+    $(".card-event").css("display", "none");
+}
+
+function notOnlyOne(){
+    $(".card-news").css("display", "block");
+    $(".card-event").css("display", "block");
+}

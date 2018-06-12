@@ -46,17 +46,20 @@ h1{
     background: #19b9e7;
     border: none;
     margin: 10px 0;
+    outline: none;
 }
 .btn-repair > a {
     background: #19b9e7;
     border: none;
     margin: 0;
+    outline: none;
 }
 
 .title-table{
     padding: 0;
 }
 .title-area {
+    overflow: hidden;
     background-color: rgba(0, 0, 0, 0.5);
     padding: 20px 0;
     border-left: 2px solid #FFFFFF;

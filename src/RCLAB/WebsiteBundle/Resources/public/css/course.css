@@ -33,7 +33,6 @@ h1{
     padding: 27px 0 0 0;
     font-size: 48px;
 }
-
 .form-bottom {
     padding: 25px 25px 25px 25px;
     background: rgba(0, 0, 0, 0.5);
@@ -47,12 +46,14 @@ h1{
     background: #19b9e7;
     border: none;
     margin: 10px 0;
+    outline: none;
 }
 
-.detail-area > div > a {
+.btn-course > a {
     background: #19b9e7;
     border: none;
     margin: 0;
+    outline: none;
 }
 
 .title-table{
@@ -65,6 +66,7 @@ h1{
     border-top: 2px solid #FFFFFF;
     border-bottom: 2px solid #FFFFFF;
     margin: 0;
+    overflow: hidden;
 }
 .detail-area {
     background-color: rgba(0, 0, 0, 0.5);
@@ -72,23 +74,16 @@ h1{
     border-left: 2px solid #FFFFFF;
     border-bottom: 2px solid #FFFFFF;
     min-height: 200px;
-    padding: 0;
     margin-bottom: 10px;
     overflow: hidden;
 }
-.detail-area > p {
+.detail-area > .one-detail {
     height: 50px;
-    padding-top: 15px;
-    margin: 0;
     border-bottom: 1px solid darkgrey;
     overflow: hidden;
-}
-.detail-area > .btn-course {
-    height: 50px;
-    padding-top: 8px;
-    margin: 0;
-    border-bottom: 1px solid darkgrey;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .title-area-right, .detail-area-right {
     border-right: 2px solid #FFFFFF;

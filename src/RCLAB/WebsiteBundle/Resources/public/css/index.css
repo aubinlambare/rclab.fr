@@ -40,6 +40,11 @@
     height: 500px;
 }
 
+.carousel-inner a {
+    text-decoration: none;
+    outline: none;
+}
+
 .carousel {
     padding-top: 30px;
     height: 500px;
