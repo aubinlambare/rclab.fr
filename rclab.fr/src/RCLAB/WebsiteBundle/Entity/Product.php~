@@ -1,0 +1,176 @@
+<?php
+
+namespace RCLAB\WebsiteBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * Product
+ *
+ * @ORM\Table(name="product")
+ * @ORM\Entity(repositoryClass="RCLAB\WebsiteBundle\Repository\ProductRepository")
+ */
+class Product
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, unique=true)
+     *
+     * @Assert\NotBlank(message="le nom est obligatoire")
+     *
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="price", type="decimal", precision=10, scale=2)
+     *
+     * @Assert\GreaterThan(
+     *     value = 0,
+     *     message="Le prix doit être supérieur à 0"
+     * )
+     * @Assert\NotBlank(message="Le prix est obligatoire")
+     *
+     */
+    private $price;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="isSold", type="boolean")
+     */
+    private $isSold = true;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createAt", type="datetime")
+     */
+    private $createAt;
+
+
+    public function __construct()
+    {
+        $this->createAt = new \DateTime('NOW');
+    }
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Product
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set price
+     *
+     * @param string $price
+     *
+     * @return Product
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return string
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * Set createAt
+     *
+     * @param \DateTime $createAt
+     *
+     * @return Product
+     */
+    public function setCreateAt($createAt)
+    {
+        $this->createAt = $createAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createAt
+     *
+     * @return \DateTime
+     */
+    public function getCreateAt()
+    {
+        return $this->createAt;
+    }
+
+    /**
+     * Set isSold
+     *
+     * @param boolean $isSold
+     *
+     * @return Product
+     */
+    public function setIsSold($isSold)
+    {
+        $this->isSold = $isSold;
+
+        return $this;
+    }
+
+    /**
+     * Get isSold
+     *
+     * @return boolean
+     */
+    public function getIsSold()
+    {
+        return $this->isSold;
+    }
+}

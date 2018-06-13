@@ -1,0 +1,66 @@
+{% extends "@RCLABWebsite/Actualite/actus.html.twig" %}
+
+{% block actu %}
+    <section class="index-content">
+        <div class="container-fluid">
+            <h1>Toute l'actualité</h1>
+            <div class="row">
+                {% if is_granted('ROLE_MODERATOR') %}
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                        <div class="card">
+                            <div class="add-picture-block add-event">
+                                <a href="{{ path('rclab_website_actualite_events_add') }}" ><img src="{{ asset('bundles/rclabwebsite/image/icon-plus.png') }}"/></a>
+                            </div>
+
+                            <div class="card-body text-center add-event">
+                                <br><br>
+                                <h4><a href="{{ path('rclab_website_actualite_events_add') }}">Ajouter un évènement</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                {% for event in listEvents %}
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                        <div class="card">
+                            <div class="picture-block">
+                                {% if event.image is not null %}
+                                    <img src="{{ asset('uploads/images/'~event.image) }}"/>
+                                {% endif %}
+                            </div>
+                            <div class="card-body text-center">
+                                <h4>{{ event.title }}</h4>
+                                <h4>{{ event.dateStart|date('d/m/Y H:i') }} - {{ event.dateEnd|date('d/m/Y H:i') }}</h4>
+                                </h4>
+                                {% if is_granted('ROLE_MODERATOR') %}
+                                    <p>
+                                        <a href="{{ path('rclab_website_actualite_events_edit', {'id': event.id}) }}"><i class="fa fa-edit"></i>Éditer</a>
+                                        <a href="{{ path('rclab_website_actualite_events_remove', { 'id': event.id}) }}"><i class="glyphicon glyphicon-trash"></i>Supprimer</a>
+                                    </p>
+                                {% endif %}
+
+                                <a href="{{ path('rclab_website_actualite_events_detail', {'id': event.id}) }}" class="btn btn-primary">Voir plus</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <nav class="page-navig" aria-label="Page navigation">
+                <ul class="pagination">
+                    <li>
+                        {% if page > 1 %}
+                            <a href="{{ path('rclab_website_actualite_events', { 'page': (page - 1) }) }}" aria-label="Précédent"><span aria-hidden="true">&laquo;</span></a>
+                        {% endif %}
+                    </li>
+                    <li class="active"><a>{{ page }}</a></li>
+                    <li>
+                        {% if isSuivant is not null %}
+                            <a href="{{ path('rclab_website_actualite_events', {'page': (page + 1) }) }}" aria-label="Suivant"><span aria-hidden="true">&raquo;</span></a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+
+{% endblock %}

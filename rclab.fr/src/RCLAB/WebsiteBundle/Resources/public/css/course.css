@@ -1,0 +1,123 @@
+h1{
+    text-align: left;
+    font-size: 38px;
+    font-weight: 400;
+    line-height: 50px;
+    color: white;
+}
+
+.course-body{
+    color: white;
+    width:100%;
+    text-align: center;
+}
+.form-top {
+    color: white;
+    overflow: hidden;
+    padding: 0 25px 0 25px;
+    margin-top: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    -moz-border-radius: 4px 4px 0 0; -webkit-border-radius: 4px 4px 0 0; border-radius: 4px 4px 0 0;
+    text-align: left;
+}
+.form-top-left {
+    float: left;
+    padding: 5px 0 0 0;
+    width: 75%;
+}
+.form-top-right {
+    float: left;
+    height:100px;
+    width: 25%;
+    color: #fff;
+    line-height: 100px;
+    text-align: right;
+    opacity: 0.3;
+}
+.form-top-right .glyphicon {
+    padding: 27px 0 0 0;
+    font-size: 48px;
+}
+
+.form-bottom {
+    padding: 25px 25px 25px 25px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 0 0 4px 4px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.container-fluid > a {
+    background: #19b9e7;
+    border: none;
+    margin: 10px 0;
+}
+
+.detail-area > div > a {
+    background: #19b9e7;
+    border: none;
+    margin: 0;
+}
+
+.title-table{
+    padding: 0;
+}
+.title-area {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px 0;
+    border-left: 2px solid #FFFFFF;
+    border-top: 2px solid #FFFFFF;
+    border-bottom: 2px solid #FFFFFF;
+    margin: 0;
+}
+.detail-area {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #FFFFFF;
+    border-left: 2px solid #FFFFFF;
+    border-bottom: 2px solid #FFFFFF;
+    min-height: 200px;
+    padding: 0;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+.detail-area > p {
+    height: 50px;
+    padding-top: 15px;
+    margin: 0;
+    border-bottom: 1px solid darkgrey;
+    overflow: hidden;
+}
+.detail-area > .btn-course {
+    height: 50px;
+    padding-top: 8px;
+    margin: 0;
+    border-bottom: 1px solid darkgrey;
+    overflow: hidden;
+}
+.title-area-right, .detail-area-right {
+    border-right: 2px solid #FFFFFF;
+}
+@media(max-width: 768px) {
+    .detail-area {
+        border-right: 2px solid #FFFFFF;
+
+    }
+    .title-area {
+        border-right: 2px solid #FFFFFF;
+    }
+}
+
+.course-state-validate-detail {
+    color:  rgba(25, 231, 125, 1);
+}
+.course-state-demand-detail {
+    color: rgba(255, 0, 0, 1);
+}
+
+.detail-course-body p {
+    font-size: 20px;
+}
+.detail-course-body .form-top {
+    margin-top: 50px;
+}

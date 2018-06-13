@@ -1,0 +1,60 @@
+{% extends "base.html.twig" %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/rclabwebsite/css/course.css') }}" />
+{% endblock %}
+{% block body %}
+    <div class="course-body" href="{{ asset('bundles/rclabwebsite/image/course.jpg') }}">
+        <div class="detail-course-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 col-sm-10 col-xs-12 col-lg-offset-2 col-md-offset-2 col-sm-offset-1">
+                        <div class="form-top">
+                            <div class="form-top-left">
+                                <h1>{{ course.objet }}</h1>
+                            </div>
+                            <div class="form-top-right">
+                                <i class="glyphicon glyphicon-briefcase"></i>
+                            </div>
+                        </div>
+                        <div class="form-bottom">
+                            <br/>
+                            <p>Matière associée : {{ course.matiere.matiere }}</p>
+                            {% if course.niveau is not null %}
+                                <p>Niveau du cours : {{ course.niveau.niveau }}</p>
+                            {% endif %}
+                            <p>Etat de la demande :
+                            {% if course.etat == 'demande' %}
+                                <span class="course-state-demand-detail">{{ course.etat }}</span></p>
+                                <p>Disponibilités du demandeur :</p>
+                                <p>{{ course.disponibiliteDemandeur }}</p>
+                            {% else %}
+                                <span class="course-state-validate-detail">{{ course.etat }}</span></p>
+                                {%  if course.professeur is not null %}
+                                    <p>Professeur : {{ course.professeur.firstName }} {{ course.professeur.lastName }}</p>
+                                {% endif %}
+                                {% if edit is defined %}
+                                    <p>Responsable du cours : {{ course.responsable.firstName }} {{ course.responsable.lastName }}</p>
+                                {% endif %}
+                                <p>Date et heure du cours : {{ course.debut|date('d/m/Y à H:i') }}</p>
+                                <p>Durée du cours : {{ course.duree|date('H:i') }}</p>
+                            {% endif %}
+                            <br>
+                            <p>Description :</p>
+                            <p>{{ course.description }}</p>
+                            {% if edit is defined %}
+                                <a href="{{ path(edit, {'id': course.id}) }}">Gérer</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+{% endblock %}
+{% block javascripts %}
+    {% javascripts
+        '@RCLABUserBundle/Resources/public/js/jquery.backstretch.min.js'
+        '@RCLABWebsiteBundle/Resources/public/js/index.js' %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+{% endblock %}

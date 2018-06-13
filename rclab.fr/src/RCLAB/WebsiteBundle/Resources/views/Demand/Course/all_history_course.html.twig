@@ -1,0 +1,45 @@
+{% extends "allHistory.html.twig" %}
+
+{% block history %}
+    <div>
+        <h4>Les cours de l'association</h4>
+
+        <table>
+            <tr>
+                <th>Matière</th>
+                <th>Niveau</th>
+                <th>Objet</th>
+                <th>Date et heure du cours</th>
+                <th>Responsable</th>
+                <th>Professeur</th>
+                <th>Voir plus</th>
+            </tr>
+            {% for course in all_courses %}
+                <tr>
+                    <td>{{ course.matiere.matiere }}</td>
+                    <td>{{ course.niveau is not null ? course.niveau.niveau }}</td>
+                    <td>{{ course.objet }}</td>
+                    <td>{{ course.debut|date('d/m/Y à H:i') }}</td>
+                    <td>{{ course.responsable.firstName }} {{ course.responsable.lastName }}</td>
+                    <td>
+                        {% if course.professeur is not null %}
+                            {{ course.professeur.firstName }} {{ course.professeur.lastName }}
+                        {% endif %}
+                    </td>
+                    <td><a href="{{ path('rclab_website_course_detail', {'id': course.id}) }}">Voir plus</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div>
+        <p>pagination : </p>
+        {% if page > 1 %}
+            <a href="{{ path('rclab_website_course_history_all', { 'page': (page - 1) }) }}">précédent</a>
+        {% endif %}
+        {{ page }}
+        {% if isSuivant is not null %}
+            <a href="{{ path('rclab_website_course_history_all', {'page': (page + 1) }) }}">suivant</a>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "base.html.twig" %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/rclabwebsite/css/repair.css') }}" />
+{% endblock %}
+{% block body %}
+    <div class="repair-body" href="{{ asset('bundles/rclabwebsite/image/reparation.jpg') }}">    
+        <div class="detail-repair-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 col-sm-10 col-xs-12 col-lg-offset-2 col-md-offset-2 col-sm-offset-1">
+                        <div class="form-top">
+                            <div class="form-top-left">
+                                <h1>{{ repair.objet }}</h1>
+                            </div>
+                            <div class="form-top-right">
+                                <i class="glyphicon glyphicon-wrench"></i>
+                            </div>
+                        </div>
+                        <div class="form-bottom">
+                            <br/>
+                            <p>Date de la demande : {{ repair.dateDemande|date('d/m/Y à H:i') }}</p>
+                            {% if repair.responsable is not null %}
+                                <p>Responsable de la réparation : {{ repair.responsable.firstName }} {{ repair.responsable.lastName }}</p>
+                            {% endif %}
+                            <p>Etat de la demande :
+                            {% if repair.etat == 'demande' %}
+                                <span class="repair-state-demand-detail">{{ repair.etat }}</span></p>
+                                <p>Disponibilités du demandeur :</p>
+                                <p>{{ repair.disponibiliteDemandeur }}</p>
+                            {% elseif repair.etat == 'en attente' %}
+                                <span class="repair-state-wait-detail">{{ repair.etat }}</span></p>
+                                <p>Date du rendez-vous : {{ repair.debut|date('d/m/Y à H:i') }}</p>
+                            {% elseif repair.etat == 'en cours' %}
+                                <span class="repair-state-progress-detail">{{ repair.etat }}</span></p>
+                            {% elseif repair.etat == 'terminée' %}
+                                <span class="repair-state-finish-detail">{{ repair.etat }}</span></p>
+                                <p>Veuillez contacter un membre de l'association afin de récupérer votre matériel. <a href="{{ path('rclab_website_contact') }}">Cliquez ici</a></p>
+                            {% endif %}
+                            <br>
+                            <p>Description :</p>
+                            <p>{{ repair.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts
+        '@RCLABUserBundle/Resources/public/js/jquery.backstretch.min.js'
+        '@RCLABWebsiteBundle/Resources/public/js/index.js' %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+{% endblock %}

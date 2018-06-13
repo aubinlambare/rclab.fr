@@ -1,0 +1,113 @@
+{% extends "base.html.twig" %}
+
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/rclabwebsite/css/contact.css') }}" />
+{% endblock %}
+
+
+
+{% block body %}
+    <div class="contact-body" href="{{ asset('bundles/rclabwebsite/image/background.jpg') }}">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="message-asso">
+                        <h1>Besoin de nous contacter ?</h1>
+                        <div class="first_space"> </div>
+                        <h2>Vous êtes un particulier et vous souhaitez nous contacter pour une réparation, un cours, tout autre problème
+                            ou tout simplement pour une question !</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="second-portion">
+                <div class="row align">
+                    <!-- Boxes-->
+                    <div class="col-xs-12 col-sm-6 col-lg-3 box-area">
+                        <div class="box">
+                            <div class="icon">
+                                <div class="fa"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+                                <div class="info">
+                                    <h3 class="title">Mail</h3>
+                                    <p><i class="fa fa-envelope" aria-hidden="true"></i> &nbsp rclab@et.esiea.fr</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-3 box-area">
+                        <div class="box">
+                            <div class="icon">
+                                <div class="fa"><i class="fa fa-mobile" aria-hidden="true"></i></div>
+                                <div class="info">
+                                    <h3 class="title">Téléphone</h3>
+                                    <p><i class="fa fa-mobile" aria-hidden="true"></i> &nbsp 06 52 74 23 14</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-3 box-area">
+                        <div class="box">
+                            <div class="icon">
+                                <div class="fa"><i class="fa fa-bell" aria-hidden="true"></i></div>
+                                <div class="info">
+                                    <h3 class="title">Réseaux Sociaux</h3>
+                                        <a href="https://www.facebook.com/rootcomputerlab"><i class="fa fa-facebook-official"></i> Facebook</a>
+                                    <div class="space_under_icons"></div>
+                                        <a href="https://www.snapchat.com/add/rc-lab53"><i class="fa fa-snapchat"></i> Snapchat</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-3 box-area">
+                        <div class="box">
+                            <div class="icon">
+                                <div class="fa"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+                                <div class="info">
+                                    <h3 class="title">Adresse</h3>
+                                    <p><i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp 38 Rue des Docteurs Calmette et Guérin, 53000 LAVAL</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="space"> </div>
+            <h2>Où contactez directement l'un de nos membres !</h2>
+            <!-- Espace entre les boxes et les personnes contactables -->
+            <div class="space"> </div>
+            <div class="third-portion">
+                <div class="row">
+                    {% for users in personnes %}
+                        {% if users.fonction is not null %}
+                            <div class="col-lg-6 col-md-6 col-sm-8 col-xs-10 col-sm-offset-2 col-xs-offset-1">
+                                <div class="dash-unit">
+                                    <div class="thumbnail">
+                                        {% if users.photo is not null %}
+                                            <img src="{{ asset('uploads/images/'~users.photo) }}" class="img-circle" >
+                                        {% endif %}
+                                    </div>
+                                    <div class="fonction_color"><h3> {{ users['fonction']['fonction']|upper }}</h3></div>
+                                    <div class="space_fonction-name"></div>
+                                    <div class="name_color"><h1>{{ users['firstName'] }} {{ users.lastName }}</h1></div>
+                                    <div class="space_name-number"></div>
+                                    {% if users['telephone'] is not null %}
+                                        <div class="number_color"><h3> {{ users['telephone']}}</h3></div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="space_perso"></div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts
+        '@RCLABUserBundle/Resources/public/js/jquery.backstretch.min.js'
+        '@RCLABWebsiteBundle/Resources/public/js/index.js' %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+{% endblock %}

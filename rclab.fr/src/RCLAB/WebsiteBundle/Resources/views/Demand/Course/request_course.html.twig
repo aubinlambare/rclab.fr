@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h3>Demander un cours</h3>
+	<div class="course-body" href="{{ asset('bundles/rclabwebsite/image/course.jpg') }}">
+	    <div>
+	        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+	        {{ form_widget(form) }}
+	        {{ form_end(form) }}
+	    </div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+    {% javascripts
+        '@RCLABUserBundle/Resources/public/js/jquery.backstretch.min.js'
+        '@RCLABWebsiteBundle/Resources/public/js/index.js' %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+{% endblock %}

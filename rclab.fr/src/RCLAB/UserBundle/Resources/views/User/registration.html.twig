@@ -1,0 +1,101 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+    <link rel="stylesheet" href="{{ asset('bundles/rclabuser/css/form-registration.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/rclabuser/css/registration.css') }}" />
+
+{% endblock %}
+
+{% block body %}
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+    <div class="registration-body" href="{{ asset('bundles/rclabuser/images/registration.jpg') }}">
+        <!-- Top content -->
+        <div class="top-content">
+
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2">
+                            <h1><strong>Rejoins notre communauté et fais appel à nos services !</strong></h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 form-box">
+                            <div class="form-top">
+                                <div class="form-top-left">
+                                    <h3>Inscris-toi dès maintenant !</h3>
+                                    <p>Remplis le formulaire ci-dessous :</p>
+                                </div>
+                                <div class="form-top-right">
+                                    <i class="fa fa-pencil"></i>
+                                </div>
+                            </div>
+                            <div class="form-bottom">
+                                <form role="form" method="post" class="registration-form">
+                                    <div class="form-group">
+                                        <div class="input-group {% if form_errors(form.firstName) is not empty %}error{% endif %}">
+                                            <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                            {{ form_label(form.firstName) }}
+                                            {{ form_widget(form.firstName) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group {% if form_errors(form.lastName) is not empty %}error{% endif %}">
+                                            <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                            {{ form_label(form.lastName) }}
+                                            {{ form_widget(form.lastName) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group {% if form_errors(form.email) is not empty %}error{% endif %}">
+                                            <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                                            {{ form_label(form.email) }}
+                                            {{ form_widget(form.email) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group {% if form_errors(form.username) is not empty %}error{% endif %}">
+                                            <span class="input-group-addon"><i class="fa fa-users" aria-hidden="true"></i></span>
+                                            {{ form_label(form.username) }}
+                                            {{ form_widget(form.username) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group {% if form_errors(form.plainPassword.first) is not empty %}error{% endif %}">
+                                            <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                                            {{ form_label(form.plainPassword.first) }}
+                                            {{ form_widget(form.plainPassword.first) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group {% if form_errors(form.plainPassword.second) is not empty %}error{% endif %}">
+                                            <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                                            {{ form_label(form.plainPassword.second) }}
+                                            {{ form_widget(form.plainPassword.second) }}
+                                        </div>
+                                    </div>
+                                    {{ form_rest(form) }}
+                                    <div class="g-recaptcha" data-sitekey="6LeTG1oUAAAAAKOSWG1q2zWIDS4DDSlSwISRATVN"></div>
+                                    <button type="submit" class="btn"><strong>Je m'inscris !</strong></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    {{ form_end(form) }}
+
+{% endblock %}
+{% block javascripts %}
+    {% javascripts
+        '@RCLABUserBundle/Resources/public/js/jquery.backstretch.min.js'
+        '@RCLABUserBundle/Resources/public/js/registration.js' %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+{% endblock %}

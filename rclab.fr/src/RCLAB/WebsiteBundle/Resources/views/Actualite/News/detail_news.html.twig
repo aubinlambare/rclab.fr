@@ -1,0 +1,23 @@
+{% extends "@RCLABWebsite/Actualite/actus.html.twig" %}
+
+{% block actu %}
+
+    <h3>Detail de la news {{ news.title }}</h3>
+
+    <div>
+        <p>Publiée le {{ news.shareDate|date('d/m/Y H:i') }}</p>
+        <br/>
+        <p>Description de l'évènement :</p>
+        <p>{{ news.description }}</p>
+
+        {% if news.link is not null %}
+            <p><a href="{{ news.link }}">{{ news.link }}</a></p>
+            <br/>
+        {% endif %}
+    </div>
+    {% if news.image is not null %}
+        <div>
+            <img src="{{ asset('uploads/images/'~news.image) }}"/>
+        </div>
+    {% endif %}
+{% endblock %}

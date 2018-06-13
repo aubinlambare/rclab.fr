@@ -1,0 +1,35 @@
+{% extends "base.html.twig" %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/rclabwebsite/css/repair.css') }}" />
+{% endblock %}
+{% block body %}
+    <div class="repair-body" href="{{ asset('bundles/rclabwebsite/image/reparation.jpg') }}">    
+        <div>
+            <h3>Gérer la réparation</h3>
+            <div>
+                {{ form_start(form) }}
+
+                {{ form_row(form.objet) }}
+                {{ form_row(form.description) }}
+
+                {% if form.debut is defined %}
+                    <p>Disponibilités du demandeur : {{ repair.disponibiliteDemandeur }}</p>
+                    {{ form_row(form.debut) }}
+                {% endif %}
+
+                {{ form_row(form.responsable) }}
+                <br/>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>    
+
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts
+        '@RCLABUserBundle/Resources/public/js/jquery.backstretch.min.js'
+        '@RCLABWebsiteBundle/Resources/public/js/index.js' %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+{% endblock %}

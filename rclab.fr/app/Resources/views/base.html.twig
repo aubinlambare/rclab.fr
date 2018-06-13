@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>RC LAB</title>
+
+    <link rel="shortcut icon" href="{{ asset('images/rclab.png') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/rclabwebsite/css/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/rclabwebsite/Webfonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+
+    {% stylesheets
+        '@RCLABWebsiteBundle/Resources/public/css/base.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
+    {% endstylesheets %}
+
+    {% block stylesheets %}{% endblock %}
+
+</head>
+<body>
+<div id="page">
+    <div id="header-page">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header col-lg-2 col-md-1 col-sm-1 col-xs-6">
+                    <a class="navbar-brand" href="{{ path('rclab_website_home') }}">
+                        <img alt="RC LAB" src="{{ asset('images/rclabheader.png') }}"/>
+                    </a>
+                </div>
+                <div class="header col-lg-10 col-md-11 col-sm-11 col-xs-6" id="header-bar">
+                    <ul class="nav navbar-nav header-fixe">
+                        <li class="navbar-text hidden-xs"><a href="{{ path('rclab_website_association') }}">L'association</a>
+                        </li>
+                        <li class="navbar-text hidden-xs"><a href="{{ path('rclab_website_actualite') }}">Actualités</a>
+                        </li>
+                        <li class="navbar-text hidden-xs"><a href="{{ path('rclab_website_repair') }}">Réparations</a></li>
+                        <li class="navbar-text hidden-xs"><a href="{{ path('rclab_website_course') }}">Cours</a></li>
+                        <li class="navbar-text hidden-xs"><a href="{{ path('rclab_website_contact') }}">Contacts</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-right header-user">
+                        {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                            <li class="navbar-text hidden-xs hidden-sm"><a href="{{ path('rclab_user_profile') }}">Compte</a>
+                            </li>
+                            <li class="navbar-text hidden-xs hidden-sm"><a
+                                        href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+                        {% else %}
+                            <li class="navbar-text hidden-xs hidden-sm"><a href="{{ path('fos_user_security_login') }}">Connexion</a>
+                            </li>
+                            <li class="navbar-text hidden-xs hidden-sm"><a
+                                        href="{{ path('rclab_user_registration_register') }}">S'inscrire</a></li>
+                        {% endif %}
+                        <li class="dropdown hidden-lg hidden-md pull-right">
+                            <a class="dropdown-toggle pull-right" id="dropdownMenuUser" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="true" href="">
+                                <span class="glyphicon glyphicon-menu-hamburger"></span>
+                            </a>
+                            <ul class="dropdown-menu menu-user" aria-labelledby="dropdownMenuUser">
+                                <li class="navbar-text hidden-sm item-header"><a
+                                            href="{{ path('rclab_website_association') }}">L'association</a>
+                                </li>
+                                <li class="navbar-text hidden-sm item-header"><a
+                                            href="{{ path('rclab_website_actualite') }}">Actualités</a></li>
+                                <li class="navbar-text hidden-sm item-header"><a
+                                            href="{{ path('rclab_website_repair') }}">Réparations</a></li>
+                                <li class="navbar-text hidden-sm item-header"><a
+                                            href="{{ path('rclab_website_course') }}">Cours</a>
+                                </li>
+                                <li class="navbar-text hidden-sm item-header"><a
+                                            href="{{ path('rclab_website_contact') }}">Contacts</a></li>
+                                <li role="separator" class="divider hidden-sm"></li>
+                                {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                                    <li class="navbar-text item-user"><a href="{{ path('rclab_user_profile') }}">Compte</a></li>
+                                    <li class="navbar-text item-user"><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+                                    </li>
+                                {% else %}
+                                    <li class="navbar-text item-user"><a href="{{ path('fos_user_security_login') }}">Connexion</a>
+                                    </li>
+                                    <li class="navbar-text item-user"><a href="{{ path('rclab_user_registration_register') }}">S'inscrire</a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div id="content-page">
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        {% block body %}{% endblock %}
+    </div>
+    <div id="footer-page">
+        <footer>
+            <div class="footer-top">
+                <div class="container">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center facebook">
+                        <a href="https://www.facebook.com/rootcomputerlab"><i class="fa fa-facebook-square"></i><span class="hidden-xs">Facebook</span></a>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center email">
+                        <a><i class="fa fa-envelope-square"></i><span class="hidden-xs">rclab@et.esiea.fr</span></a>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center snapchat">
+                        <a href="https://www.snapchat.com/add/rc-lab53"><i class="fa fa-snapchat-square"></i><span class="hidden-xs">Snapchat</span></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container" style="border-top:1px solid grey;">
+                <div class="row text-center">
+                    <div class="col-lg-6 col-lg-offset-3">
+                        <ul class="menu-footer">
+                            <li>
+                                <a href="{{ path('rclab_website_home') }}">Accueil</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('rclab_website_contact') }}">Contacts</a>
+                            </li>
+                            <li>
+                                <a class="hidden-xs">Suivez-nous</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <div class="copyright">
+            <div class="container">
+                <div class="row text-center">
+                    <p>Copyright © 2018 Tous droits réservés</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{{ asset('bundles/rclabwebsite/css/bootstrap/js/bootstrap.min.js') }}"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+{% block javascripts %}{% endblock %}
+</body>
+</html>

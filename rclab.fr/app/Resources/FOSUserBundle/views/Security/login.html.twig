@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    {{ include('@FOSUser/Security/login_content.html.twig') }}
+{% endblock body %}
+
+{% block javascripts %}
+    {% javascripts
+        '@RCLABUserBundle/Resources/public/js/jquery.backstretch.min.js'
+        '@RCLABUserBundle/Resources/public/js/registration.js' %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+{% endblock %}

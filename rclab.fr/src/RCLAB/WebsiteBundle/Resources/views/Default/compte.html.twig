@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <p>Votre compte</p>
+
+    <p><a href="{{ path('rclab_user_profile') }}">Mettre à jour mon profil</a></p>
+
+    {% if is_granted('ROLE_MODERATOR') %}
+        <p><a href="{{ path('rclab_website_association_edit') }}">Mise à jour des informations de l'association</a></p>
+    {% endif %}
+
+    {% if is_granted('ROLE_ADMIN') %}
+        <p> <a href="{{ path('rclab_user_users_list') }}">Gestion des utilisateurs</a>
+        <p><a href="{{ path('rclab_website_tdemandes') }}">Gestion des types de demande</a></p>
+    {% endif %}
+
+
+
+{% endblock %}

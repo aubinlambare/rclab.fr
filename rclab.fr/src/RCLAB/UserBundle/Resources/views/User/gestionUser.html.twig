@@ -1,0 +1,23 @@
+{% extends "compte.html.twig" %}
+
+{% block content %}
+    <h3>{{ user.firstName }} {{ user.lastName }}</h3>
+    <!--
+    -->
+    {{ form_start(form) }}
+    <div>
+        <h4>Gestion de la fonction dans l'association </h4>
+        {{ form_row(form.fonction) }}
+    </div>
+    {% if form.role is defined %}
+        <div>
+            <h4>Gestion des droits</h4>
+            {{ form_row(form.role) }}
+        </div>
+    {% endif %}
+    <div>
+        <br />
+        {{ form_row(form.Valider) }}
+    </div>
+    {{ form_end(form) }}
+{% endblock %}

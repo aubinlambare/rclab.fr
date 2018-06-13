@@ -1,0 +1,26 @@
+{% extends "compte.html.twig" %}
+
+{% block content %}
+<div>
+    <a href="{{ path('rclab_website_actualite_events_add') }}">Ajouter un évènement</a>
+
+    <table>
+        <tr>
+            <th>Titre</th>
+            <th>Début de l'évènement</th>
+            <th>Fin de l'évènement</th>
+            <th>Inscrits</th>
+            <th>Gérer les inscriptions</th>
+        </tr>
+        {% for event in list_event %}
+        <tr>
+            <td>{{ event.title }}</td>
+            <td>{{ event.dateStart|date('d/m/Y à H:i') }}</td>
+            <td>{{ event.dateEnd|date('d/m/Y à H:i') }}</td>
+            <td>{{ event.nbInscrits is null ? '0' : event.nbInscrits }}/{{ event.maxParticipants }}</td>
+            <td><a href="{{ path('rclab_website_actualite_events_handleSubscription', {'id': event.id}) }}">Gérer</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,143 @@
+.btn-primary:hover,
+.btn-primary:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.card .card-body .btn-primary {
+    margin: 20px;
+}
+
+.actualite-body h1{
+    text-align: center;
+    font-size: 38px;
+    font-weight: 400;
+    line-height: 50px;
+    color: white;
+    margin-bottom: 50px;
+}
+
+.detail-event-body h1{
+    text-align: left;
+    font-size: 38px;
+    font-weight: 400;
+    color: white;
+    line-height: 50px;
+}
+.index-content{
+    padding:30px 20px;
+    color: white;
+}
+
+.card-body .btn-admin {
+    background-color: #19b9e7;
+}
+
+.index-content .card {
+    margin-bottom: 30px;
+    border-radius:4px;
+    width: 100%;
+    min-height: 623px;
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.3);
+    background: rgba(0, 0, 0, 0.75);
+}
+.index-content .card:hover{
+    box-shadow: 0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.3);
+}
+
+.btn {
+    background: #19b9e7;
+    border: none;
+    margin:0 0 5px 0;
+}
+.btn-group .btn-right, .btn-group .btn-right:hover {
+    border-left: 1px solid white;
+}
+.btn-group .btn-left, .btn-group .btn-left:hover {
+    border-right: 1px solid white;
+}
+
+.picture-block {
+    height: 400px;
+    max-width: 600px;
+    text-align: center;
+}
+.card-body {
+    padding-top: 20px;
+}
+.card-body > p > a {
+    margin: 0 5px;
+    font-size: 16px;
+    color: rgba(25, 185, 231, 1);
+}
+.card-body .fa {
+    font-size: 24px;
+    padding-right: 5px;
+    color: rgba(25, 185, 231, 1);
+}
+
+.picture-block img {
+    padding-top: 10px;
+    width: 80%;
+    max-height: 400px;
+}
+.picture-detail {
+    max-height: 600px;
+}
+.picture-detail img {
+    width: 100%;
+    max-height: 600px;
+    border-radius: 4px;
+}
+.form-bottom {
+    padding: 25px 25px 25px 25px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 0 0 4px 4px;
+    text-align: center;
+    margin-bottom: 10px;
+ }
+.form-bottom .btn-primary {
+    margin-top: 10px;
+}
+
+.form-top {
+    overflow: hidden;
+    padding: 0 25px 0 25px;
+    margin-top: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    -moz-border-radius: 4px 4px 0 0; -webkit-border-radius: 4px 4px 0 0; border-radius: 4px 4px 0 0;
+    text-align: left;
+}
+.picture-detail {
+    margin-top: 20px;
+}
+
+.form-top-left {
+    float: left;
+    padding: 17px 0 0 0 !important;
+    width: 75%;
+}
+.form-top-right {
+    float: left;
+    width: 25%;
+    font-size: 66px;
+    color: #fff;
+    line-height: 100px;
+    text-align: right;
+    opacity: 0.3;
+}
+
+.form-top-right .fa {
+    font-size: 48px;
+}
+
+.index-content .card h4 {
+    margin: 20px 0;
+}
+.index-content .card p {
+    opacity: 0.65;
+}
+
+.index-content .page-navig {
+    text-align: center;
+}

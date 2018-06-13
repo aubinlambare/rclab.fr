@@ -1,0 +1,213 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/rclabwebsite/css/course.css') }}" />
+{% endblock %}
+
+{% block body %}
+    <div class="course-body" href="{{ asset('bundles/rclabwebsite/image/course.jpg') }}">
+        <div class="course-body">
+            <div class="container-fluid">
+                <a class="btn btn-primary" href="{{ path('rclab_website_course_request') }}">Demander un cours</a>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8 col-lg-offset-2 col-md-offset-1">
+                        <div class="form-top">
+                            <div class="form-top-left">
+                                <h1>Mes demandes</h1>
+                            </div>
+                            <div class="form-top-right">
+                                <i class="glyphicon glyphicon-send"></i>
+                            </div>
+                        </div>
+                        <div class="form-bottom">
+                            {% if my_demands is empty %}
+                                <h4>Vous n'avez fais aucune demande de cours.</h4>
+                            {% else %}
+                                <div class="row my-demand-place">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 title-table">
+                                        <h4 class="title-area">Matière</h4>
+                                        <div class="detail-area">
+                                            {% for demand in my_demands %}
+                                                <p>{{ demand.matiere.matiere }}</p>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 title-table">
+                                        <h4 class="title-area">Objet</h4>
+                                        <div class="detail-area">
+                                            {% for demand in my_demands %}
+                                                <p>{{ demand.objet }}</p>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5 col-md-5 col-sm-5 title-table">
+                                        <h4 class="title-area title-area-right">Date demandée</h4>
+                                        <div class="detail-area detail-area-right">
+                                            {% for demand in my_demands %}
+                                                <p>{{ demand.disponibiliteDemandeur }}</p>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="form-top">
+                            <div class="form-top-left">
+                                <h1>Mes cours</h1>
+                            </div>
+                            <div class="form-top-right">
+                                <i class="glyphicon glyphicon-briefcase"></i>
+                            </div>
+                        </div>
+                        <div class="form-bottom">
+                            {% if my_courses is empty %}
+                                <h4>Vous n'avez aucun cours de prévu.</h4>
+                            {% else %}
+                                <div class="row my-course-place">
+                                    <div class="col-lg-1 col-md-1 col-sm-1 title-table">
+                                        <h4 class="title-area">Matière</h4>
+                                        <div class="detail-area">
+                                            {% for course in my_courses %}
+                                                <p>{{ course.matiere.matiere }}</p>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1 col-md-1 col-sm-1 title-table">
+                                        <h4 class="title-area">Niveau</h4>
+                                        <div class="detail-area">
+                                            {% for course in my_courses %}
+                                                <p>{{ course.niveau is not null ? course.niveau.niveau }}</p>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-3 title-table">
+                                        <h4 class="title-area">Objet</h4>
+                                        <div class="detail-area">
+                                            {% for course in my_courses %}
+                                                <p>{{ course.objet }}</p>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2 col-sm-2 title-table">
+                                        <h4 class="title-area">Date</h4>
+                                        <div class="detail-area">
+                                            {% for course in my_courses %}
+                                                <p>{{ course.debut|date('d/m à H:i') }}</p>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2 col-sm-2 title-table">
+                                        <h4 class="title-area">Détails</h4>
+                                        <div class="detail-area">
+                                            {% for course in my_courses %}
+                                                <div class="btn-course">
+                                                    <a class="btn btn-primary" href="{{ path('rclab_website_course_detail', {'id': course.id}) }}">Voir plus</a>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-3 title-table">
+                                        <h4 class="title-area title-area-right">Se désinscrire</h4>
+                                        <div class="detail-area detail-area-right">
+                                            {% for course in my_courses %}
+                                                <div class="btn-course">
+                                                    {% if course.professeur !=  app.user %}
+                                                        <a class="btn btn-primary" href="{{ path('rclab_website_course_unsubscribe', {'id': course.id}) }}">Se désinscrire</a>
+                                                    {% endif %}
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="form-top">
+                            <div class="form-top-left">
+                                <h1>Les cours disponibles</h1>
+                            </div>
+                            <div class="form-top-right">
+                                <i class="glyphicon glyphicon-share"></i>
+                            </div>
+                        </div>
+                        <div class="form-bottom">
+                            {% if available_courses is empty %}
+                                <h4>Il n'y a aucun nouveau cours de disponible.</h4>
+                            {% else %}
+                                <div class="row my-course-place">
+                                    <div class="col-lg-1 col-md-1 col-sm-1 title-table">
+                                        <h4 class="title-area">Matière</h4>
+                                        <div class="detail-area">
+                                            {% for course in available_courses %}
+                                                <p>{{ course.matiere.matiere }}</p>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1 col-md-1 col-sm-1 title-table">
+                                        <h4 class="title-area">Niveau</h4>
+                                        <div class="detail-area">
+                                            {% for course in available_courses %}
+                                                <p>{{ course.niveau is not null ? course.niveau.niveau }}</p>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-3 title-table">
+                                        <h4 class="title-area">Objet</h4>
+                                        <div class="detail-area">
+                                            {% for course in available_courses %}
+                                                <p>{{ course.objet }}</p>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2 col-sm-2 title-table">
+                                        <h4 class="title-area">Date</h4>
+                                        <div class="detail-area">
+                                            {% for course in available_courses %}
+                                                <p>{{ course.debut|date('d/m à H:i') }}</p>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2 col-sm-2 title-table">
+                                        <h4 class="title-area">Détails</h4>
+                                        <div class="detail-area">
+                                            {% for course in available_courses %}
+                                                <div class="btn-course">
+                                                    <a class="btn btn-primary" href="{{ path('rclab_website_course_detail', {'id': course.id}) }}">Voir plus</a>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-3 title-table">
+                                        <h4 class="title-area title-area-right">S'inscrire</h4>
+                                        <div class="detail-area detail-area-right">
+                                            {% for course in available_courses %}
+                                                <div class="btn-course">
+                                                    <a class="btn btn-primary" href="{{ path('rclab_website_course_subscribe', {'id': course.id}) }}">S'inscrire</a>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts
+        '@RCLABUserBundle/Resources/public/js/jquery.backstretch.min.js'
+        '@RCLABWebsiteBundle/Resources/public/js/index.js' %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+{% endblock %}

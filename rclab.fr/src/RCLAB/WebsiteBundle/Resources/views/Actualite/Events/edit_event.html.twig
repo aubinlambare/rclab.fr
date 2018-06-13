@@ -1,0 +1,11 @@
+{% extends "@RCLABWebsite/Actualite/actus.html.twig" %}
+
+{% block actu %}
+
+    <h3>Modifier l'évènement {{ event.title }}</h3>
+
+    <div>
+        {{ form(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    </div>
+
+{% endblock %}

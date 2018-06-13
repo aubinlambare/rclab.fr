@@ -1,0 +1,280 @@
+body {
+    padding-top: 20px;
+    color : white;
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 75px;
+}
+
+.contact-body{
+    color:white;
+    width:100%;
+    text-align:center;
+}
+
+.message-asso {
+    padding-bottom: 50px;
+}
+
+.second-portion {
+    width: 100%;
+    text-align: center;
+}
+
+.box {
+    height: 200px;
+    width: 200px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.space {
+    padding-bottom: 35px;
+}
+
+.first_space {
+    padding-bottom: 15px;
+}
+
+.space_under_icons{
+    padding-bottom: 15px;
+}
+
+.space_fonction-name{
+    padding-bottom: 5px;
+}
+
+.space_name-number{
+    padding-bottom: 10px;
+}
+
+.space_between_contact{
+    padding-bottom: 15px;
+}
+
+.final_space {
+    padding-bottom: 40px;
+}
+
+.icon a{
+    color:#ffffff;
+}
+
+.fa-facebook-official {
+    color: #446cb3;
+}
+
+.fa-snapchat {
+    color: #FFFF00;
+}
+
+.fonction_color{
+    color:rgba(128,128,128, 1);
+}
+
+.name_color{
+    color:rgba(256,256,256, 1);
+}
+
+.number_color{
+    color:rgba(128,128,128, 1);
+}
+
+.box-area{
+    display: flex;
+    justify-content: center;
+}
+
+
+/* Start box */
+
+
+.box > .icon {
+    text-align: center;
+}
+
+.box > .icon > .fa {
+    position: relative;
+    z-index: 2;
+    margin: auto;
+    width: 88px;
+    height: 88px;
+    border: 8px solid white;
+    line-height: 88px;
+    border-radius: 50%;
+    background: #00bfff;
+    vertical-align: middle;
+}
+
+.box > .icon:hover > .fa {
+    background: #333;
+}
+
+.box > .icon > .fa > i {
+    font-size: 36px !important;
+    color: #fff !important;
+}
+
+.box > .icon:hover > .fa > i {
+    color: white !important;
+}
+
+.box > .icon > .info {
+    margin-top: -24px;
+    background: rgba(0, 0, 0, 0.04);
+    border: 3px solid #e0e0e0;
+    padding: 15px 0 10px 0;
+    min-height:163px;
+}
+
+.box > .icon:hover > .info {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: #e0e0e0;
+    color: white;
+}
+
+.box > .icon > .info > h3.title {
+    font-family: "Robot",sans-serif !important;
+    font-size: 16px; color: #ffffff;
+    font-weight: 700;
+}
+
+.box > .icon > .info > p {
+    font-family: "Robot",sans-serif !important;
+    font-size: 13px;
+    color: #ffffff;
+    line-height: 1.5em;
+    margin: 20px;
+}
+
+.box > .icon:hover > .info > h3.title, .box > .icon:hover > .info > p, .box > .icon:hover > .info > .more > a {
+    color: white;
+}
+
+.box > .icon > .info > .more a {
+    font-family: "Robot",sans-serif !important;
+    font-size: 12px;
+    color: #222;
+    line-height: 12px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.box > .icon:hover > .info > .more > a {
+    color: #fff;
+    padding: 6px 8px;
+    background-color: #63B76C;
+}
+
+.box .space {
+    height: 10px;
+}
+
+@media only screen and (max-width: 768px)
+{
+    .second-portion
+    {
+        margin-top:25px;
+    }
+}
+
+.dash-unit {
+    margin-bottom: 30px;
+    padding-bottom:10px;
+    padding-top:10px;
+    height: 230px;
+
+    border: 3px solid #383737;
+    background-image:url('../../../uploads/images/sep-half.png');
+    background-color: rgba(0,0,0, .6);
+    font-family: 'Open Sans', sans-serif;
+    text-align:center;
+}
+
+.dash-unit:hover {
+    background-color: rgba(6,6,6, .6);
+    -moz-box-shadow:    3px 3px 2px 0px #151515;
+    -webkit-box-shadow: 3px 3px 2px 0px #151515;
+    box-shadow:         3px 3px 2px 0px #151515;
+}
+
+.dash-unit dtitle {
+    font-size:11px;
+    text-transform:uppercase;
+    color:#ffffff;
+    margin:8px;
+    padding:none;
+    height:inherit;
+    text-align:center;
+}
+
+.dash-unit h1 {
+    font-weight:300;
+    font-size: 20px;
+    line-height: 2px;
+    letter-spacing: none;
+    color: #ffffff;
+    padding-top:10px;
+    padding-left:0px;
+    margin-top:2px;
+    text-align:center;
+}
+
+.dash-unit h2 {
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 26px;
+    letter-spacing: none;
+    padding-top:10px;
+    padding-left:0px;
+    margin-top:2px;
+    text-align:center;
+}
+
+.dash-unit h3 {
+    font-weight:300;
+    font-size: 15px;
+    line-height: 2px;
+    letter-spacing: none;
+    padding-top:10px;
+    padding-left:0px;
+    margin-top:2px;
+    text-align:center;
+}
+
+.dash-unit h4 {
+    padding-left:5px;
+    margin-top:2px;
+    font-size: 15px;
+    font-weight:lighter;
+    line-height: 1;
+    letter-spacing: none;
+    color: #ffffff;
+}
+
+.dash-unit bold{
+    font-size:26px;
+    font-weight:bold;
+    color:#ffffff;
+    vertical-align:middle;
+}
+
+.dash-unit h6 {
+    padding-left:15px;
+    padding-right:15px;
+    margin-top:2px;
+    font-size: 20px;
+    font-weight:lighter;
+    line-height: 1.7;
+    letter-spacing: none;
+    color: #ffffff;
+}
+
+.thumbnail {
+    border: none;
+    text-align:center;
+  -webkit-box-shadow: none;
+     -moz-box-shadow: none;
+          box-shadow: none;
+    background: none;
+    opacity: 1;
+}

@@ -1,0 +1,36 @@
+{% extends "compte.html.twig" %}
+
+{% block content %}
+    <h3>Gestion des utilisateurs</h3>
+    <div>
+        {% for user in users %}
+            <div>
+                <p>
+                    <strong>{{ user.firstName }} {{ user.lastName }}</strong>
+                    <a href="{{ path('rclab_user_edit', {'id': user.id}) }}">Modifier</a>
+                    {% if user.id != app.user.getId() %}
+                        <a href="{{ path('rclab_user_remove', {'id': user.id}) }}">Supprimer</a>
+                    {% endif %}
+                </p>
+
+                {% if user.roles is not empty %}
+                    <p> Statut :
+                        {{ user.roles[0]|slice(5)|lower|capitalize }}
+                    </p>
+                {% endif %}
+                {% if user.fonction is not null %}
+                    <p> Fonction :
+                        {{ user.fonction.fonction }}
+                    </p>
+                {% endif %}
+
+            </div>
+            {% if user.photo is not null %}
+                <div>
+                    <img src="{{ asset('uploads/images/'~user.photo) }}"/>
+                    <a href="{{ path('rclab_user_photo_reset', {'id': user.id}) }}">Réinitialiser la photo</a>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div class="profile-body" href="{{ asset('bundles/rclabuser/images/profile.jpg') }}">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 col-lg-offset-1">
+                <div class="form-top first-section">
+                    <div class="form-top-left">
+                        <h1><strong>Gestion</strong></h1>
+                    </div>
+                    <div class="form-top-right">
+                        <i class="fa fa-check-square-o"></i>
+                    </div>
+                </div>
+                <div class="form-bottom first-section">
+                    <li><a href="{{ path('rclab_user_profile') }}">Mon Profil</a></li>
+                    <li><a href="{{ path('rclab_website_course_history_user') }}">Mon historique</a></li>
+                    {% if is_granted('ROLE_MODERATOR') %}
+                        <li><a href="{{ path('rclab_website_course_handle') }}">Gérer les cours</a></li>
+                        <li><a href="{{ path('rclab_website_repair_handle') }}">Gérer les réparations</a></li>
+                        <li><a href="{{ path('rclab_website_actualite_events_handle') }}">Gérer les évènements</a></li>
+                        <li><a href="{{ path('rclab_website_association_edit') }}">Informations de l'association</a></li>
+                        <li><a href="{{ path('rclab_website_course_history_all') }}">Historique de l'association</a></li>
+                    {% endif %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li><a href="{{ path('rclab_user_users_list') }}">Gérer les utilisateurs</a></li>
+                        <li><a href="{{ path('rclab_website_tdemandes') }}">Types de demandes</a></li>
+                        <li><a href="{{ path('rclab_website_fonction_list') }}">Gestion des fonctions</a></li>
+                    {% endif %}
+                </div>
+            </div>
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block javascripts %}
+    {% javascripts
+        '@RCLABUserBundle/Resources/public/js/jquery.backstretch.min.js'
+        '@RCLABUserBundle/Resources/public/js/profile.js' %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+{% endblock %}
