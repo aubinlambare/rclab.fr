@@ -4,6 +4,7 @@ namespace RCLAB\WebsiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use RCLAB\UserBundle\Entity\User;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Demande
@@ -26,6 +27,8 @@ class Demande
      * @var string
      *
      * @ORM\Column(name="Objet", type="string", length=100)
+     *
+     * @Assert\NotBlank(message="L'objet est obligatoire")
      */
     private $objet;
 
@@ -33,6 +36,8 @@ class Demande
      * @var string
      *
      * @ORM\Column(name="Description", type="text")
+     *
+     * @Assert\NotBlank(message="La description est obligatoire")
      */
     private $description;
 
