@@ -6,12 +6,23 @@ namespace RCLAB\UserBundle\Entity;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use RCLAB\WebsiteBundle\Entity\Fonction;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="RCLAB\UserBundle\Repository\User")
  * @ORM\Table(name="user")
+ * @UniqueEntity(
+ *     fields={"username"},
+ *     message="Cet utilisateur existe déjà"
+ * )
+ *
+ * @UniqueEntity(
+ *     fields={"email"},
+ *     message="Cette adresse mail existe déjà"
+ * )
  */
+
 class User extends BaseUser
 {
     /**
@@ -82,18 +93,27 @@ class User extends BaseUser
     /**
      * @var string
      *
+     * @Assert\Email(message="Adresse mail invalide")
      *
-     * @Assert\NotBlank(message = "Veuillez indiquer un email")
      */
     protected $email;
 
     /**
+     * @var string
+     *
+     * @Assert\NotBlank(message="Veuillez indiquer votre nom d'utilisateur")
+     */
+    protected $username;
+
+    /**
      * Encrypted password. Must be persisted.
      *
-   * @var string
-    *
-    */
-    protected $password;
+     * @var string
+     *
+     * @Assert\NotBlank(message="Veuillez entrer votre mot de passe")
+     *
+     */
+    protected $plainPassword;
 
     public function __toString()
     {

@@ -16,8 +16,10 @@
                         {% if is_granted('ROLE_MODERATOR') %}
                             <div class="btn-top-right">
                                 <div class="btn-group">
-                                    <a class="btn btn-primary btn-left" href="{{ path('rclab_website_actualite_events_add') }}">Ajouter un évènement</a>
-                                    <a class="btn btn-primary btn-right" href="{{ path('rclab_website_actualite_news_add') }}">Ajouter une news</a>
+                                    <a class="btn btn-primary btn-left"
+                                       href="{{ path('rclab_website_actualite_events_add') }}">Ajouter un évènement</a>
+                                    <a class="btn btn-primary btn-right"
+                                       href="{{ path('rclab_website_actualite_news_add') }}">Ajouter une news</a>
                                 </div>
                             </div>
                         {% endif %}
@@ -27,72 +29,57 @@
             <h1 class="title-page">Toute l'actualité</h1>
             <div class="row">
                 {% for actu in listActus %}
-                    {% if actu.dateEnd is defined %}
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 card-event">
-                    {% else %}
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 card-news">
-                    {% endif %}
-                        <div class="card">
-                            <div class="picture-block">
-                                {% if actu.image is not null %}
-                                    <img src="{{ asset('uploads/images/'~actu.image) }}"/>
+                {% if actu.dateEnd is defined %}
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 card-event">
+                {% else %}
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 card-news">
+                {% endif %}
+                    <div class="card">
+                        <div class="picture-block">
+                            {% if event.image is not null %}
+                                <img src="{{ asset('uploads/images/'~event.image) }}"/>
+                            {% endif %}
+                        </div>
+                        <div class="card-body text-center">
+                            <h4>{{ event.title }}</h4>
+                            <h4>{{ event.dateStart|date('d/m/Y H:i') }}
+                                {% if event.dateEnd is defined %}
+                                    - {{ event.dateEnd|date('d/m/Y H:i') }}
                                 {% endif %}
-                            </div>
-                            <div class="card-body text-center">
-                                <h4>{{ actu.title }}</h4>
-                                <h4>{{ actu.dateStart|date('d/m/Y H:i') }}
-                                    {% if actu.dateEnd is defined %}
-                                        - {{ actu.dateEnd|date('d/m/Y H:i') }}
-                                    {% endif %}
-                                </h4>
-                                {% if is_granted('ROLE_MODERATOR') %}
-                                    {% if actu.dateEnd is defined %}
-                                        <p>
-                                            <a href="{{ path('rclab_website_actualite_events_edit', {'id': actu.id}) }}"><i
-                                                        class="fa fa-edit"></i>Éditer</a>
-                                            <a href="{{ path('rclab_website_actualite_events_remove', { 'id': actu.id}) }}"><i
-                                                        class="fa fa-trash"></i>Supprimer</a>
-                                        </p>
-                                    {% else %}
+                            </h4>
+                            {% if is_granted('ROLE_MODERATOR') %}
+                                <p>
+                                    <a href="{{ path('rclab_website_actualite_events_edit', {'id': event.id}) }}"><i
+                                                class="fa fa-edit"></i>Éditer</a>
+                                    <a href="{{ path('rclab_website_actualite_events_remove', { 'id': event.id}) }}"><i
+                                                class="fa fa-trash"></i>Supprimer</a>
+                                </p>
+                            {% endif %}
 
-                                        <p>
-                                            <a href="{{ path('rclab_website_actualite_news_edit', {'id': actu.id}) }}"><i
-                                                        class="fa fa-edit"></i>Éditer</a>
-                                            <a href="{{ path('rclab_website_actualite_news_remove', { 'id': actu.id}) }}"><i
-                                                        class="fa fa-trash"></i>Supprimer</a>
-                                        </p>
-                                    {% endif %}
-                                {% endif %}
-
-                                {% if actu.dateEnd is defined %}
-                                    <a href="{{ path('rclab_website_actualite_events_detail', {'id': actu.id}) }}"
-                                       class="btn btn-primary">Voir plus</a>
-                                {% else %}
-                                    <a href="{{ path('rclab_website_actualite_news_detail', {'id': actu.id}) }}"
-                                       class="btn btn-primary">Voir plus</a>
-                                {% endif %}
-                            </div>
+                            <a href="{{ path('rclab_website_actualite_events_detail', {'id': event.id}) }}"
+                               class="btn btn-primary">Voir plus</a>
                         </div>
                     </div>
-                {% endfor %}
+                    {% endfor %}
+                </div>
+                <nav class="page-navig" aria-label="Page navigation">
+                    <ul class="pagination">
+                        <li>
+                            {% if page > 1 %}
+                                <a href="{{ path('rclab_website_actualite', { 'page': (page - 1) }) }}"
+                                   aria-label="Précédent"><span aria-hidden="true">&laquo;</span></a>
+                            {% endif %}
+                        </li>
+                        <li class="active"><a>{{ page }}</li>
+                        <li>
+                            {% if isSuivant is not null %}
+                                <a href="{{ path('rclab_website_actualite', {'page': (page + 1) }) }}"
+                                   aria-label="Suivant"><span aria-hidden="true"></span></a>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </nav>
             </div>
-            <nav class="page-navig" aria-label="Page navigation">
-                <ul class="pagination">
-                    <li>
-                        {% if page > 1 %}
-                            <a href="{{ path('rclab_website_actualite', { 'page': (page - 1) }) }}"
-                               aria-label="Précédent"><span aria-hidden="true">&laquo;</span></a>
-                        {% endif %}
-                    </li>
-                    <li class="active"><a>{{ page }}</a></li>
-                    <li>
-                        {% if isSuivant is not null %}
-                            <a href="{{ path('rclab_website_actualite', {'page': (page + 1) }) }}"
-                               aria-label="Suivant"><span aria-hidden="true">&raquo;</span></a>
-                        {% endif %}
-                    </li>
-                </ul>
-            </nav>
         </div>
     </section>
 {% endblock %}
