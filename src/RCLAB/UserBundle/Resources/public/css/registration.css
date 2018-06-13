@@ -37,10 +37,6 @@ body {
 	color: white;
 }
 
-#remember_me{
-    margin: 6px auto 0;
-}
-
 .forgetPassword {
     text-align: right;
 	text-decoration: none;
@@ -72,12 +68,15 @@ body {
 .form-bottom {
 	padding: 25px 25px 30px 25px;
 	margin-bottom: 20px;
-	background: #444;
 	background: rgba(0, 0, 0, 0.5);
 	border-radius: 0 0 4px 4px;
+}
+.history-course-content .form-bottom {
+	text-align: center;
+}
+.registration-body .form-bottom {
 	text-align: left;
 }
-
 .form-bottom .fa {
 	font-size: 24px;
 }
@@ -90,11 +89,13 @@ body {
 .form-top {
 	overflow: hidden;
 	padding: 0 25px 15px 25px;
-	margin-top: 20px;
-	background: #444;
+	margin-top: 60px;
 	background: rgba(0, 0, 0, 0.55);
 	-moz-border-radius: 4px 4px 0 0; -webkit-border-radius: 4px 4px 0 0; border-radius: 4px 4px 0 0;
 	text-align: left;
+}
+.history-course-content .form-top, .history-repair-content .form-top {
+	margin-top: 18px;
 }
 
 .form-top-left {
@@ -108,15 +109,83 @@ body {
 
 .form-top-right {
 	float: left;
+	height:100px;
 	width: 25%;
-	padding-top: 5px;
-	font-size: 66px;
 	color: #fff;
 	line-height: 100px;
 	text-align: right;
 	opacity: 0.3;
 }
+.form-top-right .glyphicon, .form-top-right .fa {
+	padding: 27px 0 0 0;
+	font-size: 66px;
+}
 
+.detail-area > div > a {
+	background: #19b9e7;
+	border: none;
+	margin: 0;
+}
+
+.btn-repair > a {
+	background: #19b9e7;
+	border: none;
+	margin: 0;
+	outline: none;
+}
+
+.title-table{
+	padding: 0;
+}
+.title-area {
+	background-color: rgba(0, 0, 0, 0.5);
+	padding: 20px 0;
+	border-left: 2px solid #FFFFFF;
+	border-top: 2px solid #FFFFFF;
+	border-bottom: 2px solid #FFFFFF;
+	margin: 0;
+}
+.detail-area {
+	background-color: rgba(0, 0, 0, 0.5);
+	color: #FFFFFF;
+	border-left: 2px solid #FFFFFF;
+	border-bottom: 2px solid #FFFFFF;
+	min-height: 200px;
+	margin-bottom: 10px;
+	overflow: hidden;
+}
+.detail-area > .one-detail {
+	height: 70px;
+	border-bottom: 1px solid darkgrey;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.title-area-right, .detail-area-right {
+	border-right: 2px solid #FFFFFF;
+}
+
+@media(max-width: 768px) {
+	.detail-area {
+		border-right: 2px solid #FFFFFF;
+
+	}
+	.title-area {
+		border-right: 2px solid #FFFFFF;
+	}
+}
+
+.detail-course-body p {
+	font-size: 20px;
+}
+.detail-course-body .form-top {
+	margin-top: 50px;
+}
+
+.first-section {
+	text-align: left;
+}
 .first-section a {
 	color: rgba(255, 255, 255, 0.9);
 }
@@ -187,16 +256,18 @@ body {
 	.registration-body h1 { font-size: 32px; }
 
 }
+.btn {
+	background: #19b9e7;
+	border: none;
+	margin:5px 0 5px 0;
+}
+.btn-group .btn-right, .history-body .btn-group .btn-right:hover {
+	border-left: 1px solid white;
+}
+.btn-group .btn-left, .history-body .btn-group .btn-left:hover {
+	border-right: 1px solid white;
+}
 
-
-/* Retina-ize images/icons */
-
-@media
-only screen and (-webkit-min-device-pixel-ratio: 2),
-only screen and (   min--moz-device-pixel-ratio: 2),
-only screen and (     -o-min-device-pixel-ratio: 2/1),
-only screen and (        min-device-pixel-ratio: 2),
-only screen and (                min-resolution: 192dpi),
-only screen and (                min-resolution: 2dppx) {
-
+.history-body .page-navig {
+	text-align: center;
 }

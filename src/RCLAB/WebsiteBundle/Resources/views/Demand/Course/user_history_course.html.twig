@@ -1,72 +1,86 @@
 {% extends "myHistory.html.twig" %}
 
 {% block history %}
-    {#<div>#}
-    {#<h4>Mes demandes de cours</h4>#}
-
-    {#{% if my_demands is empty %}#}
-    {#<p>Vous n'avez pas encore de demandes de cours historisées</p>#}
-    {#{% else %}#}
-    {#<table>#}
-    {#<tr>#}
-    {#<th>Matière</th>#}
-    {#<th>Objet</th>#}
-    {#<th>Date et heure de la demande</th>#}
-    {#<th>Etat de la demande</th>#}
-    {#</tr>#}
-    {#{% for demand in my_demands %}#}
-    {#<tr>#}
-    {#<td>{{ demand.matiere.matiere }}</td>#}
-    {#<td>{{ demand.objet }}</td>#}
-    {#<td>{{ demand.dateDemande|date('d/m/Y à H:i') }}#}
-    {#<td>{{ demand.etat }}</td>#}
-    {#</tr>#}
-    {#{% endfor %}#}
-    {#</table>#}
-    {#{% endif %}#}
-    {#</div>#}
-
-    <div>
-        <h4>Mes cours</h4>
-
-        {% if my_courses is empty %}
-            <p>Vous n'avez pas encore participé à un cours</p>
-        {% else %}
-            <table>
-                <tr>
-                    <th>Matière</th>
-                    <th>Niveau</th>
-                    <th>Objet</th>
-                    <th>Date et heure du cours</th>
-                    <th>Professeur</th>
-                    <th>Voir plus</th>
-                </tr>
-                {% for course in my_courses %}
-                    <tr>
-                        <td>{{ course.matiere.matiere }}</td>
-                        <td>{{ course.niveau is not null ? course.niveau.niveau }}</td>
-                        <td>{{ course.objet }}</td>
-                        <td>{{ course.debut|date('d/m/Y à H:i') }}</td>
-                        <td>
-                            {% if course.professeur is not null %}
-                                {{ course.professeur.firstName }} {{ course.professeur.lastName }}
-                            {% endif %}
-                        </td>
-                        <td><a href="{{ path('rclab_website_course_detail', {'id': course.id}) }}">Voir plus</a></td>
-                    </tr>
-                {% endfor %}
-            </table>
-        {% endif %}
-    </div>
-
-    <div>
-        <p>pagination : </p>
-        {% if page > 1 %}
-            <a href="{{ path('rclab_website_course_history_user', { 'page': (page - 1) }) }}">précédent</a>
-        {% endif %}
-        {{ page }}
-        {% if isSuivant is not null %}
-            <a href="{{ path('rclab_website_course_history_user', {'page': (page + 1) }) }}">suivant</a>
-        {% endif %}
+    <div class="container-fluid history-course-content">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                <div class="form-top">
+                    <div class="form-top-left">
+                        <h1>Mes cours</h1>
+                    </div>
+                    <div class="form-top-right">
+                        <i class="glyphicon glyphicon-briefcase"></i>
+                    </div>
+                </div>
+                <div class="form-bottom">
+                    {% if my_courses is empty %}
+                        <h4>Vous n'avez aucun cours de prévu.</h4>
+                    {% else %}
+                        <div class="row my-course-place">
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 title-table">
+                                <h4 class="title-area">Matière</h4>
+                                <div class="detail-area">
+                                    {% for course in my_courses %}
+                                        <div class="one-detail">
+                                            {{ course.matiere.matiere }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 title-table">
+                                <h4 class="title-area">Objet</h4>
+                                <div class="detail-area">
+                                    {% for course in my_courses %}
+                                        <div class="one-detail">
+                                            {{ course.objet }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 title-table">
+                                <h4 class="title-area">Date</h4>
+                                <div class="detail-area">
+                                    {% for course in my_courses %}
+                                        <div class="one-detail">
+                                            {{ course.debut|date('d/m à H:i') }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 title-table">
+                                <h4 class="title-area title-area-right">Détails</h4>
+                                <div class="detail-area detail-area-right">
+                                    {% for course in my_courses %}
+                                        <div class="one-detail">
+                                            <div class="btn-course">
+                                                <a class="btn btn-primary" href="{{ path('rclab_website_course_detail', {'id': course.id}) }}">Voir plus</a>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            trololol
+        </div>
+        <nav class="page-navig" aria-label="Page navigation">
+            <ul class="pagination">
+                <li>
+                    {% if page > 1 %}
+                        <a href="{{ path('rclab_website_course_history_user', { 'page': (page - 1) }) }}"
+                           aria-label="Précédent"><span aria-hidden="true">&laquo;</span></a>
+                    {% endif %}
+                </li>
+                <li class="active"><a>{{ page }}</a></li>
+                <li>
+                    {% if isSuivant is not null %}
+                        <a href="{{ path('rclab_website_course_history_user', {'page': (page + 1) }) }}"
+                           aria-label="Suivant"><span aria-hidden="true">&raquo;</span></a>
+                    {% endif %}
+                </li>
+            </ul>
+        </nav>
     </div>
 {% endblock %}

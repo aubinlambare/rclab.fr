@@ -1,14 +1,11 @@
 {% extends "compte.html.twig" %}
 
 {% block content %}
-    <nav>
-        <ul>
-            <li><a href="{{ path('rclab_website_course_history_user') }}">Historique des cours</a></li>
-            <li><a href="{{ path('rclab_website_repair_history_user') }}">Historique des réparations</a></li>
-        </ul>
-    </nav>
-
-    {% block history %}
-
-    {% endblock %}
+    <div class="history-body">
+        <div class="btn-group">
+            <a class="btn btn-primary btn-left" href="{{ path('rclab_website_course_history_user') }}">Historique des cours</a>
+            <a class="btn btn-primary btn-right" href="{{ path('rclab_website_repair_history_user') }}">Historique des réparations</a>
+        </div>
+        {% block history %}{% endblock %}
+    </div>
 {% endblock %}

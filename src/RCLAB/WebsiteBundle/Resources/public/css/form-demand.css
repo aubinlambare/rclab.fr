@@ -1,0 +1,139 @@
+h1{
+    text-align: left;
+    font-size: 38px;
+    font-weight: 400;
+    line-height: 50px;
+    color: white;
+}
+.form-top {
+    color: white;
+    overflow: hidden;
+    padding: 0 25px 0 25px;
+    margin-top: 50px;
+    background: rgba(0, 0, 0, 0.6);
+    -moz-border-radius: 4px 4px 0 0; -webkit-border-radius: 4px 4px 0 0; border-radius: 4px 4px 0 0;
+    text-align: left;
+}
+.form-top-left {
+    float: left;
+    padding: 5px 0 0 0;
+    width: 75%;
+}
+.form-top-right {
+    float: left;
+    height:100px;
+    width: 25%;
+    color: #fff;
+    line-height: 100px;
+    text-align: right;
+    opacity: 0.3;
+}
+.form-top-right .glyphicon, .form-top-right .fa {
+    padding: 27px 0 0 0;
+    font-size: 48px;
+}
+.form-bottom {
+    padding: 25px 25px 25px 25px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 0 0 4px 4px;
+    text-align: left;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.btn {
+    background: #19b9e7;
+    border: none;
+    margin:5px 0 5px 0;
+}
+.input-group-addon {
+    background: rgba(19, 185, 231, 0.95);
+    border: none;
+    width: 50px;
+}
+.input-group {
+    width: 100%;
+}
+
+.form-bottom .fa, .form-bottom .glyphicon {
+    font-size: 24px;
+    color:white;
+}
+
+.form-control:focus {
+    outline: 0;
+    border: 2px solid #19b9e7;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.form-control {
+    border-radius: 4px !important;
+    color: #555555;
+}
+
+[type="text"] {
+    height: 50px;
+    margin: 0;
+    width: 100%;
+    padding: 0 20px;
+    background: #fff;
+    border: 3px solid #fff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 50px;
+    color: #555555;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 0 4px 4px 0;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+[type="text"]:focus {
+    outline: 0;
+    background: #fff;
+    border: 2px solid #19b9e7;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.btn-matiere {
+    height: 50px;
+    color: #8c8c8c;
+    width: 70%;
+}
+
+select {
+    width:102% !important;
+    height:50px !important;
+    background-color:transparent;
+    -webkit-appearance: none;
+    border:none;
+    box-shadow:none;
+}
+select:focus{
+    border: transparent !important;
+}
+.styled {
+    overflow:hidden;
+    background: white;
+    height: 50px;
+    width: 80%;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    border: none;
+}
+
+select > option {
+    background-color: white;
+    color: #5e5e5e;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+
+

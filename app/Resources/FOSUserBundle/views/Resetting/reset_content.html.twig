@@ -1,8 +1,47 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-{{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'fos_user_resetting_reset' } }) }}
-    {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="{{ 'resetting.reset.submit'|trans }}" />
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/rclabuser/css/form-user.css') }}" />
+{% endblock %}
+
+<div class="registration-body" href="{{ asset('bundles/rclabuser/images/registration.jpg') }}">
+    {{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'fos_user_resetting_reset' } }) }}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-8 col-xs-8 col-lg-offset-3 col-md-offset-3 col-sm-offset-2 col-xs-offset-2 form-box">
+                <div class="form-top">
+                    <div class="form-top-left">
+                        <h1>Mot de passe</h1>
+                    </div>
+                    <div class="form-top-right">
+                        <i class="fa fa-lock"></i>
+                    </div>
+                </div>
+                <div class="form-bottom">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                            {{ form_widget(form.plainPassword.first, {'attr':{ 'placeholder':'Nouveau mot de passe...' }}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                            {{ form_widget(form.plainPassword.second, {'attr':{ 'placeholder':'Confirmer le mot de passe...' }}) }}
+                        </div>
+                    </div>
+                    <input class="btn btn-primary" type="submit" value="{{ 'resetting.reset.submit'|trans }}" />
+                </div>
+            </div>
+        </div>
     </div>
-{{ form_end(form) }}
+    {{ form_end(form) }}
+</div>
+
+{% block javascripts %}
+    {% javascripts
+        '@RCLABUserBundle/Resources/public/js/jquery.backstretch.min.js'
+        '@RCLABUserBundle/Resources/public/js/registration.js' %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+{% endblock %}

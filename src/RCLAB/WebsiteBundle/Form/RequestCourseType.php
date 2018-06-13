@@ -24,6 +24,14 @@ class RequestCourseType extends AbstractType
                 'class' => Matiere::class,
                 'choice_label' => 'matiere',
                 'label' => 'Choisissez une matière pour ce cours',
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
+                'attr' => [
+                    'class' => 'form-control',
+                    'placeholder' => 'Choisir une matière',
+                    'title' => 'Matière',
+                ],
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('m')
                         ->where("m.historique = 'false'");
@@ -31,15 +39,41 @@ class RequestCourseType extends AbstractType
             ])
             ->add('objet', TextType::class, array(
                 'label' => 'Objet du cours',
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
+                'attr' => [
+                    'placeholder' => 'Objet du cours...',
+                ],
             ))
             ->add('description', TextareaType::class, array(
                 'label' => 'Précisez votre demande',
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
+                'attr' => [
+                    'placeholder' => 'Précisez votre demande...',
+                    'class' => 'form-control',
+                    'rows' => '4',
+                ],
             ))
             ->add('disponibiliteDemandeur', TextareaType::class, array(
                 'label' => 'Indiquez ici vos disponiblités',
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
+                'attr' => [
+                    'placeholder' => 'Indiquez vos disponibilités...',
+                    'class' => 'form-control',
+                    'rows' => '4',
+                ],
             ))
 
-            ->add('Envoyer', SubmitType::class);
+            ->add('Envoyer', SubmitType::class, [
+                'attr' => [
+                    'class' => 'btn btn-primary',
+                ],
+            ]);
     }
 
     /**
