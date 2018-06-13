@@ -1,5 +1,19 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="UTF-8">
+
+    <title>Confirmation de votre compte</title>
+</head>
+<body>
 <h1>Bienvenue sur le site internet de l'association Root Computer Lab !</h1>
 
-<p>Il ne vous reste plus qu'à confirmer votre inscription en cliquant sur le lien ci-dessous ou en ouvrant ce lien dans votre navigateur internet </p>
+<p>Il ne vous reste plus qu'à confirmer votre inscription en cliquant sur le lien ci-dessous ou en ouvrant ce lien dans
+    votre navigateur internet </p>
 
-<p><a href="{{ path('rclab_user_registration_checkEmail', { 'id': confirmationToken}) }}">{{ path('rclab_user_registration_checkEmail', { 'id': confirmationToken}) }}</a></p>
+<p>
+    <a href="https://www.rootcomputerlab.com{{ path('rclab_user_registration_checkEmail', { 'id': confirmationToken}) }}">https://www.rootcomputerlab.com{{ path('rclab_user_registration_checkEmail', { 'id': confirmationToken}) }}</a>
+</p>
+
+</body>
+</html>
