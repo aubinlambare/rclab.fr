@@ -41,7 +41,7 @@ class UserController extends Controller
 
     public function detailAction(User $user)
     {
-        $this->denyAccessUnlessGranted('ROLE_MODERATOR', null, 'Impossible d\'accéder à cette page');
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY', null, 'Impossible d\'accéder à cette page');
 
         return $this->render('@RCLABUser/User/detail.html.twig', [
             'user' => $user,

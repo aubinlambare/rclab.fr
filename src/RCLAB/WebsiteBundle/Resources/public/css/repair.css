@@ -41,6 +41,10 @@ h1{
     margin-bottom: 20px;
     color: white;
 }
+.user-link, .user-link:hover {
+    color: #19b9e7;
+}
+
 
 .container-fluid > a {
     background: #19b9e7;

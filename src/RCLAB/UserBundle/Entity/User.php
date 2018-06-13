@@ -110,7 +110,6 @@ class User extends BaseUser
      *
      * @var string
      *
-     * @Assert\NotBlank(message="Veuillez entrer votre mot de passe")
      *
      */
     protected $plainPassword;

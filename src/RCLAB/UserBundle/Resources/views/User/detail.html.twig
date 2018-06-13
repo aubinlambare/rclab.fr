@@ -1,15 +1,45 @@
 {% extends "base.html.twig" %}
 
 {% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/rclabuser/css/detail-user.css') }}" />
 {% endblock %}
 
-
 {% block body %}
-    <p>{{ user.firstName }} {{ user.lastName }}</p>
-    <p>{{ user.facebook is not null ? user.facebook }}</p>
-    <p>{{ user.telephone is not null ? user.telephone }}</p>
-    <p>{{ user.email }}</p>
+
+<div class="profile-body" href="{{ asset('bundles/rclabuser/images/profile.jpg') }}">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8 col-lg-offset-2 col-md-offset-1">
+                <div class="form-top">
+                    <div class="form-top-left">
+                        <h1>Informations</h1>
+                    </div>
+                    <div class="form-top-right">
+                        <i class="glyphicon glyphicon-user"></i>
+                    </div>
+                </div>
+                <div class="form-bottom">
+                    <h2>{{ user.firstName }} {{ user.lastName }}</h2>
+                    <br>
+                    {% if user.telephone is not null %}
+                        <p>Numéro de téléphone : {{ user.telephone }}</p>
+                    {% endif %}
+                    <p>Email : {{ user.email }}</p>
+                    {% if user.facebook is not null %}
+                        <p>Profil Facebook : <a href="{{ user.facebook }}">{{ user.facebook }}</a>
+                    {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block javascripts %}
+    {% javascripts
+        '@RCLABUserBundle/Resources/public/js/jquery.backstretch.min.js'
+        '@RCLABUserBundle/Resources/public/js/profile.js' %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
 {% endblock %}

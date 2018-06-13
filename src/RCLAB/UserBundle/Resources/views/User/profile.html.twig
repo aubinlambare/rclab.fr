@@ -13,7 +13,7 @@
         <div class="form-bottom">
             <div class="row">
                 {{ form_start(form) }}
-                {% if ((is_granted('ROLE_ADMIN')) or (is_granted('ROLE_MODERATOR')) or (user.fonction is not null)) %}
+                {% if (((is_granted('ROLE_ADMIN')) or (is_granted('ROLE_MODERATOR'))) and (user.fonction is not null)) %}
                     <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-0" style="text-align:center">
                         <div class="form-bottom-left">
                             {% if is_granted('ROLE_ADMIN') %}
@@ -36,7 +36,15 @@
                 {% endif %}
                     <div class="form-bottom-right">
                         <h2>{{ user.firstName }} {{ user.lastName }}</h2>
-                        <h3>{{ user.username }}</h3>
+                        <h3>{{ user.username }}
+                            {% if (((is_granted('ROLE_ADMIN')) or (is_granted('ROLE_MODERATOR'))) and (user.fonction is null)) %}
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    - Administrateur
+                                {% elseif is_granted('ROLE_MODERATOR') %}
+                                    - Modérateur
+                                {% endif %}
+                            {% endif %}
+                        </h3>
                         <form role="form" method="post" class="profile-form">
                             <div class="form-group">
                                 <div class="input-group">
