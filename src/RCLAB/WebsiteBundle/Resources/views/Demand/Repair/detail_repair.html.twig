@@ -1,6 +1,6 @@
 {% extends "base.html.twig" %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('bundles/rclabwebsite/css/repair.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/rclabwebsite/css/repair.css') }}"/>
 {% endblock %}
 {% block body %}
     <div class="detail-repair-body repair-body" href="{{ asset('bundles/rclabwebsite/image/reparation.jpg') }}">
@@ -18,22 +18,30 @@
                     <div class="form-bottom">
                         <br/>
                         <p>Date de la demande : {{ repair.dateDemande|date('d/m/Y à H:i') }}</p>
+                        <p>
+                            Demandeur de la réparation :
+                            <a class="user-link" href="{{ path('rclab_user_detail', {'id': repair.demandeur.id}) }}">{{ repair.demandeur.firstName }} {{ repair.demandeur.lastName }}</a>
+
+                        </p>
                         {% if repair.responsable is not null %}
-                            <p>Responsable de la réparation : {{ repair.responsable.firstName }} {{ repair.responsable.lastName }}</p>
+                            <p>Responsable de la réparation :
+                                <a class="user-link" href="{{ path('rclab_user_detail', {'id': repair.responsable.id}) }}">{{ repair.responsable.firstName }} {{ repair.responsable.lastName }}</a>
+                            </p>
                         {% endif %}
                         <p>Etat de la demande :
-                        {% if repair.etat == 'demande' %}
+                            {% if repair.etat == 'demande' %}
                             <span class="repair-state-demand-detail">{{ repair.etat }}</span></p>
-                            <p>Disponibilités du demandeur :</p>
-                            <p>{{ repair.disponibiliteDemandeur }}</p>
-                        {% elseif repair.etat == 'en attente' %}
-                            <span class="repair-state-wait-detail">{{ repair.etat }}</span></p>
-                            <p>Date du rendez-vous : {{ repair.debut|date('d/m/Y à H:i') }}</p>
-                        {% elseif repair.etat == 'en cours' %}
-                            <span class="repair-state-progress-detail">{{ repair.etat }}</span></p>
-                        {% elseif repair.etat == 'terminée' %}
-                            <span class="repair-state-finish-detail">{{ repair.etat }}</span></p>
-                            <p>Veuillez contacter un membre de l'association afin de récupérer votre matériel. <a href="{{ path('rclab_website_contact') }}">Cliquez ici</a></p>
+                        <p>Disponibilités du demandeur :</p>
+                        <p>{{ repair.disponibiliteDemandeur }}</p>
+                    {% elseif repair.etat == 'en attente' %}
+                        <span class="repair-state-wait-detail">{{ repair.etat }}</span>
+                        <p>Date du rendez-vous : {{ repair.debut|date('d/m/Y à H:i') }}</p>
+                    {% elseif repair.etat == 'en cours' %}
+                        <span class="repair-state-progress-detail">{{ repair.etat }}</span>
+                    {% elseif repair.etat == 'terminée' %}
+                        <span class="repair-state-finish-detail">{{ repair.etat }}</span>
+                        <p>Veuillez contacter un membre de l'association afin de récupérer votre matériel. <a
+                                    href="{{ path('rclab_website_contact') }}">Cliquez ici</a></p>
                         {% endif %}
                         <br>
                         <p>Description :</p>

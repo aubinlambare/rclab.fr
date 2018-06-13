@@ -425,6 +425,13 @@ rclab_user_profile:
     path:    /profile/userinfo
     defaults: { _controller: RCLABUserBundle:User:profile }
 
+rclab_user_detail:
+    path:    /profile/user/{id}
+    defaults:
+        _controller: RCLABUserBundle:User:detail
+    requirements:
+        id:    \d+
+
 rclab_user_users_list:
     path:    /liste_des_utilisateurs
     defaults: { _controller: RCLABUserBundle:User:users }

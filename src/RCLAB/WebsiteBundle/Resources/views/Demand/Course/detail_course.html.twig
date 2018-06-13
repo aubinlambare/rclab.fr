@@ -1,6 +1,6 @@
 {% extends "base.html.twig" %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('bundles/rclabwebsite/css/course.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/rclabwebsite/css/course.css') }}"/>
 {% endblock %}
 {% block body %}
     <div class="detail-course-body course-body" href="{{ asset('bundles/rclabwebsite/image/course.jpg') }}">
@@ -22,20 +22,28 @@
                             <p>Niveau du cours : {{ course.niveau.niveau }}</p>
                         {% endif %}
                         <p>Etat de la demande :
-                        {% if course.etat == 'demande' %}
+                            {% if course.etat == 'demande' %}
                             <span class="course-state-demand-detail">{{ course.etat }}</span></p>
-                            <p>Disponibilités du demandeur :</p>
-                            <p>{{ course.disponibiliteDemandeur }}</p>
-                        {% else %}
-                            <span class="course-state-validate-detail">{{ course.etat }}</span></p>
-                            {%  if course.professeur is not null %}
-                                <p>Professeur : {{ course.professeur.firstName }} {{ course.professeur.lastName }}</p>
-                            {% endif %}
-                            {% if edit is defined %}
-                                <p>Responsable du cours : {{ course.responsable.firstName }} {{ course.responsable.lastName }}</p>
-                            {% endif %}
-                            <p>Date et heure du cours : {{ course.debut|date('d/m/Y à H:i') }}</p>
-                            <p>Durée du cours : {{ course.duree|date('H:i') }}</p>
+                        <p>
+                            Demandeur :
+                            <a class="user-link" href="{{ path('rclab_user_detail', {'id': course.demandeur.id}) }}">{{ course.demandeur.firstName }} {{ course.demandeur.lastName }}</a>
+                        </p>
+                        <p>Disponibilités du demandeur :</p>
+                        <p>{{ course.disponibiliteDemandeur }}</p>
+                    {% else %}
+                        <span class="course-state-validate-detail">{{ course.etat }}</span>
+                        {% if course.professeur is not null %}
+                            <p>Professeur :
+                                <a class="user-link" href="{{ path('rclab_user_detail', {'id': course.professeur.id}) }}">{{ course.professeur.firstName }} {{ course.professeur.lastName }}</a>
+                            </p>
+                        {% endif %}
+                        {% if edit is defined %}
+                            <p>Responsable du cours :
+                                <a class="user-link" href="{{ path('rclab_user_detail', {'id': course.responsable.id}) }}">{{ course.responsable.firstName }} {{ course.responsable.lastName }}</a>
+                            </p>
+                        {% endif %}
+                        <p>Date et heure du cours : {{ course.debut|date('d/m/Y à H:i') }}</p>
+                        <p>Durée du cours : {{ course.duree|date('H:i') }}</p>
                         {% endif %}
                         <br>
                         <p>Description :</p>

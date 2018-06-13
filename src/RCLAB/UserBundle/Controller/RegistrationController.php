@@ -109,7 +109,7 @@ class RegistrationController extends Controller
             $this->get('security.token_storage')->setToken($token);
             $this->get('session')->set('_security_users', serialize($token));
 
-            return $this->render('@RCLABWebsite/Default/index.html.twig');
+            return $this->redirectToRoute('rclab_website_home');
         }
     }
 }

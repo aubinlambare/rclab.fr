@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+{% endblock %}
+
+
+{% block body %}
+    <p>{{ user.firstName }} {{ user.lastName }}</p>
+    <p>{{ user.facebook is not null ? user.facebook }}</p>
+    <p>{{ user.telephone is not null ? user.telephone }}</p>
+    <p>{{ user.email }}</p>
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

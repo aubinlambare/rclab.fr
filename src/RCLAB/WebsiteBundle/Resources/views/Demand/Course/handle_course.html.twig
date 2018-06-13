@@ -29,19 +29,19 @@
                 <td>{{ course.etat == 'demande' ? course.dateDemande|date('d/m/Y à H:i') }}</td>
                 <td>
                     {% if course.etat == 'demande' %}
-                        {{ course.demandeur.firstName }} {{ course.demandeur.lastName }}
+                        <a href="{{ path('rclab_user_detail', {'id': course.demandeur.id}) }}">{{ course.demandeur.firstName }} {{ course.demandeur.lastName }}</a>
                     {% endif %}
                 </td>
                 <td>{{ course.etat == 'validé' ? course.debut|date('d/m/Y à H:i') }}</td>
                 <td>{{ course.etat == 'validé' ? course.duree|date('H:i') }}</td>
                 <td>
                     {% if course.professeur is not null %}
-                        {{ course.professeur.firstName }} {{ course.professeur.lastName }}
+                        <a href="{{ path('rclab_user_detail', {'id': course.professeur.id}) }}">{{ course.professeur.firstName }} {{ course.professeur.lastName }}</a>
                     {% endif %}
                 </td>
                 <td>
                     {% if course.responsable is not null %}
-                        {{ course.responsable.firstName }} {{ course.responsable.lastName }}
+                        <a href="{{ path('rclab_user_detail', {'id': course.responsable.id}) }}">{{ course.responsable.firstName }} {{ course.responsable.lastName }}</a>
                     {% endif %}
                 </td>
                 <td><a href="{{ path('rclab_website_course_detail', {'id': course.id}) }}">Voir plus</a></td>

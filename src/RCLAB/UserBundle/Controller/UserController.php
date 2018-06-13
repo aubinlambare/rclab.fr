@@ -8,12 +8,12 @@
 
 namespace RCLAB\UserBundle\Controller;
 
+use RCLAB\UserBundle\Entity\User;
 use RCLAB\UserBundle\Form\ProfileUpdateType;
 //use RCLAB\WebsiteBundle\Entity\Image;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 
 class UserController extends Controller
@@ -36,6 +36,15 @@ class UserController extends Controller
 
         return $this->render('@RCLABUser/User/users.html.twig', [
             'users' => $users,
+        ]);
+    }
+
+    public function detailAction(User $user)
+    {
+        $this->denyAccessUnlessGranted('ROLE_MODERATOR', null, 'Impossible d\'accéder à cette page');
+
+        return $this->render('@RCLABUser/User/detail.html.twig', [
+            'user' => $user,
         ]);
     }
 
