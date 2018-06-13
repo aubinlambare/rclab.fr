@@ -1,17 +1,66 @@
 {% extends "base.html.twig" %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/rclabwebsite/css/association.css') }}" />
+{% endblock %}
+
 {% block body %}
+    <div class="association-body" href="{{ asset('bundles/rclabwebsite/image/background.png') }}">
+        <div class="container">
+            <!-- FIRST ROW OF BLOCKS -->
+            <div class="row">
 
-    <p>{{ descriptionAssociation }}</p>
-    <p>Bg: </p>
-    {% for personne in personnes %}
-        <div>
-        {% if personne.photo is not null %}
-            <img src="{{ asset('uploads/images/'~personne.photo) }}">
-        {% endif %}
-        <p>{{ personne['fonction']['fonction']|upper }} : {{ personne['firstName'] }} {{ personne.lastName }}</p>
+              <!-- USER PROFILE BLOCK -->
+                {% set tmp = 0 %}
+                {% set iteration = 0 %}
+                {% for users in personnes %}
+                    {% set tmp = tmp + 1 %}
+                {% endfor %}
+                {% for users in personnes %}
+                    {% set iteration = iteration + 1 %}
+                    {% if users.fonction is not null %}
+                        {% if tmp == 5 and iteration == 4 %}
+                            <div class="col-lg-offset-2 col-sm-offset-2 col-sm-4 col-md-4 col-lg-4">
+                        {% else %}
+                            <div class="col-sm-4 col-md-4 col-lg-4">
+                        {% endif %}
+                            <div class="dash-unit">
+                                <div class="thumbnail">
+                                    {% if users.photo is not null %}
+                                        <img src="{{ asset('uploads/images/'~users.photo) }}" class="img-circle" >
+                                    {% endif %}
+                                </div><!-- /thumbnail -->
+                                    <h1>{{ users['firstName'] }} {{ users.lastName }}</h1>
+
+                                    <div class="couleur"><h3> {{ users['fonction']['fonction']|upper }}</h3>
+                                    </div>
+                                <br>
+                                <div class="info-user">
+                                    <span>
+                                            <h4>{{ users['presentation'] }}</h4>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+
+            </div>
+
+            <div class="col-lg-offset-1 col-sm-offset-1 col-sm-10 col-lg-10 ">
+                <div class="dash-unit">
+                            <div class="couleur"><h2> L'association </h2></div>
+                            <p><h6> {{ descriptionAssociation }} </h6></p>
+                </div>
+            </div>
         </div>
-    {% endfor %}
-    Body de la page association
+    </div>
+{% endblock %}
 
+{% block javascripts %}
+    {% javascripts
+        '@RCLABUserBundle/Resources/public/js/jquery.backstretch.min.js'
+        '@RCLABWebsiteBundle/Resources/public/js/index.js' %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
 {% endblock %}

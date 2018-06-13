@@ -34,8 +34,6 @@ class RegistrationController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $response = $form->getData();
-
             $secret = "6LeTG1oUAAAAAMLikUWdo4o3qxRcXqhJL7GDPGop";
 
             //paramètres renvoyés par le captcha

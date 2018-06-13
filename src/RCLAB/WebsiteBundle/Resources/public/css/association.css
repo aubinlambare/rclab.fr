@@ -1,0 +1,138 @@
+/* COLOR REFERENCE
+- #1f1f1f (Background Color)
+- #3d3d3d (Dash-unit and half-unit Section)
+- #262626 (Footer)
+- #fa1d2d (Red - Used in selectors, parragraphs, bars and other)
+- #b2c831 (Green - Used in titles, badges, bars and other)
+- #bdbdbd & #fff (Font colors)
+*/
+
+
+/**********BASE CONFIGURATIONS**********/
+body {
+    /*background:#1f1f1f;*/
+    /*background: #19b9e7;*/
+    margin-top: 90px;
+}
+
+.couleur{
+    color:rgba(255,0,0, .6);
+}
+
+.association-body{
+    /*color: white;*/
+    /*width:100%;*/
+    /*text-align: center;*/
+}
+/***********BLOCKS & WRAPS***********/
+
+/*--- Dash Unit / Used in Dashboard page ---*/
+.dash-unit {
+    margin-bottom: 30px;
+    padding-bottom:10px;
+    padding-top:10px;
+    height: 240px;
+    border: 1px solid #383737;
+    background-color: rgba(0,0,0, .6);
+    font-family: 'Open Sans', sans-serif;
+    /*text-align:center;*/
+}
+
+/*Effet relief pas ouf*/
+.dash-unit:hover {
+    background-color: rgba(6,6,6, .6);
+    -moz-box-shadow:    3px 3px 2px 0 #151515;
+    -webkit-box-shadow: 3px 3px 2px 0 #151515;
+    box-shadow:         3px 3px 2px 0 #151515;
+}
+
+.dash-unit {
+    font-size:11px;
+    text-transform:uppercase;
+    color:#ffffff;
+    margin:8px;
+    padding:0;
+    height:inherit;
+    text-align:center;
+}
+
+.dash-unit h1 {
+    font-weight:300;
+    font-size: 20px;
+    line-height: 2px;
+    letter-spacing: 0;
+    color: #ffffff;
+    padding-top:10px;
+    padding-left:5px;
+    margin-top:2px;
+    text-align:center;
+}
+
+.dash-unit h2 {
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 26px;
+    letter-spacing: 0;
+    padding-top:10px;
+    padding-left:5px;
+    margin-top:2px;
+    text-align:center;
+}
+
+
+.dash-unit h3 {
+    font-weight:300;
+    font-size: 15px;
+    line-height: 2px;
+    letter-spacing: 0;
+    padding-top:10px;
+    padding-left:5px;
+    margin-top:2px;
+    text-align:center;
+}
+
+
+.dash-unit h4 {
+    padding-left:5px;
+    margin-top:2px;
+    font-size: 15px;
+    font-weight:lighter;
+    line-height: 1;
+    letter-spacing: 0;
+    color: #fff;
+}
+
+.dash-unit bold{
+    font-size:26px;
+    font-weight:bold;
+    color:#fff;
+    vertical-align:middle;
+}
+
+
+.dash-unit h6 {
+    padding-left:15px;
+    padding-right:15px;
+    margin-top:2px;
+    font-size: 20px;
+    font-weight:lighter;
+    line-height: 1.7;
+    letter-spacing: 0;
+    color: #fff;
+}
+
+.img-circle {
+    max-height: 80px;
+}
+/***********Bootstrap Default Modifications***********/
+
+.thumbnail {
+    padding-top: 10px;
+    border:0;
+    -webkit-box-shadow: 0;
+    -moz-box-shadow: 0;
+    box-shadow: 0;
+    background: none;
+    text-align: center;
+    opacity: 1;
+}
