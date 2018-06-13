@@ -33,6 +33,7 @@ class ActualiteController extends Controller
     private function Form($request, $type, $entity)
     {
         if ($type == 'News') {
+
             if (is_null($entity)) {
                 $obj = new News();
             } else {
