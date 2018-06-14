@@ -10,8 +10,6 @@
 
 /**********BASE CONFIGURATIONS**********/
 body {
-    /*background:#1f1f1f;*/
-    /*background: #19b9e7;*/
     margin-top: 90px;
 }
 
@@ -19,11 +17,6 @@ body {
     color:rgba(255,0,0, .6);
 }
 
-.association-body{
-    /*color: white;*/
-    /*width:100%;*/
-    /*text-align: center;*/
-}
 /***********BLOCKS & WRAPS***********/
 
 /*--- Dash Unit / Used in Dashboard page ---*/
@@ -35,7 +28,7 @@ body {
     border: 1px solid #383737;
     background-color: rgba(0,0,0, .6);
     font-family: 'Open Sans', sans-serif;
-    /*text-align:center;*/
+    text-align:center;
 }
 
 /*Effet relief pas ouf*/
@@ -48,7 +41,6 @@ body {
 
 .dash-unit {
     font-size:11px;
-    text-transform:uppercase;
     color:#ffffff;
     margin:8px;
     padding:0;

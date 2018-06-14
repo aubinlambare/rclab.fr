@@ -24,7 +24,7 @@ class DefaultController extends Controller
     }
     public function contactAction()
     {
-        $infoAssociation = $this->getDoctrine();
+        $infoAssociation = $this->getDoctrine()->getRepository('RCLABWebsiteBundle:Association')->findOneBy([]);
         $personnes = $this->getDoctrine()->getManager()->getRepository('RCLABUserBundle:User')->findUserFonctionByTri(3);
         return $this->render('@RCLABWebsite/Default/contact.html.twig', array(
             'infoAssociation' => $infoAssociation,

@@ -44,9 +44,11 @@ class AssociationType extends AbstractType
             ))
             ->add('imageFocus', FileType::class, array(
                 'label' => 'Image en focus',
+                'required' => false,
             ))
             ->add('texteFocus', TextareaType::class, array(
                 'label' => 'Texte en focus',
+                'required' => false,
             ))
             ->add('Enregistrer', SubmitType::class);
     }

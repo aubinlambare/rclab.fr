@@ -44,15 +44,16 @@
                         </div>
                     {% endif %}
                 {% endfor %}
-
             </div>
 
-            <div class="col-lg-offset-1 col-sm-offset-1 col-sm-10 col-lg-10 ">
-                <div class="dash-unit">
-                            <div class="couleur"><h2> L'association </h2></div>
-                            <p><h6> {{ descriptionAssociation }} </h6></p>
+            {% if descriptionAssociation is not empty %}
+                <div class="col-lg-offset-1 col-sm-offset-1 col-sm-10 col-lg-10 ">
+                    <div class="dash-unit">
+                                <div class="couleur"><h2> L'association </h2></div>
+                                <p><h6> {{ descriptionAssociation }} </h6>
+                    </div>
                 </div>
-            </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}
