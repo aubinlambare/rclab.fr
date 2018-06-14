@@ -14,14 +14,17 @@ class DefaultController extends Controller
 //        }
 //        sort($list_focus);
         $list_courses = $this->getDoctrine()->getRepository('RCLABWebsiteBundle:Demande')->findAllCoursesNotHistory();
+        $infoAsso = $this->getDoctrine()->getRepository('RCLABWebsiteBundle:Association')->findOneBy([]);
         return $this->render('@RCLABWebsite/Default/index.html.twig', [
             'list_focus' => $listFocus,
             'list_course' => $list_courses,
+            'image_default_focus' => $infoAsso->getImageFocus(),
+            'text_default_focus' => $infoAsso->getTexteFocus(),
         ]);
     }
     public function contactAction()
     {
-        $infoAssociation = $this->getDoctrine();
+        $infoAssociation = $this->getDoctrine()->getRepository('RCLABWebsiteBundle:Association')->findOneBy([]);
         $personnes = $this->getDoctrine()->getManager()->getRepository('RCLABUserBundle:User')->findUserFonctionByTri(3);
         return $this->render('@RCLABWebsite/Default/contact.html.twig', array(
             'infoAssociation' => $infoAssociation,
