@@ -132,28 +132,4 @@ class EventInscrit
     {
         return $this->event;
     }
-
-    /**
-     * Set date
-     *
-     * @param \DateTime $date
-     *
-     * @return EventInscrit
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    /**
-     * Get date
-     *
-     * @return \DateTime
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
 }

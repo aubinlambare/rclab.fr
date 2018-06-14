@@ -19,13 +19,13 @@ class AssociationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('facebookAsso', TextType::class, array(
-                'label' => 'Lien vers la page facebook de l\'association',
-                'required' => false,
-            ))
-            ->add('logoAsso', FileType::class, array(
-                'label' => 'Logo de l\'association',
-            ))
+//            ->add('facebookAsso', TextType::class, array(
+//                'label' => 'Lien vers la page facebook de l\'association',
+//                'required' => false,
+//            ))
+//            ->add('logoAsso', FileType::class, array(
+//                'label' => 'Logo de l\'association',
+//            ))
             ->add('numeroPermanence', TelType::class, array(
                 'label' => 'Numéro de téléphone de permanence',
                 'required' => false,
@@ -34,10 +34,10 @@ class AssociationType extends AbstractType
                 'label' => 'Horaires de permanence',
                 'required' => false,
             ))
-            ->add('messageAccueil', TextareaType::class, array(
-                'label' => 'Un petit message de bienvenue',
-                'required' => false,
-            ))
+//            ->add('messageAccueil', TextareaType::class, array(
+//                'label' => 'Un petit message de bienvenue',
+//                'required' => false,
+//            ))
             ->add('description', TextareaType::class, array(
                 'label' => 'Description de l\'association',
                 'required' => false,
