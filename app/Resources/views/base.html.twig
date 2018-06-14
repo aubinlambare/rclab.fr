@@ -6,12 +6,11 @@
 
     <link rel="shortcut icon" href="{{ asset('images/rclab.png') }}">
     <link rel="stylesheet" href="{{ asset('bundles/rclabwebsite/css/bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('bundles/rclabwebsite/Webfonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <link rel="stylesheet"
+          href="{{ asset('bundles/rclabwebsite/Webfonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src='https://www.google.com/recaptcha/api.js'></script>
-    <script src="{{ asset('bundles/rclabwebsite/js/jquery-3.2.1.min.js') }}"></script>
 
     {% stylesheets
         '@RCLABWebsiteBundle/Resources/public/css/base.css' %}
@@ -37,7 +36,8 @@
                         </li>
                         <li class="navbar-text hidden-xs"><a href="{{ path('rclab_website_actualite') }}">Actualités</a>
                         </li>
-                        <li class="navbar-text hidden-xs"><a href="{{ path('rclab_website_repair') }}">Réparations</a></li>
+                        <li class="navbar-text hidden-xs"><a href="{{ path('rclab_website_repair') }}">Réparations</a>
+                        </li>
                         <li class="navbar-text hidden-xs"><a href="{{ path('rclab_website_course') }}">Cours</a></li>
                         <li class="navbar-text hidden-xs"><a href="{{ path('rclab_website_contact') }}">Contacts</a>
                         </li>
@@ -74,13 +74,15 @@
                                             href="{{ path('rclab_website_contact') }}">Contacts</a></li>
                                 <li role="separator" class="divider hidden-sm"></li>
                                 {% if is_granted("IS_AUTHENTICATED_FULLY") %}
-                                    <li class="navbar-text item-user"><a href="{{ path('rclab_user_profile') }}">Compte</a></li>
+                                    <li class="navbar-text item-user"><a
+                                                href="{{ path('rclab_user_profile') }}">Compte</a></li>
                                     <li class="navbar-text item-user"><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
                                     </li>
                                 {% else %}
                                     <li class="navbar-text item-user"><a href="{{ path('fos_user_security_login') }}">Connexion</a>
                                     </li>
-                                    <li class="navbar-text item-user"><a href="{{ path('rclab_user_registration_register') }}">S'inscrire</a>
+                                    <li class="navbar-text item-user"><a
+                                                href="{{ path('rclab_user_registration_register') }}">S'inscrire</a>
                                     </li>
                                 {% endif %}
                             </ul>
@@ -106,13 +108,15 @@
             <div class="footer-top">
                 <div class="container">
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center facebook">
-                        <a href="https://www.facebook.com/rootcomputerlab"><i class="fa fa-facebook-square"></i><span class="hidden-xs">Facebook</span></a>
+                        <a href="https://www.facebook.com/rootcomputerlab"><i class="fa fa-facebook-square"></i><span
+                                    class="hidden-xs">Facebook</span></a>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center email">
                         <a><i class="fa fa-envelope-square"></i><span class="hidden-xs">rclab@et.esiea.fr</span></a>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center snapchat">
-                        <a href="https://www.snapchat.com/add/rc-lab53"><i class="fa fa-snapchat-square"></i><span class="hidden-xs">Snapchat</span></a>
+                        <a href="https://www.snapchat.com/add/rc-lab53"><i class="fa fa-snapchat-square"></i><span
+                                    class="hidden-xs">Snapchat</span></a>
                     </div>
                 </div>
             </div>
@@ -145,9 +149,12 @@
     </div>
 </div>
 
-<script src="{{ asset('bundles/rclabwebsite/css/bootstrap/js/bootstrap.min.js') }}"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
+{% javascripts
+    '@RCLABWebsiteBundle/Resources/public/js/jquery-3.2.1.min.js'
+    '@RCLABWebsiteBundle/Resources/public/css/bootstrap/js/bootstrap.min.js' %}
+<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
 {% block javascripts %}{% endblock %}
 </body>
 </html>
