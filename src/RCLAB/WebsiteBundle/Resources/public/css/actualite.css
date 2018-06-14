@@ -148,6 +148,7 @@
     text-align: center;
     margin-bottom: 20px;
     color: white;
+    overflow: hidden;
 }
 
 .index-content .card h4 {
