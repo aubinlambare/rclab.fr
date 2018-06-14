@@ -101,7 +101,7 @@
                                     {% for repair in toHandle_repairs %}
                                         <div class="one-detail">
                                             <div class="btn-repair">
-                                                <a class="btn btn-primary" href="{{ path('rclab_website_repair_detail', {'id': repair.id}) }}">Gérer</a>
+                                                <a class="btn btn-primary" href="{{ path('rclab_website_repair_edit', {'id': repair.id}) }}">Gérer</a>
                                             </div>
                                         </div>
                                     {% endfor %}

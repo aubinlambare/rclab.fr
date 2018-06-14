@@ -39,6 +39,12 @@ class EditCourseType extends AbstractType
                 'data' => $this->course->getMatiere(),
                 'choice_label' => 'matiere',
                 'label' => 'Choisissez une matière pour ce cours',
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
+                'attr' => [
+                    'class' => 'form-control',
+                ],
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('m')
                         ->where("m.historique = 'false'");
@@ -49,6 +55,12 @@ class EditCourseType extends AbstractType
                 'choice_label' => 'niveau',
                 'data' => $this->course->getNiveau(),
                 'label' => 'Niveau du cours',
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
+                'attr' => [
+                    'class' => 'form-control',
+                ],
                 'required' => false,
                 'query_builder' => function (EntityRepository $er) {
                 return $er->createQueryBuilder('m')
@@ -57,15 +69,36 @@ class EditCourseType extends AbstractType
             ])
             ->add('objet', TextType::class, array(
                 'label' => 'Objet du cours',
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
+                'attr' => [
+                    'placeholder' => 'Objet du cours...',
+                    'class' => 'form-control',
+                ],
             ))
             ->add('description', TextareaType::class, array(
                 'label' => 'Précisez votre demande',
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
+                'attr' => [
+                    'placeholder' => 'Précisez la demande...',
+                    'class' => 'form-control',
+                    'rows' => '4',
+                ],
             ))
             ->add('professeur', EntityType::class, [
                 'class' => User::class,
                 'data' => $this->course->getProfesseur(),
                 'required' => false,
                 'label' => 'Professeur pour ce cours',
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
+                'attr' => [
+                    'class' => 'form-control',
+                ],
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('u')
                         ->where("u.fonction != 'null'");
@@ -73,13 +106,29 @@ class EditCourseType extends AbstractType
             ])
             ->add('debut', DateTimeType::class, [
                 'label' => 'Date et heure du cours',
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
+                'attr' => [
+                    'class' => 'form-control'
+                ],
                 'data' => $this->course->getDebut() ? $this->course->getDebut() : new \DateTime('NOW + 1days'),
             ])
             ->add('duree', TimeType::class, [
                 'label' => 'Durée du cours',
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
+                'attr' => [
+                    'class' => 'form-control'
+                ],
                 'data' => new \DateTime('1:0')
             ])
-            ->add('Valider', SubmitType::class);
+            ->add('Valider', SubmitType::class, [
+                'attr' => [
+                    'class' => 'btn btn-primary',
+                ],
+            ]);
     }
 
     /**

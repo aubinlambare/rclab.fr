@@ -92,4 +92,44 @@ button.btn:active:focus {
     color: #fff;
 }
 
+.select-text select {
+    width:102% !important;
+    height:50px !important;
+    background-color:transparent;
+    -webkit-appearance: none;
+    border:none;
+    box-shadow:none;
+}
+.select-text select:focus{
+    border: transparent !important;
+}
+.select-text .styled {
+    overflow:hidden;
+    background: white;
+    height: 50px;
+    width: 80%;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    border: none;
+}
 
+.select-text select > option {
+    background-color: white;
+    color: #5e5e5e;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.select-date select > option {
+    color: #5e5e5e;
+}
+.select-date .form-control {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.textarea {
+    width: 94%;
+}

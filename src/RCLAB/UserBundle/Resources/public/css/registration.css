@@ -1,5 +1,4 @@
 body {
-    font-family: 'Roboto', sans-serif;
     font-size: 18px;
     font-weight: 300;
     line-height: 30px;
@@ -55,13 +54,19 @@ body {
 	border: none;
 	width: 50px;
 }
+
 .profile-body .input-group-addon {
 	background: rgba(0, 0, 0, 0.4);
 	border: none;
 	width: 50px;
 }
+.edit-course-body .input-group-addon {
+	background: rgba(19, 185, 231, 0.95);
+	border: none;
+	width: 50px;
+}
 
-.fa-lock, .fa-envelope, .fa-user, .fa-users {
+.fa-lock, .fa-envelope, .fa-user, .fa-users, .glyphicon-briefcase {
 	color:white;
 }
 
@@ -77,7 +82,10 @@ body {
 .registration-body .form-bottom {
 	text-align: left;
 }
-.form-bottom .fa {
+.edit-course-body .form-bottom {
+	text-align: left;
+}
+.form-bottom .fa, .form-bottom .glyphicon {
 	font-size: 24px;
 }
 

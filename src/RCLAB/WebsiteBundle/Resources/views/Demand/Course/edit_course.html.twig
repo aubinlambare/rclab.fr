@@ -1,22 +1,92 @@
 {% extends "compte.html.twig" %}
 
 {% block content %}
-    <div>
-        <h3>Gérer le cours</h3>
-        <div>
-            {{ form_start(form) }}
-            {{ form_row(form.matiere) }}
-            {{ form_row(form.niveau) }}
-            {{ form_row(form.objet) }}
-            {{ form_row(form.description) }}
-
-            <p>Disponibilités du demandeur : {{ course.disponibiliteDemandeur }}</p>
-            {{ form_row(form.debut) }}
-            {{ form_row(form.duree) }}
-            {{ form_row(form.professeur) }}
-            <br />
-            {{ form_row(form.Valider) }}
-            {{ form_end(form) }}
+    <div class="container-fluid edit-course-body">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
+                <div class="form-top-admin">
+                    <div class="form-top-left">
+                        <h1>Gérer le cours</h1>
+                    </div>
+                    <div class="form-top-right">
+                        <i class="glyphicon glyphicon-briefcase"></i>
+                    </div>
+                </div>
+                <div class="form-bottom">
+                    {{ form_start(form) }}
+                    <div class="row">
+                        <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase" aria-hidden="true"></i></span>
+                                {{ form_label(form.objet) }}
+                                {{ form_widget(form.objet) }}
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            <div class="input-group select-text">
+                                <div class="styled">
+                                    {{ form_label(form.matiere) }}
+                                    {{ form_widget(form.matiere) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Disponibilités du demandeur :</h3><p>{{ course.disponibiliteDemandeur }}</p>
+                    <div class="row">
+                        <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                            <div class="input-group select-date">
+                                <h4>Début du cours :</h4>
+                                <div class="styled">
+                                    {{ form_label(form.debut) }}
+                                    {{ form_widget(form.debut) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            <div class="input-group select-date">
+                                <h4>Durée :</h4>
+                                <div class="styled">
+                                    {{ form_label(form.duree) }}
+                                    {{ form_widget(form.duree) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                            <div class="input-group select-text">
+                                <h4>Professeur : </h4>
+                                <div class="styled">
+                                    {{ form_label(form.professeur) }}
+                                    {{ form_widget(form.professeur) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            <div class="input-group select-text">
+                                <h4>Niveau : </h4>
+                                <div class="styled">
+                                    {{ form_label(form.niveau) }}
+                                    {{ form_widget(form.niveau) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <h4>Demande :</h4>
+                            <div class="textarea">
+                                {{ form_label(form.description) }}
+                                {{ form_widget(form.description) }}
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    {{ form_row(form.Valider) }}
+                    {{ form_end(form) }}
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
