@@ -1,45 +1,133 @@
 {% extends "compte.html.twig" %}
 
 {% block content %}
-
-    <h3>Liste des demandes de réparations</h3>
-    <table>
-        <tr>
-            <th>Objet</th>
-            <th>Date et heure de la demande</th>
-            <th>Demandeur</th>
-            <th>Date et heure de rendez-vous</th>
-            <th>Responsable</th>
-            <th>Voir plus</th>
-            <th>Etat de la demande</th>
-            <th>Gérer</th>
-        </tr>
-        {% for repair in toHandle_repairs %}
-            <tr>
-                <td>{{ repair.objet }}</td>
-                <td>{{ repair.dateDemande|date('d/m/Y à H:i') }}</td>
-                <td><a href="{{ path('rclab_user_detail', {'id': repair.demandeur.id}) }}">{{ repair.demandeur.firstName }} {{ repair.demandeur.lastName }}</a></td>
-                <td>{{ repair.etat == 'en attente' ? repair.debut|date('d/m/Y à H:i') }}</td>
-                <td>
-                    {% if repair.responsable is not null %}
-                        <a href="{{ path('rclab_user_detail', {'id': repair.responsable.id}) }}">{{ repair.responsable.firstName }} {{ repair.responsable.lastName }}</a>
+    <div class="container-fluid history-repair-content">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
+                <div class="form-top-admin">
+                    <div class="form-top-left">
+                        <h1>Les réparations</h1>
+                    </div>
+                    <div class="form-top-right">
+                        <i class="glyphicon glyphicon-wrench"></i>
+                    </div>
+                </div>
+                <div class="form-bottom">
+                    {% if toHandle_repairs is empty %}
+                        <h4>Vous n'avez aucune demande de réparation à gérer.</h4>
+                    {% else %}
+                        <div class="row my-demand-place">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 title-table">
+                                <h4 class="title-area">Objet</h4>
+                                <div class="detail-area">
+                                    {% for repair in toHandle_repairs %}
+                                        <div class="one-detail">
+                                            {{ repair.objet }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 title-table">
+                                <h4 class="title-area">Demande</h4>
+                                <div class="detail-area">
+                                    {% for repair in toHandle_repairs %}
+                                        <div class="one-detail">
+                                            {{ repair.dateDemande|date('d/m H:i') }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 title-table">
+                                <h4 class="title-area">Rendez-vous</h4>
+                                <div class="detail-area">
+                                    {% for repair in toHandle_repairs %}
+                                        <div class="one-detail">
+                                            {% if repair.etat =='en attente' %}
+                                                {{ repair.debut|date('d/m H:i') }}
+                                            {% endif %}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 title-table">
+                                <h4 class="title-area">Etat</h4>
+                                <div class="detail-area">
+                                    {% for repair in toHandle_repairs %}
+                                        <div class="one-detail">
+                                            {% if repair.etat == 'terminée' %}
+                                                <div class="repair-state">
+                                                    <div class="repair-state-finish">
+                                                        {{ repair.etat }}
+                                                    </div>
+                                                </div>
+                                            {% elseif repair.etat == 'en attente' %}
+                                                <div class="repair-state">
+                                                    <div class="repair-state-wait">
+                                                        {{ repair.etat }}
+                                                    </div>
+                                                </div>
+                                            {% elseif repair.etat == 'en cours' %}
+                                                <div class="repair-state">
+                                                    <div class="repair-state-progress">
+                                                        {{ repair.etat }}
+                                                    </div>
+                                                </div>
+                                            {% elseif repair.etat == 'demande' %}
+                                                <div class="repair-state">
+                                                    <div class="repair-state-demand">
+                                                        {{ repair.etat }}
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 title-table">
+                                <h4 class="title-area title-area-right">Détails</h4>
+                                <div class="detail-area detail-area-right">
+                                    {% for repair in toHandle_repairs %}
+                                        <div class="one-detail">
+                                            <div class="btn-repair">
+                                                <a class="btn btn-primary" href="{{ path('rclab_website_repair_detail', {'id': repair.id}) }}">Voir plus</a>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 title-table">
+                                <h4 class="title-area title-area-right">Gérer</h4>
+                                <div class="detail-area detail-area-right">
+                                    {% for repair in toHandle_repairs %}
+                                        <div class="one-detail">
+                                            <div class="btn-repair">
+                                                <a class="btn btn-primary" href="{{ path('rclab_website_repair_detail', {'id': repair.id}) }}">Gérer</a>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
                     {% endif %}
-                </td>
-                <td><a href="{{ path('rclab_website_repair_detail', {'id': repair.id}) }}">Voir plus</a></td>
-                <td>{{ repair.etat }}</td>
-                <td><a href="{{ path('rclab_website_repair_edit', {'id': repair.id}) }}">Gérer</a></td>
-            </tr>
-        {% endfor %}
-    </table>
-
-    <div>
-        <p>pagination : </p>
-        {% if page > 1 %}
-            <a href="{{ path('rclab_website_repair_handle', { 'page': (page - 1) }) }}">précédent</a>
-        {% endif %}
-        {{ page }}
-        {% if isSuivant is not null %}
-            <a href="{{ path('rclab_website_repair_handle', {'page': (page + 1) }) }}">suivant</a>
-        {% endif %}
+                    <nav class="page-navig" aria-label="Page navigation">
+                        <ul class="pagination">
+                            <li>
+                                {% if page > 1 %}
+                                    <a href="{{ path('rclab_website_course_history_user', { 'page': (page - 1) }) }}"
+                                       aria-label="Précédent"><span aria-hidden="true">&laquo;</span></a>
+                                {% endif %}
+                            </li>
+                            <li class="active"><a>{{ page }}</a></li>
+                            <li>
+                                {% if isSuivant is not null %}
+                                    <a href="{{ path('rclab_website_course_history_user', {'page': (page + 1) }) }}"
+                                       aria-label="Suivant"><span aria-hidden="true">&raquo;</span></a>
+                                {% endif %}
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}

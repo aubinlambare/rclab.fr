@@ -94,6 +94,14 @@ body {
 	-moz-border-radius: 4px 4px 0 0; -webkit-border-radius: 4px 4px 0 0; border-radius: 4px 4px 0 0;
 	text-align: left;
 }
+.form-top-admin {
+	overflow: hidden;
+	padding: 0 25px 15px 25px;
+	margin-top: 60px;
+	background: rgba(0, 0, 0, 0.55);
+	-moz-border-radius: 4px 4px 0 0; -webkit-border-radius: 4px 4px 0 0; border-radius: 4px 4px 0 0;
+	text-align: left;
+}
 .history-course-content .form-top, .history-repair-content .form-top {
 	margin-top: 18px;
 }
@@ -120,11 +128,20 @@ body {
 	padding: 27px 0 0 0;
 	font-size: 66px;
 }
+.glyphicon-ok {
+	color: forestgreen;
+}
+.glyphicon-remove {
+	color: red;
+}
 
-.detail-area > div > a {
+.btn-course > a {
 	background: #19b9e7;
 	border: none;
 	margin: 0;
+}
+.user-link, .user-link:hover {
+	color: #19b9e7;
 }
 
 .btn-repair > a {
@@ -134,9 +151,12 @@ body {
 	outline: none;
 }
 
+
 .title-table{
 	padding: 0;
+	overflow: hidden;
 }
+
 .title-area {
 	background-color: rgba(0, 0, 0, 0.5);
 	padding: 20px 0;
@@ -270,4 +290,36 @@ body {
 
 .history-body .page-navig {
 	text-align: center;
+}
+
+.repair-state-demand {
+	background: rgba(255, 0, 0, 0.5);
+}
+.repair-state-demand-detail {
+	color: rgba(255, 0, 0, 1);
+}
+.repair-state-wait {
+	background: rgba(180, 180, 180, 0.5);
+}
+.repair-state-wait-detail {
+	color: rgba(180, 180, 180, 1);
+}
+.repair-state-progress {
+	background: rgba(255, 159, 26, 0.8);
+}
+.repair-state-progress-detail {
+	color: rgba(255, 159, 26, 1);
+}
+.repair-state-finish {
+	background: rgba(25, 231, 125, 0.5);
+}
+.repair-state-finish-detail {
+	color:  rgba(25, 231, 125, 1);
+}
+.repair-state-finish, .repair-state-progress, .repair-state-wait, .repair-state-demand {
+	height: 70px;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }

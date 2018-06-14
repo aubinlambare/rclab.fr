@@ -1,71 +1,119 @@
 {% extends "compte.html.twig" %}
 
 {% block content %}
-    <a href="{{ path('rclab_website_matiere_matieres') }}">Gérer les matières</a>
+    <a class="btn btn-primary" href="{{ path('rclab_website_matiere_matieres') }}">Gérer les matières</a>
+    <a class="btn btn-primary" href="{{ path('rclab_website_niveau_niveaux') }}">Gérer les niveaux</a>
 
-    <a href="{{ path('rclab_website_niveau_niveaux') }}">Gérer les niveaux</a>
-
-    <h3>Liste des demandes de cours</h3>
-    <table>
-        <tr>
-            <th>Matière</th>
-            <th>Niveau</th>
-            <th>Objet</th>
-            <th>Date et heure de la demande</th>
-            <th>Demandeur</th>
-            <th>Date et heure du cours</th>
-            <th>Durée du cours</th>
-            <th>Professeur</th>
-            <th>Responsable</th>
-            <th>Voir plus</th>
-            <th>Etat de la demande</th>
-            <th>Gérer</th>
-        </tr>
-        {% for course in toHandle_courses %}
-            <tr>
-                <td>{{ course.matiere.matiere }}</td>
-                <td>{{ course.niveau is not null ? course.niveau.niveau }}</td>
-                <td>{{ course.objet }}</td>
-                <td>{{ course.etat == 'demande' ? course.dateDemande|date('d/m/Y à H:i') }}</td>
-                <td>
-                    {% if course.etat == 'demande' %}
-                        <a href="{{ path('rclab_user_detail', {'id': course.demandeur.id}) }}">{{ course.demandeur.firstName }} {{ course.demandeur.lastName }}</a>
+    <div class="container-fluid history-course-content">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
+                <div class="form-top">
+                    <div class="form-top-left">
+                        <h1>Les cours</h1>
+                    </div>
+                    <div class="form-top-right">
+                        <i class="glyphicon glyphicon-briefcase"></i>
+                    </div>
+                </div>
+                <div class="form-bottom">
+                    {% if toHandle_courses is empty %}
+                        <h4>Il n'y a aucune demande de cours à gérer.</h4>
+                    {% else %}
+                        <div class="row my-course-place">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 title-table">
+                                <h4 class="title-area">Matière</h4>
+                                <div class="detail-area">
+                                    {% for course in toHandle_courses %}
+                                        <div class="one-detail">
+                                            {{ course.matiere.matiere }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 title-table">
+                                <h4 class="title-area">Objet</h4>
+                                <div class="detail-area">
+                                    {% for course in toHandle_courses %}
+                                        <div class="one-detail">
+                                            {{ course.objet }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 title-table">
+                                <h4 class="title-area">Demande</h4>
+                                <div class="detail-area">
+                                    {% for course in toHandle_courses %}
+                                        <div class="one-detail">
+                                            {% if course.etat == 'demande' %}
+                                                {{ course.dateDemande|date('d/m H:i') }}
+                                            {% endif %}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 title-table">
+                                <h4 class="title-area">Début</h4>
+                                <div class="detail-area">
+                                    {% for course in toHandle_courses %}
+                                        <div class="one-detail">
+                                            {% if course.etat == 'validé' %}
+                                                {{ course.debut|date('d/m H:i') }}
+                                            {% endif %}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 title-table">
+                                <h4 class="title-area">Détails</h4>
+                                <div class="detail-area">
+                                    {% for course in toHandle_courses %}
+                                        <div class="one-detail">
+                                            <div class="btn-course">
+                                                <a class="btn btn-primary" href="{{ path('rclab_website_course_detail', {'id': course.id}) }}">Voir plus</a>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 title-table">
+                                <h4 class="title-area title-area-right">Gérer</h4>
+                                <div class="detail-area detail-area-right">
+                                    {% for course in toHandle_courses %}
+                                        <div class="one-detail">
+                                            {% if course.etat == 'demande' %}
+                                                <a href="{{ path('rclab_website_course_valid', {'id': course.id}) }}"><i class="glyphicon glyphicon-ok"></i></a>
+                                                <a href="{{ path('rclab_website_course_refuse', {'id': course.id}) }}"><i class="glyphicon glyphicon-remove"></i></a>
+                                            {% elseif course.etat == 'validé' %}
+                                                <div class="btn-course">
+                                                    <a class="btn btn-primary" href="{{ path('rclab_website_course_edit', {'id': course.id}) }}">Modifier</a>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
                     {% endif %}
-                </td>
-                <td>{{ course.etat == 'validé' ? course.debut|date('d/m/Y à H:i') }}</td>
-                <td>{{ course.etat == 'validé' ? course.duree|date('H:i') }}</td>
-                <td>
-                    {% if course.professeur is not null %}
-                        <a href="{{ path('rclab_user_detail', {'id': course.professeur.id}) }}">{{ course.professeur.firstName }} {{ course.professeur.lastName }}</a>
-                    {% endif %}
-                </td>
-                <td>
-                    {% if course.responsable is not null %}
-                        <a href="{{ path('rclab_user_detail', {'id': course.responsable.id}) }}">{{ course.responsable.firstName }} {{ course.responsable.lastName }}</a>
-                    {% endif %}
-                </td>
-                <td><a href="{{ path('rclab_website_course_detail', {'id': course.id}) }}">Voir plus</a></td>
-                <td>{{ course.etat }}</td>
-                <td>
-                    {% if course.etat == 'demande' %}
-                        <a href="{{ path('rclab_website_course_valid', {'id': course.id}) }}">Valider</a>
-                        <a href="{{ path('rclab_website_course_refuse', {'id': course.id}) }}">Refuser</a>
-                    {% elseif course.etat == 'validé' %}
-                        <a href="{{ path('rclab_website_course_edit', {'id': course.id}) }}">Modifier</a>
-                    {% endif %}
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
-
-    <div>
-        <p>pagination : </p>
-        {% if page > 1 %}
-            <a href="{{ path('rclab_website_course_handle', { 'page': (page - 1) }) }}">précédent</a>
-        {% endif %}
-        {{ page }}
-        {% if isSuivant is not null %}
-            <a href="{{ path('rclab_website_course_handle', {'page': (page + 1) }) }}">suivant</a>
-        {% endif %}
+                    <nav class="page-navig" aria-label="Page navigation">
+                        <ul class="pagination">
+                            <li>
+                                {% if page > 1 %}
+                                    <a href="{{ path('rclab_website_course_history_user', { 'page': (page - 1) }) }}"
+                                       aria-label="Précédent"><span aria-hidden="true">&laquo;</span></a>
+                                {% endif %}
+                            </li>
+                            <li class="active"><a>{{ page }}</a></li>
+                            <li>
+                                {% if isSuivant is not null %}
+                                    <a href="{{ path('rclab_website_course_history_user', {'page': (page + 1) }) }}"
+                                       aria-label="Suivant"><span aria-hidden="true">&raquo;</span></a>
+                                {% endif %}
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}

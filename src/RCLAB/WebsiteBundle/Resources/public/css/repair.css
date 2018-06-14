@@ -61,6 +61,7 @@ h1{
 
 .title-table{
     padding: 0;
+    overflow: hidden;
 }
 .title-area {
     overflow: hidden;
