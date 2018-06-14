@@ -1,11 +1,16 @@
 {% extends "base.html.twig" %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('bundles/rclabuser/css/form-registration.css') }}" />
-    <link rel="stylesheet" href="{{ asset('bundles/rclabuser/css/registration.css') }}" />
+    {% stylesheets
+        '@RCLABUserBundle/Resources/public/css/form-registration.css'
+        '@RCLABUserBundle/Resources/public/css/registration.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 {% endblock %}
 
-{% block body %}
+{% block body %}s
     {{ form_start(form) }}
 
     <div class="registration-body" href="{{ asset('bundles/rclabuser/images/registration.jpg') }}">
@@ -33,48 +38,55 @@
                                 <form role="form" method="post" class="registration-form">
                                     <div class="form-group">
                                         <div class="input-group {% if form_errors(form.firstName) is not empty %}error{% endif %}">
-                                            <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                            <span class="input-group-addon"><i class="fa fa-user"
+                                                                               aria-hidden="true"></i></span>
                                             {{ form_label(form.firstName) }}
                                             {{ form_widget(form.firstName) }}
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="input-group {% if form_errors(form.lastName) is not empty %}error{% endif %}">
-                                            <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                            <span class="input-group-addon"><i class="fa fa-user"
+                                                                               aria-hidden="true"></i></span>
                                             {{ form_label(form.lastName) }}
                                             {{ form_widget(form.lastName) }}
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="input-group {% if form_errors(form.email) is not empty %}error{% endif %}">
-                                            <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                                            <span class="input-group-addon"><i class="fa fa-envelope"
+                                                                               aria-hidden="true"></i></span>
                                             {{ form_label(form.email) }}
                                             {{ form_widget(form.email) }}
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="input-group {% if form_errors(form.username) is not empty %}error{% endif %}">
-                                            <span class="input-group-addon"><i class="fa fa-users" aria-hidden="true"></i></span>
+                                            <span class="input-group-addon"><i class="fa fa-users"
+                                                                               aria-hidden="true"></i></span>
                                             {{ form_label(form.username) }}
                                             {{ form_widget(form.username) }}
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="input-group {% if form_errors(form.plainPassword.first) is not empty %}error{% endif %}">
-                                            <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                                            <span class="input-group-addon"><i class="fa fa-lock"
+                                                                               aria-hidden="true"></i></span>
                                             {{ form_label(form.plainPassword.first) }}
                                             {{ form_widget(form.plainPassword.first) }}
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="input-group {% if form_errors(form.plainPassword.second) is not empty %}error{% endif %}">
-                                            <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                                            <span class="input-group-addon"><i class="fa fa-lock"
+                                                                               aria-hidden="true"></i></span>
                                             {{ form_label(form.plainPassword.second) }}
                                             {{ form_widget(form.plainPassword.second) }}
                                         </div>
                                     </div>
                                     {{ form_rest(form) }}
-                                    <div class="g-recaptcha" data-sitekey="6LeTG1oUAAAAAKOSWG1q2zWIDS4DDSlSwISRATVN"></div>
+                                    <div class="g-recaptcha"
+                                         data-sitekey="6LeTG1oUAAAAAKOSWG1q2zWIDS4DDSlSwISRATVN"></div>
                                     <button type="submit" class="btn"><strong>Je m'inscris !</strong></button>
                                 </form>
                             </div>
