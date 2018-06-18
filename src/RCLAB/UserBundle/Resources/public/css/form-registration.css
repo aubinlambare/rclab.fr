@@ -93,7 +93,7 @@ button.btn:active:focus {
 }
 
 .select-text select {
-    width:102% !important;
+    width:105% !important;
     height:50px !important;
     background-color:transparent;
     -webkit-appearance: none;

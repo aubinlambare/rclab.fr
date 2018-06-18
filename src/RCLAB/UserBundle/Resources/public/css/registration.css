@@ -60,13 +60,13 @@ body {
 	border: none;
 	width: 50px;
 }
-.edit-course-body .input-group-addon {
+.edit-course-body .input-group-addon, .edit-repair-body .input-group-addon  {
 	background: rgba(19, 185, 231, 0.95);
 	border: none;
 	width: 50px;
 }
 
-.fa-lock, .fa-envelope, .fa-user, .fa-users, .glyphicon-briefcase {
+.fa-lock, .fa-envelope, .fa-user, .fa-users, .glyphicon-briefcase, .glyphicon-wrench {
 	color:white;
 }
 
@@ -82,7 +82,7 @@ body {
 .registration-body .form-bottom {
 	text-align: left;
 }
-.edit-course-body .form-bottom {
+.edit-course-body .form-bottom, .edit-repair-body .form-bottom {
 	text-align: left;
 }
 .form-bottom .fa, .form-bottom .glyphicon {

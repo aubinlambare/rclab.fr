@@ -30,33 +30,70 @@ class EditRepairType extends AbstractType
         ];
 
         if($this->etat == 'terminée') {
-            $choices['délivré'] = 'délivré';
+            $choices['délivrée'] = 'délivrée';
         }
 
         $builder
             ->add('objet', TextType::class, [
                 'label' => 'Objet de la réparation',
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
+                'attr' => [
+                    'placeholder' => 'Objet du cours...',
+                    'class' => 'form-control',
+                ],
             ])
             ->add('description', TextareaType::class, [
                 'label' => 'Précisez votre problème',
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
+                'attr' => [
+                    'placeholder' => 'Précisez la demande...',
+                    'class' => 'form-control',
+                    'rows' => '4',
+                ],
             ])
             ->add('etat', ChoiceType::class, [
                 'label' => 'Etat de la réparation',
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
+                'attr' => [
+                    'class' => 'form-control',
+                ],
                 'choices' => $choices,
             ])
             ->add('responsable', EntityType::class, [
                 'label' => 'Responsable de cette réparation',
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
+                'attr' => [
+                    'class' => 'form-control',
+                ],
                 'class' => User::class,
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('u')
                         ->where("u.fonction != 'null'");
                 }
             ])
-            ->add('Valider', SubmitType::class);
+            ->add('Valider', SubmitType::class, [
+                'attr' => [
+                    'class' => 'btn btn-primary',
+                ],
+            ]);
 
             if($this->etat == 'demande') {
                 $builder->add('debut', DateTimeType::class, [
                    'label' => 'Date et heure du rendez-vous',
+                    'label_attr' => [
+                        'class' => 'sr-only',
+                    ],
+                    'attr' => [
+                        'class' => 'form-control',
+                    ],
                     'data' => new \DateTime()
                 ]);
             }
