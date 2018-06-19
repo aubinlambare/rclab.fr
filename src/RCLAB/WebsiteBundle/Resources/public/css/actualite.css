@@ -37,7 +37,8 @@
     margin-bottom: 30px;
     border-radius:4px;
     width: 100%;
-    min-height: 623px;
+    height: 623px;
+    overflow: hidden;
     box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.3);
     background: rgba(0, 0, 0, 0.75);
     max-width: 600px;
@@ -60,24 +61,6 @@
 .btn-group .btn-middle, .btn-group .btn-middle:hover {
     border-right: 1px solid white;
     border-left: 1px solid white;
-}
-.btn-top {
-    width: 100%;
-}
-.btn-top-left {
-    float: left;
-    width: 42%;
-    margin: 0;
-    padding: 0;
-    background-color: red;
-}
-.btn-top-right {
-    text-align: right;
-    float: left;
-    width: 58%;
-    margin: 0;
-    padding: 0;
-    background-color: blue;
 }
 
 .picture-block {
