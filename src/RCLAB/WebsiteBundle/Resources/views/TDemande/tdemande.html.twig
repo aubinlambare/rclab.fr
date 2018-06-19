@@ -11,7 +11,7 @@
             <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
                 <div class="form-top">
                     <div class="form-top-left">
-                        <h1>Liste des types de demande</h1>
+                        <h1>Types de demande</h1>
                     </div>
                     <div class="form-top-right">
                         <i class="glyphicon glyphicon-list-alt"></i>
@@ -64,7 +64,7 @@
                                     {% for tdemande in tdemandes %}
                                         <div class="one-detail">
                                             {% if tdemande.icone is not null %}
-                                                <img src="{{ asset('uploads/images/'~tdemande.icone) }}"/>
+                                                <img class="icone" src="{{ asset('uploads/images/'~tdemande.icone) }}"/>
                                             {% else %}
                                                 Pas d'icône
                                             {% endif %}

@@ -27,10 +27,48 @@ class T_DemandeType extends AbstractType
         }
 
         $builder
-            ->add('couleur', TextType::class)
-            ->add('icone', FileType::class)
-            ->add('historique', CheckboxType::class)
-            ->add('Valider', SubmitType::class);
+            ->add('typeDemande', TextType::class, array(
+                'label' => 'Nom du type',
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
+                'attr' => [
+                    'placeholder' => 'Nom du type...',
+                    'class' => 'form-control',
+                ],
+            ))
+            ->add('couleur', TextType::class, array(
+                'label' => 'Couleur du type',
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
+                'attr' => [
+                    'placeholder' => 'Couleur du type...',
+                    'class' => 'form-control',
+                ],
+            ))
+            ->add('icone', FileType::class, [
+                'label' => 'icone',
+                'required' => false,
+                'label_attr' => [
+                    'id' => 'fileButton',
+                ],
+                'attr' => [
+                    'id' => 'fileButton',
+                ],
+            ])
+            ->add('historique', CheckboxType::class, array(
+                'label' => 'Historique',
+                'required' => false,
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
+            ))
+            ->add('Valider', SubmitType::class, [
+                'attr' => [
+                    'class' => 'btn btn-primary',
+                ],
+            ]);
 
     }
 

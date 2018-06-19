@@ -17,32 +17,30 @@
                     {% set tmp = tmp + 1 %}
                 {% endfor %}
                 {% for users in personnes %}
-                    {% set iteration = iteration + 1 %}
-                    {% if users.fonction is not null %}
-                        {% if tmp == 5 and iteration == 4 %}
-                            <div class="col-lg-offset-2 col-sm-offset-2 col-sm-4 col-md-4 col-lg-4">
-                        {% else %}
-                            <div class="col-sm-4 col-md-4 col-lg-4">
-                        {% endif %}
-                            <div class="dash-unit">
-                                <div class="thumbnail">
-                                    {% if users.photo is not null %}
-                                        <img src="{{ asset('uploads/images/'~users.photo) }}" class="img-circle" >
-                                    {% endif %}
-                                </div><!-- /thumbnail -->
+                    <a class="contact-link" href="{{ path('rclab_user_detail', {'id': users.id}) }}">
+                        {% set iteration = iteration + 1 %}
+                        {% if users.fonction is not null %}
+                            {% if tmp == 5 and iteration == 4 %}
+                                <div class="col-lg-offset-2 col-sm-offset-2 col-sm-4 col-md-4 col-lg-4">
+                            {% else %}
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                            {% endif %}
+                                <div class="dash-unit">
+                                    <div class="thumbnail">
+                                        {% if users.photo is not null %}
+                                            <img src="{{ asset('uploads/images/'~users.photo) }}" class="img-circle" >
+                                        {% endif %}
+                                    </div><!-- /thumbnail -->
                                     <h1>{{ users['firstName'] }} {{ users.lastName }}</h1>
-
-                                    <div class="couleur"><h3> {{ users['fonction']['fonction']|upper }}</h3>
+                                    <div class="couleur"><h3> {{ users['fonction']['fonction']|upper }}</h3></div>
+                                    <br>
+                                    <div class="info-user">
+                                        <span><h4>{{ users['presentation'] }}</h4></span>
                                     </div>
-                                <br>
-                                <div class="info-user">
-                                    <span>
-                                            <h4>{{ users['presentation'] }}</h4>
-                                    </span>
                                 </div>
                             </div>
-                        </div>
-                    {% endif %}
+                        {% endif %}
+                    </a>
                 {% endfor %}
             </div>
 

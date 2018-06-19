@@ -60,13 +60,13 @@ body {
 	border: none;
 	width: 50px;
 }
-.edit-course-body .input-group-addon, .edit-repair-body .input-group-addon  {
+.edit-course-body .input-group-addon, .edit-repair-body .input-group-addon, .add-type-body .input-group-addon {
 	background: rgba(19, 185, 231, 0.95);
 	border: none;
 	width: 50px;
 }
 
-.fa-lock, .fa-envelope, .fa-user, .fa-users, .glyphicon-briefcase, .glyphicon-wrench {
+.fa-lock, .fa-envelope, .fa-user, .fa-users, .glyphicon-briefcase, .glyphicon-wrench, .glyphicon-text-background, .glyphicon-send {
 	color:white;
 }
 
@@ -82,7 +82,7 @@ body {
 .registration-body .form-bottom {
 	text-align: left;
 }
-.edit-course-body .form-bottom, .edit-repair-body .form-bottom {
+.edit-course-body .form-bottom, .edit-repair-body .form-bottom, .add-type-body .form-bottom {
 	text-align: left;
 }
 .form-bottom .fa, .form-bottom .glyphicon {
@@ -175,6 +175,8 @@ body {
 	border-top: 2px solid #FFFFFF;
 	border-bottom: 2px solid #FFFFFF;
 	margin: 0;
+	max-height: 64px;
+	overflow: hidden;
 }
 .detail-area {
 	background-color: rgba(0, 0, 0, 0.5);
@@ -195,16 +197,6 @@ body {
 }
 .title-area-right, .detail-area-right {
 	border-right: 2px solid #FFFFFF;
-}
-
-@media(max-width: 768px) {
-	.detail-area {
-		border-right: 2px solid #FFFFFF;
-
-	}
-	.title-area {
-		border-right: 2px solid #FFFFFF;
-	}
 }
 
 .detail-course-body p {
@@ -255,9 +247,11 @@ body {
 
 [type="file"]{
 	visibility: hidden;
+	display: none;
 }
 #fileButton {
 	visibility: hidden;
+	display: none;
 }
 
 .g-recaptcha {
@@ -333,4 +327,8 @@ body {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+}
+
+.history-course-content .input-group > .icone {
+	max-height: 40px;
 }

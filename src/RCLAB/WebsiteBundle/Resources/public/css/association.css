@@ -16,6 +16,9 @@ body {
 .couleur{
     color:rgba(255,0,0, .6);
 }
+.contact-link:hover, .contact-link:focus {
+    text-decoration: none;
+}
 
 /***********BLOCKS & WRAPS***********/
 

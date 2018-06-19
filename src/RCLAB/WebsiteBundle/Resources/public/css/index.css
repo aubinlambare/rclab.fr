@@ -104,15 +104,7 @@
     margin-bottom: 20px;
     overflow: hidden;
 }
-@media(max-width: 768px) {
-    .day-area {
-        border-right: 2px solid #FFFFFF;
 
-    }
-    .form-bottom h3 {
-        border-right: 2px solid #FFFFFF;
-    }
-}
 .day-area-right {
     border-right: 2px solid #FFFFFF;
 }

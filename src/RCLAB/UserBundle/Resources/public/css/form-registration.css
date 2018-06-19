@@ -22,6 +22,11 @@
     box-shadow: none;
 }
 
+[type="checkbox"] {
+    box-shadow: none;
+    outline: none;
+}
+
 
 [type="text"]:focus, [type="password"]:focus, [type="email"]:focus, [type="tel"]:focus {
     outline: 0;
@@ -57,8 +62,15 @@ button.btn:hover {
     color: #fff;
 }
 
-button.btn-upload {
-    margin-top: 10px;
+.form-bottom-left > button.btn-upload {
+    margin-top: 30px;
+    padding: 0 20px;
+    border: 2px solid #ffffff;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.3);
+}
+.input-group > button.btn-upload {
+    margin-top: 0px;
     padding: 0 20px;
     border: 2px solid #ffffff;
     border-radius: 4px;

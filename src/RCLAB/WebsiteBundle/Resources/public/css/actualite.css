@@ -61,14 +61,23 @@
     border-right: 1px solid white;
     border-left: 1px solid white;
 }
+.btn-top {
+    width: 100%;
+}
 .btn-top-left {
     float: left;
-    width: 45%;
+    width: 42%;
+    margin: 0;
+    padding: 0;
+    background-color: red;
 }
 .btn-top-right {
     text-align: right;
     float: left;
-    width: 55%;
+    width: 58%;
+    margin: 0;
+    padding: 0;
+    background-color: blue;
 }
 
 .picture-block {

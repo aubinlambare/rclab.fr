@@ -63,6 +63,7 @@
     border-top: 2px solid #FFFFFF;
     border-bottom: 2px solid #FFFFFF;
     margin: 0;
+    max-height: 64px;
     overflow: hidden;
 }
 .detail-area {
@@ -84,15 +85,6 @@
 }
 .title-area-right, .detail-area-right {
     border-right: 2px solid #FFFFFF;
-}
-@media(max-width: 768px) {
-    .detail-area {
-        border-right: 2px solid #FFFFFF;
-
-    }
-    .title-area {
-        border-right: 2px solid #FFFFFF;
-    }
 }
 
 .course-state-validate-detail {

@@ -80,7 +80,9 @@
 
 /* Start box */
 
-
+.contact-link:hover, .contact-link:focus {
+    text-decoration: none;
+}
 .box > .icon {
     text-align: center;
 }

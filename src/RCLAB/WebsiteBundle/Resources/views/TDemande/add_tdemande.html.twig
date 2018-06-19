@@ -1,6 +1,51 @@
 {% extends "compte.html.twig" %}
 
 {% block content %}
-    <h3>Ajout d'un type de demande</h3>
-    {{ form(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    <div class="container-fluid add-type-body">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-5 col-lg-offset-2">
+                <div class="form-top">
+                    <div class="form-top-left">
+                        <h1>Nouveau type</h1>
+                    </div>
+                    <div class="form-top-right">
+                        <i class="glyphicon glyphicon-plus-sign"></i>
+                    </div>
+                </div>
+                <div class="form-bottom">
+                    {{ form_start(form) }}
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-send" aria-hidden="true"></i></span>
+                            {{ form_label(form.typeDemande) }}
+                            {{ form_widget(form.typeDemande) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-text-background" aria-hidden="true"></i></span>
+                            {{ form_label(form.couleur) }}
+                            {{ form_widget(form.couleur) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group select-text">
+                            <h3>
+                            {{ form_label(form.historique) }}
+                            {{ form_widget(form.historique) }}
+                            Historiser le type</h3>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <button type="button" class="btn-upload" onclick="document.getElementById('fileButton').click()">Choisir un icône</button>
+                            {{ form_row(form.icone) }}
+                        </div>
+                    </div>
+                    {{ form_row(form.Valider) }}
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -84,21 +84,23 @@
                     {% for users in personnes %}
                         {% if users.fonction is not null %}
                             <div class="col-xs-offset-1 col-md-offset-0 col-lg-offset-0 col-lg-6 col-md-6 col-sm-8 col-xs-10">
-                                <div class="dash-unit">
-                                    <div class="thumbnail i">
-                                        {% if users.photo is not null %}
-                                            <img src="{{ asset('uploads/images/'~users.photo) }}" class="img-circle">
+                                <a class="contact-link" href="{{ path('rclab_user_detail', {'id': users.id}) }}">
+                                    <div class="dash-unit">
+                                        <div class="thumbnail">
+                                            {% if users.photo is not null %}
+                                                <img src="{{ asset('uploads/images/'~users.photo) }}" class="img-circle">
+                                            {% endif %}
+                                        </div>
+                                        <div class="fonction_color"><h3> {{ users['fonction']['fonction']|upper }}</h3>
+                                        </div>
+                                        <div class="space_fonction-name"></div>
+                                        <div class="name_color"><h1>{{ users['firstName'] }} {{ users.lastName }}</h1></div>
+                                        <div class="space_name-number"></div>
+                                        {% if users['telephone'] is not null %}
+                                            <div class="number_color"><h3>{{ users['telephone'] }}</h3></div>
                                         {% endif %}
                                     </div>
-                                    <div class="fonction_color"><h3> {{ users['fonction']['fonction']|upper }}</h3>
-                                    </div>
-                                    <div class="space_fonction-name"></div>
-                                    <div class="name_color"><h1>{{ users['firstName'] }} {{ users.lastName }}</h1></div>
-                                    <div class="space_name-number"></div>
-                                    {% if users['telephone'] is not null %}
-                                        <div class="number_color"><h3> {{ users['telephone'] }}</h3></div>
-                                    {% endif %}
-                                </div>
+                                </a>
                             </div>
                             <div class="space_perso"></div>
                         {% endif %}

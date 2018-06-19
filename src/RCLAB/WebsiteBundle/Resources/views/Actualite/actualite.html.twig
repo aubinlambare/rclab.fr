@@ -6,21 +6,27 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="btn-top">
-                        <div class="btn-top-left">
+                        {% if is_granted('ROLE_MODERATOR') %}
+                            <div class="btn-top-left">
+                                <div class="btn-group">
+                                    <a class="btn btn-primary btn-left" onclick="onlyEvent()">Événements</a>
+                                    <a class="btn btn-primary btn-middle" onclick="onlyNews()">News</a>
+                                    <a class="btn btn-primary btn-right" onclick="notOnlyOne()">Tout</a>
+                                </div>
+                            </div>
+                            <div class="btn-top-right">
+                                <div class="btn-group">
+                                    <a class="btn btn-primary btn-left"
+                                       href="{{ path('rclab_website_actualite_events_add') }}">Ajouter un événement</a>
+                                    <a class="btn btn-primary btn-right"
+                                       href="{{ path('rclab_website_actualite_news_add') }}">Ajouter une news</a>
+                                </div>
+                            </div>
+                        {% else %}
                             <div class="btn-group">
                                 <a class="btn btn-primary btn-left" onclick="onlyEvent()">Événements</a>
                                 <a class="btn btn-primary btn-middle" onclick="onlyNews()">News</a>
                                 <a class="btn btn-primary btn-right" onclick="notOnlyOne()">Tout</a>
-                            </div>
-                        </div>
-                        {% if is_granted('ROLE_MODERATOR') %}
-                            <div class="btn-top-right">
-                                <div class="btn-group">
-                                    <a class="btn btn-primary btn-left"
-                                       href="{{ path('rclab_website_actualite_events_add') }}">Ajouter un évènement</a>
-                                    <a class="btn btn-primary btn-right"
-                                       href="{{ path('rclab_website_actualite_news_add') }}">Ajouter une news</a>
-                                </div>
                             </div>
                         {% endif %}
                     </div>
