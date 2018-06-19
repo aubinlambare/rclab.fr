@@ -2,7 +2,7 @@
 
 {% block actu %}
     <section class="index-content actualite-body">
-        <div class="container-fluid">
+        <section class="container-fluid">
             {% if is_granted('ROLE_MODERATOR') %}
                 <div class="btn-group">
                     <a class="btn btn-primary btn-left"
@@ -88,4 +88,4 @@
             </nav>
         </div>
     </section>
-{% endblock %}  
+{% endblock %}
