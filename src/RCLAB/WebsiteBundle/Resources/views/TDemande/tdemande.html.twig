@@ -1,30 +1,94 @@
 {% extends 'compte.html.twig' %}
 
 {% block content %}
-    <h3>Liste des types de demande disponibles</h3>
-    {% if is_granted('ROLE_SUPER_ADMIN') %}
-        <a href="{{ path('rclab_website_tdemandes_add') }}">Ajouter un type de demande</a>
-    {% endif %}
-    {% for tdemande in tdemandes %}
-        <div>
-            <div>
-                <p><strong> {{ tdemande.typeDemande }}</strong></p>
-                {% if tdemande.couleur is not null %}
-                    <p>Couleur du type de demande : {{ tdemande.couleur }}</p>
-                {% endif %}
-                {% if tdemande.historique == true %}
-                    <p><i>Historisé</i></p>
-                {% endif %}
-                <a href="{{ path('rclab_website_tdemandes_edit', {'id': tdemande.id}) }}">Modifier</a>
-                {% if is_granted('ROLE_SUPER_ADMIN') %}
-                    <a href="{{ path('rclab_website_tdemandes_remove', {'id': tdemande.id}) }}">Supprimer</a>
-                {% endif %}
-            </div>
-            {% if tdemande.icone is not null %}
-                <div>
-                    <img src="{{ asset('uploads/images/'~tdemande.icone) }}"/>
+        {% if is_granted('ROLE_SUPER_ADMIN') %}
+            <div class="container-fluid history-course-content">
+                <a class="btn btn-primary" href="{{ path('rclab_website_tdemandes_add') }}">Ajouter un type de demande</a>
+        {% else %}
+            <div class="container-fluid">
+        {% endif %}
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
+                <div class="form-top">
+                    <div class="form-top-left">
+                        <h1>Liste des types de demande</h1>
+                    </div>
+                    <div class="form-top-right">
+                        <i class="glyphicon glyphicon-list-alt"></i>
+                    </div>
                 </div>
-            {% endif %}
+                <div class="form-bottom">
+                    {% if tdemandes is empty %}
+                        <h4>Il n'y a aucun type de demande.</h4>
+                    {% else %}
+                        <div class="row my-demand-place">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 title-table">
+                                <h4 class="title-area">Type</h4>
+                                <div class="detail-area">
+                                    {% for tdemande in tdemandes %}
+                                        <div class="one-detail">
+                                            {{ tdemande.typeDemande }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 title-table">
+                                <h4 class="title-area">Couleur</h4>
+                                <div class="detail-area">
+                                    {% for tdemande in tdemandes %}
+                                        <div class="one-detail">
+                                            {% if tdemande.couleur is not null %}
+                                                {{ tdemande.couleur }}
+                                            {% endif %}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 title-table">
+                                <h4 class="title-area">Historique</h4>
+                                <div class="detail-area">
+                                    {% for tdemande in tdemandes %}
+                                        <div class="one-detail">
+                                            {% if tdemande.historique == true %}
+                                                Historisé
+                                            {% else %}
+                                                Non historisé
+                                            {% endif %}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 title-table">
+                                <h4 class="title-area">Icône</h4>
+                                <div class="detail-area">
+                                    {% for tdemande in tdemandes %}
+                                        <div class="one-detail">
+                                            {% if tdemande.icone is not null %}
+                                                <img src="{{ asset('uploads/images/'~tdemande.icone) }}"/>
+                                            {% else %}
+                                                Pas d'icône
+                                            {% endif %}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 title-table">
+                                <h4 class="title-area title-area-right">Gérer</h4>
+                                <div class="detail-area detail-area-right">
+                                    {% for tdemande in tdemandes %}
+                                        <div class="one-detail">
+                                            <a href="{{ path('rclab_website_tdemandes_edit', {'id': tdemande.id}) }}"><i class="glyphicon glyphicon-edit"></i></a>
+                                            {% if is_granted('ROLE_SUPER_ADMIN') %}
+                                                <a href="{{ path('rclab_website_tdemandes_remove', {'id': tdemande.id}) }}"><i class="glyphicon glyphicon-remove"></i></a>
+                                            {% endif %}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
         </div>
-    {% endfor %}
+    </div>
 {% endblock %}

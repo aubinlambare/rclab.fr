@@ -142,6 +142,9 @@ body {
 .glyphicon-remove {
 	color: red;
 }
+.glyphicon-edit {
+	color: orange;
+}
 
 .btn-course > a {
 	background: #19b9e7;
