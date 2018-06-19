@@ -1,60 +1,58 @@
 {% extends "@RCLABWebsite/Actualite/actus.html.twig" %}
 
 {% block actu %}
-    <section class="index-content">
-        <div class="detail-event-body">
-            <div class="container-fluid">
-                <div class="row">
-                    {% if event.image is not null %}
-                        <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 col-lg-offset-1">
-                            <div class="picture-detail">
-                                <img src="{{ asset('uploads/images/'~event.image) }}"/>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-10 col-xs-12 col-lg-offset-2 col-sm-offset-1">
-                    {% elseif event.image is null %}
-                        <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12 col-lg-offset-3 col-md-offset-2 col-sm-offset-1">
-                    {% endif %}
-                        <div class="form-top">
-                            <div class="form-top-left">
-                                <h1>{{ event.title }}</h1>
-                            </div>
-                            <div class="form-top-right">
-                                <i class="fa fa-bookmark"></i>
-                            </div>
-                        </div>
-                        <div class="form-bottom">
-                            <br/>
-                            <p>Début: {{ event.dateStart|date('d/m/Y H:i') }}</p>
-                            <p>Fin : {{ event.dateEnd|date('d/m/Y H:i') }}</p>
-                            <br/>
-                            <h4>Description de l'événement :</h4>
-                            <p>{{ event.description }}</p>
-                            {% if event.link is not null %}
-                                <br/>
-                                <p>Pour plus d'informations, cliquez sur ce lien:</p>
-                                <p><a href="{{ event.link }}">{{ event.link }}</a></p>
-                            {% endif %}
-                            {% if event.maxParticipants is not null and event.nbInscrits < event.maxParticipants %}
-                                <br/>
-                                <h4>Seulement {{ event.maxParticipants - event.nbInscrits }} place{% if event.maxParticipants - event.nbInscrits > 1 %}s{% endif %} de disponible{% if event.maxParticipants - event.nbInscrits > 1 %}s{% endif %} !</h4>
-                                <a class="btn btn-primary" href="{{ path('rclab_website_actualite_event_subscribe', {'id': event.id}) }}">Je participe</a>
-                            {% endif %}
-
+    <section class="index-content detail-event-body">
+        <div class="container-fluid">
+            <div class="row">
+                {% if event.image is not null %}
+                    <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 col-lg-offset-1">
+                        <div class="picture-detail">
+                            <img src="{{ asset('uploads/images/'~event.image) }}"/>
                         </div>
                     </div>
-                </div>{#
-                <nav aria-label="...">
-                    <ul class="pager">
-                        <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Précédent</a></li>
-                        {% if event.maxParticipants is not null %}
-                            <a href="{{ path('rclab_website_actualite_event_subscribe', {'id': event.id}) }}" class="btn btn-primary">Je m'inscris</a>
+                    <div class="col-lg-4 col-md-6 col-sm-10 col-xs-12 col-lg-offset-2 col-sm-offset-1">
+                {% elseif event.image is null %}
+                    <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12 col-lg-offset-3 col-md-offset-2 col-sm-offset-1">
+                {% endif %}
+                    <div class="form-top">
+                        <div class="form-top-left">
+                            <h1>{{ event.title }}</h1>
+                        </div>
+                        <div class="form-top-right">
+                            <i class="fa fa-bookmark"></i>
+                        </div>
+                    </div>
+                    <div class="form-bottom">
+                        <br/>
+                        <p>Début: {{ event.dateStart|date('d/m/Y H:i') }}</p>
+                        <p>Fin : {{ event.dateEnd|date('d/m/Y H:i') }}</p>
+                        <br/>
+                        <h4>Description de l'événement :</h4>
+                        <p>{{ event.description }}</p>
+                        {% if event.link is not null %}
+                            <br/>
+                            <p>Pour plus d'informations, cliquez sur ce lien:</p>
+                            <p><a href="{{ event.link }}">{{ event.link }}</a></p>
                         {% endif %}
-                        <li class="next"><a href="#">Suivant <span aria-hidden="true">&rarr;</span></a></li>
-                    </ul>
-                </nav>
-                #}
-            </div>
+                        {% if event.maxParticipants is not null and event.nbInscrits < event.maxParticipants %}
+                            <br/>
+                            <h4>Seulement {{ event.maxParticipants - event.nbInscrits }} place{% if event.maxParticipants - event.nbInscrits > 1 %}s{% endif %} de disponible{% if event.maxParticipants - event.nbInscrits > 1 %}s{% endif %} !</h4>
+                            <a class="btn btn-primary" href="{{ path('rclab_website_actualite_event_subscribe', {'id': event.id}) }}">Je participe</a>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>{#
+            <nav aria-label="...">
+                <ul class="pager">
+                    <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Précédent</a></li>
+                    {% if event.maxParticipants is not null %}
+                        <a href="{{ path('rclab_website_actualite_event_subscribe', {'id': event.id}) }}" class="btn btn-primary">Je m'inscris</a>
+                    {% endif %}
+                    <li class="next"><a href="#">Suivant <span aria-hidden="true">&rarr;</span></a></li>
+                </ul>
+            </nav>
+            #}
         </div>
     </section>
 {% endblock %}
