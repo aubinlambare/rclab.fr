@@ -24,6 +24,14 @@
     color: white;
     line-height: 50px;
 }
+.add-actu-body h1 {
+    text-align: left;
+    font-size: 38px;
+    font-weight: 400;
+    color: white;
+    line-height: 50px;
+}
+
 .index-content{
     padding:30px 20px;
     color: white;
@@ -133,11 +141,21 @@
     font-size: 48px;
 }
 
-.form-bottom {
+.actualite-body .form-bottom, .detail-event-body .actualite-body {
     padding: 25px 25px 25px 25px;
     background: rgba(0, 0, 0, 0.5);
     border-radius: 0 0 4px 4px;
     text-align: center;
+    margin-bottom: 20px;
+    color: white;
+    overflow: hidden;
+}
+
+.add-actu-body .form-bottom {
+    padding: 25px 25px 25px 25px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 0 0 4px 4px;
+    text-align: left;
     margin-bottom: 20px;
     color: white;
     overflow: hidden;
@@ -152,4 +170,146 @@
 
 .index-content .page-navig {
     text-align: center;
+}
+
+.form-bottom .row {
+    margin-bottom: 10px;
+}
+
+.input-group-addon {
+    background: rgba(19, 185, 231, 0.95);
+    border: none;
+    width: 50px;
+}
+.input-group {
+    width: 100%;
+}
+
+.form-bottom .fa, .form-bottom .glyphicon {
+    font-size: 24px;
+    color:white;
+}
+
+.form-control:focus {
+    outline: 0;
+    border: 2px solid #19b9e7;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.description .form-control {
+    border-radius: 4px !important;
+    color: #555555;
+}
+
+.error [type="text"], .error [type="email"] {
+    border: 2px solid red;
+}
+
+[type="text"], [type="password"], [type="email"], [type="tel"], [type="url"] {
+    height: 50px;
+    margin: 0;
+    padding: 0 20px;
+    vertical-align: middle;
+    background: #fff;
+    border: 3px solid #fff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 50px;
+    color: #555555;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+[type="checkbox"] {
+    box-shadow: none;
+    outline: none;
+}
+
+.integer {
+    color: #555555;
+    outline: 0;
+    box-shadow: none;
+}
+
+[type="text"]:focus, [type="password"]:focus, [type="email"]:focus, [type="tel"]:focus, [type="url"]:focus {
+    outline: 0;
+    background: #fff;
+    border: 2px solid #19b9e7;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+[type="file"]{
+    visibility: hidden;
+    display: none;
+}
+#fileButton {
+    visibility: hidden;
+    display: none;
+}
+
+.btn-matiere {
+    height: 50px;
+    color: #8c8c8c;
+    width: 70%;
+}
+
+.input-group > button.btn-upload {
+    margin-top: 0;
+    padding: 12px 20px;
+    border: 2px solid #ffffff;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.3);
+}
+button.btn-upload:active, button.btn-upload:focus, button.btn-upload:hover {
+    border: 2px solid #19b9e7;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.select-text select {
+    width:105% !important;
+    height:50px !important;
+    background-color:transparent;
+    -webkit-appearance: none;
+    border:none;
+    box-shadow:none;
+}
+.select-text select:focus{
+    border: transparent !important;
+}
+.select-text .styled {
+    overflow:hidden;
+    background: white;
+    height: 50px;
+    width: 80%;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    border: none;
+}
+
+.select-text select > option {
+    background-color: white;
+    color: #5e5e5e;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.select-date select > option {
+    color: #5e5e5e;
+}
+.select-date .form-control {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.textarea {
+    width: 94%;
 }

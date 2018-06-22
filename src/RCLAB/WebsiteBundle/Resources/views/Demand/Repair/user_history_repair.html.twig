@@ -43,7 +43,7 @@
                                     {% for repair in my_repairs %}
                                         <div class="one-detail">
                                             {% if repair.responsable is not null %}
-                                                <a href="{{ path('rclab_user_detail', {'id': repair.responsable.id}) }}">{{ repair.responsable.firstName }} {{ repair.responsable.lastName }}</a>
+                                                <a class="user-link" href="{{ path('rclab_user_detail', {'id': repair.responsable.id}) }}">{{ repair.responsable.firstName }} {{ repair.responsable.lastName }}</a>
                                             {% endif %}
                                         </div>
                                     {% endfor %}

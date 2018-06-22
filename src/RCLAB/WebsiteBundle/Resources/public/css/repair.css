@@ -71,7 +71,7 @@ h1{
     border-top: 2px solid #FFFFFF;
     border-bottom: 2px solid #FFFFFF;
     margin: 0;
-    max-height: 64px;
+    max-height: 63px;
 }
 .detail-area {
     background-color: rgba(0, 0, 0, 0.5);

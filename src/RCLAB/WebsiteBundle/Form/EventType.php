@@ -21,38 +21,100 @@ class EventType extends AbstractType
         $builder
             ->add('title', TextType::class, [
                 'label' => 'titre',
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
+                'attr' => [
+                    'placeholder' => 'Titre de l\'événement...',
+                    'class' => 'form-control',
+                ],
             ])
-            ->add('description', TextareaType::class)
+            ->add('description', TextareaType::class, array(
+                'label' => 'Décrivez l\'événement',
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
+                'attr' => [
+                    'placeholder' => 'Décrivez l\'événement...',
+                    'class' => 'form-control',
+                    'rows' => '4',
+                ],
+            ))
             ->add('link', UrlType::class, [
                 'label' => 'lien',
+                'required' => false,
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
+                'attr' => [
+                    'placeholder' => 'Lien...',
+                    'class' => 'form-control',
+                ],
             ])
             ->add('image', FileType::class, [
                 'label' => 'Affiche',
+                'required' => false,
+                'label_attr' => [
+                    'id' => 'fileButton',
+                ],
+                'attr' => [
+                    'id' => 'fileButton',
+                ],
             ])
             ->add('maxParticipants', IntegerType::class, [
                 'label' => 'Nombre maximum de participants',
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
                 'attr' => [
                     'min' => 1,
                     'max' => 32767,
+                    'class' => 'integer',
                 ],
             ])
             ->add('dateStart', DateTimeType::class, [
                 'label' => 'Date de début de l\'évènement',
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
+                'attr' => [
+                    'class' => 'form-control'
+                ],
             ])
             ->add('dateEnd', DateTimeType::class, [
                 'label' => 'Date de fin de l\'évènement',
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
+                'attr' => [
+                    'class' => 'form-control'
+                ],
             ])
             ->add('shareDate', DateTimeType::class, [
                 'label' => 'Date de publication',
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
+                'attr' => [
+                    'class' => 'form-control'
+                ],
             ])
             ->add('focus', CheckboxType::class, [
-                'label' => 'Mettre l\'évènement en focus'
+                'label' => 'Mettre l\'évènement en focus',
+                'required' => false,
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
             ])
 //            ->add('prioriteFocus', IntegerType::class, array('attr' => array(
 //                'min' => 1,
 //                'max' => 10,
 //            )))
-            ->add('Valider', SubmitType::class);
+            ->add('Valider', SubmitType::class, [
+                'attr' => [
+                    'class' => 'btn btn-primary',
+                ],
+            ]);
     }
     /**
      * {@inheritdoc}

@@ -21,23 +21,71 @@ class NewsType extends AbstractType
         $builder
             ->add('title', TextType::class, [
                 'label' => 'titre',
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
+                'attr' => [
+                    'placeholder' => 'Titre de la news...',
+                    'class' => 'form-control',
+                ],
             ])
-            ->add('description', TextareaType::class)
+            ->add('description', TextareaType::class, array(
+                'label' => 'Décrivez la news',
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
+                'attr' => [
+                    'placeholder' => 'Décrivez la news',
+                    'class' => 'form-control',
+                    'rows' => '4',
+                ],
+            ))
             ->add('link', UrlType::class, [
                 'label' => 'lien',
+                'required' => false,
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
+                'attr' => [
+                    'placeholder' => 'Lien...',
+                    'class' => 'form-control',
+                ],
             ])
             ->add('shareDate', DateTimeType::class, [
                 'label' => 'Date de publication',
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
+                'attr' => [
+                    'class' => 'form-control'
+                ],
             ])
             ->add('focus', CheckboxType::class, [
                 'label' => 'Mettre en focus',
+                'required' => false,
+                'label_attr' => [
+                    'class' => 'sr-only',
+                ],
             ])
 //            ->add('prioriteFocus', IntegerType::class, array('attr' => array(
 //                'min' => 1,
 //                'max' => 10,
 //            )))
-            ->add('image', FileType::class)
-            ->add('Valider', SubmitType::class);
+            ->add('image', FileType::class, [
+                'label' => 'Affiche',
+                'required' => false,
+                'label_attr' => [
+                    'id' => 'fileButton',
+                ],
+                'attr' => [
+                    'id' => 'fileButton',
+                ],
+            ])
+            ->add('Valider', SubmitType::class, [
+                'attr' => [
+                    'class' => 'btn btn-primary',
+                ],
+            ]);
     }
     /**
      * {@inheritdoc}

@@ -39,6 +39,7 @@ class T_DemandeType extends AbstractType
             ))
             ->add('couleur', TextType::class, array(
                 'label' => 'Couleur du type',
+                'required' => false,
                 'label_attr' => [
                     'class' => 'sr-only',
                 ],

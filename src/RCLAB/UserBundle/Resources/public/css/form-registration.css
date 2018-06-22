@@ -70,7 +70,7 @@ button.btn:hover {
     background: rgba(0, 0, 0, 0.3);
 }
 .input-group > button.btn-upload {
-    margin-top: 0px;
+    margin-top: 0;
     padding: 0 20px;
     border: 2px solid #ffffff;
     border-radius: 4px;

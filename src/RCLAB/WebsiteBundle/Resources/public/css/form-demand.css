@@ -72,11 +72,15 @@ h1{
     color: #555555;
 }
 
-[type="text"] {
+.error [type="text"], .error [type="email"] {
+    border: 2px solid red;
+}
+
+[type="text"], [type="password"], [type="email"], [type="tel"], [type="url"] {
     height: 50px;
     margin: 0;
-    width: 100%;
     padding: 0 20px;
+    vertical-align: middle;
     background: #fff;
     border: 3px solid #fff;
     font-family: 'Roboto', sans-serif;
@@ -86,18 +90,38 @@ h1{
     color: #555555;
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
-    border-radius: 0 4px 4px 0;
+    border-radius: 4px;
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
     box-shadow: none;
 }
-[type="text"]:focus {
+
+[type="checkbox"] {
+    box-shadow: none;
+    outline: none;
+}
+
+.integer {
+    color: #555555;
+    outline: 0;
+    box-shadow: none;
+}
+
+[type="text"]:focus, [type="password"]:focus, [type="email"]:focus, [type="tel"]:focus, [type="url"]:focus {
     outline: 0;
     background: #fff;
     border: 2px solid #19b9e7;
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
     box-shadow: none;
+}
+[type="file"]{
+    visibility: hidden;
+    display: none;
+}
+#fileButton {
+    visibility: hidden;
+    display: none;
 }
 
 .btn-matiere {
@@ -106,7 +130,19 @@ h1{
     width: 70%;
 }
 
-select {
+.input-group > button.btn-upload {
+    margin-top: 0;
+    padding: 12px 20px;
+    border: 2px solid #ffffff;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.3);
+}
+button.btn-upload:active, button.btn-upload:focus, button.btn-upload:hover {
+    border: 2px solid #19b9e7;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.select-text select {
     width:105% !important;
     height:50px !important;
     background-color:transparent;
@@ -114,10 +150,10 @@ select {
     border:none;
     box-shadow:none;
 }
-select:focus{
+.select-text select:focus{
     border: transparent !important;
 }
-.styled {
+.select-text .styled {
     overflow:hidden;
     background: white;
     height: 50px;
@@ -127,7 +163,7 @@ select:focus{
     border: none;
 }
 
-select > option {
+.select-text select > option {
     background-color: white;
     color: #5e5e5e;
     padding: 8px 16px;
@@ -135,5 +171,16 @@ select > option {
     cursor: pointer;
 }
 
+.select-date select > option {
+    color: #5e5e5e;
+}
+.select-date .form-control {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+}
 
+.textarea {
+    width: 94%;
+}
 
