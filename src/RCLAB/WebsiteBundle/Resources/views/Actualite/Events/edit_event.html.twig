@@ -1,11 +1,101 @@
 {% extends "@RCLABWebsite/Actualite/actus.html.twig" %}
 
 {% block actu %}
-
-    <h3>Modifier l'évènement {{ event.title }}</h3>
-
-    <div>
-        {{ form(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    <div class="add-actu-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8 col-lg-offset-2 col-md-offset-1">
+                    <div class="form-top">
+                        <div class="form-top-left">
+                            <h1>Modifier l'événement</h1>
+                        </div>
+                        <div class="form-top-right">
+                            <i class="glyphicon glyphicon-cog"></i>
+                        </div>
+                    </div>
+                    <div class="form-bottom">
+                        {{ form_start(form) }}
+                        <div class="row">
+                            <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar" aria-hidden="true"></i></span>
+                                    {{ form_label(form.title) }}
+                                    {{ form_widget(form.title) }}
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-2 col-md-2 col-sm-3 col-xs-4 col-lg-offset-1 col-md-offset-1">
+                                <div class="input-group">
+                                    <button type="button" class="btn-upload" onclick="document.getElementById('fileButton').click()">Choisir une image</button>
+                                    {{ form_row(form.image) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-link" aria-hidden="true"></i></span>
+                                {{ form_label(form.link) }}
+                                {{ form_widget(form.link) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group description">
+                                <h4>Description de l'événement :</h4>
+                                {{ form_label(form.description) }}
+                                {{ form_widget(form.description) }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <div class="input-group select-date">
+                                    <h4>Début de l'événement :</h4>
+                                    <div class="styled">
+                                        {{ form_label(form.dateStart) }}
+                                        {{ form_widget(form.dateStart) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <div class="input-group select-date">
+                                    <h4>Fin de l'événement :</h4>
+                                    <div class="styled">
+                                        {{ form_label(form.dateEnd) }}
+                                        {{ form_widget(form.dateEnd) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <div class="input-group select-date">
+                                    <h4>Date de publication :</h4>
+                                    {{ form_label(form.shareDate) }}
+                                    {{ form_widget(form.shareDate) }}
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <div class="input-group select-date">
+                                    <h4>Maximum de participants :</h4>
+                                    {{ form_label(form.maxParticipants) }}
+                                    {{ form_widget(form.maxParticipants) }}
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <div class="input-group select-text">
+                                <h4>
+                                    {{ form_label(form.focus) }}
+                                    {{ form_widget(form.focus) }}
+                                    Mettre en focus
+                                </h4>
+                            </div>
+                        </div>
+                        {{ form_row(form.Valider) }}
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
 {% endblock %}

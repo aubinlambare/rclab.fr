@@ -66,6 +66,7 @@ class EventType extends AbstractType
                 'label_attr' => [
                     'class' => 'sr-only',
                 ],
+                'required' => false,
                 'attr' => [
                     'min' => 1,
                     'max' => 32767,

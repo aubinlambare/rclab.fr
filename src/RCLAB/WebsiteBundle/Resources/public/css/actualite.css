@@ -141,7 +141,7 @@
     font-size: 48px;
 }
 
-.actualite-body .form-bottom, .detail-event-body .actualite-body {
+.actualite-body .form-bottom, .detail-event-body .form-bottom {
     padding: 25px 25px 25px 25px;
     background: rgba(0, 0, 0, 0.5);
     border-radius: 0 0 4px 4px;
